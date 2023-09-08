@@ -1,0 +1,622 @@
+---
+fontsize: 8pt
+bibliography: ../Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    highlight: tango
+    keep_tex: true
+    latex_engine: xelatex
+    includes:
+      in_header: ../Header.tex
+---
+
+
+```{r source R_common, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+
+
+#  {.plain}
+\center
+```{r Abb otto, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
+```
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2022/23
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+
+#  {.plain}
+
+\vfill
+\huge
+\begin{center}
+(5) Listen und Dataframes
+\end{center}
+\vfill
+
+
+#
+\setstretch{3}
+\vfill
+\large
+Listen
+
+Dataframes
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+#
+\setstretch{3}
+\vfill
+\large
+**Listen**
+
+Dataframes
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+# Listen
+\setstretch{2}
+\textcolor{darkblue}{Übersicht}
+
+* Listen sind geordnete Folgen von R Objekten.
+* Listen sind rekursiv, können also Objekte verschiedenen Datentyps enthalten.
+* Defacto enthalten Listen keine Objekte, sondern Referenzen zu Objekten.
+
+```{r, echo = FALSE, out.width = "30%"}
+knitr::include_graphics(file.path(abb_dir, "pds_5_list_representation.pdf"))
+```
+
+* Listen sind ein wesentlicher Baustein von Dataframes.
+
+# Listen
+\setstretch{1.1}
+\textcolor{darkblue}{Erzeugung}
+
+\footnotesize
+Direkte Konkatenation von Listenelementen mit `list()`
+
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L = list(c(1,4,5),							# Liste mit einem Vektor,
+		 		 matrix(1:8, nrow = 2),		# einer Matrix und
+		 		 exp)						# einer Funktion
+print(L)
+```
+
+\setstretch{1.1}
+\footnotesize
+Listen können Elemente von Listen sein
+
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L = list(list(1))							# Liste mit Element 1 in einer Liste
+print(L)
+```
+
+\setstretch{1.1}
+\footnotesize
+`c()` kann zum Verbinden von Listen genutzt werden
+
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L = c(list(pi), list("a"))					# Konkatenation zweier Listen
+print(L)
+```
+
+
+
+# Listen
+\textcolor{darkblue}{Charakterisierung}
+\footnotesize
+
+Der Datentyp von Listen ist `list`
+```{r}
+L = list(1:2, "a", log)				# Erzeugung einer Liste
+typeof(L)							# Typenbestimmung
+```
+
+
+`length()` gibt die Anzahl der Toplevel Listenelemente aus
+```{r}
+L = list(1:2, list("a", pi), exp)	# Liste mit drei Toplevelelementen
+length(L)							# length() ignoriert Elementinhalte, length() von L ist also 3
+```
+
+Die Dimension, Zeilen-, und Spaltenanzahl von Listen ist `NULL`
+```{r}
+L = list(1:2, "a", sin)				# eine Liste
+dim(L)							    # Die Dimension von Listen ist NULL
+nrow(L)							    # Die Zeilenanzahl von Listen ist NULL
+ncol(L)								# Die Spaltenanzahl von Listen ist NULL
+```
+
+# Listen
+\textcolor{darkblue}{Indizierung}
+
+\setstretch{1.1}
+\footnotesize
+Einfache eckige Klammern [ ] indizieren Listenelemente als Listen
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
+L  = list(1:3, "a", exp)			# eine Liste
+l1 = L[1]							# Indizierung eines Listenelements
+l1
+typeof(l1)							# Typbestimmung von l1
+```
+
+\setstretch{1.1}
+\footnotesize
+Doppelte eckige Klammern [[ ]] indizieren den Inhalt von Listenelementen
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
+L  = list(1:3, "a", exp)			# eine Liste
+i2 = L[[2]]							# Indizierung des Listenelementinhalts
+i2
+typeof(i2)						    # Typbestimmung von i2
+```
+
+\setstretch{1.1}
+\footnotesize
+Ersetzen von Listenelement(inhalt)en
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
+L  		= list(1:3, "a", exp)		# eine Liste
+L[1]	= 4:6						# keine Typkonversion, Fehlermeldung
+L[1]	= list(4:6)				    # Ersetzung des 1. Listenelementes
+L[[3]]	= "c"						# Ersetzung des 3. Listenelementinhaltes
+```
+
+
+
+# Listen
+\textcolor{darkblue}{Indizierung}
+
+\setstretch{1.1}
+\footnotesize
+Die Prinzipien der Listenindizierung sind analog zur Vektorindizierung
+
+\footnotesize
+Vektoren positiver Zahlen adressieren entsprechende Elemente
+
+\setstretch{0.9}
+\tiny
+```{r,eval = T}
+L = list(1:3, "a", pi)				# eine Liste
+l = L[c(1,3)] 					    # 1. und 3. Listenelement
+l
+```
+
+\setstretch{1.1}
+\footnotesize
+Vektoren negativer Zahlen adressieren komplementäre Elemente
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
+L = list(1:3, "a", pi)				# eine Liste
+l = L[-c(1,3)] 						# 2. Listenelement
+l
+```
+
+\setstretch{1.1}
+\footnotesize
+Logische Vektoren adressieren Elemente mit TRUE.
+
+\setstretch{0.9}
+\tiny
+```{r, eval = T}
+L = list(1:3, "a", pi)				# eine Liste
+l = L[c(T,T,F)]						# 1. und 2. Listenelement
+l
+```
+
+
+
+# Listen
+\textcolor{darkblue}{Indizierung}
+
+\small
+Listenelementen können bei Erzeugung Namen gegeben werden
+
+\footnotesize
+```{r, eval = T}
+L = list(greta  = 1:3,				# eine Liste mit benannten Elementen
+ 	 	 luisa 	= "a",
+		 carla 	= exp)
+L$greta               # 1. Listenelement
+```
+```{r}
+L$luisa               # 2. Listenelement
+```
+```{r}
+L$carla               # 3. Listenelement
+```
+
+\small
+Listenelementen können mit `names()` Namen gegeben werden
+
+\footnotesize
+```{r, eval = T}
+K 		 = list(1:2, TRUE)			# eine unbenannte Liste
+names(K) = c("Frodo", "Sam")		# Namensgebung mit names()
+K$Frodo  							# 1.Listenelement
+```
+```{r}
+K$Sam      							# 2. Listelement
+```
+
+
+
+
+# Listen
+\textcolor{darkblue}{Indizierung}
+
+\small
+Listenelemente und Listenelementinhalte können mit Namen indiziert werden
+
+\footnotesize
+```{r, eval = F}
+L = list(greta  = 1:3,	   # eine Liste mit benannten Elementen
+  	     luisa  = "a",
+		 carla = exp)
+L["carla"]				   # Listenelementindizierung
+L[["carla"]]			   # Listenelementinhaltsinindizierung
+```
+
+\small
+Listenelementinhalte können mit dem `$` Operator indiziert werden
+
+\footnotesize
+```{r}
+L = list(greta  = 1:3,		# eine Liste mit benannten Elementen
+  	     luisa  = "a",
+		 carla = exp)
+L$greta						# Listenelementinhalt
+L$luisa						# Listenelementinhalt
+L$carla						# Listenelementinhalt
+```
+
+
+# Listen
+\textcolor{darkblue}{Arithmetik}
+
+\small
+Listenarithmetik ist nicht definiert, da Listenelemente unterschiedlichen Typs sein können
+
+\footnotesize
+```{r, error = TRUE}
+L1 = list(1:3, "a" )		# eine Liste
+L2 = list(T, exp )		    # eine Liste
+L1+L2						# Versuch der Listenaddition
+```
+
+\small
+Listenelementinhalte können bei Passung jedoch arithmetisch verknüpft werden
+
+\footnotesize
+```{r}
+L1 = list(1:3, pi )	   		# eine Liste
+L2 = list(4:6, exp )	    # eine Liste
+L1[[1]] + L2[[1]]			# Addition  der 1. Listenelementinhalte,  [1+4, 2+5,3+6]
+L2[[2]](1)					# Anwendung des 2. Listenelementinhalts, exp(1)
+```
+
+
+
+# Listen
+\setstretch{1}
+\textcolor{darkblue}{Copy-on-modify}
+\footnotesize
+
+Wie bei Vektoren gilt bei Listen das Copy-on-Modify Prinzip.
+
+"Shallow copy": Listenobjekt wird kopiert, aber nicht die gebundenen Objekte.
+
+`lobstr::ref()` erlaubt es, dieses Verhalten zu studieren.
+
+```{r, echo = FALSE, out.width = "55%"}
+knitr::include_graphics(file.path(abb_dir, "pds_5_list_copy_on_modify.pdf"))
+```
+
+
+\scriptsize
+```{r}
+L1 = list(1,2,3)     # Erzeugen einer Liste als Objekt (z.B. 0x1a3)
+L2 = L1              # L1 und L2 referenzieren das Objekt (z.B. 0x1a3)
+L2[[3]] = 4          # Copy-on-Modify mit shallow Objekt Kopie
+lobstr::ref(L1,L2)   # Ausgabe der Referenzen
+```
+
+\setstretch{1}
+\color{darkcyan}
+Anmerkung: Die Referenzen werden bei jeder Neuerstellung der Objekte anders sein. Entsprechend werden die mit `lobbstr::ref()` ausgegebenen Referenzen nicht mit denen in der Abbildung übereinstimmen. 
+
+
+#
+\setstretch{3}
+\vfill
+\large
+Listen
+
+**Dataframes**
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+
+# Dataframes
+\setstretch{1.4}
+\textcolor{darkblue}{Übersicht}
+\small
+
+* Dataframes sind die zentrale Datenstruktur in R.
+* Dataframes stellt man sich am besten als Tabelle vor.
+* Die Zeilen und Spalten der Tabelle haben Namen.
+
+\vspace{1mm}
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "pds_5_tabelle.pdf"))
+```
+
+
+
+# Dataframes
+\setstretch{1.4}
+\textcolor{darkblue}{Übersicht}
+\small
+
+* Formal ist ein Dataframe eine Liste, deren Elemente Vektoren gleicher Länge sind.
+* Die Listenelemente entsprechen den Spalten einer Tabelle.
+* Die Vektorelement gleicher Position entsprechen den Zeilen einer Tabelle.
+
+```{r, echo = FALSE, out.width = "50%"}
+knitr::include_graphics(file.path(abb_dir, "pds_5_dataframe_representation.pdf"))
+```
+
+
+
+# Dataframes
+\setstretch{1.2}
+\textcolor{darkblue}{Erzeugung}
+\small
+
+`data.frame()` erzeugt einen Dataframe
+\footnotesize
+```{r}
+D = data.frame(x = letters[1:4],	# 1. Spalte mit Name x
+			   y = 1:4, 			# 2. Spalte mit Name y
+			   z = c(T,T,F,T))		# 3. Spalte mit Name z
+print(D)
+```
+
+\small
+Die Spalten des Dataframes müssen gleiche Länge haben
+
+\footnotesize
+```{r, error = TRUE}
+D = data.frame(x = letters[1:4], 	# 1. Spalte mit Name x
+			   y = 1:4, 			# 2. Spalte mit Name y
+			   z = c(T,T,F))		# 3. Spalte mit Name z
+
+```
+
+\small
+Die Spalten eines Dataframes können offenbar unterschiedlichen Typs sein.
+
+
+
+# Dataframes
+\setstretch{1.1}
+\textcolor{darkblue}{Charakterisierung}
+
+\small
+Ein Dataframe hat `names()`, `rownames()`, `colnames()`
+
+\footnotesize
+```{r}
+D = data.frame(age    = c(30,35,40,45), 	# 1. Spalte
+			   height = c(178,189,165,171),	# 2. Spalte
+			   weight = c(67, 76, 81, 92))	# 3. Spalte
+names(D)									# names gibt die Spaltennamen aus
+colnames(D)									# colnames entspricht names
+rownames(D)                                 # default rownames sind 1,2,...
+												
+```
+\small
+Ein Dataframe `nrow()` Zeilen und `length()` bzw. `ncol()` Spalten
+
+\footnotesize
+```{r}
+nrow(D)										# Zeilenanzahl
+ncol(D)									    # Spaltenanzahl
+length(D)									# Länge ist die Spaltenanzahl
+```
+
+
+
+# Dataframes
+\textcolor{darkblue}{Charakterisierung}
+\small
+
+`View()` öffnet den RStudio Data Viewer.
+```{r}
+View(D)
+```
+
+```{r, echo = FALSE, out.width = "25%"}
+knitr::include_graphics(file.path(abb_dir, "pds_5_view.pdf"))
+```
+
+`str()` zeigt in kompakter Form wesentliche Aspekte eines Dataframes an.
+
+```{r}
+str(D)
+
+```
+Allgemein zeigt `str()` in kompakter Form wesentliche Aspekte eines R Objektes an.
+
+
+
+# Dataframes
+\textcolor{darkblue}{Attribute}
+\small
+
+* Dataframes sind Listen mit Attributen für (column) `names` und `row.names`
+* Dataframes haben `class` "data.frame"
+
+\footnotesize
+```{r}
+typeof(D)
+attributes(D)
+```
+
+
+
+# Dataframes
+\textcolor{darkblue}{Indizierung}
+\small
+
+Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
+
+$\Rightarrow$ Bei einem Index verhalten sich Dataframes wie Listen
+
+\footnotesize
+```{r}
+D = data.frame(x = letters[1:4],	# 1. Spalte mit Name x
+			   y = 1:4, 			# 2. Spalte mit Name y
+			   z = c(T,T,F,T))		# 3. Spalte mit Name z
+class(D)                            # D ist ein Dataframe
+v = D[1]							# 1. Listenelement als Dataframe
+v
+class(v)							# v ist ein Dataframe
+```
+
+
+
+# Dataframes
+\textcolor{darkblue}{Indizierung}
+\footnotesize
+
+Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
+
+$\Rightarrow$ Bei einem Index verhalten sich Dataframes wie Listen
+
+```{r}
+D = data.frame(x = letters[1:4],	# 1. Spalte mit Name x
+			   y = 1:4, 			# 2. Spalte mit Name y
+			   z = c(T,T,F,T))		# 3. Spalte mit Name z
+w = D[[1]]			                # Inhalt des 1. Listenelements										
+w
+class(w)							# w ist ein character vector
+y = D$y								# $ zur Indizierung der y Spalte
+y
+class(y)							# v ist ein Vektor vom Typ "integer" (!)
+```
+
+
+
+# Dataframes
+\setstretch{1.2}
+\textcolor{darkblue}{Indizierung}
+
+\footnotesize
+Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
+
+$\Rightarrow$ Bei zwei Indices verhalten sich Dataframes wie Matrizen
+
+\vspace{1mm}
+
+```{r}
+D = data.frame(x = letters[1:4],	# 1. Spalte mit Name x
+			   y = 1:4, 			# 2. Spalte mit Name y
+			   z = c(T,T,F,T))		# 3. Spalte mit Name z
+```
+
+```{r}
+D[2:3,-2]	    					# 1. Index fuer Zeilen, 2. Index fuer Spalten
+D[c(T,F,T,F),] 		                # 1. Index fuer Zeilen, 2. Index fuer Spalten
+D[,c("x", "z")]						# 1. Index fuer Zeilen, 2. Index fuer Spalten
+```
+
+
+
+# Dataframes
+\textcolor{darkblue}{Copy-on-modify}
+\small
+
+* Die Copy-on-Modify Prinzipien für Listen gelten auch für Dataframes
+* Modifikation einer Spalte führt zur Kopie der entsprechenden Spalte
+* Modifikation einer Zeile führt zur Kopie des gesamten Dataframes
+
+
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics(file.path(abb_dir, "pds_5_dataframe_copy_on_modify.pdf"))
+```
+
+
+
+#
+\setstretch{3}
+\vfill
+\large
+Listen
+
+Dataframes
+
+**Übungen und Selbstkontrollfragen**
+\vfill
+
+
+
+# Übungen und Selbstkontrollfragen 
+\small
+\vfill
+\begin{enumerate}
+\item Dokumentieren Sie die in dieser Einheit eingeführten R Befehle.
+\item Beschreiben Sie in einer Übersicht die R Datenstruktur ``List''.
+\item Erzeugen Sie eine Liste mit vier Elementen.
+\item L sei eine Liste. Was ist der Unterschied zwischen L[1] und L[[1]]?
+\item Erzeugen Sie zwei Listen und fügen Sie diese zusammen.
+\item L sei eine Liste. Was gibt length(L) an?
+\item L sei eine Liste. Was bedeutet dann L\$Student?
+\item Erläutern Sie den Begriff ``Shallow Copy'' einer Liste.
+\item Beschreiben Sie in einer Übersicht die R Datenstruktur "Dataframe".
+\item Erzeugen Sie einen Dataframe mit vier Spalten.
+\item D sei ein Dataframe. Was geben rownames(D) und colnames(D) an?
+\item D sei ein Dataframe. Was ist der Unterschied zwischen D[1] und D[1,1]?
+\item D sei ein Dataframe. Was bedeutet dann D\$Student?
+\item Erläutern Sie das Copy-on-modify Prinzip für Dataframes.
+\end{enumerate}
+\vfill

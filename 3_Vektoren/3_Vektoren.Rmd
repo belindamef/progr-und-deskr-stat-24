@@ -1,0 +1,778 @@
+---
+fontsize: 8pt
+bibliography: ../Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    highlight: tango
+    keep_tex: true
+    includes:
+      in_header: ../Header.tex
+---
+
+
+```{r source R_common, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+
+
+#  {.plain}
+\center
+```{r Abb otto, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
+```
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2022/23
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+
+#  {.plain}
+
+\vfill
+\huge
+\begin{center}
+(3) Vektoren
+\end{center}
+\vfill
+
+
+
+#
+\setstretch{2.4}
+\large
+\vfill
+Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+
+#
+\setstretch{2.4}
+\large
+\vfill
+**Erzeugung**
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+
+# Erzeugung
+\setstretch{1.5}
+
+\textcolor{darkblue}{Was ist ein Vektor in R?}
+
+\small
+
+\begin{itemize}
+\item R operiert mit \textit{Datenstrukturen} (z.B. Vektoren, Matrizen, Listen und Dataframes).
+\item Die einfachste dieser Datenstrukturen ist ein Vektor.
+\item Vektoren sind geordnete Folgen von Datenwerten, die in \underline{einem} Objekt zusammengefasst sind und \underline{einem} Variablennamen zugewiesen sind.
+\item Die einzelnen Datenwerte eines Vektors heißen \textit{Elemente} des Vektors.
+\item Vektoren, deren Elemente alle vom gleichen Datentyp sind, heißen \textbf{atomar}.
+\item Die zentralen Datentypen sind \textbf{numeric} (\textbf{double}, \textbf{integer}),  \textbf{logical},  \textbf{character}
+\end{itemize}
+
+\vspace{1mm}
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics(file.path(abb_dir, "/pds_3_atomic_vectors.pdf"))
+```
+
+* Mit dem Begriff **Vektor** ist hier immer ein **atomarer Vektor** gemeint.
+
+\vfill
+
+
+
+# Erzeugung
+
+\textcolor{darkblue}{Elementarwerte}
+
+\setstretch{1.1}
+\small
+**Numeric**
+
+\footnotesize
+Per default werden numerische Werte (mit oder ohne Dezimalstellen) als double initialisiert. Dezimalzahlen können in Dezimalnotation oder wissenschaftlicher Notation spezifiziert werden. Weitere mögliche Werte sind Inf, -Inf, und NaN (Not-a-Number).
+\vspace{1mm}
+\tiny
+```{r, eval = F}
+h = 1                    # Einelementiger Vektor vom Typ double (1)
+i = 2.1e2                # Einelementiger Vektor vom Typ double (210)
+j = 2.1e-2               # Einelementiger Vektor vom Typ double (0.021)
+k = Inf                  # Einelementiger Vektor vom Typ double (unendlich)
+l = NaN                  # Einelementiger Vektor vom Typ double (NaN)
+```  
+
+\footnotesize
+Integer werden wie double ohne Dezimalstellen spezifiziert, gefolgt von einem L (long integer).
+\vspace{1mm}
+\tiny
+```{r, eval = F}
+x = 1L                   # Einelementiger Vektor vom Typ integer
+y = 200L                 # Einelementiger Vektor vom Typ integer
+```
+
+\small
+**Logical**
+
+\footnotesize
+TRUE oder FALSE, abgekürzt T oder F.
+\vspace{1mm}
+\tiny
+```{r, eval = F}
+x = TRUE                # Einelementiger Vektor vom Typ logical
+y = F                   # Einelementiger Vektor vom Typ logical
+```
+
+\small
+**Character**
+
+\footnotesize
+Anführungszeichen ("a") oder Hochkommata ('a').
+\vspace{1mm}
+\tiny
+```{r, eval = F}
+x = "a"                 # Einelementiger Vektor vom Typ character
+y = 'test'              # Einelementiger Vektor vom Typ character
+```
+
+
+
+# Erzeugung
+
+\textcolor{darkblue}{Erzeugung mehrelementiger Vektoren}
+
+\small
+Direkte Konkatenation von Elementarwerten mit `c()`
+
+\footnotesize
+```{r, eval = F}
+x = c(1,2,3)                    # numeric vector [1,2,3]
+y = c(0,x,4)                    # numeric vector [0,1,2,3,4]
+s = c("a", "b", "c")            # character vector ["a", "b", "c"]
+l = c(TRUE, FALSE)              # logical  vector [TRUE, FALSE]
+```
+
+* \footnotesize Beachte: `c()` konkateniert die Eingabeargumente und erzwingt einen einheitlichen Datentyp (vgl. coercion)
+\footnotesize
+    ```{r, eval = F}
+    x = c(1, "a", TRUE)         # character vector ["1", "a", "TRUE"]
+    ```
+
+\small
+Erzeugen "leerer" Vektoren mit `vector()`
+
+\footnotesize
+```{r, eval = F}
+v = vector("double",3)          # double vector [0,0,0]
+w = vector("integer",3)         # integer vector [0,0,0]
+l = vector("logical",2)         # logical vector [FALSE, FALSE]
+s = vector("character",4)       # character vector ["", "", "", ""]
+```
+
+\small
+Erzeugen "leerer" Vektoren mit double(), integer(), logical(), character()
+
+\footnotesize
+```{r, eval = F}
+v = double(3)                   # double vector [0,0,0]
+w = integer(3)                  # integer vector [0,0,0]
+l = logical(2)                  # logical vector [FALSE, FALSE]
+s = character(4)                # character vector ["", "", "", ""]
+```
+
+
+
+# Erzeugung
+\textcolor{darkblue}{Erzeugung von Vektoren als Sequenzen}
+
+\small
+Erzeugen von ganzzahligen Sequenzen mithilfe des **Colonoperators** `:`
+
+`a:b` erzeugt ganzzahlige Sequenzen von a (inklusive) bis b (maximal)
+
+\footnotesize
+```{r, eval = F}
+x = 0:5                     # [0,1,2,3,4,5]
+y = 1.5:6.1                 # [1.5, 2.5, 3.5, 4.5, 5.5]
+```
+
+\small
+Erzeugen von Sequenzen mit `seq()`
+
+`seq(from, to, by = ((to - from)/(len - 1), len = NULL, ...)`
+
+\footnotesize
+```{r, eval = F}
+x_1	= seq(0,5)              # wie 0:5, [0,1,2,3,4,5]
+x_2 = seq(0,1,len = 5)      # 5 Zahlen zwischen 0 (inkl.) und 1 (inkl.), equidistant
+                            # [0.00, 0.25, 0.50, 0.75, 1.00]
+x_3 = seq(0,2,by = .15)     # 0.15 Schritte zwischen 0 (inkl.) und 2 (max.)
+                            # [0.00, 0.15, 0.30, ..., 1.50 1.65 1.80 1.95]
+x_4	= seq(1,0,by = -.1)     # -0.1 Schritte zwischen 1 (inkl.) und 0 (min.)
+                            # [1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0.0]
+```
+
+\small
+`seq.int()`, `seq_len()`, `seq_along()`  als weitere Varianten
+
+\footnotesize
+```{r, eval = F}
+x_1	= seq.int(0,5)          # wie 0:5, [0,1,2,3,4,5]
+x_2 = seq_len(5)            # Natuerliche Zahlen bis 5, [1,2,3,4,5]
+x_3 = seq_along(c("a","b")) # wie seq_len(length(c("a", "b")))
+```
+
+
+
+#
+\setstretch{2.4}
+\large
+\vfill
+Erzeugung
+
+**Charakterisierung**
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+
+# Charakterisierung
+\setstretch{0.9}
+\footnotesize
+
+`length()` gibt die Anzahl der Elemente eines Vektors aus
+```{r, eval = T}
+x = 0:10          # Vektor
+length(x)         # Anzahl der Elemente des Vektors
+```
+\vspace{2mm}
+`typeof()` gibt den elementaren Datentyp eines Vektors aus
+```{r, eval = T}
+x = 1:3L          # Vektor
+typeof(x)         # Datentyp des atomic vectors
+```
+\vspace{2mm}
+```{r, eval = T}
+y = c(T,F,T)      # Vektor
+typeof(y)         # Der Datentyp des atomic vectors
+```
+\vspace{2mm}
+`mode()` und `storage.mode()` werden nicht empfohlen, sie existieren für S Kompatibilität
+
+`is.logical()`, `is.double()`, `is.integer()`, `is.character()` testen den Datentyp
+```{r, eval = T}
+is.double(x)      # Testen, ob der x vom Typ double ist
+```
+\vspace{2mm}
+```{r, eval = T}
+is.logical(y)     # Testen, ob der y vom Typ logical ist
+```
+
+
+
+# Charakterisierung
+Datentypangleichung (Coercion)
+\vspace{2mm}
+\setstretch{0.9}
+
+\small
+Bei Konkatenation verschiedener Datentypen wird ein einheitlicher Datentyp erzwungen. Es gilt 
+
+\center
+character $>$ double $>$ integer $>$ logical
+\vspace{2mm}
+
+\justifying
+\footnotesize
+
+```{r, eval = T}
+x = c(1.2,"a")			# Kombination gemischter Datentypen (character schlaegt double)
+x
+```
+\vspace{2mm}
+```{r, eval = T}
+typeof(x)				# Erzeugter Vektor ist vom Datentyp character
+```
+\vspace{2mm}
+```{r, eval = T}
+y = c(1L, TRUE)			# Kombination  gemischter Datentypen (integer schlaegt logical)
+y
+```
+\vspace{2mm}
+```{r, eval = T}
+typeof(y)				# Erzeugter Vektor ist vom Typ integer
+```
+
+\vfill
+
+
+
+# Charakterisierung
+Datentypangleichung (Coercion)
+\vspace{2mm}
+\setstretch{0.9}
+
+\justifying
+\small
+Explizite Coercion mit `as.logical()`, `as.integer()`, `as.double()`, `as.character()`
+\vspace{1mm}
+
+\footnotesize
+```{r, eval = T}
+x = c(0,1,1,0)			# double Vektor
+y = as.logical(x)	    # ... umgewandelt in logical
+y
+```
+
+\small
+Coercion geschieht aber auch oft implizit:
+\vspace{1mm}
+
+\footnotesize
+```{r, eval = T}
+x = c(T, F, T, T)		# logical Vektor
+s = sum(x)				# Summation in integer gewandelter logical Elemente
+s			
+```
+
+\vfill
+
+
+
+#
+\large
+\setstretch{2.4}
+\vfill
+Erzeugung
+
+Charakterisierung
+
+**Indizierung**
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+
+# Indizierung
+\setstretch{1.4}
+
+\normalsize
+Grundlagen
+\vspace{-2mm}
+
+\small
+
+* Einzelne oder mehrere Vektorkomponenten werden durch Indizierung adressiert.
+* Indizierung wird auch Indexing, Subsetting, oder Slicing genannt.
+* Zur Indizierung werden eckige Klammern [$\,\,$] benutzt.
+* Indizierung kann zur Kopie oder Manipulation von Komponenten benutzt werden.
+* Der Index des ersten Elements ist 1 (nicht 0, wie in anderen Sprachen).
+
+\vspace{1mm}
+\normalsize
+Beispiel
+\footnotesize
+```{r, eval = F}
+x		= c("a", "b", "c")		# character vector ["a", "b", "c"]
+y 		= x[2]					# Kopie von "b" in y
+x[3]	= "d" 					# Aenderung von x zu x = ["a", "b", "d"]
+```
+
+\vspace{1mm}
+\normalsize
+Prinzipien der Indizierung in R
+
+\small
+Indizierung mit ...
+
+... einem Vektor positiver Zahlen adressiert entsprechende Komponenten.
+
+... mit einem Vektor negativer Zahlen adressiert komplementäre Komponenten.
+
+... einem logischen Vektor adressiert die Komponenten mit TRUE.
+
+... einem character Vektor adressiert benannte Komponenten.
+
+
+
+# Indizierung
+
+\small
+Beispiele
+
+\footnotesize
+Indizierung mit einem Vektor positiver Zahlen
+```{r, eval = F}
+x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y = x[1:3]			    # 1:3 erzeugt Vektor [1,2,3], x[1:3] = x[c(1,2,3)] = [1,4,9]
+z = x[c(1,3,5)]		    # c(1,3,5) erzeugt Vektor [1,3,5], x[c(1,3,5)] = [1,9,25]
+```
+
+Indizierung mit einem Vektor negativer Zahlen
+```{r, eval = F}
+x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y = x[c(-2,-4)]		    # Alle Komponenten ausser 2 und 4, x[c(-2,-4)] = [1,9,25]
+z = x[c(-1,2)] 		    # Gemischte Indizierung nicht erlaubt (Fehlermeldung)
+```
+
+Indizierung mit einem logischen Vektor
+```{r, eval = F}
+x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y = x[c(T,T,F,F,T)]	    # TRUE Komponenten,  x[c(T,T,F,F,T)] = [1,4,25]
+z = x[x > 5] 		    # x > 5 = [F,F,T,T,T], x[x > 5] = [9,16,25]
+```
+
+Indizierung mit einem character Vektor
+```{r, eval = F}
+x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+names(x) = c("a","b")	# Benennung der Komponenten als [a  b <NA> <NA> <NA>]
+y = x["a"]				# x["a"] = 1
+```
+
+
+
+# Indizierung
+\normalsize
+R hat eine (zu) hohe Flexibilität bei Indizierung
+
+\small
+\vspace{1mm}
+
+Out-of-range Indizes verursachen keine Fehler, sondern geben NA aus
+```{r, eval = F}
+x = c(1,4,9,16,25)		# [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y = x[10]				# x[10] = NA (Not Applicable)
+```
+
+\vspace{1mm}
+
+Nichtganzzahlige Indizes verursachen keine Fehler, sondern werden abgerundet
+```{r, eval = F}
+y = x[4.9]				# x[4.9] 	= x[4] 	= 16
+z = x[-4.9]				# x[-4.9] = x[-4] = [1,4,9,25]
+```
+
+\vspace{1mm}
+
+Leere Indizes indizieren den gesamten Vektor
+```{r, eval = F}
+y = x[]					# y = x
+```
+
+\vfill
+
+
+
+#
+\setstretch{2.4}
+\vfill
+\large
+Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+**Arithmetik**
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+
+# Arithmetik
+
+\small
+Unitäre arithmetische Operatoren und Funktionen werden elementweise ausgewertet
+
+\footnotesize
+```{r, eval = F}
+a 	= seq(0,1,len=11)	# a = [ 0.0   ,  0.1   , ...,  0.9    , 1.0    ]
+b 	= -a				# b = [-0.0   , -0.1   , ..., -0.9    ,-1.0    ]
+v	= a^2			    # v = [ 0.0^2 ,  0.1^2 , ...,  0.9^2  , 1.0^2  ]
+w 	= log(a)			# w = [ln(0.0), ln(0.1), ...,  ln(0.9), ln(1.0)]
+```
+
+\small
+Binäre arithmetische Operatoren werden elementweise ausgewertet
+
+\footnotesize
+Vektoren gleicher Länge
+
+```{r, eval = F}
+a = c(1,2,3)			# a = [1,2,3]
+b = c(2,1,4)			# b = [2,1,4]
+v = a + b				# v = [1,2,3] + [2,1,4] = [1+2,2+1,3+4] = [   3,  3,    7]
+w = a - b 			    # w = [1,2,3] - [2,1,4] = [1-2,2-1,3-4] = [  -1,  1,   -1]
+x = a * b 				# x = [1,2,3] * [2,1,4] = [1*2,2*1,3*4] = [   2,  2,   12]
+y = a / b 				# y = [1,2,3] / [2,1,4] = [1/2,2/1,3/4] = [0.50,  2, 0.75]
+```
+
+\footnotesize
+Vektoren und Skalare (= Vektoren der Länge 1)
+
+```{r, eval = F}
+a = c(1,2,3)			# a = [1,2,3]
+b = 2					# b = [2]
+v = a + b			    # v = [1,2,3] + [2,2,2] = [1+2,2+2,3+2] = [  3,  4,   5]
+w = a - b 				# w = [1,2,3] - [2,2,2] = [1-2,2-2,3-2] = [ -1,  2,   1]
+x = a * b 				# x = [1,2,3] * [2,2,2] = [1*2,2*2,3*2] = [  2,  4,   6]
+y = a / b 				# y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5,  1, 1.5]
+```
+
+
+
+# Arithmetik
+Recycling
+\small
+
+R erlaubt (leider) auch Arithmetik mit Vektoren unterschiedlicher Länge
+
+\footnotesize
+Bei ganzzahligen Vielfachen der Länge wird der kürzere Vektor wiederholt
+```{r, eval = F}
+x = 1:2					# x = [1,2], length(x) = 2
+y = 3:6					# y = [3,4,5,6], length(y) = 4
+v = x + y			    # v = [1,2,1,2] + [3,4,5,6] = [4,6,6,8]
+```
+
+Arithmetik von Vektoren und Skalaren ist ein Spezialfall dieses Prinzips
+
+Andernfalls werden die ersten Komponenten des kürzeren Vektors wiederholt
+
+```{r, eval = F}
+x = c(1,3,5)			# x = [1,3,5], length(x) = 3
+y = c(2,4,6,8,10)		# y = [2,4,6,8,10], length(y) = 5
+v = x + y				# v = [1,3,5,1,3] + [2,4,6,8,10] = [3,7,11,9,13]
+```
+
+\center
+\color{darkcyan}
+**Generell sollten nur Vektoren gleicher Länge arithmetisch verknüpft werden!**
+
+\vfill
+
+
+
+# Arithmetik
+\small
+Fehlende Werte (NA)
+
+\footnotesize
+Fehlende Werte werden in R mit NA (not applicable) repräsentiert
+
+Das Rechnen mit NAs ergibt (meist) wieder NA
+
+\setstretch{0.9}
+```{r}
+3 * NA					# Multiplikation eines NA Wertes ergibt NA
+```
+\vspace{2mm}
+```{r}
+NA < 2					# Relationaler Vergleich eines NA Wertes ergibt NA
+```
+\vspace{2mm}
+```{r}
+NA^0					# NA hoch 0 ergibt 1, weil jeder Wert hoch 0 eins ergibt (?)
+```
+\vspace{2mm}
+```{r}
+NA & FALSE 				# NA UND FALSE  ergibt FALSE, weil jeder Wert UND FALSE FALSE ergibt
+```
+\vspace{2mm}
+
+Auf NA testet man mit `is.na()`
+```{r, eval = T}
+x = c(NA, 5, NA, 10)	# Vektor mit NAs
+x == NA					# Kein Testen auf NAs : 5 == NA ist NA, nicht FALSE
+``` 
+\vspace{2mm}
+```{r}
+is.na(x)				# Logisches Testen auf NA
+```
+
+
+
+#
+\setstretch{2.4}
+\vfill
+\large
+Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+**Attribute**
+
+Übungen und Selbstkontrollfragen
+
+\vfill
+
+
+
+# Attribute
+
+Attribute sind Metadaten von R Objekten in Form von Schlüssel-Wert-Paaren
+
+\small
+`attributes() ruft alle Attribute eines Objektes auf
+
+Atomic vectors haben per se keine Attribute
+\footnotesize
+```{r, eval = T}
+a = 1:3              # ein numerischer Vektor
+attributes(a)        # Aufrufen aller Attribute
+```
+\vspace{2mm}
+\small
+`attr()` kann zum Aufrufen und zum Definieren von Attributen genutzt werden
+\footnotesize
+```{r, eval = T}
+attr(a, "S") = "W"   # a bekommt Attribut mit Schluessel S und Wert W
+attr(a, "S")         # Das Attribut mit Schluessel S hat den Wert W
+```
+\vspace{2mm}
+\small
+Attribute werden bei Operationen oft entfernt (Ausnahmen sind `names` und `dim`)
+\footnotesize
+```{r, eval = T}
+b = a[1]			# Kopie des ersten Elements von a in Vektor b
+attributes(b)		# Aufrufen aller Attribute von b
+```
+
+
+
+# Attribute
+\setstretch{0.9}
+
+\small
+Spezifikation des Attributs `names` gibt den Elementen eines Vektors Namen
+\vspace{0.5mm}
+\footnotesize
+```{r, eval = T}
+v = c(x=1, y=2, z=3)        # Elementnamengeneration bei Vektorerzeugung
+v                           # Vektorausgabe
+```
+\vspace{1.5mm}
+\small
+Die Namen können zur Indizierung benutzt werden
+\vspace{0.5mm}
+\footnotesize
+```{r, eval = T}
+v["y"]                      # Indizierung per Namen
+```
+\vspace{1.5mm}
+\small
+`names()` kann zum Definieren und zum Aufrufen von Namen benutzt werden
+\vspace{0.5mm}
+\footnotesize
+```{r, eval = T}
+y = 4:6                     # Erzeugung eines Vektors
+names(y) = c("a","b","c")   # Definition von Namen
+names(y)                    # Elementnamenaufruf
+```
+\vspace{1.5mm}
+\small
+Benannte Namen können hilfreich sein, wenn der Vektor eine Sinneinheit bildet
+\vspace{0.5mm}
+\footnotesize
+```{r, eval = T}
+p = c(age    = 31,         # Alter (Jahre), Groesse (cm), Gewicht (kg) einer Person
+      height = 198, 
+      weight = 75)
+p                          # Vektorausgabe
+```
+
+
+
+#
+\setstretch{2.4}
+\vfill
+\large
+Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+**Übungen und Selbstkontrollfragen**
+
+\vfill
+
+
+# Übungen und Selbstkontrollfragen
+\vfill
+\setstretch{2}
+\small
+1. Dokumentieren Sie die in dieser Einheit eingeführten R Befehle in einem R Skript.  
+2. Überlegen Sie sich zu den gelernten Konzepten eigene Beispiele und dokumentieren Sie diese im R Skript aus SKF 1.
+3. Beschreiben Sie in einer Übersicht die R Datenstruktur "Atomarer Vektor".
+4. Erläutern Sie die Funktion des Colonoperators in R.
+5. Nennen Sie vier Prinzipien der Indizierung in R.
+6. Erzeugen Sie einen Vektor der Dezimalzahlen 0.0, 0.05, 0.10 , 0.15, ..., 0.90, 0.95, 1.0.  
+7. Wählen Sie mithilfe positiver Indices die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
+8. Wählen Sie mithilfe negativer Indizes die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
+9. Wählen Sie die letzten 10 Elemente dieses Vektors aus. 
+10. Erläutern Sie den Begriff der Datentypangleichung (Coercion).
+11. Erläutern Sie den Begriff des (Vektor)Recylings.
+12. Erläutern Sie die Bedeutung des R Datentyps `NA`.
+13. Erläutern Sie das Konzept der Attribute in R.
+\vfill

@@ -1,1 +1,1 @@
-# progr-und-deskr-stat-24
+# Programmierung und Deskriptive Statistik (WiSe 2023/2024) <!-- omit in toc -->

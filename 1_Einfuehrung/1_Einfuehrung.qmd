@@ -1,0 +1,230 @@
+---
+fontsize: 8pt
+format:
+  beamer:
+    include-in-header: ../Header.tex
+    # toc: true
+    # toc-title: Gliederung
+citation_package: natbib
+bibliography: ../Referenzen.bib
+---
+
+
+```{r, include = F}
+# | label: setup
+#source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+# Titelfolie {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+# | label: otto
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
+```
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Herzlich Willkommen{.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+# Titel {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Einführung}
+\vfill
+
+
+# Lehrstuhlwebsite {.plain}
+[\textcolor{linkblue}{Homepage}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
+\vspace{3mm}
+```{r, echo = FALSE, out.width = "75%"}
+#| label: Screenshot Lehrstuhlwebsite
+knitr::include_graphics(file.path(abb_dir,"Lehrstuhlseite.png"))
+```
+
+
+# Gliederung {.plain}
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+Grundbegriffe der Informatik
+
+R und visual Studio Code
+
+
+# Gliederung - Formalia {.plain}
+\large
+\vfill
+\setstretch{2.5}
+
+**Formalia**
+
+Grundbegriffe der Informatik
+
+R und Visual Studio Code
+
+
+# Ziel der Veranstaltung
+\setstretch{1.5}
+\textcolor{darkblue}{Programmierung und Deskriptive Statistik (Modul C1)}
+
+* Einführung in die datenanalytische Programmierung
+* Einführung in die Auswertung deskriptiver Statistiken mit R in Visual Studio Code
+
+\vspace{6mm}
+Empfohlene Vorbereitung: 
+
+
+\textcolor{linkblue}{\href{https://www.ipsy.ovgu.de}{Vorkurs "Grundlagen der Mathematik und Informatik"}}
+
+\textcolor{red}{TODO: insert new link}
+
+\vfill
+
+
+# Formalia
+
+\setstretch{1.5}
+
+\textcolor{red}{TODO: insert new links}
+
+
+* \justifying Termine: Mittwochs in Raum G05-307
+  * Gruppe 1 um 11-13 Uhr
+  * Gruppe 2 um 13-15 Uhr
+* Kursmaterialien (Folien, Videos, RMarkdown Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre.html}{Kurswebseite}}
+* Code auf \textcolor{linkblue}{\href{https://github.com/belindamef/progr-und-deskr-stat-24}{Github}}
+* Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=15163}{Moodleseite}}
+* Vorherige Iteration des Kurses \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS, WS 2023/2023}}
+* Empfohlene Vorbereitung: \textcolor{linkblue}{\href{https://bit.ly/3SNh3nR}{"Grundlagen der Mathematik"}}
+* Q&A im \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/bsc-psychologie-2023/channels/c1---programmeriung-und-deskriptive-statistik}{Mattermost-Channel}}
+  * Einmalige Registrierung zum Team "bsc-psy-2023" über \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su}{hier}}
+* Leistungsnachweis: Unbenotet, Multiple Choice, digitales Format
+  * Teil 1 vor der Weihnachtspause
+  * Teil 2 am Semesterende
+
+
+# Formalia - Termine
+\vspace{1mm}
+\color{black}
+
+\footnotesize
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                              \\\hline
+11.10.23       & Einführung            & (1) Einführung R und Visial Studio Code\\
+18.10.23       & R Grundlagen          & (2) R und RStudio                      \\
+25.10.23       & R Grundlagen          & (2) R und RStudio                      \\
+01.11.23       & R Grundlagen          & (3) Vektoren                           \\
+08.11.23       & R Grundlagen          & (4) Matrizen und Arrays                \\
+15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
+22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
+39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+               & \textcolor{gray}{Weihnachtspause}                              \\
+10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\\hline
+\end{tabular}
+
+# Formalia - Kurswebsite
+
+[\textcolor{linkblue}{Webseite des Kurses (Folien, Videos)}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "Kursseite_pds.png"))
+```
+
+\textcolor{red}{TODO: Links und Screenshots aktualisieren}
+
+
+# Formalia - Github
+
+[\textcolor{linkblue}{Git-repository des Kurses (Folien, RMarkdown Codes)}](https://github.com/belindamef/progr-und-deskr-stat-24)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "git_repo_pds.png"))
+```
+
+
+# Formalia - Mattermost
+
+[\textcolor{linkblue}{Mattermost-Team BSc Psych 2023}](https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics(file.path(abb_dir, "pds_1_mattermost.png"))
+```
+
+\textcolor{red}{TODO: Links und Screenshots aktualisieren}
+
+
+# Q&A {.plain}
+\vfill
+\center
+\huge
+Q & A
+\vfill
+
+
+# Gliederung - Formalia {.plain}
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+**Grundbegriffe der Informatik**
+
+R und Visual Studio Code
+
+
+# \textcolor{red}{TODO}
+
+
+# Gliederung - Formalia {.plain}
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+Grundbegriffe der Informatik
+
+**R und Visual Studio Code**

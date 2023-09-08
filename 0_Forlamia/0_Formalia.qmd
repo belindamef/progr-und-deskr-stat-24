@@ -1,0 +1,94 @@
+---
+fontsize: 8pt
+format:
+  beamer:
+    include-in-header: ../Header.tex
+    # toc: true
+    # toc-title: Gliederung
+citation_package: natbib
+bibliography: ../Referenzen.bib
+---
+
+
+```{r, include = F}
+# | label: setup
+#source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+# Titelfolie {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+# | label: otto
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
+```
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Herzlich Willkommen{.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Einführung}
+\vfill
+
+
+#
+[\textcolor{darkblue}{Homepage}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
+\vspace{3mm}
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir,"Lehrstuhlseite.png"))
+```
+
+
+#
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+Grundbegriffe der Informatik
+
+R und Quarto
+
+
+# \color{white} Gliederrung
+\large
+\vfill
+\setstretch{2.5}
+
+**Formalia**
+
+Grundbegriffe der Informatik
+
+R und RStudio
+
+
+
+

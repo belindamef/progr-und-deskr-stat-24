@@ -1,0 +1,361 @@
+---
+fontsize: 8pt
+bibliography: ../Referenzen.bib
+citation_package: natbib
+output:
+  beamer_presentation:
+    highlight: tango
+    keep_tex: true
+    includes:
+      in_header: ../Header.tex
+---
+
+
+```{r source R_common, include = F}
+source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+
+
+#  {.plain}
+\center
+```{r Abb otto, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
+```
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2022/23
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+
+#  {.plain}
+
+\vfill
+\huge
+\begin{center}
+(4) Matrizen
+\end{center}
+\vfill
+
+
+
+#
+\setstretch{3}
+\vfill
+\large
+**Matrizen**
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+# Matrizen
+\setstretch{1.5}
+
+\textcolor{darkblue}{Übersicht}
+\small
+
+Matrizen sind zweidimensionale, rechteckige Datenstrukturen der Form
+
+\footnotesize
+\begin{equation}
+M = \begin{pmatrix}
+m_{11} 		& m_{12} 	& \cdots 	& m_{1n_c} 			\\
+m_{21} 		& m_{22} 	& \cdots	& m_{2n_c} 			\\
+\vdots		& \vdots 	& \ddots	& \vdots			\\
+m_{n_r1} 	& m_{n_r2} 	& \cdots	& {m_{n_rn_c}} 			\\
+\end{pmatrix}
+\end{equation}
+
+\small
+* Die Elemente $m_{ij}, i = 1,...,n_r, j = 1,...,n_c$ sind vom gleichen Typ.
+* $n_r$ ist die Anzahl der Zeilen (rows), $n_c$ ist die Anzahl der Spalten (columns).
+* Jedes Element einer Matrix hat einen Zeilenindex $i$ und einen Spaltenindex $j$.
+* Intuitiv sind Matrizen numerisch indizierte Tabellen.
+* Formal sind Matrizen in R zweidimensional interpretierte atomare Vektoren.
+* Matrizen in R sind nicht identisch mit dem mathematischen Matrixbegriff.
+* Matrizen in R können allerdings für Lineare Algebra verwendet werden.
+* Lineare Algebra ist die Sprache (linearer) statistischer Modelle.
+
+# Matrizen
+\setstretch{1.2}
+\textcolor{darkblue}{Erzeugung}
+
+Die `matrix()` Funktion befüllt Matrizen mit Vektorelementen
+\small
+
+`matrix(data, nrow, ncol, byrow)`
+
+\footnotesize
+```{r}
+matrix(c(1:12), nrow = 3)             # 3 x 4 Matrix der Zahlen 1,...,12, byrow = F
+matrix(c(1:12), ncol = 4)             # 3 x 4 Matrix der Zahlen 1,...,12, byrow = F
+matrix(c(1:12), nrow = 3, byrow = T)  # 3 x 4 Matrix der Zahlen 1,...,12, byrow = T
+```
+
+
+# Matrizen
+\setstretch{1.2}
+\textcolor{darkblue}{Erzeugung}
+\vspace{2mm}
+\small
+Die Funktion `cbind()` konkateniert passende Matrizen spaltenweise
+
+\footnotesize
+```{r, echo = TRUE}
+A = matrix(c(1:4) , nrow = 2)		# 2 x 2 Matrix der Zahlen 1,...,4
+print(A)
+B = matrix(c(5:10), nrow = 2)		# 2 x 3 Matrix der Zahlen 5,...,10
+print(B)
+C = cbind(A,B)					    # spaltenweise Konkatenierung von A und B
+print(C)
+```
+
+
+# Matrizen
+\setstretch{1.2}
+\textcolor{darkblue}{Erzeugung}
+\vspace{2mm}
+\small
+Die Funktion `rbind()` konkateniert passende Matrizen reihenweise
+
+\footnotesize
+```{r}
+A = matrix(c(1:6) , nrow = 2, byrow = T)  # 2 x 3 Matrix der Zahlen 1,...,6
+print(A)
+B = matrix(c(7:9), nrow = 1)			  # 1 x 3 Matrix der Zahlen 5,...,10
+print(B)
+C = rbind(A,B)						      # reihenweise Konkatenierung von A und B
+print(C)
+```
+
+
+# Matrizen
+\textcolor{darkblue}{Charakterisierung}
+\vspace{2mm}
+
+\small
+`typeof()`gibt den elementaren Datentyp einer Matrix aus
+
+\footnotesize
+```{r}
+A = matrix(c(T,T,F,F), nrow = 2)		  # 2 x 2 Matrix von Elementen vom Typ logical
+typeof(A)
+B = matrix(c("a","b","c"), nrow = 1)	  # 1 x 3 Matrix von Elementen vom Typ character
+typeof(B)
+```
+
+\small
+`nrow()` und `ncol()` geben die Zeilen- bzw. Spaltenanzahl aus
+
+\footnotesize
+```{r}
+C = matrix(1:12, nrow = 3)                # 3 x 4 Matrix
+nrow(C)                                   # Anzahl Zeilen
+ncol(C)                                   # Anzahl Spalten
+```
+
+# Matrizen
+\textcolor{darkblue}{Indizierung}
+\vspace{1mm}
+
+Generell gilt
+\small
+
+* Matrixelemente werden mit einen Zeilenindex und einem Spaltenindex indiziert.
+* Die Indexreihenfolge ist immer 1. Zeile, 2. Spalte.
+* Die Prinzipien der Indizierung entsprechen der Vektorindizierung.
+* Indizes verschiedener Dimensionen können unterschiedlich indiziert werden.
+* Eindimensionale Resultate liegen als Vektor, nicht als Matrix vor.
+
+\vspace{3mm}
+
+\footnotesize
+```{r, eval = F}
+A = matrix(c(2:7)^2, nrow = 2)		# 2 x 3 Matrix der Zahlen 2^2,...,7^2
+print(A)
+a_13  = A[1,3]						# Element in 1. Zeile, 3. Spalte von A [36]
+a_22  = A[2,2]						# Element in 2. Zeile, 2. Spalte von A [35]
+a_2.  = A[2,]					    # Alle Elemente der 2. Zeile [9,25,49]
+a_.3  = A[,3] 						# Alle Elemente der 3. Spalte [36,49]
+A_12  = A[1:2,1:2]					# Submatrix der ersten zwei Zeilen und Spalten
+A10   = A[A>10]						# Elemente von A groesser 10 [16,25,36,49]
+A_13  = A[1,c(F,F,T)]				# Element in 1. Zeile, 3. Spalte von A [36]
+```
+
+
+# Matrizen
+\textcolor{darkblue}{Arithmetik}
+\vspace{2mm}
+
+\small
+Unitäre arithmetische Operatoren und Funktionen werden elementweise ausgewertet
+
+\footnotesize
+```{r, eval = F}
+A = matrix(c(1:4), nrow = 2)	# 2 x 2 Matrix der Zahlen 1,2,3,4
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+B = A^2							# B[i,j]  = A[i,j]^2,  1 <= i,j <= 2
+     [,1] [,2]
+[1,]    1    9			        # 1^2, 3^2
+[2,]    4   16					# 2^2, 4^2
+
+C = sqrt(B)						# C[i,j]  = sqrt(A[i,j]^2),  1 <= i,j <= 2
+     [,1] [,2]
+[1,]    1    3					# sqrt(1^2), sqrt(3^2)
+[2,]    2    4					# sqrt(2^2), sqrt(4^2)
+
+D = exp(A)						# D[i,j] = exp(A[i,j]),  1 <= i,j <= 2
+     [,1] [,2]
+[1,]  2.7  20.0					# exp(1), exp(3)
+[2,]  7.4  54.6					# exp(2), exp(4)
+```
+
+
+# Matrizen
+\textcolor{darkblue}{Arithmetik}
+\vspace{2mm}
+
+\small
+Matrizen passender Größe können mit binären arithmetischen Operatoren verknüpft werden
+
+Binäre arithmetische Operatoren +,-,*,\textbackslash werden bei gleicher Größe elementweise ausgewertet
+
+\vspace{1mm}
+\footnotesize
+```{r, eval = F}
+A = matrix(c(1:4), nrow = 2)	# 2 x 2 Matrix der Zahlen 1,2,3,4
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+B = matrix(c(5:8), nrow = 2) 	# 2 x 2 Matrix der Zahlen 5,6,7,8
+     [,1] [,2]
+[1,]    5    7
+[2,]    6    8
+
+C = A + B						# C[i,j] = A[i,j] + B[i,j], 1 <= i,j <= 2
+     [,1] [,2]
+[1,]    6   10					# 1 + 5, 3 + 7
+[2,]    8   12 					# 2 + 6, 4 + 8
+
+D = A * B
+     [,1] [,2]
+[1,]    5   21					# 1 * 5, 3 * 7
+[2,]   12   32					# 2 * 6, 4 * 8
+```
+
+
+# Matrizen
+\textcolor{darkblue}{Arithmetik}
+\vspace{1mm}
+\small
+
+Mit R Matrizen kann Lineare Algebra betrieben werden
+
+* Addition, Subtraktion, Hadamardprodukt elementweise definiert wie oben
+* Matrixmultiplikation, Transposition, Inversion, Determinante
+
+\vspace{1mm}
+\footnotesize
+```{r, eval = F}
+C = A  % * % B				    # 2 x 2 Matrixprodukt
+      [,1] [,2]
+[1,]   23   31					# 1*5 + 3*6, 1*7+3*8
+[2,]   34   46					# 2*5 + 4*6, 2*7+4*8
+
+A_T = t(A)						# Transposition von A
+      [,1] [,2]
+[1,]   1   2					# A[1,1], A[2,1]
+[2,]   3   4					# A[1,2], A[2,2]
+
+A_inv = solve(A)				# Inverse von A
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+
+A_det = det(A)					# Determinante von A
+[1] -2	 						# 1*4 - 2*3
+```
+
+
+
+# Matrizen
+\textcolor{darkblue}{Attribute}
+\footnotesize
+\setstretch{1}
+
+Formal sind Matrizen atomare Vektoren  mit einem `dim` Attribut
+```{r}
+A = matrix(1:12, nrow = 4 )		         #  4 x 3 Matrix
+attributes(A)				             # Aufrufen der Attribute von A
+```
+
+`rownames()` und `colnames()` spezifizieren das Attribut `dimnames`
+```{r}
+rownames(A) = c("P1","P2","P3","P4")	 # Benennung der Zeilen von A
+colnames(A) = c("Age", "Hgt", "Wgt")	 # Benennung der Spalten von A
+A										 # A mit Attribut dimnames
+attr(A, "dimnames")					     # Aufrufen des Attributs dimnames
+```
+
+\textcolor{darkcyan}{Bei Matrizen ist die Benennung von Zeilen und Spalten eher ungewöhnlich.}
+
+
+
+#
+\setstretch{3}
+\vfill
+\large
+Matrizen
+
+**Übungen und Selbstkontrollfragen**
+\vfill
+
+
+# Übungen und Selbstkontrollfragen
+
+\small
+\setstretch{1.8}
+1. Dokumentieren Sie alle in dieser Einheit eingeführten Befehle in einem R Skript.
+2. Erzeugen Sie in R die Matrizen
+\begin{equation*}
+A = 
+\begin{pmatrix}
+4 & 3 & 2 & 1 \\
+3 & 2 & 1 & 4 \\
+2 & 1 & 4 & 3
+\end{pmatrix}
+\mbox{ und }
+B = 
+\begin{pmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0
+\end{pmatrix}
+\end{equation*}
+3. Kopieren Sie die zweite Zeile von $A$ in einen Vektor.
+4. Kopieren Sie die erste und dritte Spalte von $B$ in eine 3 $\times$ 2 Matrix
+5. Setzen Sie alle Nullen in $B$ auf -1.
+6. Setzen Sie die zweite Zeile von $A$ auf $(1\,2\,3\,4)$.
+7. Addieren Sie die Matrizen $A$ und $B$.
+8. Multiplizieren Matrix $A$ mit 3.
+9. Konkatenieren Sie die Matrizen $A$ und $B$ zeilenweise.
+10. Konkatenieren Sie die Matrizen $A$ und $B$ spaltenweise.

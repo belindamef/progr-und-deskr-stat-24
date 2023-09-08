@@ -1,0 +1,549 @@
+---
+fontsize: 8pt
+format:
+  beamer:
+    include-in-header: ../Header.tex
+citation_package: natbib
+bibliography: ../Referenzen.bib
+---
+
+
+```{r, include = F}
+#source("../R_common.R")
+abb_dir = file.path(dirname(getwd()), "Abbildungen")
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics(file.path(abb_dir,"otto.png"))
+```
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2022/23
+
+\vspace{12mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+
+
+
+# {.plain} 
+\huge
+\center
+\vfill
+Herzlich willkommen!
+\vfill
+
+
+
+
+
+#  {.plain}
+
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Einführung}
+\vfill
+
+
+
+
+
+#
+[\textcolor{darkblue}{Homepage}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
+\vspace{3mm}
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir,"Lehrstuhlseite.png"))
+```
+
+
+
+
+#
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+Grundbegriffe der Informatik
+
+R und RStudio
+
+
+
+
+#
+\large
+\vfill
+\setstretch{2.5}
+
+**Formalia**
+
+Grundbegriffe der Informatik
+
+R und RStudio
+
+
+
+
+
+
+# Ziel der Veranstaltung
+\setstretch{1.5}
+\color{darkblue} Programmierung und Deskriptive Statistik (Modul C1)
+
+\color{black}
+
+
+* Einführung in die datenanalytische Programmierung
+* Einführung in die Auswertung deskriptiver Statistiken mit R in RStudio
+
+\vspace{6mm}
+Empfohlene Vorbereitung: 
+
+* [\textcolor{darkblue}{Vorkurs "Grundlagen der Mathematik und Informatik"}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Grundlagen+der+Mathematik+und+Informatik.html),  
+inbesodere Einheit [\textit{(7) Grundbegriffe der Informatik}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Grundlagen+der+Mathematik+und+Informatik.html)
+
+\vfill
+
+
+
+
+# Formalia 
+\setstretch{1}
+\color{darkblue} Programmierung und Deskriptive Statistik (Modul C1)
+
+\color{black}
+\setstretch{1.5}
+
+* \justifying Mittwochs in Raum G16-250
+  * Gruppe 1 um 13-15 Uhr
+  * Gruppe 2 um 15-17 Uhr
+* Kursmaterialien (Folien, Videos, RMarkdown Code) auf der [\textcolor{darkblue}{Kurswebseite}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html)
+* Code auf [\textcolor{darkblue}{Github}](https://github.com/belindamef/progr-und-deskr-stat-23)
+* Ankündigungen über die [\textcolor{darkblue}{Moodleseite}](https://elearning.ovgu.de/course/view.php?id=13780)
+* [\textcolor{darkblue}{Link zu vorheriger Iteration des Kurses}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2022/Programmierung+und+Deskriptive+Statistik.html)
+* [\textcolor{darkblue}{Link zum Kurs Grundlagen der Mathematik und Informatik}](https://bit.ly/3SNh3nR) 
+* Q&A im [\textcolor{darkblue}{Mattermost-Channel "C1 - Programmierung und Deskriptive Statistik"}](https://mm.cs.ovgu.de/bsc-psy-2022/channels/c1---programmeriung-und-deskriptive-statistik-2022)
+  * Einmalige Registrierung zum Team "bsc-psy-2022" über [\textcolor{darkblue}{diesen Link}](https://mm.cs.ovgu.de/signup_user_complete/?id=6zhrsn3oab8pdynz16gmqpm9ka) 
+* Leistungsnachweis: Unbenotet, Multiple Choice, digitales Format
+  * Teil 1 vor der Weihnachtspause
+  * Teil 2 am Semesterende
+
+
+
+
+
+
+
+# Formalia
+\vspace{1mm}
+\color{darkblue} Programmierung und Deskriptive Statistik (Modul C1)
+
+\color{black}
+
+\footnotesize
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                              \\\hline
+12.10.22       & Einführung            & (1) Einführung    		                  \\
+19.10.22       & R Grundlagen          & (2) R und RStudio                      \\
+26.10.22       & R Grundlagen          & (3) Vektoren                           \\
+02.11.22       & R Grundlagen          & (4) Matrizen und Arrays                \\
+09.11.22       & R Grundlagen          & (5) Listen und Dataframes              \\
+16.11.22       & R Grundlagen          & (6) Datenmanagement                    \\
+23.11.22       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+30.11.22       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+07.12.22       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+14.12.22       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+21.12.22       & \textit{Leistungsnachweis Teil 1}                       \\
+               & \textcolor{gray}{Weihnachtspause}       \\
+04.01.23       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+11.01.23       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+18.01.23       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.23       & \textit{Leistungsnachweis Teil 2}        \\
+                        \\\hline
+\end{tabular}
+
+
+
+
+
+
+
+
+
+# Formalia
+
+[\textcolor{darkblue}{Webseite des Kurses (Folien, Videos)}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "Kursseite_pds.png"))
+```
+
+
+
+# Formalia
+
+[\textcolor{darkblue}{Git-repository des Kurses (Folien, RMarkdown Codes)}](https://github.com/belindamef/progr-und-deskr-stat-23)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir, "git_repo_pds.png"))
+```
+
+
+
+# Formalia
+
+[\textcolor{darkblue}{Mattermost-Team "BSc-Psy-2022"}](https://mm.cs.ovgu.de/signup_user_complete/?id=6zhrsn3oab8pdynz16gmqpm9ka)
+
+\vspace{5mm}
+
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics(file.path(abb_dir, "pds_1_mattermost.png"))
+```
+
+
+
+
+
+
+#  {.plain}
+\vfill
+\center
+\huge
+Q & A
+\vfill
+
+
+
+
+#
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+**Grundbegriffe der Informatik**
+
+R und RStudio
+
+
+
+
+
+# Grundbegriffe der Informatik
+
+\center 
+
+\vfill
+
+[ Wiederholung der Inhalte aus dem [\textcolor{darkblue}{Vorkurs "Grundlagen der Mathematik und Informatik"}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Grundlagen+der+Mathematik+und+Informatik.html)
+Einheit [\textcolor{darkblue}{(7) Grundbegriffe der Informatik}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2223/Grundlagen+der+Mathematik+und+Informatik/%287%29+Grundbegriffe+der+Informatik.pdf) ]
+\vfill
+
+
+
+
+
+#
+\large
+\vfill
+\setstretch{2.5}
+
+Formalia
+
+Grundbegriffe der Informatik
+
+**R und RStudio**
+
+
+
+# R und RStudio
+\setstretch{1.6}
+\large
+\textcolor{darkblue}{Was ist R?}
+
+\normalsize
+Eine Programmiersprache und ein Softwarepaket.
+
+Entwickelt von @ihaka_language_1996.
+
+Freier Dialekt der propietären Software S (@becker_new_1988).
+
+Weiterentwickelt und gepflegt durch
+[R Core Team](https://www.r-project.org/contributors.html) und
+[R Foundation](https://www.r-project.org/foundation/)
+
+Interpretierte imperativ-objektorientierte 4GL Sprache.
+
+Optimiert und populär für statistische Datenanalysen.
+
+Große Community mit etwa 20.000 beigetragenen R Paketen (Erweiterungen)
+
+Evolviert und konservativ im Kern, konsistent und progressiv in
+[R Paketen](https://cran.r-project.org/web/packages/).
+
+
+# R und RStudio
+\large
+\textcolor{darkblue}{Wie bekommt man R?}
+\normalsize
+
+Runterladen (z.B. \url{https://cran.r-project.org/}) und installieren.
+\vspace{2mm}
+
+
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics(file.path(abb_dir,"/pds_2_r_download.png"))
+```
+
+
+# R und RStudio
+\setstretch{1.5}
+\large
+\textcolor{darkblue}{Was kann man mit R machen?}
+\normalsize
+
+Datensätze laden, manipulieren, und speichern.
+
+Eine Vielzahl von Berechnungen an verschiedenen Datenstrukturen durchführen.
+
+Eine Vielzahl statistischer Analysemethoden auf Daten anwenden.
+
+Datenanalyseskripte schreiben und Abbildungen generieren.
+
+Präsentationen [RMarkdown](https://bookdown.org/yihui/rmarkdown/) und
+Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
+
+\vspace{2mm}
+
+\large
+\textcolor{darkblue}{Was kann man mit R (bisher) nicht so gut machen?}
+\normalsize
+
+In einer ansprechenden Umgebung programmieren ($\Rightarrow$ RStudio).
+
+Scientific Computing ($\Rightarrow$ Python, Matlab, Julia).
+
+Psychologische Experimente programmieren ($\Rightarrow$ Python, Matlab)
+
+
+
+# R und RStudio
+\large
+\textcolor{darkblue}{Wie bekommt man Hilfe zu R?}
+\normalsize
+
+Googlen
+
+\url{https://stackoverflow.com/}
+
+Während der Programmierung und bei bekanntem Funktionsnamen
+
+```{r, eval = F, echo = T}
+?mean
+help(mean)
+```
+
+Für längere Tutorials
+```{r, eval = F, echo = T}
+browseVignettes()
+```
+
+\url{https://rseek.org/}
+
+
+\url{https://www.rstudio.com/resources/cheatsheets/}
+
+\url{https://www.r-bloggers.com/}
+
+
+# R und RStudio
+\setstretch{1.6}
+\large
+\textcolor{darkblue}{Was ist RStudio?}
+\normalsize
+
+Eine Softwareentwicklungsumgebung für R
+
+Softwareentwicklungsumgebung = Integrated Development Environment
+
+IDEs sind Programme zum Programmieren mit einer Programmiersprache
+
+Kommandozeile, Skripteditor, Vielzahl weiterer Tools
+
+Freemium Produkt von RStudio, Inc. (IDE frei, Server kostenpflichtig)
+
+Initial Release 2011, Affero General Public License
+
+Keine Verbindung zu R Core Team oder R Foundation
+
+
+
+# R und RStudio
+\large
+\textcolor{darkblue}{Wie bekommt man RStudio?}
+\vspace{1mm}
+
+Runterladen (\url{https://www.rstudio.com/products/rstudio/}) und installieren
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics(file.path(abb_dir,"/pds_2_rstudio_download.png"))
+```
+
+
+# R und RStudio
+\setstretch{1.6}
+\vspace{2mm}
+\large
+\textcolor{darkblue}{Was kann man mit RStudio machen?}
+\normalsize
+
+R Skripte erzeugen, bearbeiten, und laufen lassen
+
+R Skripte in R Projekten organisieren
+
+Laut Eigenwerbung
+
+\small
+
+* Access RStudio locally
+* Syntax highlighting, code completion, and smart indentation
+* Execute R code directly from the source editor
+* Quickly jump to function definitions
+* View content changes in real-time with the Visual Markdown Editor
+* Easily manage multiple working directories using projects
+* Integrated R help and documentation
+* Interactive debugger to diagnose and fix errors
+* Extensive package development tools
+
+
+# R und RStudio
+\large
+\textcolor{darkblue}{Was kann man mit RStudio machen?}
+\normalsize
+
+Custom Layout via Tools $\rightarrow$ Global Options ...
+
+```{r, echo = FALSE, out.width = "90%"}
+knitr::include_graphics(file.path(abb_dir,"/pds_2_rstudio.png"))
+```
+
+
+# R und RStudio
+\large
+\textcolor{darkblue}{Wie bekommt man Hilfe zu RStudio?}
+
+\normalsize
+Googlen
+
+Zur Einführung $\Rightarrow$ [Using the RStudio IDE](https://support.rstudio.com/hc/en-us/sections/200107586-Using-the-RStudio-IDE)
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics(file.path(abb_dir,"/pds_2_using_rstudio.png"))
+```
+
+# R und RStudio
+\setstretch{1.7}
+\large
+\textcolor{darkblue}{R Kommandozeile $\vert$ Working in the Console}
+\normalsize
+
+Eingabe von R Befehlen bei $>$
+
+Autocomplete mit Tab
+
+Vorherige Befehle mit Cursor $\uparrow$
+
+Bereinigen des Konsolenoutputs mit Ctrl + L
+
+Code Ausführungsstopp mit Esc
+
+```{r, echo = T, eval = T}
+print("Hallo Welt!")
+```
+
+\color{darkcyan}
+**Code-Snippets in diesen Folien immer aktiv in der Konsole nachvollziehen!**
+
+
+# R und RStudio
+\setstretch{1.4}
+\large
+\textcolor{darkblue}{R Skripte $\vert$ Executing and Editing Code}
+\small
+
+File $\rightarrow$ New File $\rightarrow$ R Script oder Ctrl + Shift + N für neue .R Datei
+
+Open File oder Ctrl + O zum Öffnen bestehender .R Datei
+
+Eintippen von
+
+```{r, eval = F}
+print("Hallo Welt!")  # Hinter Hashtags stehen dokumentierende Kommentare
+print("Hallo R!")     # Kommentare werden nicht ausgefuehrt
+```
+
+Ausführen der einzelnen Zeile, auf welcher der Cursor ruht
+
+$\Rightarrow$ Run oder Ctrl + Enter
+
+Ausführen aller Zeilen
+
+$\Rightarrow$ Source oder Ctrl + Shift +  Enter oder
+
+$\Rightarrow$ Tickmark bei Source on Save setzen und Ctrl + S
+
+\color{darkcyan}
+**Code-Snippets in diesen Folien immer aktiv in einem R Skript dokumentieren!**
+
+
+# R und RStudio
+\setstretch{1.4}
+\large
+\textcolor{darkblue}{Das R und RStudio Data Science Universum}
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics(file.path(abb_dir,"pds_2_rstudio_datascienceuniverse.pdf"))
+```
+
+# R und RStudio
+\setstretch{1.4}
+\large
+\textcolor{darkblue}{Lehrmaterialien mit R und RStudio}
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics(file.path(abb_dir,"pds_2_lehrmaterialien.pdf"))
+```
+
+
+
+
+# Referenzes
+\footnotesize

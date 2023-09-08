@@ -1,0 +1,132 @@
+% type setting
+% ------------------------------------------------------------------------------
+\usepackage[german]{babel}     
+
+% fonts
+% ------------------------------------------------------------------------------
+\usefonttheme{professionalfonts}
+
+% slide title and horizontal line
+% ------------------------------------------------------------------------------
+\setbeamertemplate{frametitle}{%
+    \vskip-30pt \color{black}\large%
+    \begin{minipage}[b][23pt]{120mm}%
+    \flushleft\insertframetitle%
+    \end{minipage}%
+}
+
+\setbeamertemplate{headline}										
+{
+\vskip10pt\hfill\hspace{3.5mm} 										 
+\vskip15pt\color{black}\rule{\textwidth}{0.4pt} 					 
+}
+
+% slide number
+% ---------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}
+{
+\vskip5pt
+\vskip2pt
+\makebox[123mm]{\hspace{7.5mm}
+\hfill Programmierung und Deskriptive Statistik $\vert$ 
+Belinda Fleischmann $\vert$ 
+Folie \insertframenumber}
+\vskip4pt
+}
+
+% block color scheme
+% ------------------------------------------------------------------------------
+% colors
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{grey}{RGB}{235,235,235}
+\definecolor{middlegrey}{RGB}{210,210,210}
+\definecolor{darkgrey}{RGB}{105,105,105}
+\definecolor{lightgrey}{RGB}{245,245,245}
+\definecolor{linkblue}{HTML}{4F86AB}
+\definecolor{darkblue}{RGB}{51,51,153}
+\definecolor{darkcyan}{RGB}{5,92,92}
+\definecolor{middlecyan}{RGB}{0,153,153}
+\definecolor{darkgreen}{RGB}{0,102,51}
+\definecolor{plum}{RGB}{128,0,128}
+
+
+% definitions and theorems
+\setbeamercolor{block title}{fg = black, bg = grey}
+\setbeamercolor{block body}{fg = black, bg = lightgrey}
+
+% general line spacing 
+% ------------------------------------------------------------------------------
+\linespread{1.3}
+
+% local line spacing
+% ------------------------------------------------------------------------------
+\usepackage{setspace}
+
+% colors
+% -----------------------------------------------------------------------------
+\usepackage{color}
+\usepackage{xcolor}
+
+% justified text
+% ------------------------------------------------------------------------------
+\usepackage{ragged2e}
+\usepackage{etoolbox}
+\apptocmd{\frame}{}{\justifying}{}
+
+% bullet point lists
+% -----------------------------------------------------------------------------
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamercolor{itemize item}{fg = black}
+\setbeamercolor{itemize subitem}{fg = black}
+\setbeamercolor{itemize subsubitem}{fg = black}
+\setbeamercolor{enumerate item}{fg = black}
+\setbeamercolor{enumerate subitem}{fg = black}
+\setbeamercolor{enumerate subsubitem}{fg = black}
+\setbeamerfont{itemize/enumerate body}{}
+\setbeamerfont{itemize/enumerate subbody}{size = \normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size = \normalsize}
+
+% color links
+% ------------------------------------------------------------------------------
+\usepackage{hyperref}
+\definecolor{urls}{RGB}{204,0,0}
+\hypersetup{colorlinks=true, citecolor = urls, urlcolor = urls}
+
+% additional math commands
+% ------------------------------------------------------------------------------
+\usepackage{bm}                                         % bold math symbols
+\newcommand{\niton}{\not\owns}
+
+
+% additional mathematical operators
+% ------------------------------------------------------------------------------
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\ups}{\upsilon}
+
+% text highlighting
+% ------------------------------------------------------------------------------
+\usepackage{soul}
+\makeatletter
+\let\HL\hl
+\renewcommand\hl{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color
+  \HL}
+\makeatother
+
+% text box colors
+\renewcommand\fbox{\fcolorbox{middlegrey}{white}}
+\newcommand{\fboxfill}{\fcolorbox{grey}{grey}}
+
+% equation highlighting
+% -----------------------------------------------------------------------------
+\newcommand{\highlight}[2][yellow]{\mathchoice%
+  {\colorbox{#1}{$\displaystyle#2$}}%
+  {\colorbox{#1}{$\textstyle#2$}}%
+  {\colorbox{#1}{$\scriptstyle#2$}}%
+  {\colorbox{#1}{$\scriptscriptstyle#2$}}}%
+  
