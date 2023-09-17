@@ -3,8 +3,6 @@ fontsize: 8pt
 format:
   beamer:
     include-in-header: ../Header.tex
-    # toc: true
-    # toc-title: AGENDA
 citation_package: natbib
 bibliography: ../Referenzen.bib
 editor:
@@ -31,21 +29,13 @@ Programmierung und Deskriptive Statistik
 \normalsize
 BSc Psychologie WiSe 2023/24
 
-\vspace{12mm}
+\vspace{15mm}
 \normalsize
 Belinda Fleischmann
 
 \vspace{3mm}
 \scriptsize
 Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
-
-# TODO
-
-* include R Common file?
-
-
-\section{Section 1}
-
 
 
 # Herzlich Willkommen{.plain} 
@@ -56,39 +46,38 @@ Herzlich willkommen!
 \vfill
 
 
-# Titel {.plain}
-
-
+# (1) Einführung {.plain}
 \vfill
 \center
 \huge
 \textcolor{black}{(1) Einführung}
 \vfill
 
-\section{2}
-# Lehrstuhlwebsite {.plain}
 
+# Lehrstuhlwebsite
 \vspace{5mm}
 
-[\textcolor{linkblue}{Homepage}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
+[\textcolor{linkblue}{Homepage der Abteilung für Methodenlehre I}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
 
-![](../Abbildungen/Lehrstuhlseite.png)
+![](../Abbildungen/Lehrstuhlseite.png){width="80%"}
 
 
 # AGENDA {.plain}
 \large
-\vfill
 \setstretch{2.5}
+\vfill
 
 Formalia
 
 Grundbegriffe der Informatik
 
-R und visual Studio Code
+R und Visual Studio Code
 
+
+# Formalia =========================================================== {.plain}
 \AtBeginSection{}
 \section{Formalia}
-# AGENDA ------ Formalia {.plain}
+
 \large
 \vfill
 \setstretch{2.5}
@@ -120,14 +109,9 @@ Empfohlene Vorbereitung:
 
 \textcolor{red}{TODO: insert new link}
 
-\vfill
-
 
 # Organisatorisches
-
 \setstretch{1.5}
-
-\textcolor{red}{TODO: insert new links}
 
 * \justifying Termine: Mittwochs in Raum G05-307
   * Gruppe 1 um 11-13 Uhr
@@ -143,14 +127,14 @@ Empfohlene Vorbereitung:
   * Teil 1 vor der Weihnachtspause
   * Teil 2 am Semesterende
 
+\textcolor{red}{TODO: insert new links}
 
 # Termine
-\vspace{1mm}
-\color{black}
-
-\footnotesize
+\setstretch{1.5}
+\vfill
 \center
 \footnotesize
+
 \renewcommand{\arraystretch}{1.1}
 \begin{tabular}{lll}
 Datum          & Einheit               & Thema		                              \\\hline
@@ -171,8 +155,8 @@ Datum          & Einheit               & Thema		                              \\
 24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\\hline
 \end{tabular}
 
-# Kurswebsite
 
+# Kurswebsite
 \vspace{5mm}
 
 [\textcolor{linkblue}{Webseite des Kurses (Folien, Videos)}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html)
@@ -183,18 +167,16 @@ Datum          & Einheit               & Thema		                              \\
 
 
 # Github
-
 \vspace{5mm}
 
-[\textcolor{linkblue}{Git-repository des Kurses (Folien, RMarkdown Codes)}](https://github.com/belindamef/progr-und-deskr-stat-24)
+[\textcolor{linkblue}{Git-repository des Kurses (Folien, Source Codes)}](https://github.com/belindamef/progr-und-deskr-stat-24)
 
-![](../Abbildungen/git_repo_pds.png){width="90%"}
+![](../Abbildungen/git_repo_pds.png){width="80%"}
 
 \textcolor{red}{TODO: Links und Screenshots aktualisieren}
 
 
 # Mattermost
-
 \vspace{5mm}
 
 [\textcolor{linkblue}{Mattermost-Team BSc Psych 2023}](https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su)
@@ -211,12 +193,13 @@ Datum          & Einheit               & Thema		                              \\
 Q & A
 \vfill
 
+# Grundbegriffe der Informatik ======================================= {.plain}
 \AtBeginSection{}
 \section{Grundbegriffe der Informatik}
-# AGENDA ------ Grundbegriffe der Informatik {.plain}
-\large
-\vfill
+
 \setstretch{2.5}
+\vfill
+\large
 
 Formalia
 
@@ -226,68 +209,61 @@ R und Visual Studio Code
 
 
 # Motivation
-
 \vspace{5mm}
 
+\large
 \textcolor{darkblue}{Datenwissenschaften}
 
 ![](../Abbildungen/migl_7_datenwissenschaft.pdf){width="85%" fig-align="center"}
 
 
-# AGENDA ------ Grundbegriffe der Informatik {.plain}
-
+# Grundbegriffe der Informatik (AGENDA) ------ {.plain}
+\setstretch{2.5}
 \vfill
 \large
-\setstretch{2}
-\vspace{1mm}
 
 Formalia
 
 **Grundbegriffe der Informatik**
 
 \begin{itemize}
-\item[--] \normalsize Datenanalyse
+\setstretch{1.4}
+\item[--] Datenanalyse
 \item[--] Informatik
 \item[--] Rechnerarchitektur
 \item[--] Algorithmen und Programme
 \item[--] Selbstkontrollfragen
 \end{itemize}
 
-\large
-
 R und Visual Studio Code
-\vfill
 
 
+# Datenanalyse ------------------------------------------------------- {.plain}
 \AtBeginSubsection{}
 \subsection{Datenanalyse}
-# AGENDA ------ Datenanalyse {.plain}
 
 \vfill
 \large
-\setstretch{2}
-\vspace{1mm}
+\setstretch{2.5}
 
 Formalia
 
 Grundbegriffe der Informatik
 
 \begin{itemize}
-\item[--] \normalsize \textbf{Datenanalyse}
+\setstretch{1.4}
+\item[--] \textbf{Datenanalyse}
 \item[--] Informatik
 \item[--] Rechnerarchitektur
 \item[--] Algorithmen und Programme
 \item[--] Selbstkontrollfragen
 \end{itemize}
 
-\large
 R und Visual Studio Code
-\vfill
 
 
 # Datenanalyse -  Überblick
 \setstretch{3}
-\normalsize
 
 * Wissenschaftliche Daten liegen heutzutage als digitale Daten vor. 
 * Digitale Daten werden mit Hilfe eines Computers analysiert.
@@ -297,36 +273,32 @@ R und Visual Studio Code
 
 # Struktur computergestützter Datenanalyse
 \setstretch{3}
-\normalsize
 
-1. Einlesen und Bereinigen eines digitalen Datensatzes
-2. Berechnung und Visualisierung deskriptiver Statistiken
-3. Probabilistische Modellierung und Inferenz
-4. Dokumentation und Präsentation der Ergebnisse
+1. Einlesen und Bereinigen eines digitalen Datensatzes.
+2. Berechnung und Visualisierung deskriptiver Statistiken.
+3. Probabilistische Modellierung und Inferenz.
+4. Dokumentation und Präsentation der Ergebnisse.
 
 
 # Werkzeuge der Datenanalyse
 \setstretch{2}
+
 \large
 Typische Werkzeuge zur Analyse psychologischer Daten
 
-\vspace{1mm}
-
 \normalsize
-
 * [R](https://www.r-project.org/) (frei, Datenwissenschaft, Statistik, Psychologie)
 * [Python](https://www.python.org/psf/) (frei, Datenwissenschaft, Anwendung)
 * [Matlab](https://de.mathworks.com/) (kommerziell, Engineering, Neuroimaging)
-\vspace{2mm}
+
+\vspace{3mm}
 
 \large
 Altmodisch
-\vspace{1mm}
 
 \normalsize
-
 * [SPSS](https://www.ibm.com/de-de/analytics/spss-statistics-software) (kommerziell, Sozialwissenschaften, Psychologie)
-* [JMP](https://www.jmp.com/de_de/home.html}{JMP}) (kommerziell, Biologie, Psychologie)
+* [JMP](https://www.jmp.com/de_de/home.html) (kommerziell, Biologie, Psychologie)
 * [STATA](https://www.stata.com/) (kommerziell, Wirtschaftswissenschaften)
 
 
@@ -335,17 +307,14 @@ Altmodisch
 
 [\textcolor{linkblue}{PYPL Index}](https://pypl.github.io/PYPL.html) (Stand: September 2023)
 
-\center
 ![](../Abbildungen/migl_7_pyplindex_september_2023.png){width="68%" fig-align="left"}
 
-\small
 * PopularitY of Programming Language
-* basiert auf Googlesuchanfragen zu Programmiersprachentutorials
+* Basierend auf Googlesuchanfragen zu Programmiersprachentutorials
 
 
 # Datenanalyseskripte
 \setstretch{3}
-\normalsize
 
 * Dokumentation aller Schritte von Rohdaten bis zur Datenvisualisierung.
 * Reproduktion wissenschaftlicher Ergebnisse durch Dritte.
@@ -355,7 +324,6 @@ Altmodisch
 
 # Datenanalyse - Zusammenfassung
 \setstretch{3}
-\normalsize
 
 * Die Digitalisierung betrifft insbesondere auch die Wissenschaft.
 * Forschungsdatenmanagement ist eine akute Herausforderung.
@@ -364,38 +332,34 @@ Altmodisch
 * Dies gilt auch für Psychotherapeut:innen (z.B. Online-Intervention).
 
 
+# Informatik --------------------------------------------------------- {.plain}
 \AtBeginSubsection{}
 \subsection{Informatik}
-# AGENDA ------ Datenanalyse {.plain}
 
+\setstretch{2.5}
 \vfill
 \large
-\setstretch{2}
-\vspace{1mm}
 
 Formalia
 
 Grundbegriffe der Informatik
 
 \begin{itemize}
-\item[--] \normalsize Datenanalyse
+\setstretch{1.4}
+\item[--] Datenanalyse
 \item[--] \textbf{Informatik}
 \item[--] Rechnerarchitektur
 \item[--] Algorithmen und Programme
 \item[--] Selbstkontrollfragen
 \end{itemize}
 
-\large
 R und Visual Studio Code
-\vfill
-
-# TODO
-hier weiter
 
 
-# Informatik -  Begriff
+# Begriff
 \vfill
 \large
+
 Informatik (engl. Computer Science)
 
 \vspace{2mm}
@@ -411,28 +375,23 @@ zugleich Grundlagen- und Formalwissenschaft als auch Ingenieurdisziplin.
 \vfill
 
 
-
-
-# Informatik - Zentrale Komponenten der Informatik
+# Zentrale Komponenten der Informatik
 \setstretch{1.3}
 
-
-\vspace{2mm}
 \large
 Computer
 
 \normalsize
-
 * Maschinen zum Datenspeichern und Ausführen einfacher Datenoperationen.
 * Einfache Operationen mit extrem hoher Geschwindigkeit.
 * Universalität durch Speicherung von Daten und Programmen.
 
-\vspace{2mm}
+\vspace{3mm}
+
 \large
 Algorithmen und Programme
 
 \normalsize
-
 * *Programme* sind in einer *Programmiersprache* verfasste *Algorithmen*.
 * Algorithmen sind Folgen von Anweisungen durchzuführender Operationen.
 * Bei Algorithmen unterscheidet man
@@ -441,178 +400,142 @@ Algorithmen und Programme
     * Durchführung (Kochvorgang, Zusammenbau, R Skript laufen lassen)
 
 
-# Informatik - Teilgebiete
+# Teilgebiete der Informatik
+\vfill
 
-
-\vspace{3mm}
-\center
-```{r, echo = FALSE, out.width = "85%"}
-knitr::include_graphics(file.path(abb_dir,"migl_7_informatik.pdf"))
-```
+![](../Abbildungen/migl_7_informatik.pdf){width="85%" fig-align="center"}
 
 \footnotesize
 \flushright{\textit{Hattenhauer (2020) Informatik}}
 
 
+# Teilgebiete der Informatik \textcolor{darkgreen}{mit Relevanz für die Psychologie}
+\setstretch{1.5}
+\vfill
 
-
-
-# Informatik -  Teilgebiete
-\vspace{6mm}
-\large
-Teilgebiete der Informatik \textcolor{darkgreen}{mit Relevanz für die Psychologie}
-\vspace{4mm}
-
-\small
 Angewandte Informatik
-\vspace{-1mm}
 
 * Anwendungssoftware, \textcolor{darkgreen}{Human-Computer-Interaction}, Informatik und Gesellschaft
+
 \vspace{3mm}
 
 Technische Informatik
-\vspace{-1mm}
 
 * Mikroprozessortechnik, Rechnerarchitektur, Netzwerktechnik
+
 \vspace{3mm}
 
 \textcolor{darkgreen}{Praktische Informatik}
-\vspace{-1mm}
 
 * \textcolor{darkgreen}{Programmierung}, \textcolor{darkgreen}{Algorithmen}, Datenbanken
+
 \vspace{3mm}
 
 Theoretische Informatik
-\vspace{-1mm}
 
 * Automatentheorie, Berechenbarkeitstheorie, Komplexitätstheorie
 \vfill
 
 
+# Spezialgebiete der Informatik mit Relevanz für die Psychologie
+\setstretch{1.5}
+\vfill
 
-
-# Informatik - Spezialgebiete
-\vspace{6mm}
-\large
-Spezialgebiete der Informatik mit Relevanz für die Psychologie
-\vspace{4mm}
-
-\small
 Maschinelles Lernen und Künstliche Intelligenz
-\vspace{-1mm}
 
 * Datenanalyse aus Sicht der Informatik
+
 \vspace{3mm}
 
 Computervisualistik
-\vspace{-1mm}
 
 * Bilderkennung und Bildsynthese, Virtuelle Realität, Augmented Reality
 \vspace{3mm}
 
 Computerlinguistik
-\vspace{-1mm}
 
 * Spracherkennung und Sprachsynthese
 \vspace{3mm}
 
 Bioinformatik
-\vspace{-1mm}
 
 * Lebenswissenschaften, Genomik, Bildgebende Verfahren der Medizin
 \vspace{3mm}
 
 
+# Rechnerarchitektur --------------------------------------------------{.plain}
+\AtBeginSubsection{}
+\subsection{Rechnerarchitektur}
 
-
-#  
-\Large
+\setstretch{2.5}
 \vfill
-\setstretch{2}
-Datenanalyse
+\large
 
-Informatik
+Formalia
 
-**Rechnerarchitektur**
+Grundbegriffe der Informatik
 
-Algorithmen und Programme
+\begin{itemize}
+\setstretch{1.4}
+\item[--] Datenanalyse
+\item[--] Informatik
+\item[--] \textbf{Rechnerarchitektur}
+\item[--] Algorithmen und Programme
+\item[--] Selbstkontrollfragen
+\end{itemize}
 
-Selbstkontrollfragen
+R und Visual Studio Code
 
+
+# Hardwarekomponenten eines Computers
 \vfill
 
-
-
-
-# Rechnerarchitektur - Hardwarekomponenten
-\large
-Hardwarekomponenten eines Computers
-\vspace{2mm}
-\center
-```{r, echo = FALSE, out.width = "60%"}
-knitr::include_graphics(file.path(abb_dir,"migl_7_hardware.pdf"))
-```
-\footnotesize
-*Hattenhauer (2020) Informatik*
-
-
-
-
-
-# Rechnerarchitektur - Zentraleinheit
-\large
-Zentraleinheit eines Computers
-\vspace{2mm}
-\center
-```{r, echo = FALSE, out.width = "50%"}
-knitr::include_graphics(file.path(abb_dir,"migl_7_zentraleinheit.pdf"))
-```
+![](../Abbildungen/migl_7_hardware.pdf){width="60%" fig-align="center"}
 
 \footnotesize
-*Hattenhauer (2020) Informatik*
+\flushright{\textit{Hattenhauer (2020) Informatik}}
 
 
+# Zentraleinheit eines Computers (Hauptplatine, Motherboard, Mainboard)
+\vfill
+
+![*Hattenhauer (2020) Informatik*](../Abbildungen/migl_7_zentraleinheit.pdf){width="50%" fig-align="center"}
+
+\footnotesize
+\flushright{\textit{Hattenhauer (2020) Informatik}}
 
 
-# Rechnerarchitektur - Zentraleinheit
+# Zentraleinheit eines Computers (Hauptplatine, Motherboard, Mainboard)
 \setstretch{1.3}
-Zentraleinheit (Hauptplatine, Motherboard, Mainboard)
-\vspace{2mm}
 
-\small
 CPU (Central Processing Unit/Mikroprozessor)
 
 * Rechenwerk, Steuerwerk, und Leitwerk des Systems
 * Cache (flüchtiger schneller Speicher)
 * Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz
 
+\vspace{3mm}
 RAM (Random Access Memory)
 
 * Temporärer, flüchtiger Arbeitsspeicher des Systems
 * Begrenzt, z.B. 16 GB
 
+\vspace{3mm}
 Massenspeicher
 
 * Stationärer Speicher des Systems
 * SSD (Solid State Drive), Cloudspeicher
 
+\vspace{3mm}
 GPU (Graphical Processing Unit)
 
 * Leistungsstarke, speziell für Visualisierung optimierte Prozessoren
 * Unterstützung der CPU in manchen Anwendungen, z.b. Neuronale Netze
 
 
-
-
-
-# Rechnerarchitektur - Von Neumann-Architektur
-
-\vspace{4mm}
-
-```{r, echo = FALSE, out.width = "30%"}
-knitr::include_graphics(file.path(abb_dir,"migl_7_von_neumann_firstdraft.jpg"))
-```
-\vspace{2mm}
+# Von Neumann-Architektur
+\vfill
+![](../Abbildungen/migl_7_von_neumann_firstdraft.jpg){width="30%"}
 
 \footnotesize
 John von Neumann (1945) First Draft of a Report on the EDVAC (Electronic Discrete Variable Automatic Computer)
@@ -623,10 +546,7 @@ from the same place where the numerical material is stored." (Sec. 14.0)
 \flushright{\textit{Wikipedia}}
 
 
-
-
-
-# Rechnerarchitektur - Von Neumann-Architektur
+# Von Neumann-Architektur
 
 \vspace{4mm}
 
@@ -654,82 +574,76 @@ from the same place where the numerical material is stored." (Sec. 14.0)
 \end{small}
 
 
-
-
-
-
-# Rechnerarchitektur - Von Neumann-Architektur
-\large
-
-
-\vspace{4mm}
-
-\center
-\includegraphics[scale=.03]{../Abbildungen/migl_7_von_neumann_abstrakt.pdf}
+# Von Neumann-Architektur
+\setstretch{1.3}
+![](../Abbildungen/migl_7_von_neumann_abstrakt.pdf){width="70%" fig-align="center"}
 
 \footnotesize
-Quelle: Wikipedia
-
-* SISD System (single instruction stream, single data stream)
-* Befehls- und Operandenfolge mit streng sequentieller Abarbeitung
+\flushright{\textit{Wikipedia}}
 
 \normalsize
-\textcolor{blue}{$\Rightarrow$ Daten und Programme können in den Speicher geladen werden.}
 
-\textcolor{blue}{$\Rightarrow$ Sequentielle Abarbeitung von Befehlen ist Grundprinzip der Progammierung}
+\begin{itemize}
+  \item SISD System (single instruction stream, single data stream)
+  \item Befehls- und Operandenfolge mit streng sequentieller Abarbeitung
+\color{darkgreen}
+  \item[\ding{213}] Daten und Programme können in den Speicher geladen werden.
+  \item[\ding{213}] Sequentielle Abarbeitung von Befehlen ist Grundprinzip der Progammierung
+\end{itemize}
 
 
+# Algorithmen und Programme --------------------------------------------------{.plain}
+\AtBeginSubsection{}
+\subsection{Algorithmen und Programme}
 
-
-
-#  
-\Large
+\setstretch{2.5}
 \vfill
-\setstretch{2}
-Datenanalyse
+\large
 
-Informatik
+Formalia
 
-Rechnerarchitektur
+Grundbegriffe der Informatik
 
-**Algorithmen und Programme**
+\begin{itemize}
+\setstretch{1.4}
+\item[--] Datenanalyse
+\item[--] Informatik
+\item[--] Rechnerarchitektur
+\item[--] \textbf{Algorithmen und Programme}
+\item[--] Selbstkontrollfragen
+\end{itemize}
 
-Selbstkontrollfragen
-
-\vfill
+R und Visual Studio Code
 
 
-
-
-# Algorithmen und Programme - Vom Realwertproblem zum Programm
-
-\vspace{3mm}
-\normalsize
+# Vom Realwertproblem zum Programm
+\setstretch{1.3}
 
 Realwertproblem
 
 * Das Problem, das mithilfe eines Computers gelöst werden soll.
-* \textcolor{darkcyan}{Beispiel}: Auswertung von Fragebogendaten einer psychologischen Studie.
+* z.B. Auswertung von Fragebogendaten einer psychologischen Studie.
 
+\vspace{3mm}
 Problemspezifikation
 
 * Genaue sprachliche Fassung des Realweltproblems.
-* \textcolor{darkcyan}{Beispiel}: Methodenteil einer wissenschaftlichen Publikation.
+* z.B. Methodenteil einer wissenschaftlichen Publikation.
 
+\vspace{3mm}
 Algorithmus
 
 * Folge von Anweisungen zur Lösung des Problems.
-* \textcolor{darkcyan}{Beispiel}: Dateneinlesen, deskriptive Statistiken berechnen, T-Test durchführen.
+* z.B. Dateneinlesen, deskriptive Statistiken berechnen, T-Test durchführen.
 
+\vspace{3mm}
 Programm
 
 * Ein Algorithmus, der von einem Computer ausgeführt werden kann.
 * Eine in einer Programmiersprache verfasste Textdatei.
 
 
-
-
-# Algorithmen und Programme - Algorithmus
+# Algorithmus
 \small
 
 \begin{definition}[Algorithmus]
@@ -759,30 +673,20 @@ Bemerkung
 * Effektivität sollte nicht mit Effizienz verwechselt werden.
 
 
-
-
-# Algorithmen und Programme - Programmiersprache
+# Programmiersprache
 \setstretch{2}
 Eine Programmiersprache 
-\small
 
 * ... bestimmt die Regeln, denen ein Programm gehorchen muss.
 * ... definiert eine Syntax, also Vokabular und Programmaufbau.
 * ... definiert Semantik, also die Bedeutung der erlaubten Anweisungen.
 
-\vspace{2mm}
-```{r, echo = FALSE, out.width = "50%"}
-knitr::include_graphics(file.path(abb_dir,"migl_7_programmiersprache.pdf"))
-```
+![](../Abbildungen/migl_7_programmiersprache.pdf){width="50%"}
 
 
-
-
-# Algorithmen und Programme - Programmiersprache
+# Programmiersprache
 \setstretch{1.5}
 Maschinensprache
-
-\small
 
 * Elementare Operationsbefehle (z.B. Speichern, Vergleichen, Addieren)
 * Elementare Operationsbefehle werden als Binärzahlen kodiert
@@ -800,7 +704,7 @@ Erhöhe Inhalt R um 1  			& $\Rightarrow$ 1001 0110 \\
 * De facto führt ein Computer nur Maschinenprogramme aus
 * Für Menschen ist die Programmierung in Maschinensprache mühselig.
 
-\normalsize
+\vspace{3mm}
 Höhere Programmiersprache
 
 * An die menschliche Sprache angelehnte Wörter und Sätze
@@ -808,12 +712,7 @@ Höhere Programmiersprache
 * R, Python, Matlab, C++, Java, FORTRAN, COBOL,...
 
 
-
-
-# Algorithmen und Programme -  Programmiersprache - Generationen
-\large
-Generationen von Programmiersprachen
-\vspace{2mm}
+# Generationen von Programmiersprachen
 
 \normalsize
 1. Generation (1GL)
