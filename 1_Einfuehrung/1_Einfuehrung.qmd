@@ -732,7 +732,7 @@ Höhere Programmiersprache
 \small
 
 * Assemblersprachen ab 1950, erste Form der symbolischen Programmierung
-* Bspw. ``MOV Al, 61H'' \# Intel-Prozessor-spezifische Sprache
+* Bspw. "MOV Al, 61H" \# Intel-Prozessor-spezifische Sprache
 
 \normalsize
 3. Generation (3GL)
@@ -799,14 +799,15 @@ Interpretierte Programmiersprachen
 * Beispiele für interpretierte Sprachen sind Python und R.
 
 
-# R
+# Die Programmiersprache R
+
 \setstretch{2}
 \normalsize
-Die Programmiersprache R  ist
+R ist
 
 \small
 
-* ... eine imperative Programmiersprache ,
+* ... eine imperative Programmiersprache,
 * ... per se objektorientiert, kann aber prozedural genutzt werden,
 * ... eine höhere Programmiersprache der 4. Generation,
 * ... eine interpretierte Sprache,
