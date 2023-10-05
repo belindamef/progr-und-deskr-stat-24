@@ -496,7 +496,9 @@ R und Visual Studio Code
 \flushright{\textit{Hattenhauer (2020) Informatik}}
 
 
-# Zentraleinheit eines Computers (Hauptplatine, Motherboard, Mainboard)
+# Zentraleinheit eines Computers 
+
+Hauptplatine, Motherboard oder Mainboard genannt
 \vfill
 
 ![*Hattenhauer (2020) Informatik*](../Abbildungen/migl_7_zentraleinheit.pdf){width="50%" fig-align="center"}
@@ -505,8 +507,10 @@ R und Visual Studio Code
 \flushright{\textit{Hattenhauer (2020) Informatik}}
 
 
-# Zentraleinheit eines Computers (Hauptplatine, Motherboard, Mainboard)
-\setstretch{1.3}
+# \textcolor{red}{Rechnerarchitektur}
+\setstretch{1.2}
+
+Zentraleinheit eines Computers (Hauptplatine, Motherboard, Mainboard genannt)
 
 CPU (Central Processing Unit/Mikroprozessor)
 
@@ -514,19 +518,19 @@ CPU (Central Processing Unit/Mikroprozessor)
 * Cache (flüchtiger schneller Speicher)
 * Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz
 
-\vspace{3mm}
+\vspace{2mm}
 RAM (Random Access Memory)
 
 * Temporärer, flüchtiger Arbeitsspeicher des Systems
 * Begrenzt, z.B. 16 GB
 
-\vspace{3mm}
+\vspace{2mm}
 Massenspeicher
 
 * Stationärer Speicher des Systems
 * SSD (Solid State Drive), Cloudspeicher
 
-\vspace{3mm}
+\vspace{2mm}
 GPU (Graphical Processing Unit)
 
 * Leistungsstarke, speziell für Visualisierung optimierte Prozessoren
@@ -535,7 +539,7 @@ GPU (Graphical Processing Unit)
 
 # Von Neumann-Architektur
 \vfill
-![](../Abbildungen/migl_7_von_neumann_firstdraft.jpg){width="30%"}
+![](../Abbildungen/migl_7_von_neumann_firstdraft.jpg){width="30%" fig-align="center"}
 
 \footnotesize
 John von Neumann (1945) First Draft of a Report on the EDVAC (Electronic Discrete Variable Automatic Computer)
@@ -673,7 +677,7 @@ Bemerkung
 * Effektivität sollte nicht mit Effizienz verwechselt werden.
 
 
-# Programmiersprache
+# Programmiersprachen
 \setstretch{2}
 Eine Programmiersprache 
 
@@ -681,10 +685,10 @@ Eine Programmiersprache
 * ... definiert eine Syntax, also Vokabular und Programmaufbau.
 * ... definiert Semantik, also die Bedeutung der erlaubten Anweisungen.
 
-![](../Abbildungen/migl_7_programmiersprache.pdf){width="50%"}
+![](../Abbildungen/migl_7_programmiersprache.pdf){width="50%" fig-align="center"}
 
 
-# Programmiersprache
+# Programmiersprachen
 \setstretch{1.5}
 Maschinensprache
 
@@ -748,19 +752,12 @@ Höhere Programmiersprache
 
 
 
-# Algorithmen und Programme - Programmiersprache - 4 GL
+# 4GL Programmierung
 
-4GL Programmierung
-
-\center
-```{r, echo = FALSE, out.width = "80%"}
-knitr::include_graphics(file.path(abb_dir,"migl_7_algorithmen_und_programme.pdf"))
-```
+![](../Abbildungen/migl_7_algorithmen_und_programme.pdf){width="80%" fig-align="center"}
 
 
-
-
-# Algorithmen und Programme - Arten der Programmierung
+# Arten der Programmierung
 \setstretch{2}
 \normalsize
 Imperative Programmierung
@@ -778,9 +775,7 @@ Imperative Programmierung
 * Praktisch liegen oft Mischformen vor.
 
 
-
-
-# Algorithmen und Programme - Compiler und Interpreter
+# Compiler und Interpreter
 \setstretch{1.6}
 \normalsize
 Kompilierte Programmiersprachen
@@ -804,8 +799,7 @@ Interpretierte Programmiersprachen
 * Beispiele für interpretierte Sprachen sind Python und R.
 
 
-
-# Algorithmen und Programme - R
+# R
 \setstretch{2}
 \normalsize
 Die Programmiersprache R  ist
@@ -819,24 +813,31 @@ Die Programmiersprache R  ist
 * ... auf die statistische Analyse von Daten zugeschnitten.
 
 
-#  
-\Large
+# Algorithmen und Programme --------------------------------------------------{.plain}
+\AtBeginSubsection{}
+\subsection{Selbstkontrollfragen}
+
+\setstretch{2.5}
 \vfill
-\setstretch{2}
-Datenanalyse
+\large
 
-Informatik
+Formalia
 
-Rechnerarchitektur
+Grundbegriffe der Informatik
 
-Algorithmen und Programme
+\begin{itemize}
+\setstretch{1.4}
+\item[--] Datenanalyse
+\item[--] Informatik
+\item[--] Rechnerarchitektur
+\item[--] Algorithmen und Programme
+\item[--] \textbf{Selbstkontrollfragen}
+\end{itemize}
 
-**Selbstkontrollfragen**
-
-\vfill
+R und Visual Studio Code
 
 
-# Selbstkontrollfragen
+# \textcolor{red}{Selbstkontrollfragen}
 \setstretch{2}
 \small
 1. Geben Sie die typische Struktur einer computergestützten Datenanalyse wieder.
@@ -853,14 +854,252 @@ Algorithmen und Programme
 12. Differenzieren Sie die Begriffe der kompilierten und der interpretierten Programmiersprachen.
 
 
-# AGENDA ----- R und Visual Studio Code {.plain}
-\large
-\vfill
+# R und Visual Studio Code--------------------------------------------------{.plain}
+\AtBeginSubsection{}
+\subsection{R und Visual Studio Code}
+
 \setstretch{2.5}
+\vfill
+\large
 
 Formalia
 
 Grundbegriffe der Informatik
 
-**R und Visual Studio Code**
+\textbf{R und Visual Studio Code}
 
+
+# Was ist R
+\setstretch{2}
+\normalsize
+
+* Eine Programmiersprache und ein Softwarepaket.
+* Entwickelt von @ihaka_language_1996.
+* Freier Dialekt der propietären Software S (@becker_new_1988).
+* Weiterentwickelt und gepflegt durch [R Core Team](https://www.r-project.org/contributors.html) und
+[R Foundation](https://www.r-project.org/foundation/)
+* Interpretierte imperativ-objektorientierte 4GL Sprache.
+* Optimiert und populär für statistische Datenanalysen.
+* Große Community mit etwa 20.000 beigetragenen R Paketen (Erweiterungen)
+* Evolviert und konservativ im Kern, konsistent und progressiv in
+[R Paketen](https://cran.r-project.org/web/packages/).
+
+
+# Wie bekommt man R?
+
+Runterladen (z.B. \url{https://cran.r-project.org/bin/windows/base/}) und installieren.
+\vspace{2mm}
+
+![](../Abbildungen/pds_2_r_download.png){width="80%"}
+
+
+# Was kann man mit R machen?
+\setstretch{1.5}
+\large
+\textcolor{darkblue}{}
+\small
+
+* Datensätze laden, manipulieren, und speichern.
+* Eine Vielzahl von Berechnungen an verschiedenen Datenstrukturen durchführen.
+* Eine Vielzahl statistischer Analysemethoden auf Daten anwenden.
+* Datenanalyseskripte schreiben und Abbildungen generieren.
+* Präsentationen [RMarkdown](https://bookdown.org/yihui/rmarkdown/) und
+Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
+
+\vspace{2mm}
+
+\large
+\textcolor{darkblue}{Was kann man mit R (bisher) nicht so gut machen?}
+\small
+
+* In einer ansprechenden Umgebung programmieren ($\Rightarrow$ RStudio).
+* Scientific Computing ($\Rightarrow$ Python, Matlab, Julia).
+* Psychologische Experimente programmieren ($\Rightarrow$ Python, Matlab)
+
+
+# Wie bekommt man Hilfe zu R?
+\large
+\textcolor{darkblue}{}
+\small
+
+* Googlen
+* ChatGPT
+* \url{https://stackoverflow.com/}
+* \url{https://www.r-project.org/help.html}
+* Während der Programmierung und bei bekanntem Funktionsnamen über die Kommandozeile:
+\footnotesize
+  ```{r R Hilfe, eval = F, echo = T}
+  #| label: R Hilfe
+  ?mean                    # Zeigt Hilfe zu der Funktion "mean()"
+  help(mean)               # Zeigt Hilfe zu der Funktion "mean()"
+  browseVignettes()        # Zeigt Vignetten aller installierten Pakete im Browser
+  browseVignettes("knitr") # Zeigt Vignetten des Paktes "knitr"
+  ```
+* \small \url{https://rseek.org/}
+* \url{https://www.rstudio.com/resources/cheatsheets/}
+* \url{https://www.r-bloggers.com/}
+
+
+# \color{red}Was ist Visual Studio Code?
+\setstretch{2}
+\large
+\textcolor{darkblue}{}
+\small
+
+* Eine Softwareentwicklungsumgebung für R
+* Softwareentwicklungsumgebung = Integrated Development Environment
+* IDEs sind Programme zum Programmieren mit einer Programmiersprache
+* Kommandozeile, Skripteditor, Vielzahl weiterer Tools
+* Freemium Produkt von RStudio, Inc. (IDE frei, Server kostenpflichtig)
+* Initial Release 2011, Affero General Public License
+* Keine Verbindung zu R Core Team oder R Foundation
+* RStudio wird im Oktober 2022 zu posit ([**posit.co**](https://posit.co/))
+
+
+# \color{red} Wie bekommt man Visual Studio Code?
+
+\small
+Runterladen (\url{https://www.rstudio.com/products/rstudio/}) und installieren.
+\vspace{2mm}
+
+TODO: screenshot von download seite? 
+
+
+# \color{red}Was kann man mit Visual Studio Code machen?
+\setstretch{1.6}
+\vspace{2mm}
+\small
+
+* R Skripte erzeugen, bearbeiten, und laufen lassen
+* R Skripte in R Projekten organisieren
+
+\vspace{3mm}
+Laut Eigenwerbung:
+
+* Access RStudio locally
+* Syntax highlighting, code completion, and smart indentation
+* Execute R code directly from the source editor
+* Quickly jump to function definitions
+* View content changes in real-time with the Visual Markdown Editor
+* Easily manage multiple working directories using projects
+* Integrated R help and documentation
+* Interactive debugger to diagnose and fix errors
+* Extensive package development tools
+
+
+# \textcolor{darkblue}{Wie bekommt man Hilfe zu RStudio?}
+
+\small
+Googlen
+
+Zur Einführung $\Rightarrow$ [Using the RStudio IDE](https://support.rstudio.com/hc/en-us/sections/200107586-Using-the-RStudio-IDE)
+
+TODO: screenshot online support
+
+
+# R und RStudio
+\setstretch{1.7}
+\large
+\textcolor{darkblue}{R Kommandozeile $\vert$ Working in the Console}
+
+\small
+Die Basics:  
+\footnotesize
+
+* Eingabe von R Befehlen bei ```>```
+* Autocomplete mit \fbox{Tab}
+* Code ausführen mit \fbox{Enter}
+* Vorherige Befehle mit Cursor \fbox{$\uparrow$}
+* Bereinigen des Konsolenoutputs mit \fbox{Ctrl} + \fbox{L}
+* Code Ausführungsstopp mit \fbox{Esc}
+
+\vspace{2mm}
+\small
+Beispiel für einen Befehl:
+\footnotesize
+
+```{r Hello world console, eval=T, echo=T, indent="  "}
+print("Hallo Welt!")
+```
+
+\vfill
+\footnotesize
+Anmerkung:
+\color{darkcyan} 
+**Code-Snippets in diesen Folien immer aktiv in der Konsole nachvollziehen!**
+
+
+
+# R Skripte $\vert$ Executing and Editing Code
+\setstretch{1.4}
+\large
+\textcolor{darkblue}{}
+
+\small
+Neue .R Datei erstellen  
+\vspace{-1pt}
+
+\footnotesize 
+
+* GUI: *File* $\rightarrow$ *New File* $\rightarrow$ *R Script* 
+* Keyboard Shortcut: \fbox{Ctrl} + \fbox{Shift} + \fbox{N}  
+
+\small
+Bestehende .R Datei öffnen  
+\vspace{-1pt}
+
+\footnotesize 
+
+* GUI: File $\rightarrow$ Open File 
+* \fbox{Ctrl} + \fbox{O}
+
+\vspace{2mm}
+\small Code im .R Skript schreiben (Befehle in Programmiersprache formulieren)  
+
+
+\vspace{1mm}
+\footnotesize
+```{r Hello World script, eval = F}
+#| label: Hello World
+print("Hallo Welt!")  # Hinter Hashtags stehen dokumentierende Kommentare
+print("Hallo R!")     # Kommentare werden nicht ausgefuehrt
+```
+
+\small
+Befehle eines R Scripts ausführen
+\vspace{-2mm}
+
+\footnotesize
+* Einzelnen Zeile, auf welcher der Cursor ruht: $\Rightarrow$ Run oder \fbox{Ctrl} + \fbox{Enter}
+* Ausführen aller Zeilen: $\Rightarrow$ *Source* oder  \fbox{Ctrl} + \fbox{Shift} +  \fbox{Enter} oder $\Rightarrow$ Tickmark bei *Source on Save* setzen und \fbox{Ctrl} + \fbox{S}
+
+\vfill
+\footnotesize
+Anmerkung:
+\textcolor{darkcyan}{Code-Snippets in diesen Folien immer aktiv in einem R Skript dokumentieren!}
+
+
+# R und RStudio
+\setstretch{1.4}
+\large
+\textcolor{red}{Das R und RStudio Data Science Universum}
+\vspace{2mm}
+
+```{r R Universum, echo = FALSE, out.width = "100%"}
+knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_datascienceuniverse.pdf"))
+```
+
+# R und RStudio
+\setstretch{1.4}
+\large
+\textcolor{red}{Lehrmaterialien mit R und RStudio}
+\vspace{2mm}
+
+```{r Literatur, echo = FALSE, out.width = "80%"}
+knitr::include_graphics(file.path(abb_dir, "pds_2_lehrmaterialien.pdf"))
+```
+
+
+# TODO 
+
+add radian installation advide!
