@@ -46,7 +46,7 @@ Herzlich willkommen!
 \vfill
 
 
-# (1) Einführung {.plain}
+# (1) Einführung - Titelfolie {.plain}
 \vfill
 \center
 \huge

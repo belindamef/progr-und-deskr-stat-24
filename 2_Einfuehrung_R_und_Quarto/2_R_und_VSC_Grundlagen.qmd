@@ -1,26 +1,25 @@
 ---
 fontsize: 8pt
-bibliography: ../Referenzen.bib
+format:
+  beamer:
+    include-in-header: ../Header.tex
 citation_package: natbib
-output:
-  beamer_presentation:
-    highlight: tango
-    keep_tex: true
-    includes:
-      in_header: ../Header.tex
+bibliography: ../Referenzen.bib
+editor:
+  render-on-save: true
 ---
 
 
-```{r source R_common, include = F}
-source("../R_common.R")
+```{r, include = T}
+# | label: setup
+# source("../R_common.R")
 abb_dir = file.path(dirname(getwd()), "Abbildungen")
 ```
 
-#  {.plain}
+
+# Titelfolie {.plain}
 \center
-```{r Abb otto, echo = FALSE, out.width = "20%"}
-knitr::include_graphics(file.path(abb_dir,"otto.png"))
-```
+![](../Abbildungen/otto.png){width="20%"}
 
 \vspace{2mm}
 
@@ -29,9 +28,9 @@ Programmierung und Deskriptive Statistik
 \vspace{4mm}
 
 \normalsize
-BSc Psychologie WiSe 2022/23
+BSc Psychologie WiSe 2023/24
 
-\vspace{12mm}
+\vspace{15mm}
 \normalsize
 Belinda Fleischmann
 
@@ -41,21 +40,20 @@ Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy
 
 
 
-#  {.plain}
-
+# (2) R und Visual Studio Code - Titelfolie {.plain}
 \vfill
+\center
 \huge
-\begin{center}
-(2) R und RStudio Grundlagen
-\end{center}
+\textcolor{black}{(2) R und Visual Studio Code Grundlagen}
 \vfill
 
-#
+
+# AGENDA {.plain}
 \large
-\vfill
 \setstretch{2.5}
+\vfill
 
-R und RStudio
+R und Visual Studio Code
 
 Arithmetik, Logik und Präzedenz
 
@@ -64,6 +62,9 @@ Variablen
 Datenstrukturen
 
 Übungen und Selbstkontrollfragen
+
+TODO: Agenda überall einfügen
+
 
 
 #
@@ -82,8 +83,15 @@ Datenstrukturen
 Übungen und Selbstkontrollfragen
 
 
+# R und RStudio =========================================================== {.plain}
+\AtBeginSection{}
+\section{R und RStudio }
+
+TODO: Aenda einfügen
+
 
 # R und RStudio
+
 \setstretch{2}
 \large
 \textcolor{darkblue}{Was ist R?}
@@ -102,7 +110,6 @@ Datenstrukturen
 [R Paketen](https://cran.r-project.org/web/packages/).
 
 
-
 # R und RStudio
 \large
 \textcolor{darkblue}{Wie bekommt man R?}
@@ -114,7 +121,6 @@ Runterladen (z.B. \url{https://cran.r-project.org/bin/windows/base/}) und instal
 ```{r Abb download R, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(file.path(abb_dir, "pds_2_r_download.png"))
 ```
-
 
 
 # R und RStudio
@@ -381,30 +387,40 @@ Datenstrukturen
 Übungen und Selbstkontrollfragen
 
 
+# Arithmetik, Logik und Präzedenz ======================================= {.plain}
+\AtBeginSection{}
+\section{Arithmetik, Logik und Präzedenz}
 
-# Arithmetik, Logik und Präzedenz
-\textcolor{darkblue}{R Konsole als Taschenrechner}
+TODO: AGENDA einfügen
+
+
+# R Konsole als Taschenrechner
 \footnotesize
 \vfill
 
 \setstretch{0.7}
-```{r add} 
+```{r echo = T, fiinclude = T}
+#| label: addition
 1 + 1
 ```
 \vspace{4mm}
-```{r mult}
+```{r}
+#| label: multiplikation
 2 * 3
 ```
 \vspace{4mm}
-```{r sqrt}
+```{r}
+#| label: sqrt
 sqrt(2)
 ```
 \vspace{4mm}
 ```{r exp}
+#| label: exp-funk
 exp(0)
 ```
 \vspace{4mm}
 ```{r log}
+#| label: log-funk
 log(1)
 ```
 
@@ -417,9 +433,7 @@ Anmerkung:
 \end{itemize}
 
 
-
-# Arithmetik, Logik und Präzedenz
-\textcolor{darkblue}{Arithmetische Operatoren}
+# Arithmetische Operatoren
 \setstretch{1.6}
 
 \small
@@ -447,10 +461,9 @@ $/$ 				& Division 								\\
 
 
 
-
-# Arithmetik, Logik und Präzedenz
+# Logische Operatoren
 \setstretch{1.6}
-\textcolor{darkblue}{Logische Operatoren}
+
 \small
 
 * Die Boolesche Algebra und R kennen zwei *logische Werte*: TRUE und FALSE
@@ -476,8 +489,8 @@ $\&$    			& UND              						\\
 * $\vert$  und $\&$ werden zumeist auf logische Werte angewendet.
 * $\vert$ implementiert das inklusive *oder*. Die Funktion xor() implementiert das exklusive ODER.
 
-# Arithmetik, Logik und Präzedenz
-\textcolor{darkblue}{Mathematische Funktionen}
+
+# Mathematische Funktionen
 \setstretch{1.4}
 
 \small
@@ -509,9 +522,7 @@ log(x)				& Logarithmus Funktion						\\
     ```
 
 
-
-# Arithmetik, Logik und Präzedenz
-\textcolor{darkblue}{Operatorpräzedenz}
+# Operatorpräzedenz
 
 \footnotesize
 * Operatorrangfolge
@@ -539,8 +550,7 @@ Generell gilt
 ```
 
 
-# Arithmetik, Logik und Präzedenz
-\textcolor{darkblue}{Operatorpräzedenz}
+# Operatorpräzedenz
 
 Präzedenz und Ausführungsreihenfolge arithmetischer Operatoren
 
@@ -569,8 +579,7 @@ Beispiele
 ```
 
 
-# Arithmetik, Logik und Präzedenz
-\textcolor{darkblue}{Operatorpräzedenz}
+# Operatorpräzedenz
 \vspace{3mm}
 \footnotesize 
 
@@ -583,21 +592,11 @@ knitr::include_graphics(file.path(abb_dir, "pds_2_precedence.pdf"))
 ```
 
 
-#
-\large
-\vfill
-\setstretch{2.5}
+# Variablen ======================================= {.plain}
+\AtBeginSection{}
+\section{Variablen}
 
-R und RStudio
-
-Arithmetik, Logik und Präzedenz
-
-**Variablen**
-
-Datenstrukturen
-
-Übungen und Selbstkontrollfragen
-
+TODO: Agenda einfgen
 
 
 # Variablen
@@ -617,17 +616,15 @@ zu einer Konstante – zur Laufzeit des Rechenprozesses verändert werden.
 
 
 
-# Variablen
-\normalsize
-\textcolor{darkblue}{Grundlagen}
+# Variablen- Grundlagen
 \small
 \setstretch {1.5}
 
 * Variablen sind vom Programmierenden benannte Platzhalter für Werte
 * In 3GL Sprachen wird der Variablentyp durch eine Initialisierungsanweisung festgelegt:
-    ```{r, eval = F}
-    VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
-    ```
+```{r echo = T, eval = F}
+VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
+```
 * In 3GL Sprachen wird Variablen durch eine Zuweisungsanweisung ein Wert zugeschrieben:
     ```{r, eval = F}
     A := 1              # Der Variable A wird der numerische Wert 1 zugewiesen
@@ -638,7 +635,6 @@ In 4GL Sprachen wie Matlab, Python, R werden Variablen durch Zuweisung initialis
     ```
 * Der Zuweisungsbefehl in Matlab und Python ist `=`, der Zuweisungsbefehl in R ist `<-`  oder `=`.
 * Offiziell empfohlen für R ist `<-`, aus Kohärenzgründen benutzen wir hier `=`.
-
 
 
 # Variablen - \textcolor{darkblue}{Beispiel}
@@ -678,9 +674,7 @@ print(gesamtpreis)
 `print()` gibt Variablenwerte in der R Konsole aus.
 
 
-
-# Variablen
-\textcolor{darkblue}{Workspace}
+# Workspace
 \vspace{1mm}
 
 \small
@@ -714,18 +708,12 @@ Löschen von Variablen
     ```
 
 
-
-# Variablen
-\textcolor{darkblue}{Workspace}
+# Workspace
 \vfill
-```{r, echo = FALSE, out.width = "90%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_workspace.pdf"))
-```
-\vfill
+![](../Abbildungen/pds_2_workspace.pdf){width="90%"}
 
 
-
-# Variablen
+# Variablennamen
 \setstretch{1.6}
 \textcolor{darkblue}{Variablennamen}
 
@@ -758,8 +746,7 @@ Anmerkung
 * R ist *case-sensitive*. Das heißt z.B. x $\neq$ X
 
 
-
-# Variablen - \textcolor{darkblue}{Variablenrepräsentation $\vert$ Binding}
+# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Binding}
 
 \vspace{3mm}
 \footnotesize
@@ -780,9 +767,8 @@ x = 1
 \end{enumerate}
 \end{itemize}
 
-```{r, echo = FALSE, out.width="22%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_binding_1.pdf"))
-```
+![](../Abbildungen/pds_2_binding_1.pdf){width="22%"}
+
 \vspace{2mm}
 
 ```{r, eval = F}
@@ -804,16 +790,12 @@ y = 1
 \item De-facto wird ein neuer Name y erzeugt, der ein anderes Objekt referenziert wie x.
 \end{itemize}
 
-```{r, echo = FALSE, out.width="44%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_binding_2.pdf"))
-```
+![](../Abbildungen/pds_2_binding_2.pdf){width="44%"}
+
 \vspace{1mm}
 
 
-
-
-# Variablen
-\textcolor{darkblue}{Speicheradressen $\vert$ object adress}
+# Variablen \textcolor{darkblue}{Speicheradressen $\vert$ object adress}
 
 \setstretch{1}
 
@@ -846,10 +828,7 @@ Anmerkungen:
 * Bevor Funktionen eines Pakets verwendet werden können, muss es mit `library()` geladen werden. Ausnahmen sind R Pakete, die per default geladen werden, z.B. `base`. 
 
 
-
-
-# Variablen
-\textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
+# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
 \vspace{2mm}
 \footnotesize
 
@@ -864,17 +843,13 @@ y        	# y referenziert jetzt (0xcd2)
 x           # x referenziert weiterhin (0x74b)
 ```
 
+![](../Abbildungen/pds_2_copy_on_modify.pdf){width="70%"}
 
-```{r, echo = FALSE, out.width="70%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_copy_on_modify.pdf"))
-```
 
 R Objekte sind \textit{immutable}, können also nicht verändert werden.
 
 
-
-# Variablen
-\textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
+# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
 \vspace{2mm}
 \small
 
@@ -894,9 +869,7 @@ Zur Immutability gibt allerdings zwei Ausnahmen, genannt \textit{Modifications-i
 \vfill
 
 
-
-# Variablen
-\textcolor{darkblue}{Variablenrepräsentation $\vert$ Unbinding und Garbage Collection}
+# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Unbinding und Garbage Collection}
 \small
 
 Copy-on-modify gilt auch in umgekehrter Reihenfolge
@@ -909,9 +882,8 @@ x = 3 		# Ein neues Objekt (0x2a08) wird erzeugt, x referenziert (0x2a08)
 y           # y referenziert weiterhin  Objekt (0x74b)
 ```
 
-```{r, echo = FALSE, out.width="56%"}
-knitr::include_graphics(file.path(abb_dir, "/pds_2_unbinding.pdf"))
-```
+![](../Abbildungen/pds_2_unbinding.pdf){width="56%"}
+
 \vspace{-2mm}
 \small
 Unbinding
@@ -932,27 +904,15 @@ Garbage collection
 * Es ist nicht nötig, aktiv die Garbage Collection Funktion `gc()` zu benutzen.
 
 
-
-#
+# Datenstrukturen ======================================= {.plain}
+\AtBeginSection{}
+\section{Datenstrukturen}
 \large
 \vfill
 \setstretch{2.5}
 
-R und RStudio
 
-Arithmetik, Logik und Präzedenz
-
-Variablen
-
-**Datenstrukturen**
-
-Übungen und Selbstkontrollfragen
-
-
-
-
-# Datenstrukturen
-\textcolor{darkblue}{Klassische Datenstrukturen einer 3GL Programmiersprache}
+# Klassische Datenstrukturen einer 3GL Programmiersprache
 
 \small
 \textcolor{darkblue}{Fundamentale Datenstrukturen}
@@ -977,10 +937,7 @@ Variablen
 * Definition eigener Operationen
 
 
-
-# Datenstrukturen
-
-\textcolor{darkblue}{Datenstrukturenkennenlernen beim Erlernen einer Programmiersprache}
+# Datenstrukturenkennenlernen beim Erlernen einer Programmiersprache
 
 \small
 \textcolor{darkblue}{Fundamentale Datenstrukturen}
@@ -1003,10 +960,7 @@ Variablen
 \vfill
 
 
-
-# Datenstrukturen
-\setstretch{1.8}
-\textcolor{darkblue}{Organisation von Daten in R}
+# Organisation von Daten in R
 \vspace{1mm}
 
 Alles, was in R vorkommt, ist ein **Objekt**.
@@ -1027,24 +981,18 @@ Jedem Objekt kann eindeutig zugeordnet werden:
 \vfill
 
 
-# Datenstrukturen
-\setstretch{1.8}
-\textcolor{darkblue}{Organisation von Daten in R}
+# Organisation von Daten in R
 \vspace{1mm}
 
 Alles, was in R vorkommt, ist ein **Objekt**.
 \vspace{5mm}
 
-```{r, echo = FALSE, out.width="80%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_r_objektstruktur.pdf"))
-```
+![](../Abbildungen/pds_2_r_objektstruktur.pdf){width="80$%}
 
 \vfill
 
 
-
-# Datenstrukturen
-\textcolor{darkblue}{Übersicht der R Datentypen}
+# Übersicht der R Datentypen
 \small
 \setstretch{1.8}
 \vspace{5mm}
@@ -1083,11 +1031,7 @@ Viele weitere Typen, hier relevant sind **logical**, **double**, **integer**, **
 \vfill
 
 
-
-# Datenstrukturen
-\setstretch{0.8}
-\vspace{1mm}
-\textcolor{darkblue}{Übersicht der R Datentypen}
+# Übersicht der R Datentypen
 \footnotesize
 
 Automatische Festlegung von Datentypen durch Zuweisung
@@ -1131,9 +1075,7 @@ is.double(x)
 ```
 
 
-
-# Datenstrukturen
-\textcolor{darkblue}{Übersicht atomare Datenstrukturen in R}
+# Übersicht atomare Datenstrukturen in R
 \vspace{3mm}
 
 \setstretch{2.5}
@@ -1163,11 +1105,7 @@ $\Rightarrow$ (3) Vektoren, Matrizen, Arrays
 \vfill
 
 
-
-# Datenstrukturen
-
-\textcolor{darkblue}{Übersicht rekursive Datenstrukturen in R}
-\vspace{-3mm}
+# Übersicht rekursive Datenstrukturen in R
 
 \setstretch{2.5}
 \begin{center}
@@ -1196,8 +1134,10 @@ $\Rightarrow$ (4) Listen und Dataframes
 \vfill
 
 
+# Übungen und Selbstkontrollfragen ======================================= {.plain}
+\AtBeginSection{}
+\section{Übungen und Selbstkontrollfragen}
 
-#
 \large
 \vfill
 \setstretch{2.5}
