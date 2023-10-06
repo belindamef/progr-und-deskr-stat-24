@@ -38,11 +38,23 @@ Belinda Fleischmann
 Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
 
 
-# Herzlich Willkommen{.plain} 
+# Herzlich Willkommen!{.plain} 
 \huge
 \center
 \vfill
 Herzlich willkommen!
+\vfill
+
+
+# Aufnahme läuft {.plain}
+\huge
+\vfill
+
+\vspace{3mm}
+\center
+Aufnahme läuft.
+![](../Abbildungen/pds_1_mikro.png){width="8%"}
+
 \vfill
 
 
@@ -73,8 +85,10 @@ Grundbegriffe der Informatik
 
 R und Visual Studio Code
 
+Selbstkontrollfragen 
 
-# Formalia =========================================================== {.plain}
+
+# Formalia ===================================== {.plain}
 \AtBeginSection{}
 \section{Formalia}
 
@@ -88,26 +102,21 @@ Grundbegriffe der Informatik
 
 R und Visual Studio Code
 
+Selbstkontrollfragen
 
-# Ziele der Veranstaltung
+# Modul C: Einführung in empirisch-wissenschaftliches Arbeiten
 \setstretch{1.5}
-\textcolor{darkblue}{Programmierung und Deskriptive Statistik (Modul C1)}
+\textcolor{darkblue}{C1. Programmierung und Deskriptive Statistik}
 
 * Einführung in die datenanalytische Programmierung
 * Einführung in die Auswertung deskriptiver Statistiken mit R in Visual Studio Code
 
-\textcolor{darkblue}{Design, Analyse, Dokumentation (Modul C2)}
+\vspace{3mm}
+
+\textcolor{darkblue}{C2. Design, Analyse, Dokumentation}
 
 * Einführung in das Design quantitativer empirischer Studien
 * Einführung in die Analyse und Dokumentation emirischer Daten
-
-\vspace{6mm}
-Empfohlene Vorbereitung: 
-
-
-\textcolor{linkblue}{\href{https://www.ipsy.ovgu.de}{Vorkurs "Grundlagen der Mathematik und Informatik"}}
-
-\textcolor{red}{TODO: insert new link}
 
 
 # Organisatorisches
@@ -116,21 +125,20 @@ Empfohlene Vorbereitung:
 * \justifying Termine: Mittwochs in Raum G05-307
   * Gruppe 1 um 11-13 Uhr
   * Gruppe 2 um 13-15 Uhr
-* Kursmaterialien (Folien, Videos, RMarkdown Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre.html}{Kurswebseite}}
+* Kursmaterialien (Folien, Videos, RMarkdown Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}}
 * Code auf \textcolor{linkblue}{\href{https://github.com/belindamef/progr-und-deskr-stat-24}{Github}}
 * Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=15163}{Moodleseite}}
-* Vorherige Iteration des Kurses \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS, WS 2023/2023}}
-* Empfohlene Vorbereitung: \textcolor{linkblue}{\href{https://bit.ly/3SNh3nR}{"Grundlagen der Mathematik"}}
+* Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS (WS 2023/23)}}
+* Empfohlene Vorbereitung: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Mathematische+Grundlagen.html}{Vorkurs ''Mathematische Grundlagen''}}
 * Q&A im \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/bsc-psychologie-2023/channels/c1---programmeriung-und-deskriptive-statistik}{Mattermost-Channel}}
-  * Einmalige Registrierung zum Team "bsc-psy-2023" über \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su}{hier}}
-* Leistungsnachweis: Unbenotet, Multiple Choice, digitales Format
+  * Einmalige \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su}{Registrierung}} zum Team "bsc-psy-2023"
+* Zweiteiliger Leistungsnachweis: Unbenotet, Multiple Choice, digitales Format
   * Teil 1 vor der Weihnachtspause
   * Teil 2 am Semesterende
 
-\textcolor{red}{TODO: insert new links}
 
 # Termine
-\setstretch{1.5}
+\setstretch{1.3}
 \vfill
 \center
 \footnotesize
@@ -149,21 +157,21 @@ Datum          & Einheit               & Thema		                              \\
 06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
 13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
 20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+20.12.23       & \textit{Leistunsnachweis Teil 1}        \\
                & \textcolor{gray}{Weihnachtspause}                              \\
 10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
 17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
-24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\\hline
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24       & \textit{Leistunsnachweis Teil 2}                          \\\hline
 \end{tabular}
 
 
 # Kurswebsite
 \vspace{5mm}
 
-[\textcolor{linkblue}{Webseite des Kurses (Folien, Videos)}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html)
+[\textcolor{linkblue}{Webseite des Kurses (Folien, Videos)}](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html)
 
-![](../Abbildungen/Kursseite_pds.png){width="80%"}
-
-\textcolor{red}{TODO: Links und Screenshots aktualisieren}
+![](../Abbildungen/pds_Kurswebsite_24.png){width="80%"}
 
 
 # Github
@@ -171,9 +179,7 @@ Datum          & Einheit               & Thema		                              \\
 
 [\textcolor{linkblue}{Git-repository des Kurses (Folien, Source Codes)}](https://github.com/belindamef/progr-und-deskr-stat-24)
 
-![](../Abbildungen/git_repo_pds.png){width="80%"}
-
-\textcolor{red}{TODO: Links und Screenshots aktualisieren}
+![](../Abbildungen/pds_1_gitrepo_24.png){width="80%"}
 
 
 # Mattermost
@@ -181,9 +187,7 @@ Datum          & Einheit               & Thema		                              \\
 
 [\textcolor{linkblue}{Mattermost-Team BSc Psych 2023}](https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su)
 
-![](../Abbildungen/pds_1_mattermost.png){width="90%"}
-
-\textcolor{red}{TODO: Links und Screenshots aktualisieren}
+![](../Abbildungen/pds_1_mattermost_24.png){width="90%"}
 
 
 # Q&A {.plain}
@@ -207,12 +211,14 @@ Formalia
 
 R und Visual Studio Code
 
+Selbstkontrollfragen
 
-# Motivation
+
+# Datenwissenschaft
 \vspace{5mm}
 
 \large
-\textcolor{darkblue}{Datenwissenschaften}
+\textcolor{darkblue}{Zentrale Komponenten der Datenwissenschaft}
 
 ![](../Abbildungen/migl_7_datenwissenschaft.pdf){width="85%" fig-align="center"}
 
@@ -232,10 +238,11 @@ Formalia
 \item[--] Informatik
 \item[--] Rechnerarchitektur
 \item[--] Algorithmen und Programme
-\item[--] Selbstkontrollfragen
 \end{itemize}
 
 R und Visual Studio Code
+
+Selbstkontrollfragen
 
 
 # Datenanalyse ------------------------------------------------------- {.plain}
@@ -256,10 +263,11 @@ Grundbegriffe der Informatik
 \item[--] Informatik
 \item[--] Rechnerarchitektur
 \item[--] Algorithmen und Programme
-\item[--] Selbstkontrollfragen
 \end{itemize}
 
 R und Visual Studio Code
+
+Selbstkontrollfragen
 
 
 # Datenanalyse -  Überblick
@@ -287,9 +295,9 @@ R und Visual Studio Code
 Typische Werkzeuge zur Analyse psychologischer Daten
 
 \normalsize
-* [R](https://www.r-project.org/) (frei, Datenwissenschaft, Statistik, Psychologie)
-* [Python](https://www.python.org/psf/) (frei, Datenwissenschaft, Anwendung)
-* [Matlab](https://de.mathworks.com/) (kommerziell, Engineering, Neuroimaging)
+* [\textcolor{linkblue}{R}](https://www.r-project.org/) (frei, Datenwissenschaft, Statistik, Psychologie)
+* [\textcolor{linkblue}{Python}](https://www.python.org/psf/) (frei, Datenwissenschaft, Anwendung)
+* [\textcolor{linkblue}{Matlab}](https://de.mathworks.com/) (kommerziell, Engineering, Neuroimaging)
 
 \vspace{3mm}
 
@@ -297,9 +305,9 @@ Typische Werkzeuge zur Analyse psychologischer Daten
 Altmodisch
 
 \normalsize
-* [SPSS](https://www.ibm.com/de-de/analytics/spss-statistics-software) (kommerziell, Sozialwissenschaften, Psychologie)
-* [JMP](https://www.jmp.com/de_de/home.html) (kommerziell, Biologie, Psychologie)
-* [STATA](https://www.stata.com/) (kommerziell, Wirtschaftswissenschaften)
+* [\textcolor{linkblue}{SPSS}](https://www.ibm.com/de-de/analytics/spss-statistics-software) (kommerziell, Sozialwissenschaften, Psychologie)
+* [\textcolor{linkblue}{JMP}](https://www.jmp.com/de_de/home.html) (kommerziell, Biologie, Psychologie)
+* [\textcolor{linkblue}{STATA}](https://www.stata.com/) (kommerziell, Wirtschaftswissenschaften)
 
 
 # Programmiersprachen Trends
@@ -350,10 +358,11 @@ Grundbegriffe der Informatik
 \item[--] \textbf{Informatik}
 \item[--] Rechnerarchitektur
 \item[--] Algorithmen und Programme
-\item[--] Selbstkontrollfragen
 \end{itemize}
 
 R und Visual Studio Code
+
+Selbstkontrollfragen
 
 
 # Begriff
@@ -481,13 +490,19 @@ Grundbegriffe der Informatik
 \item[--] Informatik
 \item[--] \textbf{Rechnerarchitektur}
 \item[--] Algorithmen und Programme
-\item[--] Selbstkontrollfragen
 \end{itemize}
 
 R und Visual Studio Code
 
+Selbstkontrollfragen
+
 
 # Hardwarekomponenten eines Computers
+\vfill
+\large
+
+**EVA-Prinzip**: Eingabe $\to$ Verarbeitung $\to$ Ausgabe
+
 \vfill
 
 ![](../Abbildungen/migl_7_hardware.pdf){width="60%" fig-align="center"}
@@ -498,7 +513,7 @@ R und Visual Studio Code
 
 # Zentraleinheit eines Computers 
 
-Hauptplatine, Motherboard oder Mainboard genannt
+Auch Hauptplatine, Motherboard oder Mainboard genannt
 \vfill
 
 ![*Hattenhauer (2020) Informatik*](../Abbildungen/migl_7_zentraleinheit.pdf){width="50%" fig-align="center"}
@@ -507,10 +522,8 @@ Hauptplatine, Motherboard oder Mainboard genannt
 \flushright{\textit{Hattenhauer (2020) Informatik}}
 
 
-# \textcolor{red}{Rechnerarchitektur}
+# Zentraleinheit eines Computers
 \setstretch{1.2}
-
-Zentraleinheit eines Computers (Hauptplatine, Motherboard, Mainboard genannt)
 
 CPU (Central Processing Unit/Mikroprozessor)
 
@@ -538,62 +551,29 @@ GPU (Graphical Processing Unit)
 
 
 # Von Neumann-Architektur
-\vfill
-![](../Abbildungen/migl_7_von_neumann_firstdraft.jpg){width="30%" fig-align="center"}
+\setstretch{1.5}
 
-\footnotesize
-John von Neumann (1945) First Draft of a Report on the EDVAC (Electronic Discrete Variable Automatic Computer)
+Abstraktion eines Rechensystems mit wohldefinierten Komponenten und Datenflüsse.
 
-"The orders which are received by CC [Central Control] come from M [Memory], i.e. 
-from the same place where the numerical material is stored." (Sec. 14.0)
-
-\flushright{\textit{Wikipedia}}
-
-
-# Von Neumann-Architektur
-
-\vspace{4mm}
-
-\begin{small}
-\begin{itemize}
-\item Rechner := Steuerwerk, Rechenwerk, Speicher, Eingabewerk, Ausgabewerk.
-\item Eingabe von Programmen und Daten in den Speicher.
-\item Daten, Programme, Zwischen- und Endergebnisse liegen im gleichen Speicher.
-\item Speicher ist in gleichgroße nummerierte (addressierte) Zellen unterteilt.
-\item Über die Adresse einer Speicherzelle kann deren Inhalt abgerufen/verändert werden.
-\item Aufeinanderfolgende Befehle eines Programms liegen in benachbarten Speicherzellen.
-\item Steuerwerk ruft den nächsten Befehl durch Erhöhen der Befehlsaddresse um 1 auf.
-\item Sprungbefehle erlauben eine Abweichung von der gespeicherten Reihenfolge
-\item Grundlegende Befehle sind
-\begin{itemize}
-\begin{small}
-\item[$\circ$] Arithmetische Befehle (z.B. Addition, Multiplikation)
-\item[$\circ$] Logische Vergleiche (z.B. logisches UND, logisches ODER)
-\item[$\circ$] Transportbefehle (z.B. Eingabewerk $\rightarrow$ Speicher, Speicher $\rightarrow$ Rechenwert)
-\end{small}
-\end{itemize}
-\item Alle Daten (z.B. Befehle, Adressen) werden binär codiert
-\item Binäre Enkodierung/Dekodierung geschieht durch geeignete Schaltwerke.
-\end{itemize}
-\end{small}
-
-
-# Von Neumann-Architektur
-\setstretch{1.3}
-![](../Abbildungen/migl_7_von_neumann_abstrakt.pdf){width="70%" fig-align="center"}
-
-\footnotesize
-\flushright{\textit{Wikipedia}}
+Rechner := Steuerwerk, Rechenwerk, Speicher, Eingabewerk, Ausgabewerk.
 
 \normalsize
+Zentrale Eigenschaften
 
+\begin{small}
 \begin{itemize}
-  \item SISD System (single instruction stream, single data stream)
-  \item Befehls- und Operandenfolge mit streng sequentieller Abarbeitung
-\color{darkgreen}
-  \item[\ding{213}] Daten und Programme können in den Speicher geladen werden.
-  \item[\ding{213}] Sequentielle Abarbeitung von Befehlen ist Grundprinzip der Progammierung
+\item Struktur des Rechners unabhängig von dem zu bearbeitenden Problem
+\item Daten, Programme, Zwischen- und Endergebnisse liegen im gleichen Speicher.
+\item Speicher ist in gleichgroße nummerierte (addressierte) Zellen unterteilt.
+\item Über die Adresse einer Speicherzelle kann deren Inhalt abgerufen verändert werden.
+\item Ein Programm ist eine Reihe von Befehlen.
+\item Aufeinanderfolgende Befehle eines Programms liegen in benachbarten Speicherzellen und werden entsprechend nacheinander aufgerufen.
 \end{itemize}
+\end{small}
+
+\center
+\textcolor{darkcyan}{ $\to$ Die Architektur eines Rechners impliziert das Grundprinzip der Programmierung: \\
+Befehle werden streng sequentiell abgearbeitet.}
 
 
 # Algorithmen und Programme --------------------------------------------------{.plain}
@@ -614,16 +594,17 @@ Grundbegriffe der Informatik
 \item[--] Informatik
 \item[--] Rechnerarchitektur
 \item[--] \textbf{Algorithmen und Programme}
-\item[--] Selbstkontrollfragen
 \end{itemize}
 
 R und Visual Studio Code
 
+Selbstkontrollfragen
 
-# Vom Realwertproblem zum Programm
+
+# Vom Realweltproblem zum Programm
 \setstretch{1.3}
 
-Realwertproblem
+Realweltproblem
 
 * Das Problem, das mithilfe eines Computers gelöst werden soll.
 * z.B. Auswertung von Fragebogendaten einer psychologischen Studie.
@@ -685,6 +666,8 @@ Eine Programmiersprache
 * ... definiert eine Syntax, also Vokabular und Programmaufbau.
 * ... definiert Semantik, also die Bedeutung der erlaubten Anweisungen.
 
+\vfill
+
 ![](../Abbildungen/migl_7_programmiersprache.pdf){width="50%" fig-align="center"}
 
 
@@ -698,14 +681,14 @@ Maschinensprache
 \begin{center}
 \begin{tabular}{ll}
 Addiere Inhalt R1 zu Inhalt R2 	& $\Rightarrow$ 1001 0010 \\
-Erhöhe Inhalt R um 1  			& $\Rightarrow$ 1001 0110 \\
+Erhöhe Inhalt R1 um 1  			& $\Rightarrow$ 1001 0110 \\
 Übertrage Inhalt R1 nach R3    	& $\Rightarrow$ 0010 0011
 \end{tabular}
 \end{center}
 
 
-* Programme in Maschinensprache heißen *Maschinenprogramme*
-* De facto führt ein Computer nur Maschinenprogramme aus
+* Programme in Maschinensprache heißen *Maschinenprogramme*.
+* De facto führt ein Computer nur Maschinenprogramme aus.
 * Für Menschen ist die Programmierung in Maschinensprache mühselig.
 
 \vspace{3mm}
@@ -724,7 +707,7 @@ Höhere Programmiersprache
 \small
 
 * Maschinensprachen
-* 10110000 01100001 (in hexadezimaler Darstellung: B0 61)
+* 10110000 01100001 (hexadezimaler Darstellung des Ausdrucks "B0 61")
 
 \normalsize
 2. Generation (2GL)
@@ -751,7 +734,6 @@ Höhere Programmiersprache
 * Codeoverhead Minimisierung, Automation, Flexibilität, Multiparadigmatisch
 
 
-
 # 4GL Programmierung
 
 ![](../Abbildungen/migl_7_algorithmen_und_programme.pdf){width="80%" fig-align="center"}
@@ -761,7 +743,7 @@ Höhere Programmiersprache
 \setstretch{2}
 \normalsize
 Imperative Programmierung
-
+Von Neuamann-Architektur: Die Architektur des Rechners imppliziert bereits die sequentielle Abarbeitung von Befehlen.
 \small
 
 * Problemlösungsweg wird als Folge von *Anweisungen (Befehlen)* vorgegeben.
@@ -799,65 +781,9 @@ Interpretierte Programmiersprachen
 * Beispiele für interpretierte Sprachen sind Python und R.
 
 
-# Die Programmiersprache R
-
-\setstretch{2}
-\normalsize
-R ist
-
-\small
-
-* ... eine imperative Programmiersprache,
-* ... per se objektorientiert, kann aber prozedural genutzt werden,
-* ... eine höhere Programmiersprache der 4. Generation,
-* ... eine interpretierte Sprache,
-* ... auf die statistische Analyse von Daten zugeschnitten.
-
-
-# Algorithmen und Programme --------------------------------------------------{.plain}
-\AtBeginSubsection{}
-\subsection{Selbstkontrollfragen}
-
-\setstretch{2.5}
-\vfill
-\large
-
-Formalia
-
-Grundbegriffe der Informatik
-
-\begin{itemize}
-\setstretch{1.4}
-\item[--] Datenanalyse
-\item[--] Informatik
-\item[--] Rechnerarchitektur
-\item[--] Algorithmen und Programme
-\item[--] \textbf{Selbstkontrollfragen}
-\end{itemize}
-
-R und Visual Studio Code
-
-
-# \textcolor{red}{Selbstkontrollfragen}
-\setstretch{2}
-\small
-1. Geben Sie die typische Struktur einer computergestützten Datenanalyse wieder.
-2. Erläutern Sie den Begriff "Datenanalyseskript".
-3. Definieren Sie den Begriff "Informatik".
-4. Erläutern Sie die Akronyme CPU, RAM, SSD, und GPU.
-5. Nennen Sie wesentliche Aspekte der Von-Neumann Rechnerarchitektur.
-6. Definieren Sie den Begriff des Algorithmus.
-7. Erläutern Sie den Zusammenhang von Algorithmen und Programmen.
-8. Was bezeichnen die Syntax und Semantik einer Programmiersprache?
-9. Differenzieren Sie die Begriffe "Maschinensprache" und "höhere Programmiersprache".
-10. Skizzieren Sie Prinzipien der prozeduralen und objektorientierten imperativen Programmierung.
-11. Skizzieren Sie die Entwicklung der Programmiersprachen der ersten bis vierten Generation.
-12. Differenzieren Sie die Begriffe der kompilierten und der interpretierten Programmiersprachen.
-
-
 # R und Visual Studio Code--------------------------------------------------{.plain}
-\AtBeginSubsection{}
-\subsection{R und Visual Studio Code}
+\AtBeginSection{}
+\section{R und Visual Studio Code}
 
 \setstretch{2.5}
 \vfill
@@ -869,43 +795,45 @@ Grundbegriffe der Informatik
 
 \textbf{R und Visual Studio Code}
 
+Selbstkontrollfragen
 
-# Was ist R
+
+# Was ist R?
 \setstretch{2}
 \normalsize
 
 * Eine Programmiersprache und ein Softwarepaket.
 * Entwickelt von @ihaka_language_1996.
 * Freier Dialekt der propietären Software S (@becker_new_1988).
-* Weiterentwickelt und gepflegt durch [R Core Team](https://www.r-project.org/contributors.html) und
-[R Foundation](https://www.r-project.org/foundation/)
+* Weiterentwickelt und gepflegt durch [\textcolor{linkblue}{R Core Team}](https://www.r-project.org/contributors.html) und
+[\textcolor{linkblue}{R Foundation}](https://www.r-project.org/foundation/)
 * Interpretierte imperativ-objektorientierte 4GL Sprache.
 * Optimiert und populär für statistische Datenanalysen.
-* Große Community mit etwa 20.000 beigetragenen R Paketen (Erweiterungen)
-* Evolviert und konservativ im Kern, konsistent und progressiv in
-[R Paketen](https://cran.r-project.org/web/packages/).
+* Große Community mit etwa 20.000 beigetragenen [\textcolor{linkblue}{R Paketen}](https://cran.r-project.org/web/packages/) (Erweiterungen)
+* Evolviert und konservativ im Kern, konsistent und progressiv in R Paketen.
 
 
-# Wie bekommt man R?
+# Wie bekomme ich R?
 
-Runterladen (z.B. \url{https://cran.r-project.org/bin/windows/base/}) und installieren.
+Über [\textcolor{linkblue}{cran.r-project.org}](https://cran.r-project.org/) die geeignete Version herunterladen und installieren.
 \vspace{2mm}
 
 ![](../Abbildungen/pds_2_r_download.png){width="80%"}
 
 
-# Was kann man mit R machen?
+# Was kann R?
 \setstretch{1.5}
 \large
-\textcolor{darkblue}{}
+\textcolor{darkblue}{Was kann man mit R machen?}
 \small
 
 * Datensätze laden, manipulieren, und speichern.
 * Eine Vielzahl von Berechnungen an verschiedenen Datenstrukturen durchführen.
 * Eine Vielzahl statistischer Analysemethoden auf Daten anwenden.
 * Datenanalyseskripte schreiben und Abbildungen generieren.
-* Präsentationen [RMarkdown](https://bookdown.org/yihui/rmarkdown/) und
-Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
+* Präsentationen [\textcolor{linkblue}{RMarkdown}](https://bookdown.org/yihui/rmarkdown/) und
+Bücher [\textcolor{linkblue}{RBookdown}](https://bookdown.org/yihui/bookdown/) erstellen.
+* Wissenschaftliche Berichte mit [\textcolor{linkblue}{Quarto}](https://quarto.org/) erstellen.
 
 \vspace{2mm}
 
@@ -913,20 +841,18 @@ Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
 \textcolor{darkblue}{Was kann man mit R (bisher) nicht so gut machen?}
 \small
 
-* In einer ansprechenden Umgebung programmieren ($\Rightarrow$ RStudio).
+* In einer ansprechenden Umgebung programmieren ($\Rightarrow$ Visual Studio Code).
 * Scientific Computing ($\Rightarrow$ Python, Matlab, Julia).
 * Psychologische Experimente programmieren ($\Rightarrow$ Python, Matlab)
 
 
-# Wie bekommt man Hilfe zu R?
-\large
-\textcolor{darkblue}{}
+# Wie bekomme ich Hilfe zu R?
 \small
 
 * Googlen
 * ChatGPT
-* \url{https://stackoverflow.com/}
-* \url{https://www.r-project.org/help.html}
+* [\textcolor{linkblue}{stackoverflow.com}](https://stackoverflow.com/)
+* [\textcolor{linkblue}{r-project.org/help.html}](https://www.r-project.org/help.html)
 * Während der Programmierung und bei bekanntem Funktionsnamen über die Kommandozeile:
 \footnotesize
   ```{r R Hilfe, eval = F, echo = T}
@@ -936,171 +862,86 @@ Bücher [RBookdown](https://bookdown.org/yihui/bookdown/) erstellen.
   browseVignettes()        # Zeigt Vignetten aller installierten Pakete im Browser
   browseVignettes("knitr") # Zeigt Vignetten des Paktes "knitr"
   ```
-* \small \url{https://rseek.org/}
-* \url{https://www.rstudio.com/resources/cheatsheets/}
-* \url{https://www.r-bloggers.com/}
+* \small [\textcolor{linkblue}{rseek.org}](https://rseek.org/)
+* \small [\textcolor{linkblue}{rstudio.com/resources/cheatsheets}](https://www.rstudio.com/resources/cheatsheets/)
+* \small [\textcolor{linkblue}{r-bloggers.com}](https://www.r-bloggers.com/)
 
 
-# \color{red}Was ist Visual Studio Code?
-\setstretch{2}
-\large
-\textcolor{darkblue}{}
+# Was ist Visual Studio Code (VSCode)?
+\setstretch{2.2}
 \small
 
-* Eine Softwareentwicklungsumgebung für R
-* Softwareentwicklungsumgebung = Integrated Development Environment
-* IDEs sind Programme zum Programmieren mit einer Programmiersprache
-* Kommandozeile, Skripteditor, Vielzahl weiterer Tools
-* Freemium Produkt von RStudio, Inc. (IDE frei, Server kostenpflichtig)
-* Initial Release 2011, Affero General Public License
-* Keine Verbindung zu R Core Team oder R Foundation
-* RStudio wird im Oktober 2022 zu posit ([**posit.co**](https://posit.co/))
+* VSCode ist eine kostenloser Quelltext-Editor von Microsoft.
+* VSCode ist eine Softwareentwicklungsumgebung (engl. Integrated Development Environment)
+* Seit 2015 für Windows, macOS und Linux verfügbar.
+* Seit 2018 ist VSCode der beliebteste Editor laut jährlicher stackoverflow Umfragen.
+* Ein Microsoftprodukt ist damit auch der beliebteste Editor der Linuxwelt.
+* Über Extensions kann VSCode als IDE für beliebige Sprachen genutzt werden.
+* Zum Beispiel funktioniert VSCode als IDE für R, Python, Julia, Shell, Quarto, etc.
+* VSCode ist Community-based und sehr konfigurierbar.
+* VSCode ist über Microsoft’s GitHub über Endgeräte synchronisierbar.
 
 
-# \color{red} Wie bekommt man Visual Studio Code?
-
-\small
-Runterladen (\url{https://www.rstudio.com/products/rstudio/}) und installieren.
-\vspace{2mm}
-
-TODO: screenshot von download seite? 
-
-
-# \color{red}Was kann man mit Visual Studio Code machen?
-\setstretch{1.6}
-\vspace{2mm}
+# Wie bekomme ich VSCode?
 \small
 
-* R Skripte erzeugen, bearbeiten, und laufen lassen
-* R Skripte in R Projekten organisieren
-
-\vspace{3mm}
-Laut Eigenwerbung:
-
-* Access RStudio locally
-* Syntax highlighting, code completion, and smart indentation
-* Execute R code directly from the source editor
-* Quickly jump to function definitions
-* View content changes in real-time with the Visual Markdown Editor
-* Easily manage multiple working directories using projects
-* Integrated R help and documentation
-* Interactive debugger to diagnose and fix errors
-* Extensive package development tools
-
-
-# \textcolor{darkblue}{Wie bekommt man Hilfe zu RStudio?}
-
-\small
-Googlen
-
-Zur Einführung $\Rightarrow$ [Using the RStudio IDE](https://support.rstudio.com/hc/en-us/sections/200107586-Using-the-RStudio-IDE)
-
-TODO: screenshot online support
-
-
-# R und RStudio
-\setstretch{1.7}
-\large
-\textcolor{darkblue}{R Kommandozeile $\vert$ Working in the Console}
-
-\small
-Die Basics:  
-\footnotesize
-
-* Eingabe von R Befehlen bei ```>```
-* Autocomplete mit \fbox{Tab}
-* Code ausführen mit \fbox{Enter}
-* Vorherige Befehle mit Cursor \fbox{$\uparrow$}
-* Bereinigen des Konsolenoutputs mit \fbox{Ctrl} + \fbox{L}
-* Code Ausführungsstopp mit \fbox{Esc}
-
-\vspace{2mm}
-\small
-Beispiel für einen Befehl:
-\footnotesize
-
-```{r Hello world console, eval=T, echo=T, indent="  "}
-print("Hallo Welt!")
-```
+Über [\textcolor{linkblue}{code.visualstudio.com}](https://code.visualstudio.com/) herunterladen und installieren.
 
 \vfill
-\footnotesize
-Anmerkung:
-\color{darkcyan} 
-**Code-Snippets in diesen Folien immer aktiv in der Konsole nachvollziehen!**
+
+![](../Abbildungen/pds_1_VSCode.png){width="80%" fig-pos="center"}
 
 
-
-# R Skripte $\vert$ Executing and Editing Code
-\setstretch{1.4}
-\large
-\textcolor{darkblue}{}
-
+# Wie benutze ich VSCode?
 \small
-Neue .R Datei erstellen  
-\vspace{-1pt}
 
-\footnotesize 
-
-* GUI: *File* $\rightarrow$ *New File* $\rightarrow$ *R Script* 
-* Keyboard Shortcut: \fbox{Ctrl} + \fbox{Shift} + \fbox{N}  
-
-\small
-Bestehende .R Datei öffnen  
-\vspace{-1pt}
-
-\footnotesize 
-
-* GUI: File $\rightarrow$ Open File 
-* \fbox{Ctrl} + \fbox{O}
-
-\vspace{2mm}
-\small Code im .R Skript schreiben (Befehle in Programmiersprache formulieren)  
-
-
-\vspace{1mm}
-\footnotesize
-```{r Hello World script, eval = F}
-#| label: Hello World
-print("Hallo Welt!")  # Hinter Hashtags stehen dokumentierende Kommentare
-print("Hallo R!")     # Kommentare werden nicht ausgefuehrt
-```
-
-\small
-Befehle eines R Scripts ausführen
-\vspace{-2mm}
-
-\footnotesize
-* Einzelnen Zeile, auf welcher der Cursor ruht: $\Rightarrow$ Run oder \fbox{Ctrl} + \fbox{Enter}
-* Ausführen aller Zeilen: $\Rightarrow$ *Source* oder  \fbox{Ctrl} + \fbox{Shift} +  \fbox{Enter} oder $\Rightarrow$ Tickmark bei *Source on Save* setzen und \fbox{Ctrl} + \fbox{S}
+Online Dokumentation: [\textcolor{linkblue}{code.visualstudio.com/docs}](https://code.visualstudio.com/docs) 
 
 \vfill
-\footnotesize
-Anmerkung:
-\textcolor{darkcyan}{Code-Snippets in diesen Folien immer aktiv in einem R Skript dokumentieren!}
+
+![](../Abbildungen/pds_1_VSCode_docs.png){width="80%" fig-pos="center"}
 
 
-# R und RStudio
-\setstretch{1.4}
+# Aufgaben bis nächste Woche
+\setstretch{2.5}
+
+1. [\textcolor{linkblue}{R}](https://cran.r-project.org/) installieren.
+2. [\textcolor{linkblue}{VSCode}](https://code.visualstudio.com/) installieren.
+3. VSCode für R startklar machen: (Anleitung [\textcolor{linkblue}{hier}](https://code.visualstudio.com/docs/languages/r)).
+
+
+# Selbstkontrollfragen ------------------------------------{.plain}
+\AtBeginSection{}
+\section{Selbstkontrollfragen}
+
+\setstretch{2.5}
+\vfill
 \large
-\textcolor{red}{Das R und RStudio Data Science Universum}
-\vspace{2mm}
 
-```{r R Universum, echo = FALSE, out.width = "100%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_datascienceuniverse.pdf"))
-```
+Formalia
 
-# R und RStudio
-\setstretch{1.4}
-\large
-\textcolor{red}{Lehrmaterialien mit R und RStudio}
-\vspace{2mm}
+Grundbegriffe der Informatik
 
-```{r Literatur, echo = FALSE, out.width = "80%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_lehrmaterialien.pdf"))
-```
+R und Visual Studio Code
+
+**Selbstkontrollfragen**
 
 
-# TODO 
+# Selbstkontrollfragen
+\setstretch{1.5}
+\small
+1. Geben Sie die typische Struktur einer computergestützten Datenanalyse wieder.
+2. Erläutern Sie den Begriff "Datenanalyseskript".
+3. Definieren Sie den Begriff "Informatik".
+4. Erläutern Sie die Akronyme CPU, RAM, SSD, und GPU.
+5. Nennen Sie wesentliche Aspekte der Von-Neumann Rechnerarchitektur.
+6. Definieren Sie den Begriff Algorithmus.
+7. Erläutern Sie den Zusammenhang von Algorithmen und Programmen.
+8. Was bezeichnen die Syntax und Semantik einer Programmiersprache?
+9. Differenzieren Sie die Begriffe "Maschinensprache" und "höhere Programmiersprache".
+10. Skizzieren Sie Prinzipien der prozeduralen und objektorientierten imperativen Programmierung.
+11. Skizzieren Sie die Entwicklung der Programmiersprachen der ersten bis vierten Generation.
+12. Differenzieren Sie die Begriffe der kompilierten und der interpretierten Programmiersprachen.
 
-add radian installation advide!
+
+# Referenzen
