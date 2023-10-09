@@ -61,7 +61,7 @@ Aufnahme läuft.
 
 [\textcolor{linkblue}{Homepage der Abteilung für Methodenlehre I}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
 
-![](../Abbildungen/Lehrstuhlseite.png){width="80%"}
+![](../Abbildungen/magl_0_homepage.png){width="80%"}
 
 
 # AGENDA {.plain}
@@ -103,10 +103,10 @@ Selbstkontrollfragen
 
 \vspace{3mm}
 
-\textcolor{darkblue}{C2. Design, Analyse, Dokumentation}
+\textcolor{darkblue}{C2. Analyse und Dokumentation}
 
-* Einführung in das Design quantitativer empirischer Studien
-* Einführung in die Analyse und Dokumentation emirischer Daten
+* Praktische Analyse empirischer Daten
+* Dokumentation empirischer Studien und Analysen
 
 
 # Organisatorisches
@@ -137,8 +137,8 @@ Selbstkontrollfragen
 \begin{tabular}{lll}
 Datum          & Einheit               & Thema		                              \\\hline
 11.10.23       & Einführung            & (1) Einführung \\
-18.10.23       & R Grundlagen          & (2) R und Visial Studio Code                      \\
-25.10.23       & R Grundlagen          & (2) R und Visial Studio Code                      \\
+18.10.23       & R Grundlagen          & (2) R und Visual Studio Code                      \\
+25.10.23       & R Grundlagen          & (2) R und Visual Studio Code                      \\
 01.11.23       & R Grundlagen          & (3) Vektoren                           \\
 08.11.23       & R Grundlagen          & (4) Matrizen und Arrays                \\
 15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
@@ -147,12 +147,12 @@ Datum          & Einheit               & Thema		                              \\
 06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
 13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
 20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
-20.12.23       & \textit{Leistunsnachweis Teil 1}        \\
+20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
                & \textcolor{gray}{Weihnachtspause}                              \\
 10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
 17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
 24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
-25.01.24       & \textit{Leistunsnachweis Teil 2}                          \\\hline
+25.01.24       & \textit{Leistungsnachweis Teil 2}                          \\\hline
 \end{tabular}
 
 
