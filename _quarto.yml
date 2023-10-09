@@ -1,0 +1,11 @@
+project:
+  title: "progr-und-deskr-stat-24"
+
+fontsize: 8pt
+format:
+  beamer:
+    include-in-header: ../Header.tex
+citation_package: natbib
+bibliography: ../Referenzen.bib
+editor:
+  render-on-save: true
