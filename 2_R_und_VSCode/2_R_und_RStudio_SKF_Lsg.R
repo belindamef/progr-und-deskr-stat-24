@@ -1,7 +1,7 @@
-# Beispiellösung für Selbstkontrollfragen aus Einheit (2) "R und RStudio
-# Grundlagen" des Kurses "Programmierung und Deskriptive Statistik" im WS 22/23
+# Beispiellösung für Selbstkontrollfragen aus Einheit (2) "R und VSCode
+# Grundlagen" des Kurses "Programmierung und Deskriptive Statistik" im WS 23/24
 #
-# Author: Belinda Fleischmann
+# Authorin: Belinda Fleischmann
 
 # ------ SKF 3 ---------------------------------
 # Die Basics
@@ -26,8 +26,8 @@ print("Hallo R!")           # Begrüße R
 4 <= 3                      # Auswertung von '4 kleiner gleich 3'
 4 >= 4                      # Auswertung von '4 goesser gleich 4'
 2 < 3 | 2 > 2               # Gilt EINE ODER BEIDE dieser Aussagen? (inklusiv)
-xor(2 < 3, 2 > 2)           # Gilt EINE (nicht beide!) der Aussagen? (exklusiv) 
-xor(2 < 3, 2 > 1)           # Gilt EINE (nicht beide!) der Aussagen? (exklusiv) 
+xor(2 < 3, 2 > 2)           # Gilt EINE (nicht beide!) der Aussagen? (exklusiv)
+xor(2 < 3, 2 > 1)           # Gilt EINE (nicht beide!) der Aussagen? (exklusiv)
 2 < 3 & 2 > 2               # Gelten BEIDE (nicht nur eine!) Aussagen?
 2 < 3 & 2 == 2              # Gelten BEIDE (nicht nur eine!) Aussagen?
 
@@ -52,26 +52,27 @@ log(1)                      # Wert der Logarithmusfunktion für x = 1
 (2^2)^3                     # Überschreiben der rechts-nach-links Präzedenz
 -1^2                        # Potenz vor unitärem Vorzeichen
 (-1)^2                      # Überschreiben der Präzedenz Potenz-vor-Vorzeichen
-2+3/4*5                     # 2+(3/4)*5 = 2+(0.75*5) = 2+3.75 = 5.75
-2+3/(4*5)                   # 2+3/(4*5) = 2+3/20 = 2+0.15 = 2.15
+2 + 3 / 4 * 5               # 2+(3/4)*5 = 2+(0.75*5) = 2+3.75 = 5.75 # nolint
+2 + 3 / (4 * 5)             # 2+3/(4*5) = 2+3/20 = 2+0.15 = 2.15 # nolint
 
 # Variablenzuweisung
-a = 1                      # a ist eine Variable vom Typ double, ihr Wert ist 1
+a <- 1                      # Erzeugt Variable a vom Typ double mit dem Wert 1
+a = 1                       # Erzielt gleiches Ergebnis wie `a <- 1` # nolint
 
 # Das Gretchenbeispiel
-hefte = 4                    # Definition der Variable 'hefte' und Wertzuweisung 4
-stifte = 2                   # Definition der Variable 'stifte' und Wertzuweisung 2
-fueller = 1                  # Definition der Variable 'fueller' und Wertzuweisung 1
-gesamt = (                   # Berechnung der Gegenstandsanzahl
+hefte <- 4                 # Definition der Variable 'hefte' und Wertzuweisung
+stifte <- 2                # Definition der Variable 'stifte' und Wertzuweisung
+fueller <- 1               # Definition der Variable 'fueller' und Wertzuweisung
+anzahl_gegenstaende <- (   # Berechnung der Gegenstandsanzahl
   hefte + stifte + fueller
-  )  
-gesamtpreis = (              # Berechung des Preises
-  hefte*1 
-  + stifte*2 
-  + fueller*10
-  )   
-print(gesamt)                      
-print(gesamtpreis)
+)
+gesamtpreis <- (           # Berechung des Gesamtpreises
+  hefte * 1
+  + stifte * 2
+  + fueller * 10
+)
+print(anzahl_gegenstaende) # Ausgabe der Anzahl an Gegenständen in der Console
+print(gesamtpreis)         # Ausgabe des Gesamtpreises in der Console
 
 # Workspace
 ls()                         # Anzeigen aller Variablennamen im Workspace
@@ -80,7 +81,7 @@ rm(list = ls())              # Löschen aller Variablen
 
 # Speicheradressen anzeigen
 library(lobstr)              # Paket 'lobstr' laden
-x = 1                        
+x <- 1
 obj_addr(x)
-y = 1
+y <- 1
 obj_addr(y)
