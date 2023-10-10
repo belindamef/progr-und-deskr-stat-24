@@ -56,14 +56,6 @@ Aufnahme läuft.
 \vfill
 
 
-# Lehrstuhlwebsite
-\vspace{5mm}
-
-[\textcolor{linkblue}{Homepage der Abteilung für Methodenlehre I}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
-
-![](../Abbildungen/magl_0_homepage.png){width="80%"}
-
-
 # AGENDA {.plain}
 \large
 \setstretch{2.5}
@@ -94,6 +86,15 @@ R und Visual Studio Code
 
 Selbstkontrollfragen
 
+
+# Lehrstuhlwebsite
+\vspace{5mm}
+
+[\textcolor{linkblue}{Homepage der Abteilung für Methodenlehre I}](https://www.ipsy.ovgu.de/methodenlehre_I-path-980,1404.html)
+
+![](../Abbildungen/magl_0_homepage.png){width="80%"}
+
+
 # Modul C: Einführung in empirisch-wissenschaftliches Arbeiten
 \setstretch{1.5}
 \textcolor{darkblue}{C1. Programmierung und Deskriptive Statistik}
@@ -113,9 +114,9 @@ Selbstkontrollfragen
 \setstretch{1.5}
 
 * \justifying Termine: Mittwochs in Raum G05-307
-  * Gruppe 1 um 11-13 Uhr
-  * Gruppe 2 um 13-15 Uhr
-* Kursmaterialien (Folien, Videos, RMarkdown Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}}
+  * Gruppe 1 um 13-15 Uhr
+  * Gruppe 2 um 11-13 Uhr
+* Kursmaterialien (Folien, Videos, Source Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}}
 * Code auf \textcolor{linkblue}{\href{https://github.com/belindamef/progr-und-deskr-stat-24}{Github}}
 * Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=15163}{Moodleseite}}
 * Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS (WS 2023/23)}}
@@ -412,21 +413,9 @@ Algorithmen und Programme
 \setstretch{1.5}
 \vfill
 
-Angewandte Informatik
-
-* Anwendungssoftware, \textcolor{darkgreen}{Human-Computer-Interaction}, Informatik und Gesellschaft
-
-\vspace{3mm}
-
 Technische Informatik
 
 * Mikroprozessortechnik, Rechnerarchitektur, Netzwerktechnik
-
-\vspace{3mm}
-
-\textcolor{darkgreen}{Praktische Informatik}
-
-* \textcolor{darkgreen}{Programmierung}, \textcolor{darkgreen}{Algorithmen}, Datenbanken
 
 \vspace{3mm}
 
@@ -434,6 +423,18 @@ Theoretische Informatik
 
 * Automatentheorie, Berechenbarkeitstheorie, Komplexitätstheorie
 \vfill
+
+Praktische Informatik
+
+* \textcolor{darkgreen}{Programmierung}, \textcolor{darkgreen}{Algorithmen}, Datenbanken
+
+\vspace{3mm}
+
+Angewandte Informatik
+
+* Anwendungssoftware, \textcolor{darkgreen}{Human-Computer-Interaction}, Informatik und Gesellschaft
+
+\vspace{3mm}
 
 
 # Spezialgebiete der Informatik mit Relevanz für die Psychologie
@@ -552,7 +553,7 @@ Zentrale Eigenschaften
 
 \begin{small}
 \begin{itemize}
-\item Struktur des Rechners unabhängig von dem zu bearbeitenden Problem
+\item Struktur des Rechners unabhängig von dem zu bearbeitenden Problem.
 \item Daten, Programme, Zwischen- und Endergebnisse liegen im gleichen Speicher.
 \item Speicher ist in gleichgroße nummerierte (addressierte) Zellen unterteilt.
 \item Über die Adresse einer Speicherzelle kann deren Inhalt abgerufen verändert werden.
@@ -733,16 +734,15 @@ Höhere Programmiersprache
 \setstretch{2}
 \normalsize
 Imperative Programmierung
-Von Neuamann-Architektur: Die Architektur des Rechners imppliziert bereits die sequentielle Abarbeitung von Befehlen.
 \small
 
 * Problemlösungsweg wird als Folge von *Anweisungen (Befehlen)* vorgegeben.
 * Befehle verarbeiten Daten, die mithilfe von *Variablen* adressiert werden.
     * \small \textbf{Prozedurale imperative Programmierung}
-        * Daten und sie manipulierende Befehle werden separat behandelt.
+        * \small Daten und sie manipulierende Befehle werden separat behandelt.
         * Prozeduren (Funktionen) bilden das zentrale Strukturkonzept.
     * **Objektorientierte imperative Programmierung**
-        * Daten und manipulierende Befehle werden als *Objekte* zusammengefasst.
+        * \small Daten und manipulierende Befehle werden als *Objekte* zusammengefasst.
         * Objekte bilden das zentrale Strukturkonzept.
 * Praktisch liegen oft Mischformen vor.
 
@@ -797,7 +797,7 @@ Selbstkontrollfragen
 * Freier Dialekt der propietären Software S (@becker_new_1988).
 * Weiterentwickelt und gepflegt durch [\textcolor{linkblue}{R Core Team}](https://www.r-project.org/contributors.html) und
 [\textcolor{linkblue}{R Foundation}](https://www.r-project.org/foundation/)
-* Interpretierte imperativ-objektorientierte 4GL Sprache.
+* Interpretierte imperative 4GL Sprache.
 * Optimiert und populär für statistische Datenanalysen.
 * Große Community mit etwa 20.000 beigetragenen [\textcolor{linkblue}{R Paketen}](https://cran.r-project.org/web/packages/) (Erweiterungen)
 * Evolviert und konservativ im Kern, konsistent und progressiv in R Paketen.
@@ -862,7 +862,7 @@ Bücher [\textcolor{linkblue}{RBookdown}](https://bookdown.org/yihui/bookdown/) 
 \small
 
 * VSCode ist eine kostenloser Quelltext-Editor von Microsoft.
-* VSCode ist eine Softwareentwicklungsumgebung (engl. Integrated Development Environment)
+* VSCode ist eine Softwareentwicklungsumgebung (Integrated Development Environment, IDE)
 * Seit 2015 für Windows, macOS und Linux verfügbar.
 * Seit 2018 ist VSCode der beliebteste Editor laut jährlicher stackoverflow Umfragen.
 * Ein Microsoftprodukt ist damit auch der beliebteste Editor der Linuxwelt.
@@ -897,7 +897,7 @@ Online Dokumentation: [\textcolor{linkblue}{code.visualstudio.com/docs}](https:/
 
 1. [\textcolor{linkblue}{R}](https://cran.r-project.org/) installieren.
 2. [\textcolor{linkblue}{VSCode}](https://code.visualstudio.com/) installieren.
-3. VSCode für R startklar machen: (Anleitung [\textcolor{linkblue}{hier}](https://code.visualstudio.com/docs/languages/r)).
+3. VSCode für R startklar machen (Anleitung [\textcolor{linkblue}{hier}](https://code.visualstudio.com/docs/languages/r)).
 
 
 # Selbstkontrollfragen ------------------------------------{.plain}
