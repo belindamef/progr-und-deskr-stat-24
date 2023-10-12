@@ -1,11 +1,3 @@
-
-
-```{r, include = F}
-# | label: setup
-# source("../R_common.R")
-abb_dir = file.path(dirname(getwd()), "Abbildungen")
-```
-
 # Titelfolie {.plain}
 \center
 ![](../Abbildungen/otto.png){width="20%"}
@@ -119,7 +111,7 @@ Selbstkontrollfragen
 * Kursmaterialien (Folien, Videos, Source Code) auf der \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Programmierung+und+Deskriptive+Statistik.html}{Kurswebseite}}
 * Code auf \textcolor{linkblue}{\href{https://github.com/belindamef/progr-und-deskr-stat-24}{Github}}
 * Ankündigungen über die \textcolor{linkblue}{\href{https://elearning.ovgu.de/course/view.php?id=15163}{Moodleseite}}
-* Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS (WS 2023/23)}}
+* Vorherige Iteration des Kurses: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2023/Programmierung+und+Deskriptive+Statistik.html}{PDS (WS 2022/23)}}
 * Empfohlene Vorbereitung: \textcolor{linkblue}{\href{https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Lehre/Wintersemester+2024/Mathematische+Grundlagen.html}{Vorkurs ''Mathematische Grundlagen''}}
 * Q&A im \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/bsc-psychologie-2023/channels/c1---programmeriung-und-deskriptive-statistik}{Mattermost-Channel}}
   * Einmalige \textcolor{linkblue}{\href{https://mm.cs.ovgu.de/signup_user_complete/?id=md7rjp5q4jy4zrmwpgar9qr5ih&sbr=su}{Registrierung}} zum Team "bsc-psy-2023"
@@ -845,7 +837,7 @@ Bücher [\textcolor{linkblue}{RBookdown}](https://bookdown.org/yihui/bookdown/) 
 * [\textcolor{linkblue}{r-project.org/help.html}](https://www.r-project.org/help.html)
 * Während der Programmierung und bei bekanntem Funktionsnamen über die Kommandozeile:
 \footnotesize
-  ```{r R Hilfe, eval = F, echo = T}
+  ```{r}
   #| label: R Hilfe
   ?mean                    # Zeigt Hilfe zu der Funktion "mean()"
   help(mean)               # Zeigt Hilfe zu der Funktion "mean()"
