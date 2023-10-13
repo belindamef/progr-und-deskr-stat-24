@@ -2,10 +2,14 @@ project:
   title: "progr-und-deskr-stat-24"
 
 fontsize: 8pt
+code-font-size: 6pt
 format:
   beamer:
     include-in-header: ../Header.tex
 citation_package: natbib
 bibliography: ../Referenzen.bib
+execute:
+  echo: true
+  eval: false
 editor:
   render-on-save: true
