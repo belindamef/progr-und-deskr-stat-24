@@ -32,8 +32,8 @@ Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy
 \begin{tabular}{lll}
 Datum          & Einheit               & Thema		                              \\\hline
 11.10.23       & Einführung            & (1) Einführung \\
-\textbf{18.10.23}       & \textbf{R Grundlagen}          & (2) \textbf{R und Visual Studio Code}                      \\
-25.10.23       & R Grundlagen          & (2) R und Visual Studio Code                      \\
+\textbf{18.10.23}       & \textbf{R Grundlagen}          & \textbf{(2) R und Visual Studio Code}                      \\
+\textbf{25.10.23}       & \textbf{R Grundlagen}          & \textbf{(2) R und Visual Studio Code}                      \\
 01.11.23       & R Grundlagen          & (3) Vektoren                           \\
 08.11.23       & R Grundlagen          & (4) Matrizen und Arrays                \\
 15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
@@ -107,7 +107,7 @@ Datenstrukturen
 # R Kommandozeile $\vert$ Working in the Console
 \setstretch{1.7}
 
-Die Basics:
+\textcolor{darkblue}{Die Basics}
 \small
 
 * Eingabe von R Befehlen bei ```>```
@@ -119,7 +119,7 @@ Die Basics:
 
 \vspace{2mm}
 \normalsize
-Beispiel für einen Befehl:
+\textcolor{darkblue}{Beispiel für einen Befehl}
 
 \small
 
@@ -129,6 +129,7 @@ print("Hallo Welt!")
 ```
 
 \vfill
+\footnotesize
 Anmerkung:
 \color{darkcyan} 
 **Code-Snippets dieser Form immer aktiv in der Konsole nachvollziehen!**
@@ -138,7 +139,7 @@ Anmerkung:
 # R Skripte $\vert$ Executing and Editing Code
 \vspace{2mm}
 
-Neue .R Datei erstellen
+\textcolor{darkblue}{Neue .R Datei erstellen}
 \vspace{-2mm}
 \small
 
@@ -146,7 +147,7 @@ Neue .R Datei erstellen
 * Keyboard Shortcut: \fbox{Ctrl} + \fbox{N}
 
 \normalsize
-Bestehende .R Datei öffnen
+\textcolor{darkblue}{Bestehende .R Datei öffnen}
 \vspace{-2mm}
 \small 
 
@@ -154,7 +155,7 @@ Bestehende .R Datei öffnen
 * Keyboard Shortcut: \fbox{Ctrl} + \fbox{O}
 
 \normalsize
-Code in einem .R Skript schreiben (Befehle in Programmiersprache formulieren)
+\textcolor{darkblue}{Code in einem .R Skript schreiben} (Befehle in Programmiersprache formulieren)
 
 
 \vspace{1mm}
@@ -460,7 +461,7 @@ zu einer Konstante – zur Laufzeit des Rechenprozesses verändert werden.
   a = 1                # a ist eine Variable vom Typ double, ihr Wert ist 1
   ```
 
-# Beispiel
+# \textcolor{darkcyan}{Beispiel}
 
 \footnotesize
 \justifying
@@ -511,7 +512,7 @@ rm(pandoc_dir)
 rm(quarto_bin_path)
 
 ```
-Der Workspcae / (globale) Arbeitsbereich
+\textcolor{darkblue}{Der Workspace | (globaler) Arbeitsbereich}
 
 * Enthält alle aktuell definierten Objekte, Variablen und Funktionen während einer R-Sitzung.
 * Nach Zuweisung werden Variablen automatisch im Workspace gespeichert.
@@ -523,7 +524,7 @@ Der Workspcae / (globale) Arbeitsbereich
   ```
 
 \small
-Löschen von Variablen
+\textcolor{darkblue}{Löschen von Variablen}
 
 * Löschen bestimmter Variablen
 \setstretch{0.9}
@@ -557,7 +558,7 @@ In VSCode kann der Workspace in the R Extension pane angezeigt werden
 
 \small
 
-Zulässige Variablennamen
+\textcolor{darkblue}{Zulässige Variablennamen}
 
 * bestehen aus Buchstaben, Zahlen, Punkten (.) und Unterstrichen (\_).
 * beginnen mit einem Buchstaben oder . nicht gefolgt von einer Zahl.
@@ -566,7 +567,7 @@ Zulässige Variablennamen
 
 \vspace{1mm}
 
-Sinnvolle Variablennamen
+\textcolor{darkblue}{Sinnvolle Variablennamen}
 
 * sind kurz ($\approx$ 1 bis 9 Zeichen) und \textcolor{darkcyan}{aussagekräftig}.
 * bestehen nur aus Kleinbuchstaben und Unterstrichen.
@@ -672,7 +673,7 @@ Anmerkungen:
 \vfill
 \small
 
-Das Prinzip
+\textcolor{darkblue}{Das Prinzip}
 
 \footnotesize
 
@@ -684,7 +685,7 @@ Das Prinzip
 
 \small
 
-Paket-Management
+\textcolor{darkblue}{Paket-Management}
 \footnotesize
 
 * Anzeige und Auswahl aller installierter Pakete in der R Extention: \textit{HELP PAGES} $\to$ \textit{Home} $\to$ \textit{Packages}
@@ -743,30 +744,31 @@ x[1] <- 2   # Objekt (0x74b) veraendert
 
 \vfill
 
-
-# Variablenrepräsentation $\vert$ Unbinding und Garbage Collection
+# Variablenrepräsentation $\vert$ Copy-on-modify
 \small
-\setstretch{1.2}
+\setstretch{1.5}
 
 Copy-on-modify gilt auch in umgekehrter Reihenfolge
 
 \footnotesize
-```{r}
+```{r, eval = T}
 #| label: binding umgekehrt
-x <- 1                      # Objekt (0x74b) erzeugt, x referenziert Speicheradresse  des Objektes
-y <- x                      # Zuweisung y zu gleicher Speicherzelle wie x
-obj_addr(y) == obj_addr(x)  # zeigt, dass y dieselbe Speicheradresse wie x (0x74b) referenziert.
-x <- 3                      # Ein neues Objekt mit Wert 3 wird in Speicherzelle (0x2a08) erzeugt.
-                            # x referenziert jetzt Objelkt (0x2a08)
-                            # y referenziert weiterhin Objekt (0x74b)
-obj_addr(y) == obj_addr(x)  # zeigt, dass y und x nicht mehr dieselbe Speicherzelle addressieren.
+x <- 1                     # Objekt (0x74b) erzeugt, x referenziert Speicheradresse  des Objektes
+y <- x                     # Zuweisung y zu gleicher Speicherzelle wie x
+obj_addr(y) == obj_addr(x) # zeigt, dass y dieselbe Speicheradresse wie x (0x74b) referenziert.
+x <- 3                     # Ein neues Objekt mit Wert 3 wird in Speicherzelle (0x2a08) erzeugt.
+                           # x referenziert jetzt Objelkt (0x2a08)
+                           # y referenziert weiterhin Objekt (0x74b)
+obj_addr(y) == obj_addr(x) # zeigt, dass y und x nicht mehr dieselbe Speicherzelle addressieren.
 ```
 
 ![](../Abbildungen/pds_2_unbinding.pdf){width="56%"}
 
 
+# Variablenrepräsentation $\vert$ Unbinding und Garbage Collection
+\setstretch{1.8}
 \small
-Unbinding
+\textcolor{darkblue}{Unbinding}
 \footnotesize
 ```{r}
 #| label: unbinding
@@ -776,7 +778,7 @@ x <- "a"    #  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referen
 
 \vspace{2mm}
 \small
-Garbage collection
+\textcolor{darkblue}{Garbage collection}
 \footnotesize
 
 
