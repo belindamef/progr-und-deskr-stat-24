@@ -119,7 +119,7 @@ Datenstrukturen
 
 \vspace{2mm}
 \normalsize
-\textcolor{darkblue}{Beispiel für einen Befehl}
+\textcolor{darkcyan}{Beispiel für einen Befehl}
 
 \small
 
