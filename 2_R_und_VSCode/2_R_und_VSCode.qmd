@@ -542,14 +542,13 @@ Löschen von Variablen
 
 
 # Workspace
+
 \vfill
 \small
 
-\color{red} TODO: neuen Screenshot einfügen
-
 In VSCode kann der Workspace in the R Extension pane angezeigt werden
 \vfill
-![](../Abbildungen/pds_2_workspace_vsc.png){width="70%"}
+![](../Abbildungen/pds_2_vscode_workspace.pdf){width="60%"}
 
 
 # Variablennamen
