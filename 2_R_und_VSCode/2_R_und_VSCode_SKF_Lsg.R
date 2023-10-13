@@ -3,7 +3,7 @@
 #
 # Authorin: Belinda Fleischmann
 
-# ------ SKF 3 ---------------------------------
+# ------ SKF 2 ---------------------------------
 # Die Basics
 print("Hallo Welt!")        # Textausgabe
 print("Hallo R!")           # Begrüße R
@@ -74,14 +74,38 @@ gesamtpreis <- (           # Berechung des Gesamtpreises
 print(anzahl_gegenstaende) # Ausgabe der Anzahl an Gegenständen in der Console
 print(gesamtpreis)         # Ausgabe des Gesamtpreises in der Console
 
-# Workspace
-ls()                         # Anzeigen aller Variablennamen im Workspace
-rm(gesamtpreis)              # Löschen der Variable Gesamtpreis
-rm(list = ls())              # Löschen aller Variablen
+# Workspace managen
+ls()                       # Anzeigen aller Variablennamen im Workspace
+rm(gesamtpreis)            # Löschen der Variable Gesamtpreis
+rm(list = ls())            # Löschen aller Variablen
+
+# Pakete managen
+installed.packages()        # Anzeige aller installierten Pakete
+install.packages("lobstr")  # Paket installieren
+library(lobstr)             # Paket laden
 
 # Speicheradressen anzeigen
-library(lobstr)              # Paket 'lobstr' laden
 x <- 1
 obj_addr(x)
 y <- 1
 obj_addr(y)
+
+# ------ SKF 9 ---------------------------------
+# Variablen unabhängig voneinander definieren
+x <- 7
+y <- 7
+# Prüfe, ob x und y die selbe Speicheradresse referenzieren
+obj_addr(x) == obj_addr(y)
+
+# ------ SKF 10 ---------------------------------
+# Variablen abhängig voneinander definieren
+x <- 7
+y <- x
+# Prüfe, ob x und y die selbe Speicheradresse referenzieren
+obj_addr(x) == obj_addr(y)
+
+# ------ SKF 11 ---------------------------------
+# Demonstration, dass R case-sensitiv ist
+x <- "klein"
+X <- "groß"
+print(x == X)              # Ausgabe boolesche Operation

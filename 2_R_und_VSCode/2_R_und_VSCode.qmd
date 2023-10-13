@@ -1,12 +1,3 @@
-
-
-```{r, include = T}
-# | label: setup
-# source("../R_common.R")
-abb_dir = file.path(dirname(getwd()), "Abbildungen")
-```
-
-
 # Titelfolie {.plain}
 \center
 ![](../Abbildungen/otto.png){width="20%"}
@@ -31,6 +22,35 @@ Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy
 
 
 
+# Termine {.plain}
+\setstretch{1.3}
+\vfill
+\center
+\footnotesize
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                              \\\hline
+11.10.23       & Einführung            & (1) Einführung \\
+\textbf{18.10.23}       & \textbf{R Grundlagen}          & (2) \textbf{R und Visual Studio Code}                      \\
+25.10.23       & R Grundlagen          & (2) R und Visual Studio Code                      \\
+01.11.23       & R Grundlagen          & (3) Vektoren                           \\
+08.11.23       & R Grundlagen          & (4) Matrizen und Arrays                \\
+15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
+22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
+39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
+               & \textcolor{gray}{Weihnachtspause}                              \\
+10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24       & \textit{Leistungsnachweis Teil 2}                          \\\hline
+\end{tabular}
+
+
 # (2) R und VSCode - Titelfolie {.plain}
 \vfill
 \center
@@ -44,7 +64,7 @@ Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy
 \setstretch{2.5}
 \vfill
 
-R und VSCode
+Getting started
 
 Arithmetik, Logik und Präzedenz
 
@@ -55,24 +75,40 @@ Datenstrukturen
 Übungen und Selbstkontrollfragen
 
 
-
-# TODO: Agenda überall einfügen
-
-# R und RStudio ====================================== {.plain}
+# R und VSCode ====================================== {.plain}
 \AtBeginSection{}
-\section{R und VSCode}
+\section{Getting started}
 
-TODO: Agenda einfügen
-
-
-# R und RStudio
-\setstretch{1.7}
 \large
-\textcolor{darkblue}{R Kommandozeile $\vert$ Working in the Console}
+\setstretch{2.5}
+\vfill
 
+**Getting started**
+
+Arithmetik, Logik und Präzedenz
+
+Variablen
+
+Datenstrukturen
+
+Übungen und Selbstkontrollfragen
+
+
+# Installationen
+\setstretch{2.5}
+
+* Die Programmiersprache [\textcolor{linkblue}{R}](https://cran.r-project.org/)
+* Die IDE [\textcolor{linkblue}{VSCode}](https://code.visualstudio.com/)
+* VSCode für R startklar machen (Anleitung [\textcolor{linkblue}{hier}](https://code.visualstudio.com/docs/languages/r))
+* Optional: [\textcolor{linkblue}{radian}](https://github.com/randy3k/radian)
+
+
+
+# R Kommandozeile $\vert$ Working in the Console
+\setstretch{1.7}
+
+Die Basics:
 \small
-Die Basics:  
-\footnotesize
 
 * Eingabe von R Befehlen bei ```>```
 * Autocomplete mit \fbox{Tab}
@@ -82,205 +118,82 @@ Die Basics:
 * Code Ausführungsstopp mit \fbox{Esc}
 
 \vspace{2mm}
-\small
+\normalsize
 Beispiel für einen Befehl:
-\footnotesize
 
-```{r Hello world console, eval=T, echo=T, indent="  "}
+\small
+
+```{r, eval=T}
+#| label: Hello world console
 print("Hallo Welt!")
 ```
 
 \vfill
-\footnotesize
 Anmerkung:
 \color{darkcyan} 
-**Code-Snippets in diesen Folien immer aktiv in der Konsole nachvollziehen!**
+**Code-Snippets dieser Form immer aktiv in der Konsole nachvollziehen!**
 
 
 
 # R Skripte $\vert$ Executing and Editing Code
-\setstretch{1.4}
-\large
-\textcolor{darkblue}{}
+\vspace{2mm}
 
+Neue .R Datei erstellen
+\vspace{-2mm}
 \small
-Neue .R Datei erstellen  
-\vspace{-1pt}
 
-\footnotesize 
+* GUI: *File* $\rightarrow$ *New File* $\rightarrow$ *R Document (r)*
+* Keyboard Shortcut: \fbox{Ctrl} + \fbox{N}
 
-* GUI: *File* $\rightarrow$ *New File* $\rightarrow$ *R Script* 
-* Keyboard Shortcut: \fbox{Ctrl} + \fbox{Shift} + \fbox{N}  
-
-\small
-Bestehende .R Datei öffnen  
-\vspace{-1pt}
-
-\footnotesize 
+\normalsize
+Bestehende .R Datei öffnen
+\vspace{-2mm}
+\small 
 
 * GUI: File $\rightarrow$ Open File 
-* \fbox{Ctrl} + \fbox{O}
+* Keyboard Shortcut: \fbox{Ctrl} + \fbox{O}
 
-\vspace{2mm}
-\small Code im .R Skript schreiben (Befehle in Programmiersprache formulieren)  
+\normalsize
+Code in einem .R Skript schreiben (Befehle in Programmiersprache formulieren)
 
 
 \vspace{1mm}
-\footnotesize
-```{r , eval = F}
-#| label: Hello World
+\small
+```{r}
+#| label: Hello World script
 print("Hallo Welt!")  # Hinter Hashtags stehen dokumentierende Kommentare
 print("Hallo R!")     # Kommentare werden nicht ausgefuehrt
 ```
 
-\small
-Befehle eines R Scripts ausführen
-\vspace{-2mm}
-
-\footnotesize
-* Einzelnen Zeile, auf welcher der Cursor ruht: $\Rightarrow$ Run oder \fbox{Ctrl} + \fbox{Enter}
-* Ausführen aller Zeilen: $\Rightarrow$ *Source* oder  \fbox{Ctrl} + \fbox{Shift} +  \fbox{Enter} oder $\Rightarrow$ Tickmark bei *Source on Save* setzen und \fbox{Ctrl} + \fbox{S}
-
-\vfill
 \footnotesize
 Anmerkung:
-\textcolor{darkcyan}{Code-Snippets in diesen Folien immer aktiv in einem R Skript dokumentieren!}
-
-
-# R und RStudio
-\setstretch{1.4}
-\large
-\textcolor{red}{Das R und RStudio Data Science Universum}
-\vspace{2mm}
-
-```{r R Universum, echo = FALSE, out.width = "100%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_datascienceuniverse.pdf"))
-```
-
-# R und RStudio
-\setstretch{1.4}
-\large
-\textcolor{red}{Lehrmaterialien mit R und RStudio}
-\vspace{2mm}
-
-```{r Literatur, echo = FALSE, out.width = "80%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_lehrmaterialien.pdf"))
-```
-
-
-
-
-
-
-# R und RStudio
-\setstretch{1.7}
-\large
-\textcolor{darkblue}{R Kommandozeile $\vert$ Working in the Console}
-
-\small
-Die Basics:  
-\footnotesize
-
-* Eingabe von R Befehlen bei ```>```
-* Autocomplete mit \fbox{Tab}
-* Code ausführen mit \fbox{Enter}
-* Vorherige Befehle mit Cursor \fbox{$\uparrow$}
-* Bereinigen des Konsolenoutputs mit \fbox{Ctrl} + \fbox{L}
-* Code Ausführungsstopp mit \fbox{Esc}
-
-\vspace{2mm}
-\small
-Beispiel für einen Befehl:
-\footnotesize
-
-```{r eval=T, echo=T, indent="  "}
-print("Hallo Welt!")
-```
-
-\vfill
-\footnotesize
-Anmerkung:  
 \color{darkcyan} 
-**Code-Snippets in diesen Folien immer aktiv in der Konsole nachvollziehen!**
+**Code-Snippets dieser Form immer aktiv in einem R Skript dokumentieren!**
 
-
-
-# R und RStudio
-\setstretch{1.4}
-\large
-\textcolor{darkblue}{R Skripte $\vert$ Executing and Editing Code}
-
-\small
-Neue .R Datei erstellen  
-\vspace{-1pt}
-
-\footnotesize 
-
-* GUI: *File* $\rightarrow$ *New File* $\rightarrow$ *R Script* 
-* Keyboard Shortcut: \fbox{Ctrl} + \fbox{Shift} + \fbox{N}  
-
-\small
-Bestehende .R Datei öffnen  
-\vspace{-1pt}
-
-\footnotesize 
-
-* GUI: File $\rightarrow$ Open File 
-* \fbox{Ctrl} + \fbox{O}
-
-\vspace{2mm}
-\small Code im .R Skript schreiben (Befehle in Programmiersprache formulieren)  
-
-
-\vspace{1mm}
-\footnotesize
-```{r Hello World script, eval = F}
-print("Hallo Welt!")  # Hinter Hashtags stehen dokumentierende Kommentare
-print("Hallo R!")     # Kommentare werden nicht ausgefuehrt
-```
-
-\small
+\normalsize
+\color{black}
 Befehle eines R Scripts ausführen
 \vspace{-2mm}
 
-\footnotesize
-* Einzelnen Zeile, auf welcher der Cursor ruht: $\Rightarrow$ Run oder \fbox{Ctrl} + \fbox{Enter}
-* Ausführen aller Zeilen: $\Rightarrow$ *Source* oder  \fbox{Ctrl} + \fbox{Shift} +  \fbox{Enter} oder $\Rightarrow$ Tickmark bei *Source on Save* setzen und \fbox{Ctrl} + \fbox{S}
-
-\vfill
-\footnotesize
-Anmerkung:  
-\color{darkcyan} **Code-Snippets in diesen Folien immer aktiv in einem R Skript dokumentieren!**
-
-
-# R und RStudio
-\setstretch{1.4}
-\large
-\textcolor{darkblue}{Das R und RStudio Data Science Universum}
-\vspace{2mm}
-
-```{r, echo = FALSE, out.width = "100%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_rstudio_datascienceuniverse.pdf"))
-```
-
-# R und RStudio
-\setstretch{1.4}
-\large
-\textcolor{darkblue}{Lehrmaterialien mit R und RStudio}
-\vspace{2mm}
-
-```{r, echo = FALSE, out.width = "80%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_lehrmaterialien.pdf"))
-```
+\small
+* Befehle an Console schicken:
+  * \small Einzelnen Zeile, auf welcher der Cursor ruht: \fbox{Ctrl} + \fbox{Enter}
+  * Ausführen aller Zeilen im Skript: \fbox{Ctrl} + \fbox{Shift} + \fbox{Enter}
+* Ausführen des gesamten .R Skripts (Source):
+  * \small GUI: $\triangleright$ - Symbol / Run Source
+  * Keyboard Shortcut: \fbox{Ctrl} + \fbox{Shift} + \fbox{S}
 
 
 
-#
+# Arithmetik, Logik und Präzedenz ================== {.plain}
+\AtBeginSection{}
+\section{Arithmetik, Logik und Präzedenz}
+
 \large
 \vfill
 \setstretch{2.5}
 
-R und RStudio
+Getting started
 
 **Arithmetik, Logik und Präzedenz**
 
@@ -291,45 +204,38 @@ Datenstrukturen
 Übungen und Selbstkontrollfragen
 
 
-# Arithmetik, Logik und Präzedenz ======================================= {.plain}
-\AtBeginSection{}
-\section{Arithmetik, Logik und Präzedenz}
-
-TODO: AGENDA einfügen
-
-
 # R Konsole als Taschenrechner
 \footnotesize
 \vfill
 
 \setstretch{0.7}
-```{r echo = T, fiinclude = T}
+```{r eval = T}
 #| label: addition
 1 + 1
 ```
 \vspace{4mm}
-```{r}
+```{r eval = T}
 #| label: multiplikation
 2 * 3
 ```
 \vspace{4mm}
-```{r}
+```{r eval = T}
 #| label: sqrt
-sqrt(2)
+sqrt(4)
 ```
 \vspace{4mm}
-```{r exp}
+```{r eval = T}
 #| label: exp-funk
 exp(0)
 ```
 \vspace{4mm}
-```{r log}
+```{r eval = T}
 #| label: log-funk
 log(1)
 ```
 
 \vfill
-Anmerkung:
+Anmerkungen:
 
 \begin{itemize}
 \item $[1]$ zeigt das erste und einzige Element des Ausgabevektors an
@@ -339,6 +245,7 @@ Anmerkung:
 
 # Arithmetische Operatoren
 \setstretch{1.6}
+\vfill
 
 \small
 \begin{center}
@@ -354,15 +261,12 @@ $/$ 				& Division 								\\
 \%\% 			    & Modulo (5\%\%2 = 1)   				\\
 \end{tabular}
 \end{center}
-\vspace{4mm}
 
 \vfill
-\footnotesize
 
 * Matrixmultiplikation, Modulo, ganzzahlige Teilung benötigen wir zunächst nicht.
 * Ganzzahlige Teilung gibt das Resultat der ganzzahligen Teilung an.
 * Modulo gibt den ganzzahligen Rest bei ganzzahliger Teilung an.
-
 
 
 # Logische Operatoren
@@ -373,7 +277,6 @@ $/$ 				& Division 								\\
 * Die Boolesche Algebra und R kennen zwei *logische Werte*: TRUE und FALSE
 * Bei Auswertung von Relationsoperatoren ergeben sich logische Werte
 
-\small
 \begin{center}
 \begin{tabular}{l|l}
 Relationsoperator 	& Bedeutung 							\\\hline
@@ -387,7 +290,7 @@ $\&$    			& UND              						\\
 \end{center}
 
 \vfill
-\footnotesize
+
 * $<,<=,>,>=$ werden zumeist auf numerische Werte angewendet.
 * $==,!=$ werden zumeist auf beliebige Datenstrukturen angewendet.
 * $\vert$  und $\&$ werden zumeist auf logische Werte angewendet.
@@ -411,55 +314,61 @@ log(x)				& Logarithmus Funktion						\\
 \end{tabular}
 \end{center}
 
-
 \vfill
-\footnotesize
 
-* Hierbei handelt es sich um eine Auswahl. Einen vollständigen Überblick gibt
-    ```{r Funktionen, eval = F}
-    names(methods:::.BasicFunsList)
-    ```
-* R unterscheidet formal nicht zwischen Operatoren und Funktionen
-* Operatoren können mit der Infix Notation als Funktionen genutzt werden
-    ```{r Infixnotation}
-    `+`(2,3)            # Infixnotation für 2 + 3
-    ```
+* Hierbei handelt es sich um eine Auswahl. Einen vollständigen Überblick gibt \footnotesize
+  ```{r}
+  #| label: BasicFunsList
+  names(methods:::.BasicFunsList)
+  ```
+* \small R unterscheidet formal nicht zwischen Operatoren und Funktionen
+* Operatoren können mit der Infix Notation als Funktionen genutzt werden \footnotesize
+  ```{r}
+  #| label: Infixnotation
+  `+`(2,3)            # Infixnotation für 2 + 3
+  ```
 
 
-# Operatorpräzedenz
+# Operatorpräzedenz (Operatorrangfolge)
+\setstretch{2.2}
+\small
 
-\footnotesize
-* Operatorrangfolge
-* Regeln der Form "Punktrechnung geht vor Strichrechnung"
-* Vordefinierte Operatorpräzedenz kann durch Klammern überschrieben werden
+* Regeln der Form "Punktrechnung geht vor Strichrechnung".
+* Vordefinierte Operatorpräzedenz kann durch Klammern überschrieben werden.
 \setstretch{0.7}
-    ```{r Praezedenz}
-    2 * 3 + 4
-    ```
-\vspace{2mm}
-    ```{r Praezedenz überschreiben}
-    2 * (3 + 4)
-    ```
+  ```{r eval = T}
+  #| label: Praezedenz
+  2 * 3 + 4
+  2 * (3 + 4)
+  ```
 
-\small
-Generell gilt
-\footnotesize
+\begin{itemize}
+\item Generelle Empfehlung: \setstretch{1.7}
+\begin{itemize}
+  \item \small Operatorrangfolge nicht raten oder folgern, sondern nachschlagen.
+  \item Lieber Klammern setzen, als keine Klammern setzen.
+  \item Immer nachschauen, ob Berechnungen die erwarteten Ergebnisse liefern.
+  \end{itemize}
+\end{itemize}
 
-* Operatorrangfolge nicht raten oder folgern, sondern nachschauen!
-* Lieber Klammern setzen, als keine Klammern setzen!
-* Immer nachschauen, ob Berechnungen die erwarteten Ergebnisse liefern!
 
-```{r, eval = F, indent = "     "}
-?Syntax
+# Präzedenz und Syntax nachschlagen
+\vfill
+\footnotesize 
+
+```{r}
+#| label: Operatorpräzedenz nachschlagen
+?Syntax  # öffnet R Help Fenster
 ```
+\vfill
+
+![](../Abbildungen/pds_2_precedence.pdf){width="68%"}
 
 
-# Operatorpräzedenz
-
-Präzedenz und Ausführungsreihenfolge arithmetischer Operatoren
-
+# Präzedenz und Ausführungsreihenfolge arithmetischer Operatoren
+\setstretch{2.2}
 \small
-\setstretch{1.3}
+
 \begin{center}
 \begin{tabular}{l|l}
 Operator			& Reihenfolge 								\\\hline
@@ -472,8 +381,10 @@ $+$, $-$			& Links nach Rechts							\\
 
 \color{darkcyan}
 Beispiele
+\setstretch{1.7}
 \footnotesize
-```{r Taschenrechnerbeispiele, eval = F}
+```{r}
+#| label: Taschenrechnerbeispiele
 2^2^3 			# 2^(2^3)  	= 2^8 = 256
 (2^2)^3			# (2^2)^3  	= 4^3 = 64
 -1^2 			# -(1^2)   	= -1
@@ -483,31 +394,32 @@ Beispiele
 ```
 
 
-# Operatorpräzedenz
-\vspace{3mm}
-\footnotesize 
-
-```{r Operatorpräzedenz}
-?Syntax
-```
-
-```{r Operatorpräzedenz output, echo = FALSE, out.width = "60%"}
-knitr::include_graphics(file.path(abb_dir, "pds_2_precedence.pdf"))
-```
-
 
 # Variablen ======================================= {.plain}
 \AtBeginSection{}
 \section{Variablen}
 
-TODO: Agenda einfgen
+\large
+\vfill
+\setstretch{2.5}
+
+Getting started
+
+Arithmetik, Logik und Präzedenz
+
+**Variablen**
+
+Datenstrukturen
+
+Übungen und Selbstkontrollfragen
 
 
-# Variablen
-\textcolor{darkblue}{Definition}
-\vspace{5mm}
+# Definition
+\vfill
+\setstretch{1.7}
 
 \small
+\justifying
 In der Programmierung ist eine Variable ein abstrakter Behälter für eine Größe,
 welche im Verlauf eines Rechenprozesses auftritt. Im Normalfall wird eine Variable
 im Quelltext durch einen Namen bezeichnet und hat eine Adresse im Speicher
@@ -519,48 +431,57 @@ zu einer Konstante – zur Laufzeit des Rechenprozesses verändert werden.
 \end{flushright}
 
 
-
-# Variablen- Grundlagen
+# Grundlagen
 \small
-\setstretch {1.5}
+\setstretch {1.7}
 
 * Variablen sind vom Programmierenden benannte Platzhalter für Werte
 * In 3GL Sprachen wird der Variablentyp durch eine Initialisierungsanweisung festgelegt:
-```{r echo = T, eval = F}
-VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
-```
+  ```{r}
+  #| label: Initiierung in 3GL
+  VAR A : INTEGER     # A ist eine Variable vom Typ Integer (ganze Zahl)
+  ```
 * In 3GL Sprachen wird Variablen durch eine Zuweisungsanweisung ein Wert zugeschrieben:
-    ```{r, eval = F}
-    A := 1              # Der Variable A wird der numerische Wert 1 zugewiesen
-    ```
-In 4GL Sprachen wie Matlab, Python, R werden Variablen durch Zuweisung initialisiert:
-    ```{r, eval = F}
-    a = 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
-    ```
+  ```{r}
+  #| label: Zuweisung in 3GL
+  A := 1              # Der Variable A wird der numerische Wert 1 zugewiesen
+  ```
+
+* In 4GL Sprachen wie Matlab, Python, R werden Variablen durch Zuweisung initialisiert:
+  ```{r}
+  #| label: Variablendefinition in 4GL
+  a = 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
+  ```
 * Der Zuweisungsbefehl in Matlab und Python ist `=`, der Zuweisungsbefehl in R ist `<-`  oder `=`.
-* Offiziell empfohlen für R ist `<-`, aus Kohärenzgründen benutzen wir hier `=`.
+* Offiziell empfohlen für R ist `<-`.
+  ```{r}
+  #| label: Variablendefinition in R
+  a <- 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
+  a = 1                # a ist eine Variable vom Typ double, ihr Wert ist 1
+  ```
 
-
-# Variablen - \textcolor{darkblue}{Beispiel}
+# Beispiel
 
 \footnotesize
 \justifying
-\textcolor{darkblue}{Greta geht ins Schreibwarengeschäft und kauft vier Hefte, zwei Stifte und einen Füller. Wie viele analoge Gegenstände kauft Greta insgesamt?}
+\textcolor{darkcyan}{Greta geht ins Schreibwarengeschäft und kauft vier Hefte, zwei Stifte und einen Füller. Wie viele analoge Gegenstände kauft Greta insgesamt?}
 
 Wir definieren zunächst alle Variablen:
 
 \vspace{1mm}
-```{r Greta Beispiel}
-hefte  = 4		# Definition der Variable 'hefte'  und Wertzuweisung 4
-stifte = 2		# Definition der Variable 'stifte' und Wertzuweisung 2
-fueller = 1		# Definition der Variable 'fueller' und Wertzuweisung 1
+```{r, eval = T}
+#| label: Defnitionen
+hefte  <- 4     # Definition der Variable 'hefte'  und Wertzuweisung 4
+stifte <- 2     # Definition der Variable 'stifte' und Wertzuweisung 2
+fueller <- 1    # Definition der Variable 'fueller' und Wertzuweisung 1
 ```
 
 Nach Zuweisung existieren die Variablen im Arbeitsspeicher, dem sogenannten \textit{Workspace}. Die Variablen können jetzt wie Zahlen in Berechnungen genutzt werden
 \vspace{1mm}
 
-```{r}
-gesamt  = hefte + stifte + fueller  # Berechnung der Gegenstandsanzahl
+```{r, eval = T}
+#| label: Berechnung Anzahl Gegenstände
+gesamt <- hefte + stifte + fueller  # Berechnung der Gegenstandsanzahl
 print(gesamt)
 ```
 
@@ -569,8 +490,9 @@ print(gesamt)
 Ein Heft kostet einen Euro, ein Stift kostet zwei Euro, und ein Füller kostet 10 Euro. Wie viel Euro muss Greta insgesamt bezahlen?
 \vspace{1mm}
 
-```{r}
-gesamtpreis	= hefte*1 + stifte*2 + fueller*10  # Berechung des Preises
+```{r, eval = T}
+#| label: Berechnung Preis
+gesamtpreis <- hefte * 1 + stifte * 2 + fueller * 10  # Berechung des Preises
 print(gesamtpreis)
 ```
 \vspace{1mm}
@@ -579,69 +501,76 @@ print(gesamtpreis)
 
 
 # Workspace
-\vspace{1mm}
-
+\setstretch{1.7}
+\vfill
 \small
-Nach Zuweisung werden Variablen automatisch im Workspace gespeichert. 
 
-\footnotesize
+```{r echo = F, eval = T}
+rm(has_annotations)
+rm(pandoc_dir)
+rm(quarto_bin_path)
 
-* In der RStudio IDE wird das im *Environment* Pane angezeigt. 
-* `ls()` zeigt die existierenden benutzbaren Variablen im Arbeitsspeicher an
+```
+Der Workspcae / (globale) Arbeitsbereich
+
+* Enthält alle aktuell definierten Objekte, Variablen und Funktionen während einer R-Sitzung.
+* Nach Zuweisung werden Variablen automatisch im Workspace gespeichert.
+* Ausgabe aller  existierenden benutzbaren Variablen im Arbeitsspeicher in der Konsole. \footnotesize
 \setstretch{0.9}
-    ```{r}
-    ls()						# Anzeigen aller Variablennamen im Workspace
-    ```
+  ```{r, eval = T}
+  #| label: Ausgabe aller Variablen im workspace
+  ls()                 # Anzeigen aller Variablennamen im aktuellen Workspace
+  ```
 
-\setstretch{1}
 \small
 Löschen von Variablen
 
-\footnotesize
-
-* `rm()` erlaubt das Löschen von Variablen
+* Löschen bestimmter Variablen
 \setstretch{0.9}
-    ```{r}
-    rm(gesamtpreis)		        # Löschen der Variable Gesamtpreis
-    ls()
-    ```
-* `rm(list=ls())` löscht alle Variablen
-    ```{r}
-    rm(list = ls()) 	        # Löschen aller Variablen
-    ls()
-    ```
+\footnotesize
+  ```{r, eval = T}
+  #| label: Löschen bestimmer Variablen
+  rm(gesamtpreis)      # Löschen der Variable Gesamtpreis
+  ls()
+  ```
+* \small Löschen aller Variablen im Workspace \footnotesize
+  ```{r, eval = T}
+  #| label: Löschen aller Variablen
+  rm(list = ls())      # Löschen aller Variablen
+  ls()
+  ```
 
 
 # Workspace
 \vfill
-![](../Abbildungen/pds_2_workspace.pdf){width="90%"}
+\small
+
+\color{red} TODO: neuen Screenshot einfügen
+
+In VSCode kann der Workspace in the R Extension pane angezeigt werden
+\vfill
+![](../Abbildungen/pds_2_workspace_vsc.png){width="70%"}
 
 
 # Variablennamen
 \setstretch{1.6}
-\textcolor{darkblue}{Variablennamen}
+\vfill
 
 \small
-\vspace{2mm}
 
 Zulässige Variablennamen
 
-... bestehen aus Buchstaben, Zahlen, Punkten (.) und Unterstrichen (\_)
-
-... beginnen mit einem Buchstaben oder . nicht gefolgt von einer Zahl
-
-... dürfen keine reserverd words wie \textcolor{blue}{for}, \textcolor{blue}{if}, \textcolor{blue}{NaN}, usw. sein (`?reserved`)
-
-... werden unter ?make.names() beschrieben
+* bestehen aus Buchstaben, Zahlen, Punkten (.) und Unterstrichen (\_).
+* beginnen mit einem Buchstaben oder . nicht gefolgt von einer Zahl.
+* dürfen keine *reserverd words* wie \textcolor{blue}{for}, \textcolor{blue}{if}, \textcolor{blue}{NaN}, usw. sein (siehe `?reserved`).
+* werden unter `?make.names()` beschrieben.
 
 \vspace{1mm}
 
-Sinnvoll
-\vspace{2mm} Variablennamen
+Sinnvolle Variablennamen
 
-... sind kurz ($\approx$ 1 bis 9 Zeichen) und \textcolor{darkcyan}{aussagekräftig}
-
-... bestehen nur aus Kleinbuchstaben und Unterstrichen
+* sind kurz ($\approx$ 1 bis 9 Zeichen) und \textcolor{darkcyan}{aussagekräftig}.
+* bestehen nur aus Kleinbuchstaben und Unterstrichen.
 
 \vfill
 \footnotesize
@@ -650,13 +579,14 @@ Anmerkung
 * R ist *case-sensitive*. Das heißt z.B. x $\neq$ X
 
 
-# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Binding}
+# Variablenrepräsentation $\vert$ Binding
 
 \vspace{3mm}
 \footnotesize
 
 ```{r, eval = F}
-x = 1
+#| label: Wertzuweisung x
+x <- 1
 ```
 
 \setstretch{0.8}
@@ -676,7 +606,8 @@ x = 1
 \vspace{2mm}
 
 ```{r, eval = F}
-y = x
+#| label: binding y to x
+y <- x
 ```
 
 \begin{itemize}
@@ -686,6 +617,7 @@ y = x
 \end{itemize}
 
 ```{r, eval = F}
+#| label: binding y new
 y = 1
 ```
 
@@ -699,52 +631,91 @@ y = 1
 \vspace{1mm}
 
 
-# Variablen \textcolor{darkblue}{Speicheradressen $\vert$ object adress}
+# Speicheradressen $\vert$ object adress
 
-\setstretch{1}
+\setstretch{1.3}
 
 \footnotesize
 
-* Speicheraddressen können mit `lobstr::obj_addr()` angezeigt werden.
-    ```{r}
-    library(lobstr)   # Paket `lobstr` laden
-    x = 1
-    obj_addr(x)
-    ```
+* Speicheraddressen können mit der Funktion `lobstr::obj_addr()` angezeigt werden.
+  ```{r}
+  #| label: lobstr
+  library(lobstr)   # Paket `lobstr` laden
+  x = 1
+  obj_addr(x)
+  ```
 
 * y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x.
-    ```{r}
-    y = x
-    obj_addr(y) 
-    ```
+  ```{r}
+  #| label: obj adress y = x
+  y = x
+  obj_addr(y) 
+  ```
 * y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x.
-    ```{r}
-    y = 1
-    obj_addr(y) 
-    ```
+  ```{r}
+  #| label: obj adress y !=x
+  y = 1
+  obj_addr(y) 
+  ```
 
 \vfill
 
 
 Anmerkungen:
 
-* \justifying Ausdrücke der Art ```lobstr::obj_addr()``` referieren eine Funktion, in diesem Fall `obj_addr()`, bei gleichzeitiger Angabe des Pakets, in diesem Fall `lobbstr`. 
-* Bevor Funktionen eines Pakets verwendet werden können, muss es mit `library()` geladen werden. Ausnahmen sind R Pakete, die per default geladen werden, z.B. `base`. 
+* \justifying Ausdrücke der Art ```lobstr::obj_addr()``` referieren eine Funktion, hier `obj_addr()`, bei gleichzeitiger Angabe des Pakets, hier `lobbstr`. 
+* Bevor Funktionen eines Pakets verwendet werden können, muss es mit `library()` geladen werden. Ausnahmen sind R Standartpakete, die per default geladen werden, z.B. `base` oder `stats`.
+  
 
 
-# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
-\vspace{2mm}
+# Exkurs: R Pakete
+\setstretch{1.5}
+\vfill
+\small
+
+Das Prinzip
+
 \footnotesize
 
-```{r}
-x = 1 		# Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
-y = x		  # y referenziert dieselbe Speicheradresse wie x (0x74b)
-y = 3 		# y modifiziert, modifizierte Kopie (0xcd2) wird gespeichert
-y        	# y referenziert jetzt (0xcd2)
+* Ein R Paket ist eine Sammlung von R-Funktionen, Datensätzen und vordefinierten Skripten, die in einem strukturierten Format (Paket) gebündelt sind.
+* Analog zu Computerprogrammen (wie MS Word) müssen R Pakete zuerst auf dem Rechner *installiert* werden, bevor sie verwendet werden können. Ausnahmen sind Standardpakete (`standard library`), die automatisch mit der Installation von R mitgeliefert werden.
+* Analog dazu, dass Computerprogramme zuerst *gestartet* werden müssen, bevor damit gearbeitet werden kann, müssen R Pakete zuerst in die Workspace *geladen* werden, bevor damit gearbeitet werden kann. 
+
+\vfill
+
+\small
+
+Paket-Management
+\footnotesize
+
+* Anzeige und Auswahl aller installierter Pakete in der R Extention: \textit{HELP PAGES} $\to$ \textit{Home} $\to$ \textit{Packages}
+* Paket-Management mit Befehlen:
+  ```{r}
+  #| label: Pakete Managen
+  installed.packages()        # Anzeige aller installierten Pakete
+  install.packages("lobstr")  # Paket installieren
+  library(lobstr)             # Laden eines Pakets
+  ```
+* Tipp: Wenn in einem Datenanalyseskript Pakete außerhalb der `standard library` verwendet werden, sollte das Laden des Pakets auch ein Befehl im Analyseskript sein!
+
+
+# Variablenrepräsentation $\vert$ Copy-on-modify
+\vspace{2mm}
+\footnotesize
+```{r, echo = F, eval = T}
+#| label: load lobstr
+library(lobstr)
 ```
 
-```{r}
-x           # x referenziert weiterhin (0x74b)
+```{r, eval = T}
+#| label: copy-on-modify
+x <- 1                      # Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
+y <- x                      # Der Variable y wird der selbe Wert wie x zugewiesen
+obj_addr(y) == obj_addr(x)  # Zeigt, dass y dieselbe Speicheradresse (0x74b) wie x referenziert
+y <- 3                      # y modifiziert, modifizierte Kopie (0xcd2) wird gespeichert
+obj_addr(y) == obj_addr(x)  # y und x referenzieren jetzt unterschiedliche Speicheradressen
+y <- 1                      # Auch wenn der Wert der Zuweisung gleich ist...
+obj_addr(y) == obj_addr(x)  # ...referenzieren y und x nicht die selbe Adresse
 ```
 
 ![](../Abbildungen/pds_2_copy_on_modify.pdf){width="70%"}
@@ -753,7 +724,7 @@ x           # x referenziert weiterhin (0x74b)
 R Objekte sind \textit{immutable}, können also nicht verändert werden.
 
 
-# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Copy-on-modify}
+# Variablenrepräsentation $\vert$ Modifications-in-place
 \vspace{2mm}
 \small
 
@@ -761,47 +732,54 @@ Zur Immutability gibt allerdings zwei Ausnahmen, genannt \textit{Modifications-i
 
 1. Objekte mit nur einem gebundenem Namen werden in-place modifiziert
 \footnotesize
-    ```{r, indent= "    "}
-    x = c(1,2) # Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
-    x[1] = 2   # Objekt (0x74b) veraendert
-    ```
-   
-   * \footnotesize Dieses Verhalten ist allerdings nur in R, nicht innerhalb RStudios reproduzierbar.
+```{r}
+#| label: modifications-in-place
+x <- c(1,2) # Objekt (0x74b) erzeugt, x referenziert Speicheradresse des Objektes
+x[1] <- 2   # Objekt (0x74b) veraendert
+```
+
+   * \footnotesize Dieses Verhalten ist allerdings nur in R, nicht innerhalb VSCode reproduzierbar.
    
 2. \small Environments werden in-place modifiziert ($\rightarrow$ Environments und Funktionen).
 
 \vfill
 
 
-# \textcolor{darkblue}{Variablenrepräsentation $\vert$ Unbinding und Garbage Collection}
+# Variablenrepräsentation $\vert$ Unbinding und Garbage Collection
 \small
+\setstretch{1.2}
 
 Copy-on-modify gilt auch in umgekehrter Reihenfolge
 
 \footnotesize
 ```{r}
-x = 1 		# Objekt (0x74b) erzeugt, x referenziert Speicheradresse  des Objektes
-y = x		# y referenziert dieselbe Speicheradresse wie x (0x74b)
-x = 3 		# Ein neues Objekt (0x2a08) wird erzeugt, x referenziert (0x2a08)
-y           # y referenziert weiterhin  Objekt (0x74b)
+#| label: binding umgekehrt
+x <- 1                      # Objekt (0x74b) erzeugt, x referenziert Speicheradresse  des Objektes
+y <- x                      # Zuweisung y zu gleicher Speicherzelle wie x
+obj_addr(y) == obj_addr(x)  # zeigt, dass y dieselbe Speicheradresse wie x (0x74b) referenziert.
+x <- 3                      # Ein neues Objekt mit Wert 3 wird in Speicherzelle (0x2a08) erzeugt.
+                            # x referenziert jetzt Objelkt (0x2a08)
+                            # y referenziert weiterhin Objekt (0x74b)
+obj_addr(y) == obj_addr(x)  # zeigt, dass y und x nicht mehr dieselbe Speicherzelle addressieren.
 ```
 
 ![](../Abbildungen/pds_2_unbinding.pdf){width="56%"}
 
-\vspace{-2mm}
+
 \small
 Unbinding
 \footnotesize
 ```{r}
-x = 1		#  x referenziert Objekt (0x74b)
-x = "a"		#  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referenz
+#| label: unbinding
+x <- 1      #  x referenziert Objekt (0x74b)
+x <- "a"    #  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referenz
 ```
 
 \vspace{2mm}
 \small
 Garbage collection
 \footnotesize
-\vspace{-2mm}
+
 
 * Nicht referenzierte Objekte im Arbeitsspeicher werden automatisch gelöscht.
 * Das Löschen geschieht meist erst dann, wenn es wirklich nötig ist.
@@ -811,9 +789,20 @@ Garbage collection
 # Datenstrukturen ======================================= {.plain}
 \AtBeginSection{}
 \section{Datenstrukturen}
+
 \large
-\vfill
 \setstretch{2.5}
+\vfill
+
+Getting started
+
+Arithmetik, Logik und Präzedenz
+
+Variablen
+
+**Datenstrukturen**
+
+Übungen und Selbstkontrollfragen
 
 
 # Klassische Datenstrukturen einer 3GL Programmiersprache
@@ -865,7 +854,7 @@ Garbage collection
 
 
 # Organisation von Daten in R
-\vspace{1mm}
+
 
 Alles, was in R vorkommt, ist ein **Objekt**.
 \vspace{1mm}
@@ -900,6 +889,7 @@ Alles, was in R vorkommt, ist ein **Objekt**.
 \small
 \setstretch{1.8}
 \vspace{5mm}
+
 \begin{center}
 \begin{tabular}{l|l}
 Datentyp
@@ -926,55 +916,66 @@ raw
 \\
 \end{tabular}
 \end{center}
-\vspace{2mm}
 
-Double und integer werden zusammen auch als numeric bezeichnet.
+\vfill
 
-Viele weitere Typen, hier relevant sind **logical**, **double**, **integer**, **character**.
+* Double und integer werden zusammen auch als numeric bezeichnet.
+
+* Viele weitere Typen, hier relevant sind **logical**, **double**, **integer**, **character**.
 
 \vfill
 
 
 # Übersicht der R Datentypen
-\footnotesize
+\small
 
 Automatische Festlegung von Datentypen durch Zuweisung
 \vspace{1mm}
-\tiny
-```{r}
+\footnotesize
+```{r, eval = T}
+#| label: Automatische Typen
 b = TRUE					# logical
 x = 2.5 					# double
 y = 1L						# (long) integer
 c = 'a' 					# character
 ```
-\footnotesize
-Testen von Datentypen durch `typeof()`
+\small
+Ausgabe von Datentypen durch `typeof()`
 \setstretch{0.5}
-\tiny
-```{r}
+\small
+```{r, eval = T}
+#| label: bool
 typeof(b)
 ```
 \vspace{1.5mm}
-```{r}
+```{r, eval = T}
+#| label: double
 typeof(x)
 ```
 \vspace{1.5mm}
-```{r}
+```{r, eval = T}
+#| label: integer
 typeof(y)
 ```
 \vspace{1.5mm}
-```{r}
+```{r, eval = T}
+#| label: character
 typeof(c)
 ```
 \vspace{2mm}
-\footnotesize
+
+
+# Übersicht der R Datentypen
+\small
 Testen von Datetypen durch `is.*()`
-\tiny
-```{r}
+\footnotesize
+```{r, eval = T}
+#| label: test type logical
 is.logical(x)
 ```
 \vspace{1.5mm}
-```{r}
+```{r, eval = T}
+#| label: test type double
 is.double(x)
 ```
 
@@ -1004,7 +1005,7 @@ Array
 \end{center}
 \vspace{3mm}
 
-$\Rightarrow$ (3) Vektoren, Matrizen, Arrays
+$\Rightarrow$ (3) Vektoren und (4) Matrizen
 
 \vfill
 
@@ -1033,7 +1034,7 @@ Dataframe
 \end{center}
 \vspace{3mm}
 
-$\Rightarrow$ (4) Listen und Dataframes
+$\Rightarrow$ (5) Listen und Dataframes
 
 \vfill
 
@@ -1059,25 +1060,23 @@ Datenstrukturen
 
 # Übungen und Selbstkontrollfragen
 \footnotesize
-\setstretch{1.6}
+\setstretch{1.4}
 
-1. Installieren Sie R und RStudio auf Ihrem Rechner.
-2. Führen Sie die Befehlssequenz auf Folie \textcolor{darkblue}{R Skripte $\vert$ Executing and Editing Code} aus.
-3. Dokumentieren Sie die in dieser Einheit eingeführten R Befehle in einem kommentierten R Skript.
-4. Erläutern Sie den Begriff der Operatorpräzedenz.
-5. Definieren Sie den Begriff der Variable im Kontext der Programmierung.
-6. Erläutern Sie die Begriffe Initialisierungsanweisung und Zuweisungsanweisung für Variablen.
+1. Führen Sie die Befehlssequenz auf Folie \textcolor{darkblue}{R Skripte $\vert$ Executing and Editing Code} aus.
+2. Dokumentieren Sie die in dieser Einheit eingeführten R Befehle und Operatoren in einem kommentierten R Skript.
+3. Erläutern Sie den Begriff der Operatorpräzedenz.
+4. Definieren Sie den Begriff der Variable im Kontext der Programmierung.
+5. Erläutern Sie die Begriffe Initialisierungsanweisung und Zuweisungsanweisung für Variablen.
+6. Geben Sie jeweils ein Beispiel für einen zulässigen und einen unzulässigen Variablennamen in R.
 7. Erläutern Sie den Begriff Workspace.
-8. Geben Sie jeweils ein Beispiel für einen zulässigen und einen unzulässigen Variablennamen in R.
-9. Erläutern Sie die Prozesse, die R im Rahmen einer Zuweisungsanweisung der Form x = 1 durchführt.
-10. Erläutern Sie den Begriffe Copy-on-modify und Modify-in-place.
-11. Diskutieren Sie die klassischen Datenstrukturen einer 3GL Programmiersprache.
-12. Diskutieren Sie die Organisation von Datenstrukturen in R.
-13. Wodurch unterscheiden sich eine atomare und ein rekursive Datenstruktur in R?
-14. Nennen und erläutern Sie vier zentrale Datentypen in R.
-15. Nennen und erläutern Sie vier zentrale atomare Datenstrukturen in R.
-16. Nennen und erläutern Sie zwei zentrale rekursive Datenstrukturen in R.
-
-
-# References
-\footnotesize
+8. Erläutern Sie die Prozesse, die R im Rahmen einer Zuweisungsanweisung der Form `x <- 1` durchführt.
+9. Zeigen Sie, dass zwei Variablen `x` und `y`, die unabhängig voneinander mit dem Wert 7 definiert werden, unterschiedliche Speicheradressen referenzieren.
+10. Zeigen Sie, dass zwei Variablen `x` und `y`, die abhängig voneinander mit dem Wert 7 definiert werden, diesselbe Speicheradressen referenzieren.
+11. Demonstrieren Sie, dass R case-sensitive ist.
+12. Erläutern Sie den Begriffe Copy-on-modify und Modify-in-place.
+13. Diskutieren Sie die klassischen Datenstrukturen einer 3GL Programmiersprache.
+14. Diskutieren Sie die Organisation von Datenstrukturen in R.
+15. Wodurch unterscheiden sich eine atomare und ein rekursive Datenstruktur in R?
+16. Nennen und erläutern Sie vier zentrale Datentypen in R.
+17. Nennen und erläutern Sie vier zentrale atomare Datenstrukturen in R.
+18. Nennen und erläutern Sie zwei zentrale rekursive Datenstrukturen in R.
