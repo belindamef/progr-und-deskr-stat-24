@@ -124,7 +124,7 @@ Attribute
 
 # Elementarwerte
 
-\setstretch{1.1}
+\setstretch{1.3}
 \small
 **Numeric**
 
@@ -133,11 +133,12 @@ Per default werden numerische Werte (mit oder ohne Dezimalstellen) als double in
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
-h = 1                    # Einelementiger Vektor vom Typ double (1)
-i = 2.1e2                # Einelementiger Vektor vom Typ double (210)
-j = 2.1e-2               # Einelementiger Vektor vom Typ double (0.021)
-k = Inf                  # Einelementiger Vektor vom Typ double (unendlich)
-l = NaN                  # Einelementiger Vektor vom Typ double (NaN)
+#| label: Elementarwerte Beispiele
+h <- 1                    # Einelementiger Vektor vom Typ double (1)
+i <- 2.1e2                # Einelementiger Vektor vom Typ double (210)
+j <- 2.1e-2               # Einelementiger Vektor vom Typ double (0.021)
+k <- Inf                  # Einelementiger Vektor vom Typ double (unendlich)
+l <- NaN                  # Einelementiger Vektor vom Typ double (NaN)
 ```  
 
 \footnotesize
@@ -145,8 +146,9 @@ Integer werden wie double ohne Dezimalstellen spezifiziert, gefolgt von einem L 
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
-x = 1L                   # Einelementiger Vektor vom Typ integer
-y = 200L                 # Einelementiger Vektor vom Typ integer
+#| label: Integer Beispiele
+x <- 1L                   # Einelementiger Vektor vom Typ integer
+y <- 200L                 # Einelementiger Vektor vom Typ integer
 ```
 
 \small
@@ -157,8 +159,9 @@ TRUE oder FALSE, abgekürzt T oder F.
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
-x = TRUE                # Einelementiger Vektor vom Typ logical
-y = F                   # Einelementiger Vektor vom Typ logical
+#| label: Boolesche Werte Beispiele
+x <- TRUE                 # Einelementiger Vektor vom Typ logical
+y <- F                    # Einelementiger Vektor vom Typ logical
 ```
 
 \small
@@ -169,8 +172,9 @@ Anführungszeichen ("a") oder Hochkommata ('a').
 \vspace{1mm}
 \tiny
 ```{r, eval = F}
-x = "a"                 # Einelementiger Vektor vom Typ character
-y = 'test'              # Einelementiger Vektor vom Typ character
+#| label: character Beispiele
+x <- "a"                  # Einelementiger Vektor vom Typ character
+y <- 'test'               # Einelementiger Vektor vom Typ character
 ```
 
 
@@ -179,40 +183,44 @@ y = 'test'              # Einelementiger Vektor vom Typ character
 \small
 Direkte Konkatenation von Elementarwerten mit `c()`
 
-\footnotesize
+\tiny
 ```{r, eval = F}
-x = c(1,2,3)                    # numeric vector [1,2,3]
-y = c(0,x,4)                    # numeric vector [0,1,2,3,4]
-s = c("a", "b", "c")            # character vector ["a", "b", "c"]
-l = c(TRUE, FALSE)              # logical  vector [TRUE, FALSE]
+#| label: Mehelementige Vektoren Beispiele
+x <- c(1, 2, 3)                    # numeric vector [1,2,3]
+y <- c(0, x, 4)                    # numeric vector [0,1,2,3,4]
+s <- c("a", "b", "c")              # character vector ["a", "b", "c"]
+l <- c(TRUE, FALSE)                # logical  vector [TRUE, FALSE]
 ```
 
 * \footnotesize Beachte: `c()` konkateniert die Eingabeargumente und erzwingt einen einheitlichen Datentyp (vgl. coercion)
-\footnotesize
-    ```{r, eval = F}
-    x = c(1, "a", TRUE)         # character vector ["1", "a", "TRUE"]
-    ```
+\tiny
+  ```{r, eval = F}
+  #| label: Beispiel coercion
+  x <- c(1, "a", TRUE)         # character vector ["1", "a", "TRUE"]
+  ```
 
 \small
 Erzeugen "leerer" Vektoren mit `vector()`
 
-\footnotesize
+\tiny
 ```{r, eval = F}
-v = vector("double",3)          # double vector [0,0,0]
-w = vector("integer",3)         # integer vector [0,0,0]
-l = vector("logical",2)         # logical vector [FALSE, FALSE]
-s = vector("character",4)       # character vector ["", "", "", ""]
+#| label: Beispiel leere Vektoren mit vector()
+v <- vector("double", 3)           # double vector [0,0,0]
+w <- vector("integer", 3)          # integer vector [0,0,0]
+l <- vector("logical", 2)          # logical vector [FALSE, FALSE]
+s <- vector("character", 4)        # character vector ["", "", "", ""]
 ```
 
 \small
 Erzeugen "leerer" Vektoren mit double(), integer(), logical(), character()
 
-\footnotesize
+\tiny
 ```{r, eval = F}
-v = double(3)                   # double vector [0,0,0]
-w = integer(3)                  # integer vector [0,0,0]
-l = logical(2)                  # logical vector [FALSE, FALSE]
-s = character(4)                # character vector ["", "", "", ""]
+#| label: Beispiel leere Vektoren typspezifisch
+v <- double(3)                     # double vector [0,0,0]
+w <- integer(3)                    # integer vector [0,0,0]
+l <- logical(2)                    # logical vector [FALSE, FALSE]
+s <- character(4)                  # character vector ["", "", "", ""]
 ```
 
 
@@ -223,10 +231,11 @@ Erzeugen von ganzzahligen Sequenzen mithilfe des **Colonoperators** `:`
 
 `a:b` erzeugt ganzzahlige Sequenzen von a (inklusive) bis b (maximal)
 
-\footnotesize
+\tiny
 ```{r, eval = F}
-x = 0:5                     # [0,1,2,3,4,5]
-y = 1.5:6.1                 # [1.5, 2.5, 3.5, 4.5, 5.5]
+#| label: Vektor erzeugen mit colon
+x <- 0:5                         # [0,1,2,3,4,5]
+y <- 1.5:6.1                     # [1.5, 2.5, 3.5, 4.5, 5.5]
 ```
 
 \small
@@ -234,25 +243,27 @@ Erzeugen von Sequenzen mit `seq()`
 
 `seq(from, to, by = ((to - from)/(len - 1), len = NULL, ...)`
 
-\footnotesize
+\tiny
 ```{r, eval = F}
-x_1	= seq(0,5)              # wie 0:5, [0,1,2,3,4,5]
-x_2 = seq(0,1,len = 5)      # 5 Zahlen zwischen 0 (inkl.) und 1 (inkl.), equidistant
-                            # [0.00, 0.25, 0.50, 0.75, 1.00]
-x_3 = seq(0,2,by = .15)     # 0.15 Schritte zwischen 0 (inkl.) und 2 (max.)
-                            # [0.00, 0.15, 0.30, ..., 1.50 1.65 1.80 1.95]
-x_4	= seq(1,0,by = -.1)     # -0.1 Schritte zwischen 1 (inkl.) und 0 (min.)
-                            # [1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0.0]
+#| label: Vektor erzeugen mit seq()
+x_1 <- seq(0, 5)                 # wie 0:5, [0,1,2,3,4,5]
+x_2 <- seq(0, 1, len=5)          # 5 Zahlen zwischen 0 (inkl.) und 1 (inkl.), equidistant
+                                 # [0.00, 0.25, 0.50, 0.75, 1.00]
+x_3 <- seq(0, 2, by=.15)         # 0.15 Schritte zwischen 0 (inkl.) und 2 (max.)
+                                 # [0.00, 0.15, 0.30, ..., 1.50 1.65 1.80 1.95]
+x_4 <- seq(1, 0, by=-.1)         # -0.1 Schritte zwischen 1 (inkl.) und 0 (min.)
+                                 # [1.0 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1 0.0]
 ```
 
 \small
 `seq.int()`, `seq_len()`, `seq_along()`  als weitere Varianten
 
-\footnotesize
+\tiny
 ```{r, eval = F}
-x_1	= seq.int(0,5)          # wie 0:5, [0,1,2,3,4,5]
-x_2 = seq_len(5)            # Natuerliche Zahlen bis 5, [1,2,3,4,5]
-x_3 = seq_along(c("a","b")) # wie seq_len(length(c("a", "b")))
+#| label: weitere Funktionen zur Vektorerzeugung
+x_1 <- seq.int(0, 5)             # wie 0:5, [0,1,2,3,4,5]
+x_2 <- seq_len(5)                # Natuerliche Zahlen bis 5, [1,2,3,4,5]
+x_3 <- seq_along(c("a", "b"))    # wie seq_len(length(c("a", "b")))
 ```
 
 
@@ -279,34 +290,49 @@ Attribute
 
 # Vektoreigenschaften ausgeben
 \setstretch{0.9}
-\footnotesize
+\small
 
 `length()` gibt die Anzahl der Elemente eines Vektors aus
+\tiny
 ```{r, eval = T}
-x = 0:10          # Vektor
-length(x)         # Anzahl der Elemente des Vektors
+#| label: Beispiel length()
+x <- 0:10          # Vektor
+length(x)          # Anzahl der Elemente des Vektors
 ```
 \vspace{2mm}
+\small
 `typeof()` gibt den elementaren Datentyp eines Vektors aus
-```{r, eval = T}
-x = 1:3L          # Vektor
-typeof(x)         # Datentyp des atomic vectors
-```
-\vspace{2mm}
-```{r, eval = T}
-y = c(T,F,T)      # Vektor
-typeof(y)         # Der Datentyp des atomic vectors
-```
-\vspace{2mm}
-`mode()` und `storage.mode()` werden nicht empfohlen, sie existieren für S Kompatibilität
 
-`is.logical()`, `is.double()`, `is.integer()`, `is.character()` testen den Datentyp
+\tiny
 ```{r, eval = T}
-is.double(x)      # Testen, ob der x vom Typ double ist
+#| label: Beispiel typeof() 1/2
+x <- 1:3L          # Vektor
+typeof(x)          # Datentyp des atomic vectors
 ```
 \vspace{2mm}
 ```{r, eval = T}
-is.logical(y)     # Testen, ob der y vom Typ logical ist
+#| label: Beispiel typeof() 2/2
+y <- c(T,F,T)      # Vektor
+typeof(y)          # Der Datentyp des atomic vectors
+```
+\vspace{2mm}
+
+\indent Anmerkung:
+`mode()` und `storage.mode()` werden nicht empfohlen, sie existieren für S Kompatibilität.
+
+\vspace{3mm}
+\small
+`is.logical()`, `is.double()`, `is.integer()`, `is.character()` testen den Datentyp
+
+\tiny
+```{r, eval = T}
+#| label: Beispiel typetest mit is.double()
+is.double(x)       # Testen, ob der x vom Typ double ist
+```
+\vspace{2mm}
+```{r, eval = T}
+#| label: Beispiel typetest mit is.logical()
+is.logical(y)      # Testen, ob der y vom Typ logical ist
 ```
 
 
@@ -327,21 +353,18 @@ character $>$ double $>$ integer $>$ logical
 \vspace{3mm}
 
 ```{r, eval = T}
-x = c(1.2,"a")			# Kombination gemischter Datentypen (character schlaegt double)
+#| label: coersion bei gemischter Vektor 1/2
+x <- c(1.2, "a")     # Kombination gemischter Datentypen (character schlaegt double)
 x
+typeof(x)            # Erzeugter Vektor ist vom Datentyp character
 ```
 \vspace{2mm}
+
 ```{r, eval = T}
-typeof(x)				# Erzeugter Vektor ist vom Datentyp character
-```
-\vspace{2mm}
-```{r, eval = T}
-y = c(1L, TRUE)			# Kombination  gemischter Datentypen (integer schlaegt logical)
+#| label: coersion bei gemischter Vektor 2/2
+y <- c(1L, TRUE)     # Kombination  gemischter Datentypen (integer schlaegt logical)
 y
-```
-\vspace{2mm}
-```{r, eval = T}
-typeof(y)				# Erzeugter Vektor ist vom Typ integer
+typeof(y)            # Erzeugter Vektor ist vom Typ integer
 ```
 
 \vfill
@@ -358,10 +381,12 @@ Explizite Coercion mit `as.logical()`, `as.integer()`, `as.double()`, `as.charac
 
 \footnotesize
 ```{r, eval = T}
-x = c(0,1,1,0)			# double Vektor
-y = as.logical(x)	    # ... umgewandelt in logical
+#| label: Explizite Coercion
+x <- c(0, 1, 1, 0)        # double Vektor
+y <- as.logical(x)        # ... umgewandelt in logical
 y
 ```
+
 \vspace{3mm}
 \small
 Coercion geschieht aber auch oft implizit:
@@ -369,9 +394,10 @@ Coercion geschieht aber auch oft implizit:
 
 \footnotesize
 ```{r, eval = T}
-x = c(T, F, T, T)		# logical Vektor
-s = sum(x)				# Summation in integer gewandelter logical Elemente
-s			
+#| label: Implizite Coercion
+x <- c(T, F, T, T)        # logical Vektor
+s <- sum(x)               # Summation in integer gewandelter logical Elemente
+s
 ```
 
 \vfill
@@ -417,11 +443,12 @@ Attribute
 \vspace{1mm}
 \normalsize
 \textcolor{darkcyan}{Beispiel}
-\footnotesize
+\tiny
 ```{r, eval = F}
-x		= c("a", "b", "c")		# character vector ["a", "b", "c"]
-y 		= x[2]					# Kopie von "b" in y
-x[3]	= "d" 					# Aenderung von x zu x = ["a", "b", "d"]
+#| label: Indizierung Beispiel
+x <- c("a", "b", "c")   # character vector ["a", "b", "c"]
+y <- x[2]               # Kopie von "b" in y
+x[3] <- "d"             # Aenderung von x zu x = ["a", "b", "d"]
 ```
 
 \vspace{1mm}
@@ -441,30 +468,34 @@ x[3]	= "d" 					# Aenderung von x zu x = ["a", "b", "d"]
 \footnotesize
 Indizierung mit einem **Vektor positiver Zahlen**
 ```{r, eval = F}
-x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y = x[1:3]			    # 1:3 erzeugt Vektor [1,2,3], x[1:3] = x[c(1,2,3)] = [1,4,9]
-z = x[c(1,3,5)]		    # c(1,3,5) erzeugt Vektor [1,3,5], x[c(1,3,5)] = [1,9,25]
+#| label: Bsp positiv Zahlen
+x <- c(1 ,4 ,9 ,16 ,25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[1:3]               # 1:3 erzeugt Vektor [1,2,3], x[1:3] = x[c(1,2,3)] = [1,4,9]
+z <- x[c(1, 3, 5)]        # c(1,3,5) erzeugt Vektor [1,3,5], x[c(1,3,5)] = [1,9,25]
 ```
 
 Indizierung mit einem **Vektor negativer Zahlen**
 ```{r, eval = F}
-x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y = x[c(-2,-4)]		    # Alle Komponenten ausser 2 und 4, x[c(-2,-4)] = [1,9,25]
-z = x[c(-1,2)] 		    # Gemischte Indizierung nicht erlaubt (Fehlermeldung)
+#| label: Bsp negative Zahlen
+x <- c(1, 4, 9, 16, 25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[c(-2, -4)]         # Alle Komponenten ausser 2 und 4, x[c(-2,-4)] = [1,9,25]
+z <- x[c(-1, 2)]          # Gemischte Indizierung nicht erlaubt (Fehlermeldung)
 ```
 
 Indizierung mit einem **logischen Vektor**
 ```{r, eval = F}
-x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y = x[c(T,T,F,F,T)]	    # TRUE Komponenten,  x[c(T,T,F,F,T)] = [1,4,25]
-z = x[x > 5] 		    # x > 5 = [F,F,T,T,T], x[x > 5] = [9,16,25]
+#| label: Bsp logischen Vektor
+x <- c(1, 4, 9, 16 ,25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[c(T, T, F, F, T)]  # TRUE Komponenten,  x[c(T,T,F,F,T)] = [1,4,25]
+z <- x[x > 5]             # x > 5 = [F,F,T,T,T], x[x > 5] = [9,16,25]
 ```
 
 Indizierung mit einem **character Vektor**
 ```{r, eval = F}
-x = c(1,4,9,16,25)	    # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-names(x) = c("a","b")	# Benennung der Komponenten als [a  b <NA> <NA> <NA>]
-y = x["a"]				# x["a"] = 1
+#| label: Bsp character Vektor
+x <- c(1, 4, 9, 16, 25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+names(x) = c("a","b")     # Benennung der Komponenten als [a  b <NA> <NA> <NA>]
+y <- x["a"]               # x["a"] = 1
 ```
 
 
@@ -476,24 +507,30 @@ R hat eine (zu) hohe Flexibilität bei Indizierung
 \vspace{1mm}
 
 Out-of-range Indizes verursachen keine Fehler, sondern geben NA aus
+\footnotesize
 ```{r, eval = F}
-x = c(1,4,9,16,25)		# [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y = x[10]				# x[10] = NA (Not Applicable)
+#| label: Out-of-rande Indizes
+x <- c(1, 4, 9, 16, 25)  # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[10]               # x[10] = NA (Not Applicable)
 ```
 
 \vspace{1mm}
 
 Nichtganzzahlige Indizes verursachen keine Fehler, sondern werden abgerundet
+\footnotesize
 ```{r, eval = F}
-y = x[4.9]				# x[4.9] 	= x[4] 	= 16
-z = x[-4.9]				# x[-4.9] = x[-4] = [1,4,9,25]
+#| label: Nicht-ganzahlige indizes
+y <- x[4.9]              # x[4.9] = x[4] = 16
+z <- x[-4.9]             # x[-4.9] = x[-4] = [1,4,9,25]
 ```
 
 \vspace{1mm}
 
 Leere Indizes indizieren den gesamten Vektor
+\footnotesize
 ```{r, eval = F}
-y = x[]					# y = x
+#| label: leere Indizies
+y <- x[]                 # y = x
 ```
 
 \vfill
@@ -527,10 +564,10 @@ Attribute
 
 \footnotesize
 ```{r, eval = F}
-a 	= seq(0,1,len=11)	# a = [ 0.0   ,  0.1   , ...,  0.9    , 1.0    ]
-b 	= -a				# b = [-0.0   , -0.1   , ..., -0.9    ,-1.0    ]
-v	= a^2			    # v = [ 0.0^2 ,  0.1^2 , ...,  0.9^2  , 1.0^2  ]
-w 	= log(a)			# w = [ln(0.0), ln(0.1), ...,  ln(0.9), ln(1.0)]
+a <- seq(0, 1, len=11) # a = [ 0.0, 0.1 , ..., 0.9, 1.0]
+b <- -a                # b = [-0.0, -0.1, ..., -0.9, -1.0]
+v <- a^2               # v = [ 0.0^2 ,  0.1^2 , ..., 0.9^2, 1.0^2]
+w <- log(a)            # w = [ln(0.0), ln(0.1), ..., ln(0.9), ln(1.0)]
 ```
 
 \small
@@ -540,24 +577,26 @@ w 	= log(a)			# w = [ln(0.0), ln(0.1), ...,  ln(0.9), ln(1.0)]
 Vektoren gleicher Länge
 
 ```{r, eval = F}
-a = c(1,2,3)			# a = [1,2,3]
-b = c(2,1,4)			# b = [2,1,4]
-v = a + b				# v = [1,2,3] + [2,1,4] = [1+2,2+1,3+4] = [   3,  3,    7]
-w = a - b 			    # w = [1,2,3] - [2,1,4] = [1-2,2-1,3-4] = [  -1,  1,   -1]
-x = a * b 				# x = [1,2,3] * [2,1,4] = [1*2,2*1,3*4] = [   2,  2,   12]
-y = a / b 				# y = [1,2,3] / [2,1,4] = [1/2,2/1,3/4] = [0.50,  2, 0.75]
+#| label: Elementweise Auswertung gleichlange Vektoren
+a <- c(1, 2, 3)        # a = [1,2,3]
+b <- c(2, 1, 4)        # b = [2,1,4]
+v <- a + b             # v = [1,2,3] + [2,1,4] = [1+2,2+1,3+4] = [3,3,7]
+w <- a - b             # w = [1,2,3] - [2,1,4] = [1-2,2-1,3-4] = [-1, 1, -1]
+x <- a * b             # x = [1,2,3] * [2,1,4] = [1*2,2*1,3*4] = [2, 2, 12]
+y <- a / b             # y = [1,2,3] / [2,1,4] = [1/2,2/1,3/4] = [0.50, 2, 0.75]
 ```
 
 \footnotesize
 Vektoren und Skalare (= Vektoren der Länge 1)
 
 ```{r, eval = F}
-a = c(1,2,3)			# a = [1,2,3]
-b = 2					# b = [2]
-v = a + b			    # v = [1,2,3] + [2,2,2] = [1+2,2+2,3+2] = [  3,  4,   5]
-w = a - b 				# w = [1,2,3] - [2,2,2] = [1-2,2-2,3-2] = [ -1,  2,   1]
-x = a * b 				# x = [1,2,3] * [2,2,2] = [1*2,2*2,3*2] = [  2,  4,   6]
-y = a / b 				# y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5,  1, 1.5]
+#| label: Elementw Auswertung unterschiedlich Lange Vektoren
+a <- c(1, 2, 3)        # a = [1,2,3]
+b <- 2                 # b = [2]
+v <- a + b             # v = [1,2,3] + [2,2,2] = [1+2,2+2,3+2] = [3, 4, 5]
+w <- a - b             # w = [1,2,3] - [2,2,2] = [1-2,2-2,3-2] = [-1, 2, 1]
+x <- a * b             # x = [1,2,3] * [2,2,2] = [1*2,2*2,3*2] = [2, 4, 6]
+y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 ```
 
 
@@ -569,18 +608,20 @@ y = a / b 				# y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5,  1, 1.5]
 
 * Bei ganzzahligen Vielfachen der Länge wird der kürzere Vektor wiederholt. \footnotesize
   ```{r, eval = F}
-  x = 1:2					# x = [1,2], length(x) = 2
-  y = 3:6					# y = [3,4,5,6], length(y) = 4
-  v = x + y			    # v = [1,2,1,2] + [3,4,5,6] = [4,6,6,8]
+  #| label: vielfaches
+  x <- 1:2                # x = [1,2], length(x) = 2
+  y <- 3:6                # y = [3,4,5,6], length(y) = 4
+  v <- x + y              # v = [1,2,1,2] + [3,4,5,6] = [4,6,6,8]
   ```
 
 * \small Arithmetik von Vektoren und Skalaren ist ein Spezialfall dieses Prinzips.
 
 * Andernfalls werden die ersten Komponenten des kürzeren Vektors wiederholt. \footnotesize
   ```{r, eval = F}
-  x = c(1,3,5)			# x = [1,3,5], length(x) = 3
-  y = c(2,4,6,8,10)		# y = [2,4,6,8,10], length(y) = 5
-  v = x + y				# v = [1,3,5,1,3] + [2,4,6,8,10] = [3,7,11,9,13]
+  #| label: nicht ganzzahliges Vielfaches
+  x <- c(1, 3, 5)         # x = [1,3,5], length(x) = 3
+  y <- c(2, 4, 6, 8, 10)  # y = [2,4,6,8,10], length(y) = 5
+  v <- x + y              # v = [1,3,5,1,3] + [2,4,6,8,10] = [3,7,11,9,13]
   ```
 
 \vfill
@@ -601,18 +642,22 @@ y = a / b 				# y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5,  1, 1.5]
 \setstretch{0.9}
 \footnotesize
   ```{r, eval = T}
-  3 * NA                # Multiplikation eines NA Wertes ergibt NA
+  #| label: multiply NA
+  3 * NA                  # Multiplikation eines NA Wertes ergibt NA
   ```
   \vspace{2mm}
   ```{r, eval = T}
+  #| label: compare NA
   NA < 2                  # Relationaler Vergleich eines NA Wertes ergibt NA
   ```
   \vspace{2mm}
   ```{r, eval = T}
+  #| label: NA to the power
   NA^0                    # NA hoch 0 ergibt 1, weil jeder Wert hoch 0 eins ergibt (?)
   ```
   \vspace{2mm}
   ```{r, eval = T}
+  #| label: bool with NA
   NA & FALSE              # NA UND FALSE  ergibt FALSE
   ```
   \vspace{2mm}
@@ -624,11 +669,13 @@ y = a / b 				# y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5,  1, 1.5]
 
 * Auf NA testet man mit `is.na()`
   ```{r, eval = T}
-  x = c(NA, 5, NA, 10)  # Vektor mit NAs
-  x == NA               # Kein Testen auf NAs : 5 == NA ist NA, nicht FALSE
-  is.na(x)				# Logisches Testen auf NA
+  #| label: test if NA
+  x <- c(NA, 5, NA, 10)  # Vektor mit NAs
+  x == NA                # Kein Testen auf NAs : 5 == NA ist NA, nicht FALSE
+  is.na(x)               # Logisches Testen auf NA
   ```
 
+\vfill
 
 
 # Attribute ====================================== {.plain}
@@ -661,22 +708,23 @@ Attribute sind Metadaten von R Objekten in Form von Schlüssel-Wert-Paaren
 \small
 \textcolor{darkblue}{Attribute ausgeben lassen} mit `attributes()`
 
-* \textcolor{darkcyan}{Beispiel}
-\footnotesize
-  ```{r, eval = T}
-  a = 1:3              # ein numerischer Vektor
-  attributes(a)        # Aufrufen aller Attribute
-  ```
-* \small Atomic vectors haben per se keine Attribute
+
+\tiny
+```{r, eval = T}
+#| label: attributes()
+a <- 1:3                # Ein numerischer Vektor
+attributes(a)           # Aufrufen aller Attribute
+```
+\small $\to$ Atomic vectors haben per se keine Attribute
 
 \textcolor{darkblue}{Attribute aufrufen und definieren} mit `attr()`
 
-* \textcolor{darkcyan}{Beispiel}
-\footnotesize
-  ```{r, eval = T}
-  attr(a, "S") = "W"   # a bekommt Attribut mit Schluessel S und Wert W
-  attr(a, "S")         # Das Attribut mit Schluessel S hat den Wert W
-  ```
+\tiny
+```{r, eval = T}
+#| label: attr()
+attr(a, "S") = "W"      # a bekommt Attribut mit Schluessel S und Wert W
+attr(a, "S")            # Das Attribut mit Schluessel S hat den Wert W
+```
 
 \vfill
 \footnotesize
@@ -685,10 +733,10 @@ Anmerkung
 \tiny
 Attribute werden bei Operationen oft entfernt (Ausnahmen sind `names` und `dim`)
 ```{r, eval = T}
-b = a[1]			# Kopie des ersten Elements von a in Vektor b
-attributes(b)		# Aufrufen aller Attribute von b
+#| label: attributes removed
+b <- a[1]               # Kopie des ersten Elements von a in Vektor b
+attributes(b)           # Aufrufen aller Attribute von b
 ```
-
 
 
 # Vektor-Elemente bezeichnen
@@ -698,44 +746,47 @@ attributes(b)		# Aufrufen aller Attribute von b
 
 Spezifikation des Attributs `names` gibt den Elementen eines Vektors Namen
 \vspace{0.5mm}
-\footnotesize
+\tiny
 ```{r, eval = T}
-v = c(x=1, y=2, z=3)        # Elementnamengeneration bei Vektorerzeugung
-v                           # Vektorausgabe
+#| label: vektor names
+v <- c(x=1, y=2, z=3)        # Elementnamengeneration bei Vektorerzeugung
+v                            # Vektorausgabe
 ```
 \vspace{1.5mm}
 \small
 
 Die Namen können zur Indizierung benutzt werden
 \vspace{0.5mm}
-\footnotesize
+\tiny
 ```{r, eval = T}
-v["y"]                      # Indizierung per Namen
+#| label: index vector names
+v["y"]                       # Indizierung per Namen
 ```
 \vspace{1.5mm}
 \small
 
 Zum Definieren und zum Aufrufen von Namen kann auch `names()` benutzt werden
 \vspace{0.5mm}
-\footnotesize
+\tiny
 ```{r, eval = T}
-y = 4:6                     # Erzeugung eines Vektors
-names(y) = c("a","b","c")   # Definition von Namen
-names(y)                    # Elementnamenaufruf
+#| label: names()
+y <- 4:6                     # Erzeugung eines Vektors
+names(y) <- c("a", "b", "c") # Definition von Namen
+names(y)                     # Elementnamenaufruf
 ```
 \vspace{1.5mm}
 \small
 
 Benannte Namen können hilfreich sein, wenn der Vektor eine Sinneinheit bildet
 \vspace{0.5mm}
-\footnotesize
+\tiny
 ```{r, eval = T}
-p = c(age    = 31,         # Alter (Jahre), Groesse (cm), Gewicht (kg) einer Person
-      height = 198, 
-      weight = 75)
-p                          # Vektorausgabe
+#| label: Vektor als Sinneinheit
+p <- c(age    = 31,          # Alter (Jahre), Groesse (cm), Gewicht (kg) einer Person
+       height = 198, 
+       weight = 75)
+p                            # Vektorausgabe
 ```
-
 
 
 # Übungen und Selbstkontrollfragen ====================================== {.plain}
