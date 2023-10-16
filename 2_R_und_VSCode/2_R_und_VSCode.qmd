@@ -641,20 +641,20 @@ y = 1
   ```{r}
   #| label: lobstr
   library(lobstr)   # Paket `lobstr` laden
-  x = 1
+  x <- 1
   obj_addr(x)
   ```
 
 * y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x.
   ```{r}
   #| label: obj adress y = x
-  y = x
+  y <- x
   obj_addr(y) 
   ```
 * y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x.
   ```{r}
   #| label: obj adress y !=x
-  y = 1
+  y <- 1
   obj_addr(y) 
   ```
 
