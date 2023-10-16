@@ -133,7 +133,7 @@ Datum          & Einheit               & Thema		                              \\
 18.10.23       & R Grundlagen          & (2) R und Visual Studio Code                      \\
 25.10.23       & R Grundlagen          & (2) R und Visual Studio Code                      \\
 01.11.23       & R Grundlagen          & (3) Vektoren                           \\
-08.11.23       & R Grundlagen          & (4) Matrizen und Arrays                \\
+08.11.23       & R Grundlagen          & (4) Matrizen                           \\
 15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
 22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
 39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\

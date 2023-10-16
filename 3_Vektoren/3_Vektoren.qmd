@@ -33,7 +33,7 @@ Datum          & Einheit               & Thema		                            \\\h
 18.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
 25.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
 \textbf{01.11.23}       & \textbf{R Grundlagen}          & \textbf{(3) Vektoren}\\
-08.11.23       & R Grundlagen          & (4) Matrizen und Arrays                \\
+08.11.23       & R Grundlagen          & (4) Matrizen                           \\
 15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
 22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
 39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
@@ -64,7 +64,7 @@ Datum          & Einheit               & Thema		                            \\\h
 \setstretch{2.5}
 \vfill
 
-Erzeugung
+Übersicht und Erzeugung
 
 Charakterisierung
 
@@ -85,7 +85,7 @@ Attribute
 \setstretch{2.5}
 \vfill
 
-**Erzeugung**
+**Übersicht und Erzeugung**
 
 Charakterisierung
 
@@ -98,7 +98,7 @@ Attribute
 Übungen und Selbstkontrollfragen
 
 
-# Was ist ein Vektor in R?
+# Übersicht
 \setstretch{1.5}
 
 
@@ -275,7 +275,7 @@ x_3 <- seq_along(c("a", "b"))    # wie seq_len(length(c("a", "b")))
 \setstretch{2.5}
 \vfill
 
-Erzeugung
+Übersicht und Erzeugung
 
 **Charakterisierung**
 
@@ -411,7 +411,7 @@ s
 \setstretch{2.5}
 \vfill
 
-Erzeugung
+Übersicht und Erzeugung
 
 Charakterisierung
 
@@ -544,7 +544,7 @@ y <- x[]                 # y = x
 \setstretch{2.5}
 \vfill
 
-Erzeugung
+Übersicht und Erzeugung
 
 Charakterisierung
 
@@ -686,7 +686,7 @@ y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 \setstretch{2.5}
 \vfill
 
-Erzeugung
+Übersicht und Erzeugung
 
 Charakterisierung
 
@@ -797,7 +797,7 @@ p                            # Vektorausgabe
 \setstretch{2.5}
 \vfill
 
-Erzeugung
+Übersicht und Erzeugung
 
 Charakterisierung
 
