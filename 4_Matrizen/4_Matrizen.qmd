@@ -1,0 +1,475 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Termine {.plain}
+\setstretch{1.3}
+\vfill
+\center
+\footnotesize
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                            \\\hline
+11.10.23       & Einführung            & (1) Einführung \\
+18.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+25.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+01.11.23       & R Grundlagen          & (3) Vektoren\\
+\textbf{08.11.23}       & \textbf{R Grundlagen}          & \textbf{(4) Matrizen}\\
+15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
+22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
+39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
+               & \textcolor{gray}{Weihnachtspause}                              \\
+10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24       & \textit{Leistungsnachweis Teil 2}                          \\\hline
+\end{tabular}
+
+
+# Matrizen - Titelfolie {.plain}
+\vfill
+\huge
+\begin{center}
+(4) Matrizen
+\end{center}
+\vfill
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+
+
+# Übersicht und Erzeugung ====================================== {.plain}
+\AtBeginSection{}
+\section{Übersicht und Erzeugung}
+
+\large
+\setstretch{2.5}
+\vfill
+
+**Übersicht und Erzeugung**
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+
+
+
+# Übersicht
+\setstretch{1.7}
+\small
+
+Matrizen sind zweidimensionale, rechteckige Datenstrukturen der Form
+
+\footnotesize
+\begin{equation}
+M = \begin{pmatrix}
+m_{11} 		& m_{12} 	& \cdots 	& m_{1n_c} 			\\
+m_{21} 		& m_{22} 	& \cdots	& m_{2n_c} 			\\
+\vdots		& \vdots 	& \ddots	& \vdots			\\
+m_{n_r1} 	& m_{n_r2} 	& \cdots	& {m_{n_rn_c}} 			\\
+\end{pmatrix}
+\end{equation}
+
+\small
+* Die Elemente $m_{ij}, i = 1,...,n_r, j = 1,...,n_c$ sind vom gleichen Typ.
+* $n_r$ ist die Anzahl der Zeilen (rows), $n_c$ ist die Anzahl der Spalten (columns).
+* Jedes Element einer Matrix hat einen Zeilenindex $i$ und einen Spaltenindex $j$.
+* Intuitiv sind Matrizen numerisch indizierte Tabellen.
+* Formal sind Matrizen in R zweidimensional interpretierte atomare Vektoren.
+* Matrizen in R sind nicht identisch mit dem mathematischen Matrixbegriff.
+* Matrizen in R können allerdings für Lineare Algebra verwendet werden.
+* Lineare Algebra ist die Sprache (linearer) statistischer Modelle.
+
+
+# Erzeugung mit `matrix()`
+\setstretch{1.4}
+
+Die `matrix()` Funktion befüllt Matrizen mit Vektorelementen
+\small
+
+`matrix(data, nrow, ncol, byrow)`
+
+\vspace{2mm}
+
+\footnotesize
+```{r, eval = T}
+matrix(c(1:12), nrow = 3)               # 3 x 4 Matrix der Zahlen 1,...,12, byrow = FALSE
+matrix(c(1:12), ncol = 4)               # 3 x 4 Matrix der Zahlen 1,...,12, byrow = FALSE
+matrix(c(1:12), nrow = 3, byrow = TRUE) # 3 x 4 Matrix der Zahlen 1,...,12, byrow = TRUE
+```
+\vfill
+
+
+# Erzeugung mit `cbind()`
+\setstretch{1.4}
+
+\small
+Die Funktion `cbind()` konkateniert passende Matrizen spaltenweise
+
+\vspace{3mm}
+\footnotesize
+```{r, eval = TRUE}
+A <- matrix(c(1:4) , nrow = 2)       # 2 x 2 Matrix der Zahlen 1,...,4
+print(A)
+B <- matrix(c(5:10), nrow = 2)       # 2 x 3 Matrix der Zahlen 5,...,10
+print(B)
+C <- cbind(A, B)                     # Spaltenweise Konkatenierung von A und B
+print(C)
+```
+
+\vfill
+
+
+# Erzeugung mit `rbind()`
+\setstretch{1.4}
+\vspace{2mm}
+\small
+Die Funktion `rbind()` konkateniert passende Matrizen reihenweise
+
+\vspace{3mm}
+\footnotesize
+```{r, eval = T}
+A <- matrix(c(1:6) , nrow = 2, byrow = T)  # 2 x 3 Matrix der Zahlen 1,...,6
+print(A)
+B <- matrix(c(7:9), nrow = 1)              # 1 x 3 Matrix der Zahlen 5,...,10
+print(B)
+C <- rbind(A, B)                           # reihenweise Konkatenierung von A und B
+print(C)
+```
+
+
+# Charakterisierung ====================================== {.plain}
+\AtBeginSection{}
+\section{Charakterisierung}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Übersicht und Erzeugung
+
+**Charakterisierung**
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+
+
+# Charakterisierung
+\setstretch{1.5}
+\vspace{2mm}
+
+\small
+`typeof()`gibt den elementaren Datentyp einer Matrix aus
+
+\footnotesize
+```{r, eval = T}
+A <- matrix(c(T, T, F, F), nrow = 2)        # 2 x 2 Matrix von Elementen vom Typ logical
+typeof(A)
+B <- matrix(c("a", "b", "c"), nrow = 1)     # 1 x 3 Matrix von Elementen vom Typ character
+typeof(B)
+```
+
+\small
+`nrow()` und `ncol()` geben die Zeilen- bzw. Spaltenanzahl aus
+
+\footnotesize
+```{r, eval = T}
+C <- matrix(1:12, nrow = 3)                 # 3 x 4 Matrix
+nrow(C)                                     # Anzahl Zeilen
+ncol(C)                                     # Anzahl Spalten
+```
+
+\vfill
+
+
+# Indizierung ====================================== {.plain}
+\AtBeginSection{}
+\section{Indizierung}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Übersicht und Erzeugung
+
+Charakterisierung
+
+**Indizierung**
+
+Arithmetik
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+
+
+# \textcolor{darkblue}{Indizierung}
+\setstretch{1.4}
+
+Generell gilt
+\small
+
+* Matrixelemente werden mit einen Zeilenindex und einem Spaltenindex indiziert.
+* Die Indexreihenfolge ist immer 1. Zeile, 2. Spalte.
+* Die Prinzipien der Indizierung entsprechen der Vektorindizierung.
+* Indizes verschiedener Dimensionen können unterschiedlich indiziert werden.
+* Eindimensionale Resultate liegen als Vektor, nicht als Matrix vor.
+
+\vspace{1mm}
+
+\textcolor{darkcyan}{Beispiele}
+\tiny
+\vspace{1mm}
+```{r, eval = T}
+A <- matrix(c(2:7)^2, nrow = 2)      # 2 x 3 Matrix der Zahlen 2^2,...,7^2
+print(A)
+a_13 <- A[1, 3]                      # Element in 1. Zeile, 3. Spalte von A [36]
+a_22 <- A[2, 2]                      # Element in 2. Zeile, 2. Spalte von A [35]
+a_2. <- A[2,]                        # Alle Elemente der 2. Zeile [9,25,49]
+a_.3 <- A[,3]                        # Alle Elemente der 3. Spalte [36,49]
+A_12 <- A[1:2, 1:2]                  # Submatrix der ersten zwei Zeilen und Spalten
+A10  <- A[A>10]                      # Elemente von A groesser 10 [16,25,36,49]
+A_13 <- A[1, c(F, F, T)]             # Element in 1. Zeile, 3. Spalte von A [36]
+```
+
+
+# Arithmetik ====================================== {.plain}
+\AtBeginSection{}
+\section{Arithmetik}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Übersicht und Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+**Arithmetik**
+
+Attribute
+
+Übungen und Selbstkontrollfragen
+
+
+# Unitäre arithmetische Operationen
+
+\small
+**\textcolor{darkblue}{Unitäre}** arithmetische Operatoren und Funktionen werden elementweise ausgewertet.
+
+\vfill
+
+\tiny
+```{r, eval = T}
+A <- matrix(c(1:4), nrow = 2)  # 2 x 2 Matrix der Zahlen 1,2,3,4
+print(A)
+
+B <- A^2                       # B[i,j]  = A[i,j]^2,  1 <= i,j <= 2
+print(B)
+
+C <- sqrt(B)                   # C[i,j]  = sqrt(A[i,j]^2),  1 <= i,j <= 2
+print(C)
+
+D <- exp(A)                    # D[i,j] = exp(A[i,j]),  1 <= i,j <= 2
+print(D)
+```
+
+
+# Binäre arithmetische Funktionen
+\small
+Matrizen **passender Größen** können mit binären arithmetischen Operatoren verknüpft werden.
+
+**\textcolor{darkblue}{Binäre}** arithmetische Operatoren +,-,*,\textbackslash werden bei gleicher Größe elementweise ausgewertet.
+\small
+
+\vfill
+
+\tiny
+```{r, eval = T}
+A <- matrix(c(1:4), nrow = 2)      # 2 x 2 Matrix der Zahlen 1,2,3,4
+print(A)
+
+B <- matrix(c(5:8), nrow = 2)      # 2 x 2 Matrix der Zahlen 5,6,7,8
+print(B)
+
+print(A + B)                       # C[i,j] = A[i,j] + B[i,j], 1 <= i,j <= 2
+
+print(A * B)                       # C[i,j] = A[i,j] * B[i,j], 1 <= i,j <= 2
+```
+
+
+# Lineare Algebra
+\vspace{1mm}
+\small
+
+Lineare Algebra mit R Matrizen
+
+* Addition, Subtraktion, Hadamardprodukt elementweise definiert wie oben
+* Matrixmultiplikation, Transposition, Inversion, Determinante
+
+\vspace{1mm}
+\tiny
+
+```{r, eval = T}
+C <- A  %*% B          # 2 x 2 Matrixprodukt
+print(C)
+
+A_T <- t(A)            # Transposition von A
+print(A_T)
+
+A_inv <- solve(A)      # Inverse von A
+print(A_inv)
+
+A_det <- det(A)        # Determinante von A
+print(A_det)
+```
+
+
+# Attribute ====================================== {.plain}
+\AtBeginSection{}
+\section{Attribute}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Übersicht und Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+**Attribute**
+
+Übungen und Selbstkontrollfragen
+
+
+# Attribute
+
+\small
+Formal sind Matrizen atomare Vektoren  mit einem Attribut namens "`dim`".
+
+\tiny
+\vspace{1mm}
+```{r, eval = T}
+A <- matrix(1:12, nrow = 4 )             #  4 x 3 Matrix
+attributes(A)                            # Aufrufen der Attribute von A
+```
+\vspace{2mm}
+\small
+`rownames()` und `colnames()` spezifizieren das Attribut "`dimnames`".
+\tiny
+\vspace{1mm}
+```{r, eval = T}
+rownames(A) <- c("P1", "P2", "P3", "P4") # Benennung der Zeilen von A
+colnames(A) <- c("Age", "Hgt", "Wgt")    # Benennung der Spalten von A
+print(A)                                 # A mit Attribut dimnames
+attr(A, "dimnames")                      # Aufrufen des Attributs dimnames
+```
+
+Anmerkung: \textcolor{darkcyan}{Bei Matrizen ist die Benennung von Zeilen und Spalten eher ungewöhnlich.}
+
+
+# Übungen und Selbstkontrollfragen ====================================== {.plain}
+\AtBeginSection{}
+\section{Übungen und Selbstkontrollfragen}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Übersicht und Erzeugung
+
+Charakterisierung
+
+Indizierung
+
+Arithmetik
+
+Attribute
+
+**Übungen und Selbstkontrollfragen**
+
+
+# Übungen und Selbstkontrollfragen
+
+\small
+\setstretch{1.8}
+1. Dokumentieren Sie alle in dieser Einheit eingeführten Befehle in einem R Skript.
+2. Erzeugen Sie in R die Matrizen
+\begin{equation*}
+A = 
+\begin{pmatrix}
+4 & 3 & 2 & 1 \\
+3 & 2 & 1 & 4 \\
+2 & 1 & 4 & 3
+\end{pmatrix}
+\mbox{ und }
+B = 
+\begin{pmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0
+\end{pmatrix}
+\end{equation*}
+3. Kopieren Sie die zweite Zeile von $A$ in einen Vektor.
+4. Kopieren Sie die erste und dritte Spalte von $B$ in eine 3 $\times$ 2 Matrix
+5. Setzen Sie alle Nullen in $B$ auf -1.
+6. Setzen Sie die zweite Zeile von $A$ auf $(1\,2\,3\,4)$.
+7. Addieren Sie die Matrizen $A$ und $B$.
+8. Multiplizieren Matrix $A$ mit 3.
+9. Konkatenieren Sie die Matrizen $A$ und $B$ zeilenweise.
+10. Konkatenieren Sie die Matrizen $A$ und $B$ spaltenweise.
