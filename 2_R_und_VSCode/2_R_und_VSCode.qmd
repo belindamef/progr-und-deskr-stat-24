@@ -504,7 +504,6 @@ print(gesamtpreis)
 # Workspace
 \setstretch{1.7}
 \vfill
-\small
 
 ```{r echo = F, eval = T}
 rm(has_annotations)
@@ -512,7 +511,11 @@ rm(pandoc_dir)
 rm(quarto_bin_path)
 
 ```
+
+
 \textcolor{darkblue}{Der Workspace | (globaler) Arbeitsbereich}
+
+\small
 
 * Enthält alle aktuell definierten Objekte, Variablen und Funktionen während einer R-Sitzung.
 * Nach Zuweisung werden Variablen automatisch im Workspace gespeichert.
@@ -523,8 +526,10 @@ rm(quarto_bin_path)
   ls()                 # Anzeigen aller Variablennamen im aktuellen Workspace
   ```
 
-\small
+\normalsize
 \textcolor{darkblue}{Löschen von Variablen}
+
+\small
 
 * Löschen bestimmter Variablen
 \setstretch{0.9}
@@ -556,9 +561,10 @@ In VSCode kann der Workspace in the R Extension pane angezeigt werden
 \setstretch{1.6}
 \vfill
 
-\small
-
+\normalsize
 \textcolor{darkblue}{Zulässige Variablennamen}
+
+\small
 
 * bestehen aus Buchstaben, Zahlen, Punkten (.) und Unterstrichen (\_).
 * beginnen mit einem Buchstaben oder . nicht gefolgt von einer Zahl.
@@ -567,7 +573,9 @@ In VSCode kann der Workspace in the R Extension pane angezeigt werden
 
 \vspace{1mm}
 
+\normalsize
 \textcolor{darkblue}{Sinnvolle Variablennamen}
+\small
 
 * sind kurz ($\approx$ 1 bis 9 Zeichen) und \textcolor{darkcyan}{aussagekräftig}.
 * bestehen nur aus Kleinbuchstaben und Unterstrichen.
@@ -671,7 +679,6 @@ Anmerkungen:
 # Exkurs: R Pakete
 \setstretch{1.5}
 \vfill
-\small
 
 \textcolor{darkblue}{Das Prinzip}
 
@@ -683,9 +690,11 @@ Anmerkungen:
 
 \vfill
 
-\small
+\normalsize
 
 \textcolor{darkblue}{Paket-Management}
+\footnotesize
+
 \footnotesize
 
 * Anzeige und Auswahl aller installierter Pakete in der R Extention: \textit{HELP PAGES} $\to$ \textit{Home} $\to$ \textit{Packages}
@@ -767,9 +776,9 @@ obj_addr(y) == obj_addr(x) # zeigt, dass y und x nicht mehr dieselbe Speicherzel
 
 # Variablenrepräsentation $\vert$ Unbinding und Garbage Collection
 \setstretch{1.8}
-\small
 \textcolor{darkblue}{Unbinding}
-\footnotesize
+\small
+
 ```{r}
 #| label: unbinding
 x <- 1      #  x referenziert Objekt (0x74b)
@@ -777,14 +786,15 @@ x <- "a"    #  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referen
 ```
 
 \vspace{2mm}
-\small
+\normalsize
 \textcolor{darkblue}{Garbage collection}
-\footnotesize
-
+\small
 
 * Nicht referenzierte Objekte im Arbeitsspeicher werden automatisch gelöscht.
 * Das Löschen geschieht meist erst dann, wenn es wirklich nötig ist.
 * Es ist nicht nötig, aktiv die Garbage Collection Funktion `gc()` zu benutzen.
+
+\vfill
 
 
 # Datenstrukturen ======================================= {.plain}
@@ -808,8 +818,8 @@ Variablen
 
 # Klassische Datenstrukturen einer 3GL Programmiersprache
 
-\small
 \textcolor{darkblue}{Fundamentale Datenstrukturen}
+\small
 
 * Vordefiniert innerhalb der Programmiersprache
 * Logische Werte (`logical`): TRUE, FALSE
@@ -819,34 +829,42 @@ Variablen
 * Datentyp-spezifische assoziierte Operationen
     * \small AND, OR (logical) +, - (integer) +,-,*, / (single), Zeichenkonkatenation (character)
 
+\normalsize
 \textcolor{darkblue}{Zusammengesetzte Datenstrukturen}
+\small
 
 * Vordefinierte Container zur Zusammenfassung mehrerer Variablen gleichen Datentyps.  
 (z.B. Vektoren, Listen, Arrays, Matrizen, ...) 
 * Container-spezifische Operationen (z.B. Vektorindizierung, Matrixmultiplikation, ...)
 
+\normalsize
 \textcolor{darkblue}{Selbstdefinierte Datenstrukturen}
+\small
 
 * Definition eigener Datenstrukturen aus vordefinierten Datenstrukturen und Containern
 * Definition eigener Operationen
 
 
 # Datenstrukturenkennenlernen beim Erlernen einer Programmiersprache
-
-\small
+\normalsize
 \textcolor{darkblue}{Fundamentale Datenstrukturen}
+\small
 
 * Welche fundamentalen Datenstrukturen bietet die Sprache an?
 * Welche Operationen darauf sind bereits definiert?
 * Wie lautet die Syntax zur Definition einer Variable eines fundamentalen Datentyps?
 * Wie lautet die Syntax, um vordefinierte Operationen aufzurufen?
 
+\normalsize
 \textcolor{darkblue}{Zusammengesetzte Datenstrukturen}
+\small
 
 * Welche Container und zugehörige Operationen bietet die Programmiersprache?
 * Wie lautet die Syntax zum Umgang mit einem Container?
 
+\normalsize
 \textcolor{darkblue}{Selbstdefinierte Datenstrukturen}
+\small
 
 * Wie erzeugt man selbstdefinierte Datenstrukturen und zugehörige Operationen?
 * Wie lautet die Syntax zum Umgang mit einer selbstdefinierten Datenstruktur?
