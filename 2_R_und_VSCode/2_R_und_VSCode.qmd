@@ -457,8 +457,8 @@ zu einer Konstante – zur Laufzeit des Rechenprozesses verändert werden.
 * Offiziell empfohlen für R ist `<-`.
   ```{r}
   #| label: Variablendefinition in R
-  a <- 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
-  a = 1                # a ist eine Variable vom Typ double, ihr Wert ist 1
+  a <- 1              # a ist eine Variable vom Typ double, ihr Wert ist 1
+  a = 1               # a ist eine Variable vom Typ double, ihr Wert ist 1
   ```
 
 # \textcolor{darkcyan}{Beispiel}
@@ -605,7 +605,7 @@ x <- 1
 \begin{enumerate}
 \footnotesize
   \item R erzeugt ein Objekt (Vektor mit Wert 1) mit Speicheradresse `0x1d888c1a800`.
-  \item 2. R verbindet dieses Objekt mit dem Namen x, der das Objekt im Speicher referenziert.
+  \item R verbindet dieses Objekt mit dem Namen x, der das Objekt im Speicher referenziert.
 \end{enumerate}
 \end{itemize}
 
@@ -626,7 +626,7 @@ y <- x
 
 ```{r, eval = F}
 #| label: binding y new
-y = 1
+y <- 1
 ```
 
 \begin{itemize}
@@ -634,41 +634,43 @@ y = 1
 \item De-facto wird ein neuer Name y erzeugt, der ein anderes Objekt referenziert wie x.
 \end{itemize}
 
-![](../Abbildungen/pds_2_binding_2.pdf){width="44%"}
+![](../Abbildungen/pds_2_binding_2_WiSe23.pdf){width="44%"}
 
 \vspace{1mm}
 
 
 # Speicheradressen $\vert$ object adress
 
-\setstretch{1.3}
+\setstretch{1.2}
+\vspace{3mm}
 
 \footnotesize
 
-* Speicheraddressen können mit der Funktion `lobstr::obj_addr()` angezeigt werden.
-  ```{r}
+* Speicheraddressen können mit der Funktion `lobstr::obj_addr()` angezeigt werden. \tiny
+  ```{r, eval = T}
   #| label: lobstr
   library(lobstr)   # Paket `lobstr` laden
   x <- 1
   obj_addr(x)
   ```
 
-* y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x.
-  ```{r}
+* \footnotesize y bekommt die Zuweisung x. De-facto refenziert y dieselbe Speicheradresse wie x. \tiny
+  ```{r, eval = T}
   #| label: obj adress y = x
   y <- x
   obj_addr(y) 
   ```
-* y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x.
-  ```{r}
+* \footnotesize y bekommt die Zuweisung zu einem neuen Objekt (Vektor mit Wert 1). De-facto referenziert y eine andere Speicheradresse wie x. \tiny
+  ```{r, eval = T}
   #| label: obj adress y !=x
   y <- 1
+  obj_addr(x)
   obj_addr(y) 
   ```
 
 \vfill
 
-
+\footnotesize
 Anmerkungen:
 
 * \justifying Ausdrücke der Art ```lobstr::obj_addr()``` referieren eine Funktion, hier `obj_addr()`, bei gleichzeitiger Angabe des Pakets, hier `lobbstr`. 
@@ -701,9 +703,9 @@ Anmerkungen:
 * Paket-Management mit Befehlen:
   ```{r}
   #| label: Pakete Managen
-  installed.packages()        # Anzeige aller installierten Pakete
-  install.packages("lobstr")  # Paket installieren
-  library(lobstr)             # Laden eines Pakets
+  installed.packages()        # Alle installierten Pakte anzeigen
+  install.packages("lobstr")  # Paket "lobstr" installieren
+  library(lobstr)             # Paket "lobstr" laden
   ```
 * Tipp: Wenn in einem Datenanalyseskript Pakete außerhalb der `standard library` verwendet werden, sollte das Laden des Pakets auch ein Befehl im Analyseskript sein!
 
@@ -771,7 +773,7 @@ x <- 3                     # Ein neues Objekt mit Wert 3 wird in Speicherzelle (
 obj_addr(y) == obj_addr(x) # zeigt, dass y und x nicht mehr dieselbe Speicherzelle addressieren.
 ```
 
-![](../Abbildungen/pds_2_unbinding.pdf){width="56%"}
+![](../Abbildungen/pds_2_copy_on_modify_2.pdf){width="70%"}
 
 
 # Variablenrepräsentation $\vert$ Unbinding und Garbage Collection
@@ -785,6 +787,8 @@ x <- 1      #  x referenziert Objekt (0x74b)
 x <- "a"    #  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referenz
 ```
 
+![](../Abbildungen/pds_2_unbinding.pdf){width="70%"}
+
 \vspace{2mm}
 \normalsize
 \textcolor{darkblue}{Garbage collection}
@@ -793,6 +797,7 @@ x <- "a"    #  x referenziert Objekt (0x2a08), Objekt (0x74b) jetzt ohne Referen
 * Nicht referenzierte Objekte im Arbeitsspeicher werden automatisch gelöscht.
 * Das Löschen geschieht meist erst dann, wenn es wirklich nötig ist.
 * Es ist nicht nötig, aktiv die Garbage Collection Funktion `gc()` zu benutzen.
+
 
 \vfill
 
@@ -938,7 +943,7 @@ raw
 
 \vfill
 
-* Double und integer werden zusammen auch als numeric bezeichnet.
+* Double und integer werden zusammen auch als **numeric** bezeichnet.
 
 * Viele weitere Typen, hier relevant sind **logical**, **double**, **integer**, **character**.
 
