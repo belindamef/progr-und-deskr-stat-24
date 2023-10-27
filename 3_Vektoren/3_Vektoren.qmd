@@ -814,17 +814,27 @@ Attribute
 \vfill
 \setstretch{2}
 \small
+
 1. Dokumentieren Sie die in dieser Einheit eingeführten R Befehle in einem R Skript.  
 2. Überlegen Sie sich zu den gelernten Konzepten eigene Beispiele und dokumentieren Sie diese im R Skript aus SKF 1.
 3. Beschreiben Sie in einer Übersicht die R Datenstruktur "Atomarer Vektor".
 4. Erläutern Sie die Funktion des Colonoperators in R.
 5. Nennen Sie vier Prinzipien der Indizierung in R.
-6. Erzeugen Sie einen Vektor der Dezimalzahlen 0.0, 0.05, 0.10 , 0.15, ..., 0.90, 0.95, 1.0.  
+6. Erzeugen Sie einen Vektor der Dezimalzahlen 0.0, 0.05, 0.10 , 0.15, ..., 0.90, 0.95, 1.0.
 7. Wählen Sie mithilfe positiver Indices die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
 8. Wählen Sie mithilfe negativer Indizes die Elemente 0.0, 0.1,..., 0.9, 1.0 dieses Vektors aus.  
-9. Wählen Sie die letzten 10 Elemente dieses Vektors aus. 
-10. Erläutern Sie den Begriff der Datentypangleichung (Coercion).
-11. Erläutern Sie den Begriff des (Vektor)Recylings.
-12. Erläutern Sie die Bedeutung des R Datentyps `NA`.
-13. Erläutern Sie das Konzept der Attribute in R.
+9. Wählen Sie die letzten 10 Elemente dieses Vektors aus.
+10. Erläutern Sie, was im Zusammenhang mit der Indizierung in R mit "zu hoher Flexibilität" gemeint ist
+
+
+# Übungen und Selbstkontrollfragen
+\vfill
+\setstretch{2}
+\small
+
+11. Erläutern Sie den Begriff der Datentypangleichung (Coercion).
+12. Erläutern Sie den Begriff des (Vektor)Recylings.
+13. Erläutern Sie die Bedeutung des R Datentyps `NA`.
+14. Erläutern Sie, wofür Attribute in R nützlich sind.
+
 \vfill

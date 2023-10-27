@@ -19,11 +19,11 @@ y <- 200L
 
 # Logical
 x <- TRUE    # best pactice: TRUE und FALSE ausschreiben, statt T und F
-y <- F
+y <- F       # geht auch; manchmal aus Platzgründen praktischer
 
 # Character
 x <- "a"     # best practice: double-quotes
-y <- 'test'
+y <- 'test'  # geht auch
 
 # ------Erzeugung mehrelementiger Vektoren------
 # Direkte Konkatenation
@@ -58,7 +58,7 @@ x_1 <- seq.int(0, 5)           # wie 0:5, [0,1,2,3,4,5]
 x_2 <- seq_len(5)              # Natuerliche Zahlen bis 5, [1,2,3,4,5]
 x_3 <- seq_along(c("a", "b"))  # wie seq_len(length(c("a", "b")))
 
-# ------Charalterisierung------
+# ------Charakterisierung------
 # Länge
 x <- 0:10
 length(x)        # Anzahl der Elemente des Vektors
@@ -226,14 +226,11 @@ indizes_letzte_10 <- seq(laenge_vektor - 10, laenge_vektor)
 # Kreiere einen neuen Vektor, der nur die letzten 10 Elem. des Vektors enthält
 vektor_skf_9 <- vektor[indizes_letzte_10]
 
-# Anmerkung: die hier gewählten Variablennamen sind natürlich viel zu lang.
+# Anmerkungen:
+# ------------
+# ie hier gewählten Variablennamen sind natürlich viel zu lang.
 # Sie wurden hier aus didaktischen Gründen gewählt.
-
-# ========= End of Scrip ====================================================
-# Ausgabe einen Textes der dem Programmierer zeigt, dass das gesamte Skript
-# ausgemführt werden konnte. 
-print("Das gesamte Skript wurde ausgeführt.")
-
-# Anmerkung: Bei Fehlermeldung (Error in ...) würde die execution unterbrochen
+#
+# Bei Fehlermeldung (Error in ...) würde die execution unterbrochen
 # werden, und diese letzte Zeile nicht ausgegeben. Bei Warnungen
 # (Warning message) hingegen wird die execution nicht unterbrochen.
