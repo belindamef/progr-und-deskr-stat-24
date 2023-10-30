@@ -234,7 +234,7 @@ Erzeugen von ganzzahligen Sequenzen mithilfe des **Colonoperators** `:`
 \tiny
 ```{r, eval = F}
 #| label: Vektor erzeugen mit colon
-x <- 0:5                         # [0,1,2,3,4,5]
+x <- 0:5                         # [0, 1, 2, 3, 4, 5]
 y <- 1.5:6.1                     # [1.5, 2.5, 3.5, 4.5, 5.5]
 ```
 
@@ -246,7 +246,8 @@ Erzeugen von Sequenzen mit `seq()`
 \tiny
 ```{r, eval = F}
 #| label: Vektor erzeugen mit seq()
-x_1 <- seq(0, 5)                 # wie 0:5, [0,1,2,3,4,5]
+x_1 <- seq(0, 5)                 # wie `0:5`, ganzzahlige Sequenz zw. 0 (inkl.) und 5 (max)
+                                 # [0, 1, 2, 3, 4, 5]
 x_2 <- seq(0, 1, len = 5)        # 5 Zahlen zwischen 0 (inkl.) und 1 (inkl.), equidistant
                                  # [0.00, 0.25, 0.50, 0.75, 1.00]
 x_3 <- seq(0, 2, by = .15)       # 0.15 Schritte zwischen 0 (inkl.) und 2 (max.)
@@ -261,9 +262,10 @@ x_4 <- seq(1, 0, by = -.1)       # -0.1 Schritte zwischen 1 (inkl.) und 0 (min.)
 \tiny
 ```{r, eval = F}
 #| label: weitere Funktionen zur Vektorerzeugung
-x_1 <- seq.int(0, 5)             # wie 0:5, [0,1,2,3,4,5]
-x_2 <- seq_len(5)                # Natuerliche Zahlen bis 5, [1,2,3,4,5]
-x_3 <- seq_along(c("a", "b"))    # wie seq_len(length(c("a", "b")))
+x_1 <- seq.int(0, 5)             # wie `0:5`, ganzzahlige Sequenz zw. 0 (inkl.) und 5 (max)
+                                 # [0, 1, 2, 3, 4, 5]
+x_2 <- seq_len(5)                # Natürliche Zahlen bis 5, [1, 2, 3, 4, 5]
+x_3 <- seq_along(c("a", "b"))    # wie `seq_len(length(c("a", "b")))`
 ```
 
 
@@ -312,7 +314,7 @@ typeof(x)          # Datentyp des atomic vectors
 \vspace{2mm}
 ```{r, eval = T}
 #| label: Beispiel typeof() 2/2
-y <- c(T,F,T)      # Vektor
+y <- c(T, F, T)    # Vektor
 typeof(y)          # Der Datentyp des atomic vectors
 ```
 \vspace{2mm}
@@ -354,7 +356,7 @@ character $>$ double $>$ integer $>$ logical
 
 ```{r, eval = T}
 #| label: coersion bei gemischter Vektor 1/2
-x <- c(1.2, "a")     # Kombination gemischter Datentypen (character schlaegt double)
+x <- c(1.2, "a")     # Kombination gemischter Datentypen (character schlägt double)
 x
 typeof(x)            # Erzeugter Vektor ist vom Datentyp character
 ```
@@ -362,7 +364,7 @@ typeof(x)            # Erzeugter Vektor ist vom Datentyp character
 
 ```{r, eval = T}
 #| label: coersion bei gemischter Vektor 2/2
-y <- c(1L, TRUE)     # Kombination  gemischter Datentypen (integer schlaegt logical)
+y <- c(1L, TRUE)     # Kombination  gemischter Datentypen (integer schlägt logical)
 y
 typeof(y)            # Erzeugter Vektor ist vom Typ integer
 ```
@@ -376,27 +378,27 @@ typeof(y)            # Erzeugter Vektor ist vom Typ integer
 
 \justifying
 \small
-Explizite Coercion mit `as.logical()`, `as.integer()`, `as.double()`, `as.character()`
+**Explizite** Coercion mit `as.logical()`, `as.integer()`, `as.double()`, `as.character()`
 \vspace{1mm}
 
 \footnotesize
 ```{r, eval = T}
 #| label: Explizite Coercion
 x <- c(0, 1, 1, 0)        # double Vektor
-y <- as.logical(x)        # ... umgewandelt in logical
+y <- as.logical(x)        # Umwandlung in logical Vektor
 y
 ```
 
 \vspace{3mm}
 \small
-Coercion geschieht aber auch oft implizit:
+Coercion geschieht aber auch oft **implizit**:
 \vspace{1mm}
 
 \footnotesize
 ```{r, eval = T}
 #| label: Implizite Coercion
 x <- c(T, F, T, T)        # logical Vektor
-s <- sum(x)               # Summation in integer gewandelter logical Elemente
+s <- sum(x)               # Summation wandelt logical Elemente automatisch in integer
 s
 ```
 
@@ -447,7 +449,7 @@ Attribute
 ```{r, eval = F}
 #| label: Indizierung Beispiel
 x <- c("a", "b", "c")   # character vector ["a", "b", "c"]
-y <- x[2]               # Kopie von "b" in y
+y <- x[2]               # Kopie von "b" (neues Object), referenziert von y
 x[3] <- "d"             # Aenderung von x zu x = ["a", "b", "d"]
 ```
 
@@ -469,25 +471,25 @@ x[3] <- "d"             # Aenderung von x zu x = ["a", "b", "d"]
 Indizierung mit einem **Vektor positiver Zahlen**
 ```{r, eval = F}
 #| label: Bsp positiv Zahlen
-x <- c(1 ,4 ,9 ,16 ,25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y <- x[1:3]               # 1:3 erzeugt Vektor [1,2,3], x[1:3] = x[c(1,2,3)] = [1,4,9]
-z <- x[c(1, 3, 5)]        # c(1,3,5) erzeugt Vektor [1,3,5], x[c(1,3,5)] = [1,9,25]
+x <- c(1, 4, 9, 16, 25)   # [1, 4, 9, 16, 25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[1:3]               # `1:3` erzeugt Vektor [1, 2, 3], x[1:3] = x[c(1,2,3)] = [1,4,9]
+z <- x[c(1, 3, 5)]        # `c(1, 3, 5)` erzeugt Vektor [1, 3, 5], x[c(1, 3, 5)] = [1, 9, 25]
 ```
 
 Indizierung mit einem **Vektor negativer Zahlen**
 ```{r, eval = F}
 #| label: Bsp negative Zahlen
-x <- c(1, 4, 9, 16, 25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y <- x[c(-2, -4)]         # Alle Komponenten ausser 2 und 4, x[c(-2,-4)] = [1,9,25]
+x <- c(1, 4, 9, 16, 25)   # [1, 4, 9, 16, 25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[c(-2, -4)]         # Alle Komponenten außer 2 und 4, x[c(-2, -4)] = [1, 9, 25]
 z <- x[c(-1, 2)]          # Gemischte Indizierung nicht erlaubt (Fehlermeldung)
 ```
 
 Indizierung mit einem **logischen Vektor**
 ```{r, eval = F}
 #| label: Bsp logischen Vektor
-x <- c(1, 4, 9, 16 ,25)   # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
-y <- x[c(T, T, F, F, T)]  # TRUE Komponenten,  x[c(T,T,F,F,T)] = [1,4,25]
-z <- x[x > 5]             # x > 5 = [F,F,T,T,T], x[x > 5] = [9,16,25]
+x <- c(1, 4, 9, 16 ,25)   # [1, 4, 9, 16, 25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+y <- x[c(T, T, F, F, T)]  # TRUE Komponenten,  x[c(T, T, F, F, T)] = [1, 4, 25]
+z <- x[x > 5]             # x > 5 = [F, F, T, T, T], x[x > 5] = [9, 16, 25]
 ```
 
 Indizierung mit einem **character Vektor**
@@ -510,7 +512,7 @@ Out-of-range Indizes verursachen keine Fehler, sondern geben NA aus
 \footnotesize
 ```{r, eval = F}
 #| label: Out-of-rande Indizes
-x <- c(1, 4, 9, 16, 25)  # [1,4,9,16,25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+x <- c(1, 4, 9, 16, 25)  # [1, 4, 9, 16, 25] = [1^2, 2^2, 3^2, 4^2, 5^2]
 y <- x[10]               # x[10] = NA (Not Applicable)
 ```
 
@@ -521,7 +523,7 @@ Nichtganzzahlige Indizes verursachen keine Fehler, sondern werden abgerundet
 ```{r, eval = F}
 #| label: Nicht-ganzahlige indizes
 y <- x[4.9]              # x[4.9] = x[4] = 16
-z <- x[-4.9]             # x[-4.9] = x[-4] = [1,4,9,25]
+z <- x[-4.9]             # x[-4.9] = x[-4] = [1, 4, 9, 25]
 ```
 
 \vspace{1mm}
@@ -609,19 +611,25 @@ y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 * Bei ganzzahligen Vielfachen der Länge wird der kürzere Vektor wiederholt. \footnotesize
   ```{r, eval = F}
   #| label: vielfaches
-  x <- 1:2                # x = [1,2], length(x) = 2
-  y <- 3:6                # y = [3,4,5,6], length(y) = 4
-  v <- x + y              # v = [1,2,1,2] + [3,4,5,6] = [4,6,6,8]
+  x <- 1:2                # x = [1, 2], length(x) = 2
+  y <- 3:6                # y = [3, 4, 5, 6], length(y) = 4
+  v <- x + y              # v = [1, 2, 1, 2] + [3, 4, 5, 6] = [4, 6, 6, 8]
   ```
 
 * \small Arithmetik von Vektoren und Skalaren ist ein Spezialfall dieses Prinzips.
+  ```{r, eval = F}
+  #| label: arithmethik mit Vielfaches
+  x <- 1:3                # x = [1, 2, 3], length(x) = 3
+  y <- 2                  # y = 2, length(y) = 1. y ist ein Skalar.
+  v <- x + y              # v = [1, 2, 3] + [2, 2, 2] = [3, 4, 5]
+  ```
 
 * Andernfalls werden die ersten Komponenten des kürzeren Vektors wiederholt. \footnotesize
   ```{r, eval = F}
   #| label: nicht ganzzahliges Vielfaches
-  x <- c(1, 3, 5)         # x = [1,3,5], length(x) = 3
-  y <- c(2, 4, 6, 8, 10)  # y = [2,4,6,8,10], length(y) = 5
-  v <- x + y              # v = [1,3,5,1,3] + [2,4,6,8,10] = [3,7,11,9,13]
+  x <- c(1, 3, 5)         # x = [1, 3, 5], length(x) = 3
+  y <- c(2, 4, 6, 8, 10)  # y = [2, 4, 6, 8, 10], length(y) = 5
+  v <- x + y              # v = [1, 3, 5, 1, 3] + [2, 4, 6, 8, 10] = [3, 7, 11, 9, 13]
   ```
 
 \vfill
@@ -640,6 +648,7 @@ y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 
 * Das Rechnen mit NAs ergibt (meist) wieder NA.
 \setstretch{0.9}
+
 \footnotesize
   ```{r, eval = T}
   #| label: multiply NA
@@ -667,7 +676,7 @@ y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 \small
 \setstretch{1.4}
 
-* Auf NA testet man mit `is.na()`
+* Auf NA testet man mit `is.na()` \footnotesize
   ```{r, eval = T}
   #| label: test if NA
   x <- c(NA, 5, NA, 10)  # Vektor mit NAs

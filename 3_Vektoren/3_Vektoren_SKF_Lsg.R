@@ -1,7 +1,7 @@
 # Beispiellösung für Selbstkontrollfragen aus Einheit (3) "Vektoren"
 # des Kurses "Programmierung und Deskriptive Statistik" im WS 23/24
 #
-# author: Belinda Fleischmann
+# Autorin: Belinda Fleischmann
 
 # ========== SKF 1 ==========================================================
 
@@ -155,7 +155,7 @@ v <- x + y             # v = [1,2,1,2] + [3,4,5,6] = [4,6,6,8]
 x <- c(1, 3, 5)        # x = [1,3,5], length(x) = 3
 y <- c(2, 4, 6, 8, 10) # y <- [2,4,6,8,10], length(y) = 5
 v <- x + y             # v = [1,3,5,1,3] + [2,4,6,8,10] = [3,7,11,9,13]
-                       # Hier sollte eine warning message erscheinen
+                       # Nach dieser Zeile sollte eine warning message erscheinen
 
 # Rechnen mit fehlenden Werte (NA)
 3 * NA     # Multiplikation eines NA Wertes ergibt NA
@@ -166,7 +166,6 @@ NA & FALSE # NA UND FALSE  ergibt FALSE, weil jeder Wert UND FALSE FALSE ergibt
 # Auf NA testen
 x <- c(NA, 5, NA, 10)  # Vektor mit NAs
 x == NA                # Kein Testen auf NAs : 5 <-<- NA ist NA, nicht FALSE
-                       # Hier sollte eine warning message erscheinen
 is.na(x)               # Logisches Testen auf NA
 
 # ------Attribute------
@@ -200,31 +199,31 @@ p <- c(age    <- 31,
        weight <- 75)
 
 # ========== SKF 6 ==========================================================
-vektor <- seq(0, 1, by = 0.05)
+ein_vektor <- seq(0, 1, by = 0.05)
 
 # ========== SKF 7 ==========================================================
 # Bestimme die Laenge des Vektors
-laenge_vektor <- length(vektor)
+laenge_vektor <- length(ein_vektor)
 
 # Kreiere einen Vektor mit jeder 2. Zahl in der Sequenz 1 - [Laenge des Vektors]
-indizes_1_3_5_usw <- seq(1, laenge_vektor, by = 2)
+ungerade_indizes <- seq(1, laenge_vektor, by = 2)
 
 # Kreiere einen neuen Vektor, der nur die Elemente 0.0, 0.1, ..., 1.0 enthält
-vektor_skf_7 <- vektor[indizes_1_3_5_usw]
+ein_neuer_vektor <- ein_vektor[ungerade_indizes]
 
 # ========== SKF 8 ==========================================================
 # Kreiere einen Vektor mit jeder 2. Zahl in der Sequenz 2 - [Laenge des Vektors]
-indizes_2_4_6_usw <- seq(2, laenge_vektor, by = 2)
+gerade_indizes <- seq(2, laenge_vektor, by = 2)
 
 # Kreiere einen neuen Vektor, der nur die Elemente 0.0, 0.1, ..., 1.0 enthält
-vektor_skf_8 <- vektor[-indizes_2_4_6_usw]
+noch_ein_neuer_vektor <- ein_vektor[-gerade_indizes]
 
 # ========== SKF 9 ==========================================================
 # Kreiere einen Vektor, der die letzten 10 Indizes enthält
-indizes_letzte_10 <- seq(laenge_vektor - 10, laenge_vektor)
+letzte_10_indizes <- seq(laenge_vektor - 10, laenge_vektor)
 
 # Kreiere einen neuen Vektor, der nur die letzten 10 Elem. des Vektors enthält
-vektor_skf_9 <- vektor[indizes_letzte_10]
+letzter_neuer_vektor <- ein_vektor[letzte_10_indizes]
 
 # Anmerkungen:
 # ------------
