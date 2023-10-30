@@ -1,3 +1,13 @@
 {
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Visual Studio Light",
+    "[markdown_latex_combined]": {},
+    "quarto.render.renderOnSave": true,
+    "theme-by-language.themes": {
+        "python": "Darcula Pycharm with Dark GUI",
+        "*": "GitHub Dark Dimmed",
+        "quarto": "Visual Studio Light",
+        "r": "Visual Studio Light",
+        "jsonc": "Visual Studio Light",
+        "markdown": "Visual Studio Light"
+    }
 }
