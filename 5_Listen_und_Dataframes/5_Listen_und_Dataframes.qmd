@@ -1,0 +1,755 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Termine {.plain}
+\setstretch{1.3}
+\vfill
+\center
+\footnotesize
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                            \\\hline
+11.10.23       & Einführung            & (1) Einführung \\
+18.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+25.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+01.11.23       & R Grundlagen          & (3) Vektoren\\
+08.11.23       & R Grundlagen          & (4) Matrizen\\
+\textbf{15.11.23}       & \textbf{R Grundlagen}          & \textbf{(5) Listen und Dataframes}              \\
+22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
+39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
+               & \textcolor{gray}{Weihnachtspause}                              \\
+10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24       & \textit{Leistungsnachweis Teil 2}                          \\\hline
+\end{tabular}
+
+
+# Listen und Dataframes - Titelfolie {.plain}
+
+\vfill
+\huge
+\begin{center}
+(5) Listen und Dataframes
+\end{center}
+\vfill
+
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+
+Listen
+
+Dataframes
+
+Übungen und Selbstkontrollfragen
+
+
+
+\AtBeginSection{}
+\section{Listen}
+# Listen ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+**Listen**
+
+Dataframes
+
+Übungen und Selbstkontrollfragen
+
+
+\AtBeginSubsection{}
+\subsection{Übersicht und Erzeugung}
+# Übersicht
+
+\setstretch{2}
+
+* Listen sind geordnete Folgen von R Objekten.
+* Listen sind rekursiv, können also Objekte verschiedenen Datentyps enthalten.
+* Defacto enthalten Listen keine Objekte, sondern Referenzen zu Objekten.
+
+![](../Abbildungen/pds_5_list_representation.pdf){width="30%" fig-align="center"}
+
+* Listen sind ein wesentlicher Baustein von Dataframes.
+
+
+# Erzeugung
+
+\setstretch{1.1}
+
+\small
+\vspace{1.5mm}
+Direkte Konkatenation von Listenelementen mit `list()`
+\vspace{1mm}
+\tiny
+\setstretch{0.8}
+```{r, eval = T}
+L <- list(c(1, 4, 5),                                    # Liste mit einem Vektor,
+          matrix(1:8, nrow = 2),                         # einer Matrix und
+          exp)                                           # einer Funktion
+print(L)
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Listen können Elemente von Listen sein
+\vspace{1mm}
+\tiny
+\setstretch{0.8}
+```{r, eval = T}
+L <- list(list(1))                                     # Liste mit Element 1 in einer Liste
+print(L)
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+`c()` kann zum Verbinden von Listen genutzt werden
+\vspace{1mm}
+\tiny
+\setstretch{0.8}
+```{r, eval = T}
+L <- c(list(pi), list("a"))                            # Konkatenation zweier Listen
+print(L)
+```
+
+
+\AtBeginSubsection{}
+\subsection{Charakterisierung}
+# Charakterisierung
+
+\small
+\vspace{1.5mm}
+
+Der Datentyp von Listen ist `list`
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r}
+L <- list(1:2, "a", log)             # Erzeugung einer Liste
+typeof(L)                            # Typenbestimmung
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+`length()` gibt die Anzahl der Toplevel Listenelemente aus
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+
+```{r}
+L <- list(1:2, list("a", pi), exp)   # Liste mit drei Toplevelelementen
+length(L)                            # length() ignoriert Elementinhalte, length() von L ist also 3
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Die Dimension, Zeilen-, und Spaltenanzahl von Listen ist `NULL`
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r}
+L <- list(1:2, "a", sin)             # eine Liste
+dim(L)                               # Die Dimension von Listen ist NULL
+nrow(L)                              # Die Zeilenanzahl von Listen ist NULL
+ncol(L)                              # Die Spaltenanzahl von Listen ist NULL
+```
+
+\vfill
+
+
+\AtBeginSubsection{}
+\subsection{Indizierung}
+# Indizierung
+
+\textcolor{darkblue}{Listenelement vs. Listenelemeninhalt}
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Einfache eckige Klammern [ ] indizieren Listenelemente als Listen
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L  <- list(1:3, "a", exp)           # eine Liste
+l1 <- L[1]                          # Indizierung eines Listenelements
+print(l1)
+typeof(l1)                          # Typbestimmung von l1
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Doppelte eckige Klammern [[ ]] indizieren den Inhalt von Listenelementen
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L  <- list(1:3, "a", exp)           # eine Liste
+i2 <- L[[2]]                        # Indizierung des Listenelementinhalts
+print(i2)
+typeof(i2)                          # Typbestimmung von i2
+```
+
+\vfill
+
+
+# Indizierung
+
+\textcolor{darkblue}{Ersetzen von Listenelement(inhalt)en}
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Ersetzen eines Listenelements über einfache eckige Klammer [ ]
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+#| warning: true
+L      <- list(1:3, "a", exp)       # eine Liste
+L[1]   <- 4:6                       # Ersetzung des 1. Listenelementes mit gewünschtem Inhalt
+                                    # -> keine Typkonversion vector zu list; erzeugt stattdessen warning message
+print(L[1])                         # und übernimmt nur erstes Element des Vektors
+
+L[1]   <- list(4:6)                 # Ersetzung des 1. Listenelementes mit einer Liste des gewünschten Inhalts
+print(L[1])
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Ersetzen des Listenelementinhalts über doppelte eckige Klammern [[ ]]
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+
+```{r, eval = T}
+L[[3]] <- "c"                       # Ersetzung des 3. Listenelementinhaltes
+print(L)
+```
+
+\vfill
+
+
+# Indizierung
+\textcolor{darkblue}{Prinzipien der Listenindizierung}
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Die Prinzipien der Listenindizierung sind analog zur Vektorindizierung.
+
+
+Vektoren positiver Zahlen adressieren entsprechende Elemente
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r,eval = T}
+L <- list(1:3, "a", pi)                 # eine Liste
+print(L[c(1, 3)])                       # 1. und 3. Listenelement
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Vektoren negativer Zahlen adressieren komplementäre Elemente
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+print(L[-c(1, 3)])                      # 2. Listenelement
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Logische Vektoren adressieren Elemente mit TRUE.
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+print(L[c(TRUE, TRUE, FALSE)])          # 1. und 2. Listenelement
+
+```
+
+
+\AtBeginSubsection{}
+\subsection{Attribute}
+# Attribute
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Listenelementen können bei Erzeugung Namen gegeben werden
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L <- list(greta = 1:3,               # eine Liste mit benannten Elementen
+          luisa = "a",
+          carla = exp)
+print(L)
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Namen werden automatisch als Attribut `names` gespeichtert und können mit `attributes()` angezeigt werden
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+print(attributes(L))
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Listenelementen können auch mit `names()` Namen gegeben werden
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+K <- list(1:2, TRUE)                 # eine unbenannte Liste
+names(K) <- c("Frodo", "Sam")        # Namensgebung mit names()
+print(K)
+```
+
+\vfill
+
+
+# Indizierung über Namen und dem `$` Operator
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Listenelemente und Listenelementinhalte können mit Namen indiziert werden
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L <- list(greta = 1:3,      # eine Liste mit benannten Elementen
+          luisa = "a",
+          carla = exp)
+L["carla"]                  # Listenelementindizierung
+L[["carla"]]                # Listenelementinhaltsinindizierung
+```
+
+\setstretch{1.1}
+\small
+\vspace{1.5mm}
+Listenelementinhalte können mit dem `$` Operator indiziert werden
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L <- list(greta = 1:3,      # eine Liste mit benannten Elementen
+          luisa = "a",
+          carla = exp)
+L$greta                     # Listenelementinhalt
+L$luisa                     # Listenelementinhalt
+L$carla                     # Listenelementinhalt
+```
+
+
+\AtBeginSubsection{}
+\subsection{Arithmetik}
+# Arithmetik
+
+\setstretch{1.2}
+\small
+\vspace{1.5mm}
+Listenarithmetik ist nicht definiert, da Listenelemente unterschiedlichen Typs sein können
+
+\vspace{1mm}
+\tiny
+```{r, eval = T}
+#| error: true
+L1 <- list(1:3, "a")           # eine Liste
+L2 <- list(TRUE, exp)          # eine Liste
+L1+L2                          # Versuch der Listenaddition
+```
+
+\setstretch{1.2}
+\small
+\vspace{1.5mm}
+Listenelementinhalte können bei Passung jedoch arithmetisch verknüpft werden
+
+\vspace{1mm}
+\tiny
+```{r, eval = T}
+L1 <- list(1:3, pi)            # eine Liste
+L2 <- list(4:6, exp)           # eine Liste
+L1[[1]] + L2[[1]]              # Addition  der 1. Listenelementinhalte, [1+4, 2+5,3+6]
+L2[[2]](1)                     # Anwendung des 2. Listenelementinhalts auf den 1. Listenelementinhalt -> exp(1)
+```
+
+\vfill
+
+
+\AtBeginSubsection{}
+\subsection{Copy-on-modify}
+# Copy-on-modify
+
+\setstretch{1.2}
+\small
+\vspace{1.5mm}
+
+Wie bei Vektoren gilt bei Listen das Copy-on-Modify Prinzip.
+
+"Shallow copy": Listenobjekt wird kopiert, aber nicht die gebundenen Objekte.
+
+`lobstr::ref()` erlaubt es, dieses Verhalten zu studieren.
+
+![](../Abbildungen/pds_5_list_copy_on_modify.pdf){width="55%"}
+
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L1 <- list(1, 2, 3)        # Erzeugen einer Liste als Objekt (z.B. 0x1a3)
+L2 <- L1                   # L2 wird das selbe listenobject wie L1 zugewiesen
+lobstr::ref(L1, L2)        # Ausgabe der Referenzen beider Listen
+```
+
+\vfill
+
+
+# Copy-on-modify
+
+\setstretch{1.2}
+\small
+\vspace{1.5mm}
+
+Änderung nur eines Listenelements
+\vspace{1mm}
+\tiny
+\setstretch{0.9}
+```{r, eval = T}
+L2[[3]] <- 4               # Copy-on-Modify mit shallow Objekt Kopie
+lobstr::ref(L1, L2)        # Ausgabe der Referenzen beider Listen
+```
+
+\vfill
+\setstretch{1.3}
+
+\footnotesize
+
+Anmerkung: \color{darkcyan} Die Referenzen der Objekte beziehen sich auf die addressierten Speicherzellen im Arbeitsspeicher. Da bei jeder Neuerstellung von Objekten, neue Speicherzellen vergeben werden, variieren die genauen Adressen bei jeder Neuerstellung von Objekten. Entsprechend werden die mit `lobbstr::ref()` ausgegebenen Referenzen nicht mit denen in der Abbildung oder bei Replikation zu Hause übereinstimmen.
+
+\vfill
+
+
+\AtBeginSection{}
+\section{Dataframes}
+# Dataframes ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Listen
+
+**Dataframes**
+
+Übungen und Selbstkontrollfragen
+
+
+\AtBeginSubsection{}
+\subsection{Übersicht und Erzeugung}
+# Übersicht
+
+
+\setstretch{1.4}
+\small
+
+* Dataframes sind die zentrale Datenstruktur in R.
+* Dataframes stellt man sich am besten als Tabelle vor.
+* Die Zeilen und Spalten der Tabelle haben Namen.
+
+\vspace{2mm}
+
+![](../Abbildungen/pds_5_df_screenshot_vscode.png){width="75%" fig-align="center"}
+
+\tiny
+Anmerkung:
+\setstretch{0.9}
+Der Datensatz `cushny` ist im R Paket `psychTools` enthalten und kann nach Installation (`install.packages()`) und Laden (`library()`) mit dem Befehl `data(cushny)` geladen werden. Mehr Details zu `cushny` und weiteren Datensätzen [\textcolor{linkblue}{hier}](https://cran.r-project.org/web/packages/psychTools/psychTools.pdf).
+
+
+# Übersicht
+
+\setstretch{1.4}
+
+\small
+
+* Formal ist ein Dataframe eine Liste, deren Elemente Vektoren gleicher Länge sind.
+* Die Listenelemente entsprechen den Spalten einer Tabelle.
+* Die Vektorelement gleicher Position entsprechen den Zeilen einer Tabelle.
+
+![](../Abbildungen/pds_5_dataframe_representation.pdf){width="40%" fig-align="center"}
+
+
+# Erzeugung
+
+\small
+`data.frame()` erzeugt einen Dataframe
+
+\footnotesize
+```{r, eval = T}
+D <- data.frame(x = letters[1:4],    # 1. Spalte mit Name x
+                y = 1:4,             # 2. Spalte mit Name y
+                z = c(T, T, F, T))   # 3. Spalte mit Name z
+print(D)
+```
+
+\small
+Die Spalten des Dataframes müssen gleiche Länge haben
+
+\footnotesize
+```{r, error = TRUE, eval = T, results="asis"}
+D <- data.frame(x = letters[1:4],    # 1. Spalte mit Name x
+                y = 1:4,             # 2. Spalte mit Name y
+                z = c(T, T, F))      # 3. Spalte mit Name z
+
+```
+
+\small
+Die Spalten eines Dataframes können offenbar unterschiedlichen Typs sein
+
+$\Rightarrow$ rekursive Datenstruktur.
+
+
+
+\AtBeginSubsection{}
+\subsection{Charakterisierung}
+# Charakterisierung
+
+\setstretch{1.1}
+\small
+Ein Dataframe hat `names()`, `rownames()`, `colnames()`
+
+\footnotesize
+```{r, eval = T}
+D <- data.frame(age    = c(30, 35, 40, 45),      # 1. Spalte
+                height = c(178, 189, 165, 171),  # 2. Spalte
+                weight = c(67, 76, 81, 92))      # 3. Spalte
+names(D)                                         # names gibt die Spaltennamen aus
+colnames(D)                                      # colnames entspricht names
+rownames(D)                                      # default rownames sind 1,2,...
+```
+\small
+Ein Dataframe `nrow()` Zeilen und `length()` bzw. `ncol()` Spalten
+
+\footnotesize
+```{r, eval = T}
+nrow(D)                                          # Zeilenanzahl
+ncol(D)                                          # Spaltenanzahl
+length(D)                                        # Länge ist die Spaltenanzahl
+```
+
+
+
+# Charakterisierung
+
+\small
+
+`View()` öffnet den RStudio Data Viewer.
+```{r, eval = T}
+View(D)
+```
+
+![](../Abbildungen/pds_5_view.pdf){width="25%"}
+
+`str()` zeigt in kompakter Form wesentliche Aspekte eines Dataframes an.
+
+```{r, eval = T}
+str(D)
+
+```
+Allgemein zeigt `str()` in kompakter Form wesentliche Aspekte eines R Objektes an.
+
+
+
+\AtBeginSubsection{}
+\subsection{Attribute}
+# Attribute
+
+\small
+
+Dataframes sind Listen mit Attributen für (column) `names` und `row.names`.
+Dataframes haben `class` "data.frame".
+
+\footnotesize
+```{r, eval = T}
+typeof(D)
+attributes(D)
+```
+
+
+ab dataframes übersicht müssen auch noch slides formate angepasst werden
+
+\AtBeginSubsection{}
+\subsection{Indizierung}
+# Indizierung
+\textcolor{darkblue}{Mit einem Index}
+\small
+
+Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
+
+$\Rightarrow$ Bei **einem** Index verhalten sich Dataframes wie **Listen**
+
+\footnotesize
+```{r, eval = T}
+D <- data.frame(x = letters[1:4],   # 1. Spalte mit Name x
+                y = 1:4,            # 2. Spalte mit Name y
+                z = c(T, T, F, T))  # 3. Spalte mit Name z
+class(D)                            # D ist ein Dataframe
+v <- D[1]                           # 1. Listenelement als Dataframe
+v
+class(v)                            # v ist ein Dataframe
+```
+
+
+
+# Indizierung
+\textcolor{darkblue}{Mit einem Index}
+\small
+
+Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
+
+$\Rightarrow$ Bei **einem** Index verhalten sich Dataframes wie **Listen**
+
+\footnotesize
+```{r, eval = T}
+D <- data.frame(x = letters[1:4],   # 1. Spalte mit Name x
+                y = 1:4,            # 2. Spalte mit Name y
+                z = c(T, T, F, T))  # 3. Spalte mit Name z
+w <- D[[1]]                         # Inhalt des 1. Listenelements
+w
+class(w)                            # w ist ein character vector
+y <- D$y                            # $ zur Indizierung der y Spalte
+y
+class(y)                            # v ist ein Vektor vom Typ "integer" (!)
+```
+
+
+# Indizierung
+\setstretch{1.2}
+\textcolor{darkblue}{Mit zwei Indices}
+
+\small
+Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
+
+$\Rightarrow$ Bei **zwei** Indices verhalten sich Dataframes wie **Matrizen**
+
+\vspace{1mm}
+\footnotesize
+
+```{r, eval = T}
+D <- data.frame(x = letters[1:4],   # 1. Spalte mit Name x
+                y = 1:4,            # 2. Spalte mit Name y
+                z = c(T, T, F, T))  # 3. Spalte mit Name z
+D[2:3,-2]                           # 1. Index für Zeilen, 2. Index für Spalten
+D[c(T, F, T, F),]                   # 1. Index für Zeilen, 2. Index für Spalten
+D[,c("x", "z")]                     # 1. Index für Zeilen, 2. Index für Spalten
+```
+
+
+
+\AtBeginSubsection{}
+\subsection{Copy-on-modify}
+# Copy-on-modify
+
+\small
+
+* Die Copy-on-Modify Prinzipien für Listen gelten auch für Dataframes
+* Modifikation einer Spalte führt zur Kopie der entsprechenden Spalte
+* Modifikation einer Zeile führt zur Kopie des gesamten Dataframes
+
+
+![](../Abbildungen/pds_5_dataframe_copy_on_modify.pdf){width="90%"}
+
+
+\AtBeginSection{}
+\section{Übungen und Selbstkontrollfragen}
+# Übungen und Selbstkontrollfragen====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Listen
+
+Dataframes
+
+**Übungen und Selbstkontrollfragen**
+
+
+
+# Übungen und Selbstkontrollfragen 
+\small
+\vfill
+\begin{enumerate}
+\item Dokumentieren Sie die in dieser Einheit eingeführten R Befehle.
+\item Beschreiben Sie in einer Übersicht die R Datenstruktur ``List''.
+\item Erzeugen Sie eine Liste mit vier Elementen.
+\item L sei eine Liste. Bennen und demonstrieren Sie den Unterschied zwischen L[1] und L[[1]].
+\item Erzeugen Sie zwei Listen und fügen Sie diese zusammen.
+\item L sei eine Liste. Was gibt length(L) an?
+\item L sei eine Liste. Was bedeutet dann L\$Student?
+\item Erläutern Sie den Begriff ``Shallow Copy'' einer Liste.
+\item Beschreiben Sie in einer Übersicht die R Datenstruktur "Dataframe".
+\item Erzeugen Sie einen Dataframe mit vier Spalten.
+\item D sei ein Dataframe. Was geben rownames(D) und colnames(D) an?
+\item D sei ein Dataframe. Was ist der Unterschied zwischen D[1] und D[1,1]?
+\item D sei ein Dataframe. Was bedeutet dann D\$Student?
+\item Erläutern Sie das Copy-on-modify Prinzip für Dataframes.
+\end{enumerate}
+\vfill
