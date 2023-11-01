@@ -487,7 +487,7 @@ z <- x[c(-1, 2)]          # Gemischte Indizierung nicht erlaubt (Fehlermeldung)
 Indizierung mit einem **logischen Vektor**
 ```{r, eval = F}
 #| label: Bsp logischen Vektor
-x <- c(1, 4, 9, 16 ,25)   # [1, 4, 9, 16, 25] = [1^2, 2^2, 3^2, 4^2, 5^2]
+x <- c(1, 4, 9, 16, 25)   # [1, 4, 9, 16, 25] = [1^2, 2^2, 3^2, 4^2, 5^2]
 y <- x[c(T, T, F, F, T)]  # TRUE Komponenten,  x[c(T, T, F, F, T)] = [1, 4, 25]
 z <- x[x > 5]             # x > 5 = [F, F, T, T, T], x[x > 5] = [9, 16, 25]
 ```
