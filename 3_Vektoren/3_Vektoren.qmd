@@ -589,7 +589,7 @@ y <- a / b               # y = [1,2,3] / [2,1,4] = [1/2,2/1,3/4] = [0.50, 2, 0.7
 ```
 
 \footnotesize
-Vektoren und Skalare (= Vektoren der Länge 1)
+Vektoren und Skalare
 
 ```{r, eval = F}
 #| label: Elementw Auswertung unterschiedlich Lange Vektoren
@@ -646,10 +646,7 @@ y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 
 * Fehlende Werte werden in R mit NA (not applicable) repräsentiert.
 
-* Das Rechnen mit NAs ergibt (meist) wieder NA.
-\setstretch{0.9}
-
-\footnotesize
+* Das Rechnen mit NAs ergibt (meist) wieder NA. \setstretch{0.9} \footnotesize
   ```{r, eval = T}
   #| label: multiply NA
   3 * NA                  # Multiplikation eines NA Wertes ergibt NA
@@ -676,7 +673,7 @@ y <- a / b             # y = [1,2,3] / [2,2,2] = [1/2,2/2,3/2] = [0.5, 1, 1.5]
 \small
 \setstretch{1.4}
 
-* Auf NA testet man mit `is.na()` \footnotesize
+* Auf NA testet man mit `is.na()` \footnotesize 
   ```{r, eval = T}
   #| label: test if NA
   x <- c(NA, 5, NA, 10)  # Vektor mit NAs
@@ -732,7 +729,8 @@ attributes(a)           # Aufrufen aller Attribute
 ```{r, eval = T}
 #| label: attr()
 attr(a, "S") <- "W"     # a bekommt Attribut mit Schluessel S und Wert W
-attr(a, "S")            # Das Attribut mit Schluessel S hat den Wert W
+attr(a, "S")            # Das Attribut mit Schluessel S hat jetzt den Wert W
+attributes(a)
 ```
 
 \vfill
