@@ -158,7 +158,7 @@ Der Datentyp von Listen ist `list`
 \vspace{1mm}
 \tiny
 \setstretch{0.9}
-```{r}
+```{r, eval = T}
 L <- list(1:2, "a", log)             # Erzeugung einer Liste
 typeof(L)                            # Typenbestimmung
 ```
@@ -171,7 +171,7 @@ typeof(L)                            # Typenbestimmung
 \tiny
 \setstretch{0.9}
 
-```{r}
+```{r, eval = T}
 L <- list(1:2, list("a", pi), exp)   # Liste mit drei Toplevelelementen
 length(L)                            # length() ignoriert Elementinhalte, length() von L ist also 3
 ```
@@ -184,7 +184,7 @@ Die Dimension, Zeilen-, und Spaltenanzahl von Listen ist `NULL`
 \vspace{1mm}
 \tiny
 \setstretch{0.9}
-```{r}
+```{r, eval = T}
 L <- list(1:2, "a", sin)             # eine Liste
 dim(L)                               # Die Dimension von Listen ist NULL
 nrow(L)                              # Die Zeilenanzahl von Listen ist NULL
@@ -203,7 +203,7 @@ ncol(L)                              # Die Spaltenanzahl von Listen ist NULL
 \setstretch{1.1}
 \small
 \vspace{1.5mm}
-Einfache eckige Klammern [ ] indizieren Listenelemente als Listen
+Einfache eckige Klammern [ ] indizieren **Listenelemente als Listen**
 
 \vspace{1mm}
 \tiny
@@ -218,7 +218,7 @@ typeof(l1)                          # Typbestimmung von l1
 \setstretch{1.1}
 \small
 \vspace{1.5mm}
-Doppelte eckige Klammern [[ ]] indizieren den Inhalt von Listenelementen
+Doppelte eckige Klammern [[ ]] indizieren den **Inhalt von Listenelementen**
 
 \vspace{1mm}
 \tiny
@@ -264,7 +264,8 @@ Ersetzen des Listenelementinhalts über doppelte eckige Klammern [[ ]]
 \setstretch{0.9}
 
 ```{r, eval = T}
-L[[3]] <- "c"                       # Ersetzung des 3. Listenelementinhaltes
+L[[1]] <- 7:9                       # Ersetzung des 1. Listenelementinhaltes mit gewünschtem Inhalt
+L[[3]] <- "c"                       # Ersetzung des 3. Listenelementinhaltes mit gewünschtem Inhalt
 print(L)
 ```
 
@@ -362,12 +363,12 @@ print(K)
 \vfill
 
 
-# Indizierung über Namen und dem `$` Operator
+# Indizierung über Namen und dem `$`-Operator
 
 \setstretch{1.1}
 \small
 \vspace{1.5mm}
-Listenelemente und Listenelementinhalte können mit Namen indiziert werden
+Mit Namen können **Listenelemente** ([ ]) und **Listenelementinhalte** ([[ ]]) indiziert werden.
 
 \vspace{1mm}
 \tiny
@@ -383,7 +384,7 @@ L[["carla"]]                # Listenelementinhaltsinindizierung
 \setstretch{1.1}
 \small
 \vspace{1.5mm}
-Listenelementinhalte können mit dem `$` Operator indiziert werden
+Mit dem `$`-Operator könnne **Listenelementinhalte** indiziert werden.
 
 \vspace{1mm}
 \tiny
@@ -447,7 +448,7 @@ Wie bei Vektoren gilt bei Listen das Copy-on-Modify Prinzip.
 
 `lobstr::ref()` erlaubt es, dieses Verhalten zu studieren.
 
-![](../Abbildungen/pds_5_list_copy_on_modify.pdf){width="55%"}
+![](../Abbildungen/pds_5_list_shallow_copy.pdf){width="55%"}
 
 \vspace{1mm}
 \tiny
@@ -468,6 +469,10 @@ lobstr::ref(L1, L2)        # Ausgabe der Referenzen beider Listen
 \vspace{1.5mm}
 
 Änderung nur eines Listenelements
+
+![](../Abbildungen/pds_5_list_copy_on_modify.pdf){width="55%"}
+
+
 \vspace{1mm}
 \tiny
 \setstretch{0.9}
@@ -479,7 +484,7 @@ lobstr::ref(L1, L2)        # Ausgabe der Referenzen beider Listen
 \vfill
 \setstretch{1.3}
 
-\footnotesize
+\tiny
 
 Anmerkung: \color{darkcyan} Die Referenzen der Objekte beziehen sich auf die addressierten Speicherzellen im Arbeitsspeicher. Da bei jeder Neuerstellung von Objekten, neue Speicherzellen vergeben werden, variieren die genauen Adressen bei jeder Neuerstellung von Objekten. Entsprechend werden die mit `lobbstr::ref()` ausgegebenen Referenzen nicht mit denen in der Abbildung oder bei Replikation zu Hause übereinstimmen.
 
@@ -600,12 +605,12 @@ length(D)                                        # Länge ist die Spaltenanzahl
 
 \small
 
-`View()` öffnet den RStudio Data Viewer.
+`View()` öffnet den Data Viewer.
 ```{r, eval = T}
 View(D)
 ```
 
-![](../Abbildungen/pds_5_view.pdf){width="25%"}
+![](../Abbildungen/pds_5_view.png){width="40%"}
 
 `str()` zeigt in kompakter Form wesentliche Aspekte eines Dataframes an.
 
@@ -637,19 +642,22 @@ ab dataframes übersicht müssen auch noch slides formate angepasst werden
 
 \AtBeginSubsection{}
 \subsection{Indizierung}
-# Indizierung
-\textcolor{darkblue}{Mit einem Index}
+# Indizierung - \textcolor{darkblue}{Mit einem Index}
+
 \small
 
 Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
 
 $\Rightarrow$ Bei **einem** Index verhalten sich Dataframes wie **Listen**
+\vspace{2mm}
 
 \footnotesize
+\setstretch{1.1}
 ```{r, eval = T}
 D <- data.frame(x = letters[1:4],   # 1. Spalte mit Name x
                 y = 1:4,            # 2. Spalte mit Name y
                 z = c(T, T, F, T))  # 3. Spalte mit Name z
+print(D)
 class(D)                            # D ist ein Dataframe
 v <- D[1]                           # 1. Listenelement als Dataframe
 v
@@ -657,41 +665,36 @@ class(v)                            # v ist ein Dataframe
 ```
 
 
-
-# Indizierung
-\textcolor{darkblue}{Mit einem Index}
+# Indizierung - \textcolor{darkblue}{Mit einem Index}
 \small
 
-Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
-
-$\Rightarrow$ Bei **einem** Index verhalten sich Dataframes wie **Listen**
 
 \footnotesize
+\setstretch{1.2}
 ```{r, eval = T}
-D <- data.frame(x = letters[1:4],   # 1. Spalte mit Name x
-                y = 1:4,            # 2. Spalte mit Name y
-                z = c(T, T, F, T))  # 3. Spalte mit Name z
 w <- D[[1]]                         # Inhalt des 1. Listenelements
 w
 class(w)                            # w ist ein character vector
 y <- D$y                            # $ zur Indizierung der y Spalte
 y
-class(y)                            # v ist ein Vektor vom Typ "integer" (!)
+class(y)                            # y ist ein Vektor vom Typ "integer" (!)
 ```
 
+\vfill
 
-# Indizierung
+
+# Indizierung - \textcolor{darkblue}{Mit zwei Indices}
 \setstretch{1.2}
-\textcolor{darkblue}{Mit zwei Indices}
 
 \small
 Die Prinzipien der Indizierung für Vektoren und Matrizen gelten auch für Dataframes
 
 $\Rightarrow$ Bei **zwei** Indices verhalten sich Dataframes wie **Matrizen**
 
-\vspace{1mm}
-\footnotesize
+\vspace{2mm}
 
+\footnotesize
+\setstretch{1.2}
 ```{r, eval = T}
 D <- data.frame(x = letters[1:4],   # 1. Spalte mit Name x
                 y = 1:4,            # 2. Spalte mit Name y
@@ -716,6 +719,8 @@ D[,c("x", "z")]                     # 1. Index für Zeilen, 2. Index für Spalte
 
 ![](../Abbildungen/pds_5_dataframe_copy_on_modify.pdf){width="90%"}
 
+\vfill
+
 
 \AtBeginSection{}
 \section{Übungen und Selbstkontrollfragen}
@@ -730,7 +735,6 @@ Listen
 Dataframes
 
 **Übungen und Selbstkontrollfragen**
-
 
 
 # Übungen und Selbstkontrollfragen 
@@ -748,6 +752,7 @@ Dataframes
 \item Beschreiben Sie in einer Übersicht die R Datenstruktur "Dataframe".
 \item Erzeugen Sie einen Dataframe mit vier Spalten.
 \item D sei ein Dataframe. Was geben rownames(D) und colnames(D) an?
+\item D sei ein Dataframe. Was ist der Unterschied zwischen D[1] und D[[1]]?
 \item D sei ein Dataframe. Was ist der Unterschied zwischen D[1] und D[1,1]?
 \item D sei ein Dataframe. Was bedeutet dann D\$Student?
 \item Erläutern Sie das Copy-on-modify Prinzip für Dataframes.
