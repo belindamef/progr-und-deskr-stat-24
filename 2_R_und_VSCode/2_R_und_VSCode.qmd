@@ -1102,5 +1102,5 @@ Datenstrukturen
 14. Diskutieren Sie die Organisation von Datenstrukturen in R.
 15. Wodurch unterscheiden sich eine atomare und ein rekursive Datenstruktur in R?
 16. Nennen und erläutern Sie vier zentrale Datentypen in R.
-17. Nennen und erläutern Sie vier zentrale atomare Datenstrukturen in R.
+17. Nennen und erläutern Sie drei zentrale atomare Datenstrukturen in R.
 18. Nennen und erläutern Sie zwei zentrale rekursive Datenstrukturen in R.
