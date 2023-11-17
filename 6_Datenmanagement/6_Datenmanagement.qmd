@@ -1,0 +1,890 @@
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Termine {.plain}
+\setstretch{1.3}
+\vfill
+\center
+\footnotesize
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                            \\\hline
+11.10.23       & Einführung            & (1) Einführung \\
+18.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+25.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+01.11.23       & R Grundlagen          & (3) Vektoren\\
+08.11.23       & R Grundlagen          & (4) Matrizen\\
+15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
+\textbf{22.11.23}       & \textbf{R Grundlagen}          & \textbf{(6) Datenmanagement}                    \\
+39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
+               & \textcolor{gray}{Weihnachtspause}                              \\
+10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24       & \textit{Leistungsnachweis Teil 2}                          \\\hline
+\end{tabular}
+
+
+# Datenmanagement - Titelfolie {.plain}
+
+\vfill
+\huge
+\begin{center}
+(6) Datenmanagement
+\end{center}
+\vfill
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+FAIR Prinzipien
+
+Datenformate
+
+Verzeichnismanagement
+
+Datenimport und Datenexport
+
+Übungen und Selbstkontrollfragen
+
+
+\AtBeginSection{}
+\section{FAIR Prinzipien}
+# FAIR Prinzipien ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+**FAIR Prinzipien**
+
+Datenformate
+
+Verzeichnismanagement
+
+Datenimport und Datenexport
+
+Übungen und Selbstkontrollfragen
+
+
+# Beispiele für Daten
+
+\large
+
+:::: {.columns}
+
+::: {.column width="45%"}
+\begin{itemize}
+\item Zahlenarrays
+\item Characterarrays
+\item Software
+\item Digitale Werkzeuge
+\item Workflows
+\item Analysispipelines
+\item u.v.a.m.
+\end{itemize}
+:::
+
+::: {.column width="40%"}
+![](../Abbildungen/pds_6_data.pdf){width="70%"}
+:::
+
+::::
+
+
+# Forschungsdaten
+
+"Grundsätzlich handelt es sich bei Forschungsdaten um elektronisch repräsentierte 
+analoge oder digitale Daten, die im Zuge wissenschaftlicher Vorhaben entstehen oder genutzt werden, z.B. durch Beobachtungen, Experimente, Simulationsrechnungen, Erhebungen, Befragungen, Quellenforschungen, Aufzeichnungen von Audio- und Videosequenzen, Digitalisierung von Objekten, und Auswertungen."
+\vspace{.7cm}
+
+\footnotesize
+\flushright
+Rat für Informationsinfrastrukturen
+
+[\textcolor{linkblue}{Empfehlungen zur Nutzung und Verwertung von Daten im wissenschaftlichen Raum  (09/2021)}](https://rfii.de/download/nutzung-und-verwertung-von-daten-im-wissenschaftlichen-raum-september-2021/)
+
+[\textcolor{linkblue}{Herausforderung Datenqualität (11/2019)}](https://www.rfii.de/download/herausforderung-datenqualitaet-november-2019/)
+
+[\textcolor{linkblue}{Digitale Kompetenzen – dringend gesucht! (07/2019)}](https://www.rfii.de/download/digitale-kompetenzen-dringend-gesucht/)
+
+[\textcolor{linkblue}{Aktuelle Empfehlungen zu Datenschutz und Forschungsdaten (03/2017)}](https://www.rfii.de/download/rfii-empfehlungen-2017-datenschutz-und-forschungsdaten/)
+
+
+
+# Metadaten
+\vspace{2mm}
+
+Metadaten repräsentieren Information über Daten
+\vspace{2mm}
+
+**Deskriptive Metadaten** dienen dem Auffinden und der Identifikation einer
+Datenquelle. Beispiele für deskriptive Metadaten sind Titel, Abstrakt, Autor:in,
+oder Keywords einer wissenschaftlichen Publikationen.
+\vspace{2mm}
+
+**Strukturelle Metadaten** sind Metadaten über Datencontainer und
+repräsentieren den strukturellen Aufbau einer Datenquelle. Beispiele sind die
+Ordnung der Seiten eines Buches, oder die Schleifenenkodierung dreidimensionaler Datenobjekte.
+\vspace{2mm}
+
+**Administrative Metadaten** sind Daten, die das Management einer Datenquelle
+erleichtern. Beispiele sind die Provenienz, das Dateiformat, die Zugangsrechte,
+oder weitere technische Informationen zu einer Datenquelle.
+
+
+# Das FAIR Datenideal
+
+\vspace{1cm}
+
+![](../Abbildungen/pds_6_fair_datenideal.pdf){width="69%" fig-align="center"}
+
+\begin{center}
+für Menschen und Maschinen
+\end{center}
+
+
+# Ursprung und Dokumentation
+
+\normalsize
+[\textcolor{blue}{„Jointly designing a data fairport“ workshop in Leiden 2014}](https://www.dtls.nl/2014/01/20/jointly-designing-data-fairport/)
+\vspace{5mm}
+
+[\textcolor{blue}{FORCE11}](https://www.force11.org/)
+\vspace{5mm}
+
+[\textcolor{blue}{Wilkinson et al.(2016) The FAIR Guiding Principles for scientific data management and stewardship Scientific Data 160018}](https://www.nature.com/articles/sdata201618)
+\vspace{5mm}
+
+[\textcolor{blue}{go-fair.org/FAIR Principles}](https://www.go-fair.org/fair-principles/)
+\vspace{5mm}
+
+
+# Findability (Auffindbarkeit)
+\setstretch{2.4}
+\justifying
+
+F1. (Meta)Daten haben einen persistenten global einzigartigen Identifikator.
+
+F2. Daten werden mit Metadaten angereichert.
+
+F3. Metadaten sind zweifelsfrei einem Datensatz zuzuordnen.
+
+F4. (Meta)Daten sind in einer durchsuchbaren Ressource indexiert.
+
+
+# Accessibility (Zugänglichkeit)
+\setstretch{2.4}
+\justifying
+
+A1. (Meta)Daten sind mit standardisierten Protokollen abrufbar.
+
+A1.1. Das genutzte Protokoll ist offen, kostenlos und nutzbar.
+
+A1.2. Das Protokoll ermöglicht Authentifizierung und Rechtevergabe.
+
+A2. Metadaten bleiben zugänglich, auch wenn Daten nicht mehr vorliegen.
+
+
+# Interoperability (Interoperabilität)
+\setstretch{2.4}
+\justifying
+
+I1. (Meta)Daten nutzen eine formale, zugängliche, gemeinsam genutzte
+     und breit anwendbare Sprache zur Wissensrepräsentation.
+
+I2. (Meta)Daten nutzen Vokabularien, die den FAIR-Prinzipien folgen.
+
+I3. (Meta)Daten enthalten qualifizierte Referenzen auf andere (Meta)Daten.
+
+
+# Reusability (Wiederverwendbarkeit)
+\setstretch{2.4}
+\justifying
+
+R1. (Meta)Daten haben eine Vielzahl genauer und relevanter Attribute.
+
+R1.1. (Meta)Daten enthalten eine eindeutige Nutzungslizenz.
+
+R1.2. (Meta)Daten enthalten detaillierte Provenienz-Informationen.
+
+R1.3. (Meta)Daten genügen den Standards der jeweiligen Fachcommunity.
+
+
+
+# FAIR Prinzipien - Fazit
+\setstretch{2}
+\small
+
+* Die FAIR Prinzipien sind ein anzustrebendes Datenmanagementideal.
+* Der Umgang mit digitalen Forschungsdaten ist oft noch sehr unstrukturiert.
+* Die Universitäten begreifen das digitale Datenmanagement nur sehr langsam.
+* Die Digitalisierung bleibt eine gesellschaftliche Hauptaufgabe.
+* Die [\textcolor{linkblue}{NFDI Initiative}](https://www.nfdi.de/) versucht, deutsches Wissenschaftsdatenmanagement zu verbessern.
+* Beteiligung von OVGU // CBBS an [\textcolor{linkblue}{NFDI Neurowissenschaft}](https://nfdi-neuro.de/).
+* NFDI ist dezentral, community, und Drittmittelprojekt-basiert $\Rightarrow$ Nicht nachhaltig.
+* Nicht alle Wissenschaftler:innen wollen ihre Daten organisieren und teilen.
+* [\textcolor{linkblue}{Open Science}](https://en.wikipedia.org/wiki/Open_science) bleibt eine wichtige Initiative verantwortungsvoller Wissenschaftler:innen.
+
+
+\AtBeginSection{}
+\section{Datenformate}
+# Datenformate ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+FAIR Prinzipien
+
+**Datenformate**
+
+Verzeichnismanagement
+
+Datenimport und Datenexport
+
+Übungen und Selbstkontrollfragen
+
+
+# Datenformate
+\vspace{3mm}
+\setstretch{1.4}
+\normalsize
+\textcolor{darkblue}{Dateiformate}
+\small
+
+* Ein Dateiformat definiert Syntax und Semantik von Daten innerhalb einer Datei.
+* Dateiformate sind bijektive Abbildungen von Information auf binären Speicher.
+* Allgemein unterscheidet man
+  * \small Daten- gegenüber Softwareformaten,
+  * textuelle gegenüber binären Dateiformaten, und
+  * offene gegenüber propietären (urheberrechtlich geschützten) Dateiformaten.
+
+\normalsize
+\textcolor{darkblue}{Binäre Dateiformate}
+\small
+
+* Einlesen, Inspektion, und Manipulation ist nur mit spezieller Software möglich.
+*  .pdf, .xlsx, .jpg, .mp4 sind binäre Dateiformate.
+* Binäre Dateiformate sind oft propietär.
+* Binäre Dateiformate wurden früher aufgrund ihrer kleineren Größe bevorzugt eingesetzt.
+
+\normalsize
+\textcolor{darkblue}{Textuelle Dateiformate}
+\small
+
+* Einlesen, Inspektion, und Manipulation ist mit einfachen allgemeinen Editoren möglich.
+* .txt, .csv., .tsv, .json  sind textuelle Dateiformate.
+* Textuelle Dateiformate sind generell offene Dateiformate.
+
+
+# Beispiele
+\textcolor{darkblue}{Binäres Dateiformat}
+\vspace{1mm}
+
+![](../Abbildungen/pds_6_binaeres_dateiformat.pdf){width="60%" fig-align="center"}
+
+\vspace{2mm}
+\textcolor{darkblue}{Textuelles Dateiformat}
+\vspace{1mm}
+
+![](../Abbildungen/pds_6_textuelles_dateiformat.pdf){width="60%" fig-align="center"}
+
+
+# Textuelle Dateiformate $\vert$ \textcolor{darkblue}{CSV}
+\small
+\setstretch{1.5}
+
+* CSV = Comma- (oder auch character)-separated values, Dateiendung .csv
+* Zentrales Format zur Speicherung einfach strukturierter Daten
+* Repräsentation zeilenweise miteinander verknüpfter Datensätze
+  * \small Trennung von Datenfeldern (Spalten) durch Komma oder Tab (TSV, .tsv)
+  * Trennung von Datensätzen (Zeilen) durch Zeilenumbruch
+* Erster Datensatz typischerweise Kopfdatensatz (Header) mit Spaltennamendefinition
+\vspace{1mm}
+
+Beispiel
+
+* Einheit (experimental unit) repräsentiert z.B. eine Versuchsperson
+\vspace{3mm}
+
+\begin{minipage}{.07\linewidth}
+$\quad$
+\end{minipage}
+\begin{minipage}{.4\linewidth}
+\small
+\begin{center}
+.csv Dateiinhalt
+\end{center}
+
+Einheit, Variable 1, Variable 2
+
+1, 10.1, 67.5
+
+2, 12.9, 51.2
+
+3, 20.4, 70.8
+
+
+\end{minipage}
+\begin{minipage}{.4\linewidth}
+\small
+\begin{center}
+Tabellenrepräsentation
+\vspace{1mm}
+
+\begin{tabular}{l|ll}
+\hline
+Einheit & Variable 1 & Variable 2 \\
+\hline
+1 & 10.1 & 67.5 \\
+2 & 12.9 & 51.2 \\
+3 & 20.4 & 70.8 \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+# Wide vs. Long Format
+
+\setstretch{1.3}
+**\textcolor{darkblue}{Wide Format}**: Alle Variablen einer Einheit in einer Zeile
+
+\small
+\begin{center}
+\begin{tabular}{l|ll}
+\hline
+Einheit & Variable 1 & Variable 2 \\
+\hline
+1 & 10.1 & 67.5 \\
+2 & 12.9 & 51.2 \\
+3 & 20.4 & 70.8 \\
+\hline
+\end{tabular}
+\end{center}
+
+\normalsize
+\vspace{3mm}
+
+**\textcolor{darkblue}{Long Format}**: Variablen einer Einheit über Zeilen verteilt
+
+\small
+\begin{center}
+\begin{tabular}{l|ll}
+\hline
+Einheit & Variable  & Messwert \\
+\hline
+1 & Variable 1 & 10.1 \\
+1 & Variable 2 & 67.5 \\
+2 & Variable 1 & 12.9 \\
+2 & Variable 2 & 51.2 \\
+3 & Variable 1 & 20.4 \\
+3 & Variable 2 & 70.8 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace{1mm}
+
+Das Wide Format ist generell übersichtlicher als das Long Format
+
+
+# Textuelle Dateiformate $\vert$ \textcolor{darkblue}{JSON}
+\setstretch{2}
+
+Übersicht
+
+\small
+* JSON = JavaScript Object Notation
+* Textuelles Datenformat zum Speichern strukturierter Daten in Key-Value Form.
+* Ähnlichkeit mit R Listen mit benannten Listenelementen.
+* Sinnvolles Format für das Speichern von Metadaten.
+
+\normalsize
+Elemente von JSON Dateien
+
+\small
+* *Objekte* enthalten durch Kommata geteilte Liste von *Eigenschaften* in \{ \}
+* *Eigenschaften* bestehen aus Key-Value Paaren
+* *Key* ist immer ein String mit Hochkommata ""
+* *Value* ist ein Objekt, ein Array, ein String, ein Boolean, oder eine Zahl
+
+
+# JSON - Beispiel
+\setstretch{1.2}
+
+\vspace{1mm}
+
+```{=latex}
+\{
+
+	$\quad\quad$ ``Vorname'' 			: ``Maxi'',
+
+	$\quad\quad$ ``Nachname''			: ``Musterfrau'',
+
+	$\quad\quad$ ``Matrikelnummer''		: 12345,
+
+	$\quad\quad$ ``Fachsemester''		: 2,
+
+	$\quad\quad$ ``Studiengang''		: ``BSc Psychologie'',
+
+	$\quad\quad$ ``Module''	:
+
+	$\quad\quad$ \{
+
+	$\quad\quad\quad\quad$  ``Deskriptive Statistik'' : \{``Abgeschlossen" : true,  ``Note''  : 1.0 \},
+
+	$\quad\quad\quad\quad$  ``Inferenzstatistik'' : \{``Abgeschlossen'' : false, ``Note'': null \}
+
+	$\quad\quad$ \}
+
+\}
+```
+
+
+\AtBeginSection{}
+\section{Verzeichnismanagement}
+# Verzeichnismanagement ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+FAIR Prinzipien
+
+Datenformate
+
+**Verzeichnismanagement**
+
+Datenimport und Datenexport
+
+Übungen und Selbstkontrollfragen
+
+
+# Arbeiten mit \textcolor{darkblue}{Strings}
+\small
+
+Die Grundeinheit für Text in R sind atomic vectors vom Typ `character`.
+
+Die Elemente von character vectors sind **strings**, nicht einzelne "characters".
+
+Der Begriff "String" in R ist also nur informeller Natur.
+
+\vspace{2mm}
+
+Strings werden mit Anführungszeichen oder Hochkommata erzeugt
+
+\footnotesize
+```{r, eval = T}
+c("Dies ist ein character vector") # Anführungszeichen sind der String Standard
+c('Dies ist ein "string"')         # Hochkommata nützlich für Anführungszeichen im String
+```
+
+\small
+`paste()` konvertiert Vektoren in character und fügt sie elementweise zusammen.
+
+\footnotesize
+```{r, eval = T}
+paste(1, 2)                        # Konvertierung u. Konkatenation einelementiger double vectors
+paste("Dies ist", "ein String")    # Konkatenation einelementiger character vectors
+```
+
+
+# Arbeiten mit \textcolor{darkblue}{Strings}
+\setstretch{1.3}
+
+\small
+
+`paste()` hat eine Reihe von weiteren Funktionalitäten
+
+\vspace{3mm}
+
+\footnotesize
+```{r, eval = T}
+paste(c("Rote", "Gelbe"), "Blume")                   # Vector recylcing, elementweise Veknüpfungen
+paste(c("Rote", "Gelbe"), "Blume", 	sep = "-")       # Separatorspezifkation
+paste(c("Rote", "Gelbe"), "Blume",  collapse = ", ") # Zusammenfügen mit spezifiziertem  Separator
+```
+
+\small
+``toString()` ist eine `paste()` Variation für numerische Vektoren
+
+\footnotesize
+```{r, eval = T}
+toString(1:10)               # Konversion eines double Vektors in formatierten String
+toString(1:10, width = 10)   # mit  Möglichkeit der Beschränkung auf width Zeichen 
+```
+
+
+# Verzeichnismanagement
+\setstretch{2}
+\textcolor{darkblue}{Datei- und Verzeichnispfade}
+
+\small
+
+* \justifying Daten sind üblicherweise in Dateien im permanenten Speicher (SSD, HD) abgelegt
+* Zum Dateneinlesen benötig man ihre Addresse in der Verzeichnisstruktur des Rechners.
+* Die Addressen von Dateien in der Verzeichnisstruktur heißen \textit{Dateipfade}.
+* Ein Pfad besteht aus einer durch Schrägstriche getrennten Liste von Verzeichnisnamen. \footnotesize
+
+\small
+\textcolor{darkcyan}{Beispiele} \footnotesize \setstretch{1}
+\vspace{3mm}
+```{r}
+Windows:
+D:\Lehre\Daten                      Pfad der auf einem Verzeichnisnamen endet
+D:\Lehre\Daten\cushny.csv           Pfad der auf einem Dateinamen endet
+
+Unix-like OS:
+/home/user/Lehre/Daten              Pfad der auf einem Verzeichnisnamen endet
+/home/user/Lehre/Daten/cushny.csv   Pfad der auf einem Dateinamen endet
+```
+
+\vfill
+
+
+# Verzeichnismanagement
+\setstretch{1.7}
+\textcolor{darkblue}{Relativ vs. Absolute Pfade}
+\small
+
+* \justifying \textit{Relative Dateipfade} bezieht sich auf einen Speicherort in Relation zum aktuellen Verzeichnis.
+* Bei relativen Dateipfaden bezeichnen . und .. aktuelles und übergeordnetes Verzeichnis.
+*  \textit{Absolute Dateipfade} gegeben die Addresse in der Gesamtverzeichnisstruktur der Festplatte an.
+* Absolute Dateipfade sind weniger anfällig für Dateiverwechselungen.
+* **\textcolor{darkcyan}{Die Verwendung adaptiv generierter absoluter Pfade wird stark empfohlen}.**
+
+\textcolor{darkcyan}{Beispiel}
+
+\setstretch{1.5}
+
+\footnotesize Wenn das aktuelle Verzeichnis "/home/user/Lehre" lautet, dann beziehen sich folgende Pfade auf *den selben* Ordner:
+
+\vspace{3mm}
+```{r}
+/home/user/Lehre/Daten   # absolute Pfadform
+./Daten                  # relative Pfadform. "." startet im aktuellen WD, also in /Lehre
+../Lehre/Daten           # relative Pfadform. ".." startet eins über aktuellem WD, also in /user
+../../user/Lehre/Daten   # relative Pfadform. ".." startet zwei über aktuellem WD, also in /home
+```
+
+\vfill
+
+
+# Verzeichnismanagement
+\setstretch{1.7}
+\textcolor{darkblue}{Working directory}
+\small
+
+* Der *working directory* kann wie ein "aktuelle Standort" im lokalen Verzeichnissystem verstanden werden. 
+* In VSCode ist der bei Start ausgewählte Ordner automatisch das Current Working Directory für alle Terminal Sessions.
+
+
+`getwd()` gibt das working directory an.
+\footnotesize
+```{r, eval = T}
+getwd()
+```
+
+\vfill
+
+
+# Verzeichnismanagement
+\setstretch{1.5}
+\small
+
+ `setwd()` ändert das working directory
+\begin{itemize}
+\begin{footnotesize}
+\item Windowspfade haben backward slashes \textbackslash, R arbeitet mit forward slashes $/$.
+\item Manuelle Spezifikation von Windowspfaden benötigt doppelte backward slashes \textbackslash\textbackslash.
+\end{footnotesize}
+\end{itemize}
+
+\footnotesize
+```{r, eval = T}
+setwd("/home/belindame_f/Lehre/Daten") # absoluter Dateipfad
+getwd()
+
+setwd("..")                            # relativer Dateipfad ("eins hoch")
+getwd()
+
+setwd("..")                            # relativer Dateipfad ("noch eins hoch")
+getwd()
+
+setwd("./OVGU")                        # relativer Dateipfad ("von aktuellem WD in /OVGU")
+getwd()
+```
+\vfill
+
+
+# Verzeichnismanagement
+
+\textcolor{darkblue}{Dateipfadspezifikation}
+\small
+
+
+\small
+`file.path()` konstruiert Verzeichnis- und Dateipfade.
+
+\footnotesize
+```{r, eval = T}
+file.path("home", "user", "Lehre", "Daten")
+```
+
+\vspace{2mm}
+\small
+`dirname()`gibt das Verzeichnis an, das ein Verzeichnis oder eine Datei enthält.
+
+\footnotesize
+```{r, eval = T}
+getwd()
+dirname(getwd())
+```
+
+\vspace{2mm}
+\small
+`basename()` gibt die unterste Ebene eines Datei- oder Verzeichnispfades an.
+
+\footnotesize
+```{r, eval = T}
+getwd()
+basename(getwd())
+```
+
+
+
+\AtBeginSection{}
+\section{Datenimport und Datenexport}
+# Datenimport und Datenexport ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+FAIR Prinzipien
+
+Datenformate
+
+Verzeichnismanagement
+
+**Datenimport und Datenexport**
+
+Übungen und Selbstkontrollfragen
+
+
+# Datenimport mit `read.table()`
+\setstretch{1.5}
+
+`read.table()` 
+
+\small
+
+* ist die zentrale Funktion zum Einlesen von CSV Dateien.
+* liest eine Datei ein und speichert ihre Inhalte in einem Dataframe.
+* bietet eine Vielzahl weiterer Spezifikationsmöglichkeiten.
+
+\vspace{2mm}
+\tiny
+\setstretch{1.2}
+```{r, eval = T}
+work_dir_path = getwd()                                     # Working directory
+data_dir_path = file.path(dirname(work_dir_path), "Daten")  # Datenverzeichnispfad
+file_name     = "cushny.csv"                                # (base) filename
+file_path     = file.path(data_dir_path, file_name)         # filepath 
+D             = read.table(file_path)                       # Einlesen der Datei
+print(D)
+```
+
+\vfill
+
+
+# Datenimport mit `read.table()`
+\setstretch{1.5}
+
+Einige weitere Spezifikationen bei Anwendung von `read.table()` sind
+
+\small
+
+* `sep` für die Auswahl des Separators
+* `dec` für die Auswahl des Dezimalpunktes
+* `nrow` für die Anzahl der einzulesenden Zeilen
+* `skip` für die Anzahl der am Anfang der Datei zu überspringenden Zeilen (inkl. Header)
+
+\tiny
+
+```{r, eval = T}
+D = read.table(file_path, nrow = 2)  # Auswahl von nur 2 Zeilen
+print(D)
+D = read.table(file_path, skip = 7)  # Auswahl ab Zeile 7
+print(D)
+```
+
+\vfill
+
+
+# Import interner R Datensätze
+\setstretch{1.1}
+
+
+\footnotesize
+R und R packages beinhalten eine Vielzahl von **Beispieldatensätzen**
+**Die Core R Datensätze** werden aus der R Konsole mit `data()` angezeigt.
+
+Die Datensätze in Paket P werden mit `data(package =  "P")` angezeigt.
+
+\vspace{1mm}
+```{r, eval = F}
+install.packages("psychTools")	# Installation des Pakets psychTools
+data(package = "psychTools") 	# Anzeige der psychTools Datensaetze
+```
+
+![](../Abbildungen/pds_6_r_datasets.pdf)
+
+
+Alle Datensätze werden mit `data(package = .packages(TRUE))` angezeigt.
+
+Nach Installation und Laden eines Pakets werden Datensätze mit `data()` geladen.
+
+\vspace{1mm}
+```{r}
+library(psychTools)				# Laden des Paktes psychTools
+data(cushny)					# Laden des cushny Datensatzes aus psychTools
+```
+
+
+# Weitere Möglichkeiten des Datenimports
+
+CSV und Text Dateien
+
+\small 
+
+* `read.csv()`, `read.csv2()`, `read.delim()`, `read.delim2()` als `read.table()` Varianten.
+* `readlines` für low-level Textdateiimport.
+* `fromJSON()` aus dem Paket `rjson` für .json Dateien.
+
+\vspace{2mm}
+\normalsize
+Binäre Dateien
+\small
+
+* `read.xlsx()` und  `read.xlsx2()` aus dem Paket `xlsx` für Excel .xlsx Dateien.
+* `read.spss()` aus dem Paket `foreign` für SPSS .sav Dateien.
+* `readMat` aus dem Paket `R.matlab` für Matlab .mat Dateien.
+
+\vspace{2mm}
+\normalsize
+Webdaten und Datenbanken
+\small
+
+* \small Twitterdaten können mithilfe der Pakete `rtweet` oder `twitteR` eingelesen werden.
+* SQL Datenbanken können mithilfe der Pakete `DBI` und `RSQLite` abgefragt werden.
+
+\vfill
+
+
+# Datenexport mit `write.table()`
+\setstretch{1.5}
+\vspace{1mm}
+
+`write.table()` 
+
+\small
+
+* ...ist die zentrale Funktion zum Speichern von Daten in CSV Dateien.
+* ...erzeugt eine Datei und schreibt Daten eines Dataframes hinein.
+
+\normalsize
+Spezifikationen bei der Anwendung
+
+\small
+
+* Der Dateipfad wird mit dem Argument `file` angegeben, der Werteseparator mit `sep`
+* Das Argument `row.names = FALSE` unterdrückt das Schreiben von Zeilennahmen
+
+\tiny
+\setstretch{1.1}
+```{r}
+input_file_name     = "cushny.csv"                   # Dateiname (input)
+output_file_name    = "student.csv"                  # Dateiname (output)
+
+D           = read.table(file.path(data_dir, fname)) # Dateneinlesen
+D           = D[,5:6]                                # Reduktion des Dataframes
+write.table(                                         # .csv Schreibfunktion
+    D,                                               # Zu speichernder Dataframe
+    file = file.path(data_dir, rname),               # Dateinname
+    sep = ",",                                       # Werteseparator fuer .csv
+    row.names = F)                                   # keine Zeilennamen
+```
+
+\normalsize
+Ergebnisdatei student.csv
+
+![](../Abbildungen/pds_6_writetable.pdf){width="30%"}
+
+
+\AtBeginSection{}
+\section{Übungen und Selbstkontrollfragen}
+# Übungen und Selbstkontrollfragen ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+FAIR Prinzipien
+
+Datenformate
+
+Verzeichnismanagement
+
+Datenimport und Datenexport
+
+**Übungen und Selbstkontrollfragen**
+
+
+# Übungen und Selbstkontrollfragen
+\setstretch{1.6}
+\small
+\begin{enumerate}
+\justifying
+\item Dokumentieren Sie die in dieser Einheit eingeführten R Befehle in einem R Skript.
+\item Erläutern Sie den Begriff ``Forschungsdaten''.
+\item Erläutern Sie den Begriff ``Metadaten''.
+\item Erläutern Sie das FAIR Datenideal.
+\item Diskutieren Sie Unterschiede und Gemeinsamkeiten von binären und textuellen Dateien.
+\item Nennen und erläutern Sie zwei textuelle Dateiformate.
+\item Erläutern Sie den Unterschied zwischen dem Wide und Long Format von Tabellen.
+\item Erläutern Sie den Unterschied zwischen absoluten und relativen Dateipfaden.
+\item Erläutern Sie den Begriff des ``Working Directories'' in R.
+\item Beschreiben Sie die Funktion von RStudio Projekten.
+\item Nennen Sie eine R Funktion zum Einlesen von .csv Dateien.
+\item Nennen Sie eine R Funktion zum Schreiben von .csv Dateien.
+\end{enumerate}
+
+
