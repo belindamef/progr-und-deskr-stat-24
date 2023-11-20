@@ -64,6 +64,8 @@ Datum          & Einheit               & Thema		                            \\\h
 \setstretch{2.5}
 \vfill
 
+Daten
+
 FAIR Prinzipien
 
 Datenformate
@@ -76,14 +78,16 @@ Datenimport und Datenexport
 
 
 \AtBeginSection{}
-\section{FAIR Prinzipien}
-# FAIR Prinzipien ====================================== {.plain}
+\section{Daten}
+# Daten ====================================== {.plain}
 
 \large
 \setstretch{2.5}
 \vfill
 
-**FAIR Prinzipien**
+**Daten**
+
+FAIR Prinzipien
 
 Datenformate
 
@@ -95,7 +99,7 @@ Datenimport und Datenexport
 
 
 # Beispiele für Daten
-
+\setstretch{2}
 \large
 
 :::: {.columns}
@@ -121,8 +125,7 @@ Datenimport und Datenexport
 
 # Forschungsdaten
 
-"Grundsätzlich handelt es sich bei Forschungsdaten um elektronisch repräsentierte 
-analoge oder digitale Daten, die im Zuge wissenschaftlicher Vorhaben entstehen oder genutzt werden, z.B. durch Beobachtungen, Experimente, Simulationsrechnungen, Erhebungen, Befragungen, Quellenforschungen, Aufzeichnungen von Audio- und Videosequenzen, Digitalisierung von Objekten, und Auswertungen."
+"Grundsätzlich handelt es sich bei \textcolor{darkblue}{Forschungsdaten} um elektronisch repräsentierte analoge oder digitale Daten, die im Zuge wissenschaftlicher Vorhaben entstehen oder genutzt werden, z.B. durch Beobachtungen, Experimente, Simulationsrechnungen, Erhebungen, Befragungen, Quellenforschungen, Aufzeichnungen von Audio- und Videosequenzen, Digitalisierung von Objekten, und Auswertungen."
 \vspace{.7cm}
 
 \footnotesize
@@ -142,7 +145,7 @@ Rat für Informationsinfrastrukturen
 # Metadaten
 \vspace{2mm}
 
-Metadaten repräsentieren Information über Daten
+\textcolor{darkblue}{Metadaten} repräsentieren Information über Daten
 \vspace{2mm}
 
 **Deskriptive Metadaten** dienen dem Auffinden und der Identifikation einer
@@ -159,6 +162,28 @@ Ordnung der Seiten eines Buches, oder die Schleifenenkodierung dreidimensionaler
 erleichtern. Beispiele sind die Provenienz, das Dateiformat, die Zugangsrechte,
 oder weitere technische Informationen zu einer Datenquelle.
 
+\vfill
+
+
+\AtBeginSection{}
+\section{FAIR Prinzipien}
+# FAIR Prinzipien ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Daten
+
+**FAIR Prinzipien**
+
+Datenformate
+
+Verzeichnismanagement
+
+Datenimport und Datenexport
+
+Übungen und Selbstkontrollfragen
 
 # Das FAIR Datenideal
 
@@ -261,6 +286,8 @@ R1.3. (Meta)Daten genügen den Standards der jeweiligen Fachcommunity.
 \large
 \setstretch{2.5}
 \vfill
+
+Daten
 
 FAIR Prinzipien
 
@@ -476,6 +503,8 @@ Elemente von JSON Dateien
 \setstretch{2.5}
 \vfill
 
+Daten
+
 FAIR Prinzipien
 
 Datenformate
@@ -598,7 +627,7 @@ Unix-like OS:
 
 
 # Verzeichnismanagement
-\setstretch{1.7}
+\setstretch{1.5}
 \textcolor{darkblue}{Working directory}
 \small
 
@@ -627,9 +656,14 @@ getwd()
 \end{footnotesize}
 \end{itemize}
 
+\vspace{4mm}
+\setstretch{1.2}
 \footnotesize
+```{r, eval = F}
+setwd("C:\\Lehre\\Daten")              # absoluter Dateipfad (Windows-Bsp.)
+```
 ```{r, eval = T}
-setwd("/home/belindame_f/Lehre/Daten") # absoluter Dateipfad
+setwd("/home/belindame_f/Lehre/Daten") # absoluter Dateipfad (Unix-like OS Bsp.)
 getwd()
 
 setwd("..")                            # relativer Dateipfad ("eins hoch")
@@ -687,6 +721,8 @@ basename(getwd())
 \large
 \setstretch{2.5}
 \vfill
+
+Daten
 
 FAIR Prinzipien
 
@@ -750,12 +786,13 @@ print(D)
 
 
 # Import interner R Datensätze
-\setstretch{1.1}
+\setstretch{1.4}
 
 
 \footnotesize
-R und R packages beinhalten eine Vielzahl von **Beispieldatensätzen**
-**Die Core R Datensätze** werden aus der R Konsole mit `data()` angezeigt.
+R und R packages beinhalten eine Vielzahl von Beispieldatensätzen.
+
+Die Core R Datensätze werden aus der R Konsole mit `data()` angezeigt.
 
 Die Datensätze in Paket P werden mit `data(package =  "P")` angezeigt.
 
@@ -857,6 +894,8 @@ Ergebnisdatei student.csv
 \setstretch{2.5}
 \vfill
 
+Daten
+
 FAIR Prinzipien
 
 Datenformate
@@ -885,6 +924,7 @@ Datenimport und Datenexport
 \item Beschreiben Sie die Funktion von RStudio Projekten.
 \item Nennen Sie eine R Funktion zum Einlesen von .csv Dateien.
 \item Nennen Sie eine R Funktion zum Schreiben von .csv Dateien.
+\item Schreiben Sie ein einfaches Skript, in welchem Daten eingelesen und geschrieben werden.
 \end{enumerate}
 
 

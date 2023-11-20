@@ -1,0 +1,7 @@
+"   Control"	"    drug1"	"    drug2L"	"    drug2R"	"    delta1"	"   delta2L"	"   delta2R"
+""	"Min.   :0.600  "	"Min.   :1.10  "	"Min.   :2.50  "	"Min.   :2.100  "	"Min.   :-1.600  "	"Min.   :-0.100  "	"Min.   :-0.700  "
+""	"1st Qu.:2.575  "	"1st Qu.:1.95  "	"1st Qu.:4.70  "	"1st Qu.:4.475  "	"1st Qu.:-0.175  "	"1st Qu.: 0.875  "	"1st Qu.: 0.725  "
+""	"Median :2.950  "	"Median :4.40  "	"Median :5.75  "	"Median :5.300  "	"Median : 0.350  "	"Median : 1.750  "	"Median : 1.500  "
+""	"Mean   :3.250  "	"Mean   :4.00  "	"Mean   :5.58  "	"Mean   :5.570  "	"Mean   : 0.750  "	"Mean   : 2.330  "	"Mean   : 2.320  "
+""	"3rd Qu.:4.325  "	"3rd Qu.:5.80  "	"3rd Qu.:6.25  "	"3rd Qu.:6.625  "	"3rd Qu.: 1.700  "	"3rd Qu.: 4.150  "	"3rd Qu.: 4.400  "
+""	"Max.   :6.200  "	"Max.   :6.60  "	"Max.   :8.00  "	"Max.   :8.300  "	"Max.   : 3.700  "	"Max.   : 5.500  "	"Max.   : 5.700  "
