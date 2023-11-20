@@ -1,5 +1,5 @@
-# Beispiellösung für Selbstkontrollfragen aus Einheit (5) "Listen und Dataframes"
-# des Kurses "Programmierung und Deskriptive Statistik" im WS 23/24
+# Beispiellösung für Selbstkontrollfragen aus Einheit (5) "Listen und
+# Dataframes" des Kurses "Programmierung und Deskriptive Statistik" im WS 23/24
 #
 # Autorin: Belinda Fleischmann
 
@@ -10,13 +10,13 @@ eine_liste <- list(c(FALSE, FALSE, FALSE),
                    abs)
 
 # ------SKF 4------
-# L[1] indiziert das erst Listenelement als Liste, während L[[1]] den Inhalt des 
-# Listenelements indiziert.
+# L[1] indiziert das erst Listenelement als Liste, während L[[1]] den Inhalt
+# des Listenelements indiziert.
 
-# Demo
-L <- eine_liste
+# Demonstration
 eine_liste[4](-5)   # Indiziert das 4. Listenelement als "Listeneintrag"
-eine_liste[[4]](-5) # Indiziert den Inhalt des 4. Listenelements, i.e. die Funktion `abs()`
+eine_liste[[4]](-5) # Indiziert den Inhalt des 4. Listenelements,
+                    # i.e. die Funktion `abs()`
 
 typeof(eine_liste[4](-5))
 typeof(eine_liste[[4]](-5))
