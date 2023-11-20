@@ -750,11 +750,11 @@ Verzeichnismanagement
 \tiny
 \setstretch{1.2}
 ```{r, eval = T}
-work_dir_path = getwd()                                     # Working directory
-data_dir_path = file.path(dirname(work_dir_path), "Daten")  # Datenverzeichnispfad
-file_name     = "cushny.csv"                                # (base) filename
-file_path     = file.path(data_dir_path, file_name)         # filepath 
-D             = read.table(file_path)                       # Einlesen der Datei
+work_dir_path <- getwd()                                     # Working directory
+data_dir_path <- file.path(dirname(work_dir_path), "Daten")  # Datenverzeichnispfad
+file_name     <- "cushny.csv"                                # (base) filename
+file_path     <- file.path(data_dir_path, file_name)         # filepath 
+D             <- read.table(file_path)                       # Einlesen der Datei
 print(D)
 ```
 
@@ -776,9 +776,9 @@ Einige weitere Spezifikationen bei Anwendung von `read.table()` sind
 \tiny
 
 ```{r, eval = T}
-D = read.table(file_path, nrow = 2)  # Auswahl von nur 2 Zeilen
+D <- read.table(file_path, nrow = 2)  # Auswahl von nur 2 Zeilen
 print(D)
-D = read.table(file_path, skip = 7)  # Auswahl ab Zeile 7
+D <- read.table(file_path, skip = 7)  # Auswahl ab Zeile 7
 print(D)
 ```
 
@@ -811,8 +811,8 @@ Nach Installation und Laden eines Pakets werden Datensätze mit `data()` geladen
 
 \vspace{1mm}
 ```{r}
-library(psychTools)				# Laden des Paktes psychTools
-data(cushny)					# Laden des cushny Datensatzes aus psychTools
+library(psychTools)    # Laden des Paktes psychTools
+data(cushny)           # Laden des cushny Datensatzes aus psychTools
 ```
 
 
@@ -868,16 +868,16 @@ Spezifikationen bei der Anwendung
 \tiny
 \setstretch{1.1}
 ```{r}
-input_file_name     = "cushny.csv"                   # Dateiname (input)
-output_file_name    = "student.csv"                  # Dateiname (output)
+input_file_name  <- "cushny.csv"                   # Dateiname (input)
+output_file_name <- "student.csv"                  # Dateiname (output)
 
-D           = read.table(file.path(data_dir, fname)) # Dateneinlesen
-D           = D[,5:6]                                # Reduktion des Dataframes
-write.table(                                         # .csv Schreibfunktion
-    D,                                               # Zu speichernder Dataframe
-    file = file.path(data_dir, rname),               # Dateinname
-    sep = ",",                                       # Werteseparator fuer .csv
-    row.names = F)                                   # keine Zeilennamen
+D <- read.table(file.path(data_dir, fname))        # Dateneinlesen
+D <- D[,5:6]                                       # Reduktion des Dataframes
+write.table(                                       # .csv Schreibfunktion
+    D,                                             # Zu speichernder Dataframe
+    file = file.path(data_dir, rname),             # Dateinname
+    sep = ",",                                     # Werteseparator fuer .csv
+    row.names = F)                                 # keine Zeilennamen
 ```
 
 \normalsize
@@ -924,7 +924,7 @@ Datenimport und Datenexport
 \item Beschreiben Sie die Funktion von RStudio Projekten.
 \item Nennen Sie eine R Funktion zum Einlesen von .csv Dateien.
 \item Nennen Sie eine R Funktion zum Schreiben von .csv Dateien.
-\item Schreiben Sie ein einfaches Skript, in welchem Daten eingelesen und geschrieben werden.
+\item Schreiben Sie ein einfaches Skript, in welchem Daten eingelesen und geschrieben
 \end{enumerate}
 
 
