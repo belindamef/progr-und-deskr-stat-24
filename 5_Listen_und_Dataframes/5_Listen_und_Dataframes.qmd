@@ -36,7 +36,7 @@ Datum          & Einheit               & Thema		                            \\\h
 08.11.23       & R Grundlagen          & (4) Matrizen\\
 \textbf{15.11.23}       & \textbf{R Grundlagen}          & \textbf{(5) Listen und Dataframes}              \\
 22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
-39.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
+29.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
 06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
 13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
 20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
