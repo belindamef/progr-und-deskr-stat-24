@@ -205,7 +205,8 @@ D            <- data.frame(
 colnames(D)  <- c("Bedingung", "Pre BDI", "Post BDI")
 
 # Datenspeicherung
-fname        <- file.path(data_dir, "psychotherapie_datensatz.csv") 
+pfad_zu_Datenordner <- file.path(dirname(getwd()), "Daten")
+fname        <- file.path(pfad_zu_Datenordner, "psychotherapie_datensatz.csv") 
 write.csv(D, file = fname, row.names = F)
 ```
 
@@ -213,28 +214,29 @@ write.csv(D, file = fname, row.names = F)
 Einlesen des Datensatzes mit `read.table()`
 \vspace{1mm}
 
-```{r echo=FALSE}
-pfad_zu_Datenordner <- file.path(dirname(getwd()), "Data")
+```{r echo=FALSE, eval = T}
+pfad_zu_Datenordner <- file.path(dirname(getwd()), "Daten")
 ```
 \footnotesize
-```{r}
+```{r, eval = T}
 pfad_zu_datei <- file.path(pfad_zu_Datenordner, "psychotherapie_datensatz.csv")
-# z.B. könnte fpath so aussehen: 
-# "/home/belindame_f/ovgu/progr-und-deskr-stat-23/Data/psychotherapie_datensatz.csv"
 
-D           <- read.table(pfad_zu_datei, sep = ",", header = T)
+# z.B. könnte pfad_zu_datei so aussehen:
+# "/home/belindame_f/ovgu/progr-und-deskr-stat-23/Daten/psychotherapie_datensatz.csv"
+
+D <- read.table(pfad_zu_datei, sep = ",", header = T)
 ```
 
 \small
 Daten der ersten acht Proband:innen jeder Gruppe
 
-\footnotesize
+\tiny
 \setstretch{1}
-```{r, echo = F}
+```{r, echo = F, eval = T}
 # table visualization
 knitr::kable(D[c(1:8, 51:58),],
-             align      = "ccc",
-             "pipe")
+             align  = "ccc",
+             format = "pipe")
 ```
 
 
@@ -243,7 +245,7 @@ knitr::kable(D[c(1:8, 51:58),],
 Datensatzübersicht mit `View()`
 \vspace{2mm}
 
-![](../Abbildungen/pds_7_view.png){width="30%"}
+![](../Abbildungen/pds_7_view.png){width="50%" fig-align="center"}
 
 
 \AtBeginSection{}
@@ -267,14 +269,14 @@ Histogramme
 \vfill
 
 
-# Häufigkeitsverteilungen
+# Absolute und relative Häufigkeitsverteilungen
 \small
 \begin{definition}[Absolute und relative Häufigkeitsverteilungen]
 \justifying
 $x := (x_1,...,x_n)$ mit $x_i \in \mathbb{R}$ sei ein \textit{Datensatz} 
 (manchmal auch ``Urliste'' genannt) und $A := \{a_1,...,a_k\}$ mit $k \le n$ 
 seien die im Datensatz vorkommenden verschiedenen Zahlenwerte (manchmal auch
-"Merkmalsausprägungen" genannt). Dann heißt die Funktion
+``Merkmalsausprägunge'' genannt). Dann heißt die Funktion
 \begin{equation}
 h : A \to \mathbb{N}, a \mapsto h(a) := \mbox{Anzahl der } x_i \mbox{ aus } x \mbox{ mit } x_i = a
 \end{equation}
@@ -292,8 +294,7 @@ Bemerkungen
 * Absolute und relative Häufigkeitsverteilungen können einen ersten Datenüberblick geben
 
 
-
-# Häufigkeitsverteilungen
+# Berechnung der Häufigkeitsverteilungen
 
 \small
 Erzeugen der absoluten Häufigkeitsverteilung mit `table()`
@@ -304,8 +305,7 @@ Erzeugen der relativen Häufigkeitsverteilung durch Division mit $n$
 
 \setstretch{1.2}
 \footnotesize
-\textcolor{red}{TODO: Errorin code snippet}
-```{r, eval = F}
+```{r, eval = T}
 x <- D$Pre.BDI                  # Double vector der Pre BDI Werte
 n <- length(x)                  # Anzahl der Datenwerte (100)
 H <- as.data.frame(table(x))    # absolute Haeufigkeitsverteilung (dataframe)
@@ -323,7 +323,7 @@ knitr::kable(H,
 
 
 
-# Häufigkeitsverteilungen
+# Visualisierung Häufigkeitsverteilungen
 Visualisierung der absoluten Häufigkeitsverteilung mit `barplot()`
 
 \footnotesize
@@ -438,7 +438,7 @@ Häufigkeitsverteilungen
 
 
 
-# Histogramme
+# Definition
 \small
 
 \begin{definition}[Histogramm]
@@ -474,8 +474,7 @@ $k := 3.49 S_n/\sqrt[3]{n}$ 		& Min. MSE Dichteschätzung bei Normalverteilung (
 \end{tabular}
 
 
-
-# Histogramme
+# Berechnung und Visualisierung von Histogrammen
 Berechnung und Visualisierung von Histogrammen mit `hist()`
 
 \small
@@ -602,15 +601,15 @@ main    <- sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                        
 dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_5.pdf"), width = 8, height = 5) # PDF Speicherung
 ```
 
-# Histogramme
-Berechnung und Visualisierung von Histogrammen mit `hist()`
+# Histogramm mit `hist()`  und default `breaks` - \textcolor{darkcyan}{Beispiel}
+
 \vspace{2mm}
 
 ![](../Abbildungen/pds_7_hg_0){width="100%"}
 
 
 
-# Histogramme
+# Alternative Histogramme
 Berechnung von Klassenanzahlen und `breaks` Argument
 \vspace{3mm}
 
@@ -645,37 +644,64 @@ b   <- seq(b_0, b_k, len = k)       # Klassen [b_{j-1}, b_j[
 ```
 
 
-# Histogramme
+# Berechnung und Visualisierung  - Alternative Histogramme
+Berechnung und Visualisierung von Histogrammen mit `hist()`
+
+\small
+* Die Klassen $[b_{j-1}, b_{j}[, j = 1,...,k$, die in der Variable `b` gespeichert sind, werden als Argument mit `breaks` festgelegt
+* `breaks` ist der atomic vector c$(b_0,b_1,...,b_k)$ mit Länge $k + 1$
+
+\vspace{2mm}
+\footnotesize
+```{r, eval = F}
+# Default Histogramm
+x      <- D$Pre.BDI                                      # Datensatz
+x_min  <- 12                                             # x Achsengrenze (unten)
+x_max  <- 25                                             # x Achsengrenze (oben)
+y_min  <- 0                                              # y Achsengrenze (oben)
+y_max  <- 30                                             # y Achsengrenze (unten)
+hist(                                                    # Histogramm
+  x,                                                     # Datensatz
+  breaks= b,                                             # breaks
+  xlim  = c(x_min, x_max),                               # x Achsengrenzen
+  ylim  = c(y_min, y_max),                               # y Achsengrenzen
+  ylab  = "Häufigkeit",                                  # y-Achsenbezeichnung
+  xlab  = "",                                            # x-Achsenbezeichnung
+  main  = sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))  # Titel
+  )
+```
+
+
+# Alternative Histogramme - \textcolor{darkcyan}{Beispiel}
 Gewünschte Klassenbreite $h := 1$
 \vspace{2mm} 
 
 ![](../Abbildungen/pds_7_hg_1.pdf){width="100%"}
 
 
-# Histogramme
+# Histogramme - \textcolor{darkcyan}{Beispiel}
 Gewünschte Klassenbreite $h := 1.5$
 \vspace{2mm}
 
 ![](../Abbildungen/pds_7_hg_2.pdf){width="100%"}
 
 
-
-# Histogramme
+# Histogramme - \textcolor{darkcyan}{Beispiel}
 Excelstandard $k := \lceil \sqrt{n} \rceil$
 \vspace{1mm}
 
 ![](../Abbildungen/pds_7_hg_3.pdf){width="100%"}
 
 
-# Histogramme
-@sturges_1926 $k := \lceil \log_2 n + 1\rceil$
+# Histogramme - \textcolor{darkcyan}{Beispiel}
+nach @sturges_1926 $, k := \lceil \log_2 n + 1\rceil$
 \vspace{1mm}
 
 ![](../Abbildungen/pds_7_hg_4.pdf){width="100%"}
 
 
-# Histogramme
-@scott_1979 $h := 3.49S_n/\sqrt[3]{n}$
+# Histogramme - \textcolor{darkcyan}{Beispiel}
+nach @scott_1979 $, h := 3.49S_n/\sqrt[3]{n}$
 \vspace{1mm}
 
 ![](../Abbildungen/pds_7_hg_5.pdf){width="100%"}
