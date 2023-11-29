@@ -36,11 +36,11 @@ Datum          & Einheit               & Thema		                            \\\h
 \textbf{08.11.23}       & \textbf{R Grundlagen}          & \textbf{(4) Matrizen}\\
 15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
 22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
-29.11.23       & R Grundlagen          & (7) Häufigkeitsverteilungen            \\
-06.12.23       & R Grundlagen          & (8) Verteilungsfunktionen und Quantile \\
+29.11.23       & Deskriptive Statistik & (7) Häufigkeitsverteilungen            \\
+06.12.23       & Deskriptive Statistik & (8) Verteilungsfunktionen und Quantile \\
 13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
-20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
 20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
                & \textcolor{gray}{Weihnachtspause}                              \\
 10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
 17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
