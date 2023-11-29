@@ -603,13 +603,32 @@ dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_5.pdf"), width = 8, height = 5
 
 # Histogramm mit `hist()`  und default `breaks` - \textcolor{darkcyan}{Beispiel}
 
+\textcolor{darkblue}{Visualisierung}
 \vspace{2mm}
 
 ![](../Abbildungen/pds_7_hg_0){width="100%"}
 
 
+# Histogramm mit `hist()`  und default `breaks` - \textcolor{darkcyan}{Beispiel}
 
-# Alternative Histogramme
+\textcolor{darkblue}{Ausgabe der Ergebnisse}
+\vspace{2mm}
+
+\setstretch{1}
+\footnotesize
+
+```{r, eval = T, echo = T}
+# Default Histogramm
+Ergebnisse <- hist(            # hist() output in Vairable speichern
+  x,                           # Datensatz
+  plot = FALSE
+  )
+
+print(Ergebnisse)              # Ausgabe der Ergebnisse
+```
+
+
+# Histogramme mit alternativen Klassengrößen
 Berechnung von Klassenanzahlen und `breaks` Argument
 \vspace{3mm}
 
@@ -644,7 +663,7 @@ b   <- seq(b_0, b_k, len = k)       # Klassen [b_{j-1}, b_j[
 ```
 
 
-# Berechnung und Visualisierung  - Alternative Histogramme
+# Berechnung und Visualisierung  -  alternative Klassengrößen
 Berechnung und Visualisierung von Histogrammen mit `hist()`
 
 \small
@@ -672,7 +691,7 @@ hist(                                                    # Histogramm
 ```
 
 
-# Alternative Histogramme - \textcolor{darkcyan}{Beispiel}
+# Histogramme - \textcolor{darkcyan}{Beispiel}
 Gewünschte Klassenbreite $h := 1$
 \vspace{2mm} 
 
