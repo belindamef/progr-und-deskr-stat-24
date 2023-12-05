@@ -58,7 +58,7 @@ Datum          & Einheit               & Thema		                            \\\h
 
 
 
-# Datenmanagement - Titelfolie {.plain}
+# Häufigkeitsverteilungen - Titelfolie {.plain}
 
 \vfill
 \huge
