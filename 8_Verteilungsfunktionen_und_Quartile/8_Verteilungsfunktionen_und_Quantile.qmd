@@ -1,0 +1,703 @@
+
+```{r eval = T, echo = F}
+# | label: define directories
+abb_path = file.path(dirname(getwd()), "Abbildungen")
+data_path = file.path(dirname(getwd()), "Daten")
+```
+
+
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Termine {.plain}
+\setstretch{1.3}
+\vfill
+\center
+\footnotesize
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum          & Einheit               & Thema		                            \\\hline
+11.10.23       & Einführung            & (1) Einführung \\
+18.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+25.10.23       & R Grundlagen          & (2) R und Visual Studio Code           \\
+01.11.23       & R Grundlagen          & (3) Vektoren\\
+08.11.23       & R Grundlagen          & (4) Matrizen\\
+15.11.23       & R Grundlagen          & (5) Listen und Dataframes              \\
+22.11.23       & R Grundlagen          & (6) Datenmanagement                    \\
+\textbf{29.11.23}       & \textbf{Deskriptive Statistik}          & \textbf{(7) Häufigkeitsverteilungen}            \\
+06.12.23       & Deskriptive Statistik          & (8) Verteilungsfunktionen und Quantile \\
+13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz         \\
+20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
+20.12.23       & Deskriptive Statistik & (10) Maße der Datenvariabilität        \\
+               & \textcolor{gray}{Weihnachtspause}                              \\
+10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24       & Inferenzstatistik     & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24       & \textit{Leistungsnachweis Teil 2}                          \\\hline
+\end{tabular}
+
+
+
+# Verteilungsfunktionen und Quantile - Titelfolie {.plain}
+
+\vfill
+\huge
+\begin{center}
+(8) Verteilungsfunktionen und Quantile
+\end{center}
+\vfill
+
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+Empirische Verteilungsfunktionen
+
+Quantile und Boxplots
+
+Übungen und Selbstkontrollfragen
+
+\vfill
+
+
+
+\AtBeginSection{}
+\section{Empirische Verteilungsfunktionen}
+# Empirische Verteilungsfunktionen ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+**Empirische Verteilungsfunktionen**
+
+Quantile und Boxplots
+
+Übungen und Selbstkontrollfragen
+
+\vfill
+
+
+
+# Kumulative Häufigkeitsverteilungen
+\footnotesize
+\begin{definition}[Kumulative absolute und relative Häufigkeitsverteilungen]
+\justifying
+$x = (x_1,...,x_n)$ sei ein Datensatz, $A := \{a_1,...,a_k\}$ mit $k \le n$  
+die im Datensatz vorkommenden verschiedenen Zahlenwerte und $h$ und $r$ die 
+absoluten und relativen Häufigkeitsverteilungen von $x$, respektive. Dann heißt
+die Funktion
+\begin{equation}
+H : A \to \mathbb{N}, a \mapsto H(a) := \sum_{a' \le a} h(a')
+\end{equation}
+die \textit{kumulative absolute Häufigkeitsverteilung} von $x$ und die Funktion
+\begin{equation}
+R : A \to [0,1], a \mapsto R(a) : =\sum_{a' \le a} r(a')
+\end{equation}
+die \textit{kumulative relative Häufigkeitsverteilung} der Zahlwerte von $x$.
+\end{definition}
+
+Bemerkung
+
+* Mit den Definitionen der absoluten und relativen Häufigkeitsverteilungen gilt also
+\begin{equation}
+H(a) = \mbox{Anzahl der } x_i \mbox{ aus } x \mbox{ mit } x_i \le a
+\end{equation}
+und
+\begin{equation}
+R(a) = \mbox{Anzahl der } x_i \mbox{ aus } x \mbox{ mit } x_i \le a \mbox{ geteilt durch } n.
+\end{equation}
+
+
+# Evaluation kumulativer Summen
+\small
+\vfill
+In R können kumulative Summen mit `cumsum()` berechnet werden. 
+
+\textcolor{darkcyan}{Evaluation am Beispiel der Pre.BDI-Werte:}
+
+\vfill
+
+\footnotesize
+\setstretch{1}
+```{r, eval = T}
+#| label: cumsum()
+# Einlesen des Beispieldatensatzes und Abbildungsverzeichnisdefinition
+fpath    <- file.path(data_path, "psychotherapie_datensatz.csv")
+D        <- read.table(fpath, sep = ",", header = T)
+
+# Evaluation der absoluten und relativen Häufigkeitsverteilugen von Pre.BDI
+x        <- D$Pre.BDI                 # Double vector der Pre.BDI Werte
+n        <- length(x)                 # Anzahl der Datenwerte
+H        <- as.data.frame(table(x))   # absolute Häufigkeitsverteilung als Dataframe
+names(H) <- c("a", "h")               # Spaltenbenennung
+H$H      <- cumsum(H$h)               # kumulative absolute Häufigkeitsverteilung
+H$r      <- H$h/n                     # relative Häufigkeitsverteilung
+H$R      <- cumsum(H$r)               # kumulative relative Häufigkeitsverteilung
+print(H)
+```
+
+
+
+# Visualisierung kumulativer Häufigkeiten
+\small
+\textcolor{darkcyan}{Kumulative absolute Häufigkeitsverteilung der Pre.BDI Werte}
+\vspace{2mm}
+
+\footnotesize
+\setstretch{1.1}
+```{r}
+#| label: cum H$h
+# Vorbereitung der zu visualisierenden Daten
+Ha        <- H$H           # H(a) Werte
+names(Ha) <- H$a           # barplot braucht a Werte als names
+
+# Visualisierung der kumulativen absoluten Häufigkeitsverteilung
+graphics.off()             # Alle offenen graphical devices schließen
+dev.new()                  # Abbildungsinitialisierung
+
+barplot(                   # Balkendiagramm
+  Ha,                      # H(a) Werte als input
+  col  = "gray90",         # Balkenfarbe
+  xlab = "a",              # x Achsenbeschriftung
+  ylab = "H(a)",           # y Achsenbeschriftung
+  ylim = c(0,110),         # y Achsenlimits
+  las  = 1,                # Achsenticklabelorientierung 
+  main = "Pre.BDI"         # Titel
+)
+
+# PDF Speicherung
+dev.copy2pdf(
+  file   = file.path(fdir, "pds_8_kh.pdf"),
+  width  = 8, 
+  height = 5
+)
+```
+
+
+# Visualisierung kumulativer Häufigkeiten
+
+\small
+\textcolor{darkcyan}{Kumulative absolute Häufigkeitsverteilung der Pre.BDI Werte}
+\vspace{4mm}
+
+![](../Abbildungen/pds_8_kh.pdf){width="85%"}
+
+
+# Visualisierung kumulativer Häufigkeiten
+\small
+\textcolor{darkcyan}{Kumulative relative Häufigkeitsverteilung der Pre.BDI Werte}
+\vspace{2mm}
+
+\footnotesize
+\setstretch{1.1}
+```{r}
+#| label: cum rel Häufigkeit
+# Vorbereitung der zu visualisierenden Daten
+R        <- H$R             # R(a) Werte
+names(R) <- H$a             # barplot braucht a Werte als names
+
+# Visualisierung der kumulativen relativen Häufigkeitsverteilung
+graphics.off()              # Alle offenen graphical devices schließen
+dev.new()                   # Abbildungsinitialisierung
+
+barplot(                    # Balkendiagramm
+  R,                        # R(a) Werte
+  col  = "gray90",          # Balkenfarbe
+  xlab = "a",               # x Achsenbeschriftung
+  ylab = "R(a)",            # y Achsenbeschriftung
+  ylim = c(0,1),            # y Achsenlimits
+  las  = 1,                 # Achsenticklabelorientierung 
+  main = "Pre.BDI"          # Titel
+)
+
+# PDF Speicherung
+dev.copy2pdf(
+  file   = file.path(fdir, "pds_8_kr.pdf"),
+  width  = 8, 
+  height =
+)
+```
+
+
+# Visualisierung kumulativer Häufigkeiten
+\small
+\textcolor{darkcyan}{Kumulative relative Häufigkeitsverteilung der Pre.BDI Werte}
+\vspace{4mm}
+
+![](../Abbildungen/pds_8_kr.pdf)
+
+
+# Empirische Verteilungsfunktionen
+
+\footnotesize
+\begin{definition}[Empirische Verteilungsfunktion]
+$x = (x_1,...,x_n)$ sei ein Datensatz. Dann heißt die Funktion
+\begin{equation}
+F : \mathbb{R} \to [0,1], \xi \mapsto F(\xi)
+:= \frac{\mbox{Anzahl der } x_i \mbox{ aus } x \mbox{ mit } x_i \le \xi}{n}
+\end{equation}
+die empirische Verteilungsfunktion (EVF) von $x$.
+\end{definition}
+Bemerkungen
+
+* Die empirische Verteilungsfunktion wird auch *empirische kumulative Verteilungsfunktion* genannt.
+* Die Definitionsmenge der EVF ist im Gegensatz zu Häufigkeitsverteilungen $\mathbb{R}$ und nicht $A$
+* Die EVF verhält sich zu kumulativen Häufigkeitsverteilungen wie Histogramme zu Häufigkeitsverteilungen.
+* Typischerweise sind empirische Verteilungsfunktionen Treppenfunktionen.
+* Die (visuelle) Umkehrfunktion der EVF kann zur Bestimmung von Quantilen genutzt werden.
+
+\vfill
+
+
+# Evaluation und Visualisierung der EVF mit `ecdf()`
+\small
+\vfill
+`ecdf()` evaluiert die empirischen Verteilungsfunktion eines Datensatzes.
+
+`plot()` kann mit ecdf object umgehen.
+\vfill
+
+\textcolor{darkcyan}{Empirische Verteilungsfunktion am Beispiel der Pre.BDI Werte}
+
+\vspace{3mm}
+
+\footnotesize
+\setstretch{1.1}
+```{r}
+#| label: ecdf()
+x    <- D$Pre.BDI                                 # double vector der Pre.BDI Werte
+evf  <- ecdf(x)                                   # Evaluation der EVF
+
+# Visualisierung der kumulativen relativen Häufigkeitsverteilung
+library(latex2exp)                                # TeX Formatierungstool laden
+graphics.off()                                    # Alle offenen graphical devices schließen
+dev.new()                                         # Abbildungsinitialisierung
+
+plot(
+  evf,                                            # ecdf Objekt
+  xlab = TeX("$\\xi$"),                           # x Achsenbeschriftung
+  ylab = TeX("$F(\\xi)$"),                        # y Achsenbeschriftung
+  main = "Pre.BDI Empirische Verteilungsfunktion" # Titel
+)
+
+# PDF Speicherung
+dev.copy2pdf(
+  file   = file.path(fdir, "pds_8_ecdf.pdf"), 
+  width  = 8, 
+  height = 5)    
+```
+
+# Empirische Verteilungsfunktionen
+
+\small
+\textcolor{darkcyan}{Empirische Verteilungsfunktion der Pre.BDI Werte}
+\vspace{4mm}
+
+![](../Abbildungen/pds_8_ecdf.pdf){width="85%"}
+
+
+# AGENDA {.plain}
+\vfill
+\large
+\setstretch{3}
+Empirische Verteilungsfunktionen
+
+**Quantile und Boxplots**
+
+Übungen und Selbstkontrollfragen
+\vfill
+
+
+# Das $p$-Quantil
+
+\footnotesize
+\begin{definition}[$p$-Quantil]
+\justifying
+$x = (x_1,...,x_n)$ sei ein Datensatz und
+\begin{equation}
+x_s = \left(x_{(1)}, x_{(2)}, ...,x_{(n)}\right) \mbox{ mit }
+\min_{1 \le i \le n}x_i = x_{(1)} \le x_{(2)} \le \cdots \le x_{(n)} = \max_{1 \le i \le n} x_i
+\end{equation}
+der zugehörige aufsteigend sortierte Datensatz. Weiterhin bezeichne $\lfloor \cdot \rfloor$ 
+die Abrundungsfunktion.Dann heißt für ein $p \in [0,1]$ die Zahl
+\begin{equation}
+x_p :=
+\begin{cases}
+x_{(\lfloor np + 1 \rfloor)} & \mbox{ falls } np \neq \mathbb{N} \\
+\frac{1}{2}\left(x_{(np)} +  x_{(np + 1)}\right) & \mbox{ falls } np \in \mathbb{N} \\
+\end{cases}
+\end{equation}
+das \textit{$p$-Quantil} von $x$.
+\end{definition}
+
+Bemerkungen
+
+* Mindestens $p \cdot 100\%$ aller Werte in $x$ sind kleiner oder gleich $x_p$.
+* Mindestens $(1-p) \cdot 100\%$ aller Werte in $x$ sind größer als $x_p$ .
+* Das $p$-Quantil teilt den geordneten Datensatz im Verhältnis $p$ zu $(1-p)$ auf.
+* $x_{0.25}, x_{0.50}, x_{0.75}$ heißen *unteres Quartil*, *Median*, und *oberes Quartil*, respektive.
+* $x_{j\cdot 0.10}$ für $j = 1,...,9$ heißen *Dezile*,
+* $x_{j\cdot 0.01}$ für $j = 1,...,99$ heißen *Percentile*.
+
+
+# \textcolor{darkcyan}{Beispiel $p$-Quantil}
+\small
+
+
+\textbf{Datensatz und sortierter Datensatz}
+\vspace{1mm}
+
+\footnotesize
+
+\begin{center}
+\begin{tabular}{c|ccccccccccc}
+$i$
+& 1
+& 2
+& 3
+& 4
+& 5
+& 6
+& 7
+& 8
+& 9
+& 10
+\\\hline
+$x_i$
+& 8.5
+& 1.5
+& 75
+& 4.5
+& 6.0
+& 3.0
+& 3.0
+& 2.5
+& 6.0
+& 9.0
+\\
+$x_{(i)}$
+& 1.5
+& 2.5
+& 3.0
+& 3.0
+& 4.5
+& 6.0
+& 6.0
+& 8.5
+& 9.0
+& 75
+\end{tabular}
+\end{center}
+\vspace{4mm}
+
+\small
+\textbf{0.25-Quantil}
+\vspace{1mm}
+
+\footnotesize
+Es ist $n = 10$ und es sei $p := 0.25$. Dann gilt $np = 10 \cdot 0.25 = 2.5 \notin \mathbb{N}$. Also folgt
+\begin{equation}
+x_{0.25} = x_{(\lfloor 2.5 + 1\rfloor)} = x_{(3)} = 3.0
+\end{equation}
+\vspace{1mm}
+
+\small
+\textbf{0.80-Quantil}
+\vspace{1mm}
+
+Es ist $n = 10$ und es sei $p := 0.80$. Dann gilt $np = 10 \cdot 0.80 = 8 \in \mathbb{N}$. Also folgt
+\begin{equation}
+x_{0.80} = \frac{1}{2} \left( x_{(8)} + x_{(8 + 1)}\right) = \frac{1}{2}\left(x_{(8)} + x_{(9)}\right)
+= \frac{8.5 + 9.0}{2} = 8.75.
+\end{equation}
+
+\vfill
+\flushright
+\tiny
+(@henze_2018, Kapitel 5)
+
+
+# Quantilfbestimmung in R
+\small
+\vfill
+**"Manuelle" Quantilbestimmung anhand obiger Definition**
+\tiny
+\vspace{1mm}
+\setstretch{1}
+```{r, eval = T}
+#| label: manuelle Quantilsbestimmung
+x    <- c(8.5, 1.5, 12, 4.5, 6.0, 3.0, 3.0, 2.5, 6.0, 9.0)  # Beispieldaten (Henze, 2018)
+n    <- length(x)                                           # Anzahl Datenwerte
+x_s  <- sort(x)                                             # sortierter Datensatz
+p    <- 0.25                                                # np \notin \mathbb{N}
+x_p  <- x_s[floor(n*p + 1)]                                 # 0.25 Quantil
+print(x_p)                                                  # Ausgabe
+p    <- 0.80                                                # np \in \mathbb{N}
+x_p  <- (1/2)*(x_s[n*p] + x_s[n*p + 1])                     # 0.80 Quantil
+print(x_p)                                                  # Ausgabe
+```
+
+\setstretch{1.2}
+\small
+**Quantilsbestimmung mithilfe vordefinierter R-Funktionen**
+
+\footnotesize
+`quantile()` wertet Quantile anhand der Quantildefinition `type` aus.
+
+Es gibt mindestens neun verschiedene Quantildefinitionen (cf. @hyndman_1996)
+\setstretch{1}
+\tiny
+```{r, eval = T}
+# | label: alternat. Quantils types
+x_p <- quantile(x, 0.80, type = 1)                          # 0.80 Quantil, Definition 1
+print(x_p)
+x_p <- quantile(x, 0.80, type = 2)                          # 0.80 Quantil, Definition 2
+print(x_p)
+```
+
+
+# Visuelle Bestimmung des Quantils
+\small
+
+Kombination von `ecdf()`und `abline()` erlaubt prinzipiell die visuelle Bestimmung von Quantilen
+
+\textcolor{darkcyan}{EVF und 80\%-Quantil der Beispieldaten aus Henze, 2018}
+
+\tiny
+\vspace{2mm}
+\setstretch{1.1}
+```{r}
+#| label: visual quantile henze
+library(latex2exp)                         # TeX Formatierungstool laden
+graphics.off()                             # Alle offenen graphical devices schließen
+dev.new()                                  # Abbildungsinitialisierung
+
+evf <- ecdf(x)                             # Evaluation der EVF
+
+plot(                                      # plot() weiß mit ecdf object umzugehen
+  evf,                                     # ecdf Objekt
+  xlab      = TeX("$\\xi$"),               # x Achsenbeschriftung
+  ylab      = TeX("$F(\\xi)$"),            # y Achsenbeschriftung
+  verticals = TRUE,                        # vertikale Linien 
+  do.points = FALSE,                       # keine Punkte
+  main      = "Beispiel 80%-Quantil"       # Titel
+)
+
+abline(                                    # horizontale Linie
+  h = 0.80,                                # y Ordinate der Linie
+  col = "blue"                             # Farbe der Linie
+)
+
+# PDF Speicherung
+dev.copy2pdf(
+  file   = file.path(fdir, "pds_8_ecdf_abline_x.pdf"), 
+  width  = 8, 
+  height = 5
+)
+```
+\vfill
+
+
+# Visuelle Bestimmung des Quantils
+\small
+\vspace{1mm}
+
+\vfill
+
+\textcolor{darkcyan}{EVF und 80\%-Quantil der Beispieldaten aus Henze, 2018}
+
+![](../Abbildungen/pds_8_ecdf_abline_x.pdf){width="85%"}
+\vfill
+
+\tiny
+\setstretch{1}
+```{r, eval = T}
+#| label: quantile henze
+x_p_1 <- quantile(x, 0.80, type = 1)  # 0.80 Quantil, Definition 1
+x_p_2 <- quantile(x, 0.80, type = 2)  # 0.80 Quantil, Definition 2
+cat("typ 1: ", x_p_1, "\ntyp 2: ", x_p_2)
+```
+
+
+# Visuelle Bestimmung des Quantils
+\small
+\textcolor{darkcyan}{EVF und 80\%-Quantil der Pre.BDI-Werte aus dem Psychotherpiedatensatz}
+
+\vspace{2mm}
+
+\tiny
+\setstretch{1.1}
+```{r}
+#| label: visual quantile pre.bdi
+library(latex2exp)                         # TeX Formatierung laden
+graphics.off()                             # Alle offenen graphical devices schließen
+dev.new()                                  # Abbildungsinitialisierung
+
+x   <- D$Pre.BDI                           # Double vector der Pre.BDI Werte
+evf <- ecdf(x)                             # Evaluation der EVF
+
+plot(                                      # plot() kann mit ecdf object umgehen
+  evf,                                     # ecdf Objekt
+  xlab      = TeX("$\\xi$"),               # x Achsenbeschriftung
+  ylab      = TeX("$F(\\xi)$"),            # y Achsenbeschriftung
+  verticals = TRUE,                        # vertikale Linien 
+  do.points = FALSE,                       # keine Punkte
+  main      = "Beispiel 80%-Quantil"       # Titel
+)
+abline(                                    # horizontale Linie
+  h   = 0.80,                              # y Ordinate der Linie
+  col = "blue"                             # Farbe der Linie
+)
+
+# PDF Speicherung
+dev.copy2pdf(
+  file   = file.path(fdir, "pds_8_ecdf_abline_prebdi.pdf"), 
+  width  = 8, 
+  height = 5
+)
+```
+
+
+# Visuelle Bestimmung des Quantils
+\small
+\textcolor{darkcyan}{EVF und 80\%-Quantil der Pre.BDI-Werte aus dem Psychotherpiedatensatz}
+\vspace{2mm}
+
+![](../Abbildungen/pds_8_ecdf_abline_prebdi.pdf){width="80%"}
+
+
+\tiny
+\setstretch{1}
+```{r, eval = T}
+#| label: quantile pre.bdi
+x_p_1 <- quantile(D$Pre.BDI, 0.80, type = 1)  # 0.80 Quantil, Definition 1
+x_p_2 <- quantile(D$Pre.BDI, 0.80, type = 2)  # 0.80 Quantil, Definition 2
+cat("typ 1: ", x_p_1, "\ntyp 2: ", x_p_2)
+```
+
+
+# Boxplots
+
+\small
+Ein Boxplot visualisiert eine Quantil-basierte Zusammenfassung eines Datensatzes.
+
+Typischerweise werden $\min x, x_{0.25}, x_{0.50}, x_{0.75}, \max x$ visualisiert.
+
+* $\min x$ und $\max x$ werden oft als "Whiskerendpunkte" dargestellt.
+* $x_{0.25}$ und $x_{0.75}$ sind untere und obere Grenze der zentralen grauen Box.
+* $x_{0.50}$ wird als Strich in der zentralen grauen Box abgebildet.
+
+$d_Q := x_{0.75} - x_{0.25}$ heißt \textit{Interquartilsabstand} und dient als Verteilungsbreitenmaß
+
+`summary()` liefert wesentliche Kennzahlen
+
+\footnotesize
+\setstretch{1}
+```{r, eval = T}
+#| label: summary()
+# Sechswertezusammenfassung
+summary(D$Pre.BDI)
+```
+
+
+# Erstellen von Boxplots in R
+
+\small
+`boxplot()` erstellt einen Boxplot
+\vspace{2mm}
+
+\textcolor{darkcyan}{Boxplot der Pre.BDI-Werte}
+
+\footnotesize
+\setstretch{1.2}
+```{r}
+#| label: boxplot
+
+# Boxplot erstellen
+graphics.off()                      # Alle offenen graphical devices schließen
+dev.new()                           # Abbildungsinitialisierung
+
+boxplot(                            # Boxplot
+  D$Pre.BDI,                        # Datensatz
+  horizontal  = T,                  # horizontale Darstellung
+  range       = 0,                  # Whiskers bis zu min x und max x
+  xlab        = "x",                # x Achsenbeschriftung
+  main        = "Pre.BDI Boxplot"   # Titel
+)
+
+# PDF Speicherung
+dev.copy2pdf(
+  file        = file.path(fdir, "pds_8_boxplot_prebdi.pdf"), 
+  width       = 8, 
+  height      = 5
+)
+```
+
+# Boxplots
+
+\textcolor{darkcyan}{Boxplot der Pre.BDI-Werte}
+
+![](../Abbildungen/pds_8_boxplot_prebdi.pdf){width="80%"}
+
+
+\footnotesize
+Es gibt viele Boxplotvariationen (cf. @mcgill_1978). Es sollte immer erläutert werden, welche Kennzahlen dargestellt werden! 
+
+
+# AGENDA {.plain}
+\vfill
+\large
+\setstretch{3}
+Empirische Verteilungsfunktionen
+
+Quantile und Boxplots
+
+**Übungen und Selbstkontrollfragen**
+\vfill
+
+# Übungen und Selbstkontrollfragen
+
+\footnotesize
+\begin{enumerate}
+\justifying
+\item Definieren Sie die Begriffe der kumulativen absoluten und relativen Häufigkeitsverteilungen.
+\item Erzeugen und visualisieren Sie die kumulativen absoluten und relativen Häufigkeitsverteilungen
+der Post.BDI Daten des Beispieldatensatzes \textit{psychotherapie\_datensatz.csv}.
+\item Definieren Sie den Begriff der empirischen Verteilungsfunktion.
+\item Erzeugen und visualisieren Sie die empirische Verteilungsfunktion der Post.BDI Daten.
+\item Erläutern Sie den Begriff des sortierten Datensatzes.
+\item Definieren Sie den Begriff des $p$-Quantils.
+\item Berechnen Sie das obere Quartil des Beispieldatensatzes auf Folie 16.
+\item Definieren Sie die Begriffe unteres Quartil, Median und oberes Quartil mithilfe des $p$-Quantils.
+\item Berechnen Sie das untere Quartil, den Median und das obere Quartil der Post.BDI Daten. Vergleiche Sie
+ihre Ergebnisse mit der Ausgabe der summary() Funktion.
+\item Erstellen Sie einen Boxplot der Post.BDI Daten.
+\end{enumerate}
+
+# References
+\footnotesize
+dev.new()
