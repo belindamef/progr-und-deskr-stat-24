@@ -441,7 +441,7 @@ x_{0.80} = \frac{1}{2} \left( x_{(8)} + x_{(8 + 1)}\right) = \frac{1}{2}\left(x_
 (@henze_2018, Kapitel 5)
 
 
-# Quantilfbestimmung in R
+# Quantilsbestimmung in R
 \small
 \vfill
 **"Manuelle" Quantilbestimmung anhand obiger Definition**
