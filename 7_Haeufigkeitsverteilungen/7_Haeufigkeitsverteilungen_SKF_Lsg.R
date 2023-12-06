@@ -289,26 +289,26 @@ b_h3_ONL    <- c(b_h3_ONL, 0)
 # ---------------------------------
 k_f2f       <- ceiling(sqrt(n_f2f))                   # Anzahl der Klassen
 k_ONL       <- ceiling(sqrt(n_ONL))                   # Anzahl der Klassen
-b_excel_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f)     # Klassen [b_{j-1}, b_j[
-b_excel_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL)     # Klassen [b_{j-1}, b_j[
+b_excel_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f + 1) # Klassen [b_{j-1}, b_j[
+b_excel_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL + 1) # Klassen [b_{j-1}, b_j[
 
 # c) Sturges Klassenzahl
 # ---------------------------------
-k_f2f         <- ceiling(log2(n_f2f) + 1)             # Anzahl der Klassen
-k_ONL         <- ceiling(log2(n_ONL) + 1)             # Anzahl der Klassen
-b_sturges_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f)   # Klassen [b_{j-1}, b_j[
-b_sturges_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL)   # Klassen [b_{j-1}, b_j[
+k_f2f         <- ceiling(log2(n_f2f) + 1)              # Anzahl der Klassen
+k_ONL         <- ceiling(log2(n_ONL) + 1)              # Anzahl der Klassen
+b_sturges_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f + 1)# Klassen [b_{j-1}, b_j[
+b_sturges_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL)    # Klassen [b_{j-1}, b_j[
 
 # d) Scott Klassenzahl (geg.: h)
 # ---------------------------------
-S_f2f       <- sd(bdi_diff_f2f)                    # Stichprobenstandardabweichung
-S_ONL       <- sd(bdi_diff_ONL)                    # Stichprobenstandardabweichung
-h_f2f       <- ceiling(3.49*S_f2f/(n_f2f^(1/3)))   # Klassenbreite
-h_ONL       <- ceiling(3.49*S_ONL/(n_ONL^(1/3)))   # Klassenbreite
-k_f2f       <- ceiling((b_k_f2f - b_0_f2f)/h_f2f)  # Anzahl der Klassen
-k_ONL       <- ceiling((b_k_ONL - b_0_ONL)/h_ONL)  # Anzahl der Klassen
-b_scott_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f)  # Klassen [b_{j-1}, b_j[
-b_scott_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL)  # Klassen [b_{j-1}, b_j[
+S_f2f       <- sd(bdi_diff_f2f)                        # Stichprobenstandardabweichung
+S_ONL       <- sd(bdi_diff_ONL)                        # Stichprobenstandardabweichung
+h_f2f       <- ceiling(3.49*S_f2f/(n_f2f^(1/3)))       # Klassenbreite
+h_ONL       <- ceiling(3.49*S_ONL/(n_ONL^(1/3)))       # Klassenbreite
+k_f2f       <- ceiling((b_k_f2f - b_0_f2f)/h_f2f)      # Anzahl der Klassen
+k_ONL       <- ceiling((b_k_ONL - b_0_ONL)/h_ONL)      # Anzahl der Klassen
+b_scott_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f + 1)  # Klassen [b_{j-1}, b_j[
+b_scott_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL + 1)  # Klassen [b_{j-1}, b_j[
 
 
 # Damit wir die gleichen Befehle zur Histogramm-erzeugung nicht 4x wiederholen
