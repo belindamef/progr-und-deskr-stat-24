@@ -238,7 +238,7 @@ barplot(                    # Balkendiagramm
 dev.copy2pdf(
   file   = file.path(fdir, "pds_8_kr.pdf"),
   width  = 8, 
-  height =
+  height = 5
 )
 ```
 
