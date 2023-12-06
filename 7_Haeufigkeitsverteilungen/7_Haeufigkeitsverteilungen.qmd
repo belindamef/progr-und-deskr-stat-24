@@ -470,7 +470,7 @@ Bemerkungen
 $k := \lceil (b_k - b_0)h \rceil$  	& $h$ ist die gewünschte Klassenbreite                        \\
 $k := \lceil \sqrt{n} \rceil$  		& Excelstandard                                               \\
 $k := \lceil \log_2 n + 1\rceil$  	& Implizite Normalverteilungsannahme (Sturges, 1926)          \\
-$k := 3.49 S_n/\sqrt[3]{n}$ 		& Min. MSE Dichteschätzung bei Normalverteilung (Scott, 1979)
+$h := 3.49 S_n/\sqrt[3]{n}$ 		& Min. MSE Dichteschätzung bei Normalverteilung (Scott, 1979)
 \end{tabular}
 
 
@@ -488,10 +488,10 @@ Berechnung und Visualisierung von Histogrammen mit `hist()`
 ```{r, eval = F}
 # Default Histogramm
 x      <- D$Pre.BDI            # Datensatz
-x_min  <- 12                   # x Achsengrenze (unten)
-x_max  <- 25                   # x Achsengrenze (oben)
-y_min  <- 0                    # y Achsengrenze (oben)
-y_max  <- 30                   # y Achsengrenze (unten)
+x_min  <- 12                   # x Achsengrenze (links)
+x_max  <- 25                   # x Achsengrenze (rechts)
+y_min  <- 0                    # y Achsengrenze (unten)
+y_max  <- 45                   # y Achsengrenze (oben)
 hist(                          # Histogramm
   x,                           # Datensatz
   xlim  = c(x_min, x_max),     # x Achsengrenzen
@@ -514,11 +514,11 @@ y_max   <- 45                                                                   
 dev.new()                                                                        # Abbildungsinitialisierung
 hist(                                                                            # Histogramm
 x,                                                                               # Datensatz
-xlim    <- c(x_min, x_max),                                                      # x Achsen Limits
-ylim    <- c(y_min, y_max),                                                      # y Achsen Limits
-ylab    <- "Häufigkeit",                                                         # y-Achsenbezeichnung
-xlab    <- "",                                                                   # x-Achsenbezeichnung
-main    <- "Pre-BDI, R Default")                                                 # Titel
+xlim    = c(x_min, x_max),                                                      # x Achsen Limits
+ylim    = c(y_min, y_max),                                                      # y Achsen Limits
+ylab    = "Häufigkeit",                                                         # y-Achsenbezeichnung
+xlab    = "",                                                                   # x-Achsenbezeichnung
+main    = "Pre-BDI, R Default")                                                 # Titel
 dev.copy2pdf(file = file.path(abb_dir, "pds_7_hg_0.pdf"), width = 8, height = 5) # PDF Speicherung                                                                          
 
 # Histogramm mit gewünschter Klassenbreite h = 1
@@ -529,12 +529,12 @@ k       <- ceiling((b_k - b_0)/h)                                               
 b       <- seq(b_0, b_k, by = h)                                                  # Klassen [b_{j-1}, b_j[
 hist(                                                                             # Histogramm
 x,                                                                                # Datensatz
-breaks  <- b,                                                                     # breaks
-xlim    <- c(x_min, x_max),                                                       # x Achsen Limits
-ylim    <- c(y_min, y_max),                                                       # y Achsen Limits
-ylab    <- "Häufigkeit",                                                          # y-Achsenbezeichnung
-xlab    <- "",                                                                    # x-Achsenbezeichnung
-main    <- sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
+breaks  = b,                                                                     # breaks
+xlim    = c(x_min, x_max),                                                       # x Achsen Limits
+ylim    = c(y_min, y_max),                                                       # y Achsen Limits
+ylab    = "Häufigkeit",                                                          # y-Achsenbezeichnung
+xlab    = "",                                                                    # x-Achsenbezeichnung
+main    = sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
 dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_1.pdf"), width = 8, height = 5) # PDF Speicherung
 
 # Histogramm mit gewünschter Klassenbreite h =1.5
@@ -556,31 +556,31 @@ dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_2.pdf"), width = 8, height = 5
 # Histogramm mit Excel Standard
 n       <- length(x)                                                              # Anzahl Datenwerte
 k       <- ceiling(sqrt(n))                                                       # Anzahl der Klassen
-b       <- seq(b_0, b_k, len = k)                                                 # Klassen [b_{j-1}, b_j[
+b       <- seq(b_0, b_k, len = k + 1)                                                 # Klassen [b_{j-1}, b_j[
 h       <- b[2] - b[1]                                                            # Klassenbreite
 hist(
 x,                                                                                # Datensatz
-breaks  <- b,                                                                     # breaks
-xlim    <- c(x_min, x_max),                                                       # x Achsen Limits
-ylim    <- c(y_min, y_max),                                                       # y Achsen Limits
-ylab    <- "Häufigkeit",                                                          # y-Achsenbezeichnung
-xlab    <- "",                                                                    # x-Achsenbezeichnung
-main    <- sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
+breaks  = b,                                                                     # breaks
+xlim    = c(x_min, x_max),                                                       # x Achsen Limits
+ylim    = c(y_min, y_max),                                                       # y Achsen Limits
+ylab    = "Häufigkeit",                                                          # y-Achsenbezeichnung
+xlab    = "",                                                                    # x-Achsenbezeichnung
+main    = sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
 dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_3.pdf"), width = 8, height = 5) # PDF Speicherung
 
 # Sturges
 n       <- length(x)                                                              # Anzahl Datenwerte
 k       <- ceiling(log2(n)+1)                                                     # Anzahl der Klassen
-b       <- seq(b_0, b_k, len = k)                                                 # Klassen [b_{j-1}, b_j[
+b       <- seq(b_0, b_k, len = k + 1)                                                 # Klassen [b_{j-1}, b_j[
 h       <- b[2] - b[1]                                                            # Klassenbreite
 hist(                                                                             # Histogramm
 x,                                                                                # Datensatz
-breaks  <- b,                                                                     # breaks
-xlim    <- c(x_min, x_max),                                                       # x Achsen Limits
-ylim    <- c(y_min, y_max),                                                       # y Achsen Limits
-ylab    <- "Häufigkeit",                                                          # y-Achsenbezeichnung
-xlab    <- "",                                                                    # x-Achsenbezeichnung
-main    <- sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
+breaks  = b,                                                                     # breaks
+xlim    = c(x_min, x_max),                                                       # x Achsen Limits
+ylim    = c(y_min, y_max),                                                       # y Achsen Limits
+ylab    = "Häufigkeit",                                                          # y-Achsenbezeichnung
+xlab    = "",                                                                    # x-Achsenbezeichnung
+main    = sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
 dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_4.pdf"), width = 8, height = 5) # PDF Speicherung
 
 # Scott
@@ -588,16 +588,16 @@ n       <- length(x)                                                            
 S       <- sd(x)                                                                  # Stichprobenstandardabweichung
 h       <- ceiling(3.49*S/(n^(1/3)))                                              # Klassenbreite
 k       <- ceiling((b_k - b_0)/h)                                                 # Anzahl der Klassen
-b       <- seq(b_0, b_k, len = k)                                                 # Klassen [b_{j-1}, b_j[
+b       <- seq(b_0, b_k, len = k + 1)                                                 # Klassen [b_{j-1}, b_j[
 h       <- b[2] - b[1]                                                            # Klassenbreite
 hist(                                                                             # Histogramm
 x,                                                                                # Datensatz
-breaks  <- b,                                                                     # breaks
-xlim    <- c(x_min, x_max),                                                       # x Achsen Limits
-ylim    <- c(y_min, y_max),                                                       # y Achsen Limits
-ylab    <- "Häufigkeit",                                                          # y-Achsenbezeichnung
-xlab    <- "",                                                                    # x-Achsenbezeichnung
-main    <- sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
+breaks  = b,                                                                     # breaks
+xlim    = c(x_min, x_max),                                                       # x Achsen Limits
+ylim    = c(y_min, y_max),                                                       # y Achsen Limits
+ylab    = "Häufigkeit",                                                          # y-Achsenbezeichnung
+xlab    = "",                                                                    # x-Achsenbezeichnung
+main    = sprintf("Pre-BDI, k = %.0f, h = %.2f", k, h))                          # Titel
 dev.copy2pdf(file  = file.path(abb_dir, "pds_7_hg_5.pdf"), width = 8, height = 5) # PDF Speicherung
 ```
 
@@ -645,13 +645,13 @@ b   <- seq(b_0, b_k, by = h)        # Klassen [b_{j-1}, b_j[
 # Excelstandard
 n   <- length(x)                    # Anzahl Datenwerte
 k   <- ceiling(sqrt(n))             # Anzahl der Klassen
-b   <- seq(b_0, b_k, len = k)       # Klassen [b_{j-1}, b_j[
+b   <- seq(b_0, b_k, len = k + 1)       # Klassen [b_{j-1}, b_j[
 h   <- b[2] - b[1]                  # Klassenbreite
 
 # Sturges
 n   <- length(x)                    # Anzahl Datenwerte
 k   <- ceiling(log2(n)+1)           # Anzahl der Klassen
-b   <- seq(b_0, b_k, len = k)       # Klassen [b_{j-1}, b_j[
+b   <- seq(b_0, b_k, len = k + 1)       # Klassen [b_{j-1}, b_j[
 h   <- b[2] - b[1]                  # Klassenbreite
 
 # Scott
@@ -659,7 +659,7 @@ n   <- length(x)                    # Anzahl Datenwerte
 S   <- sd(x)                        # Stichprobenstandardabweichung
 h   <- ceiling(3.49*S/(n^(1/3)))    # Klassenbreite
 k   <- ceiling((b_k - b_0)/h)       # Anzahl der Klassen
-b   <- seq(b_0, b_k, len = k)       # Klassen [b_{j-1}, b_j[
+b   <- seq(b_0, b_k, len = k + 1)       # Klassen [b_{j-1}, b_j[
 ```
 
 
