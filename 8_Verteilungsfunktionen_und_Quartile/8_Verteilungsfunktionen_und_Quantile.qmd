@@ -251,6 +251,7 @@ dev.copy2pdf(
 ![](../Abbildungen/pds_8_kr.pdf)
 
 
+
 # Empirische Verteilungsfunktionen
 
 \footnotesize
@@ -320,16 +321,23 @@ dev.copy2pdf(
 ![](../Abbildungen/pds_8_ecdf.pdf){width="85%"}
 
 
-# AGENDA {.plain}
-\vfill
+
+\AtBeginSection{}
+\section{Quantile und Boxplots}
+# Quantile und Boxplots ====================================== {.plain}
+
 \large
-\setstretch{3}
+\setstretch{2.5}
+\vfill
+
 Empirische Verteilungsfunktionen
 
 **Quantile und Boxplots**
 
 Übungen und Selbstkontrollfragen
+
 \vfill
+
 
 
 # Das $p$-Quantil
@@ -667,17 +675,21 @@ dev.copy2pdf(
 \footnotesize
 Es gibt viele Boxplotvariationen (cf. @mcgill_1978). Es sollte immer erläutert werden, welche Kennzahlen dargestellt werden! 
 
+\AtBeginSection{}
+\section{Übungen und Selbstkontrollfragen}
+# Übungen und Selbstkontrollfragen ====================================== {.plain}
 
-# AGENDA {.plain}
-\vfill
 \large
-\setstretch{3}
+\setstretch{2.5}
+\vfill
+
 Empirische Verteilungsfunktionen
 
 Quantile und Boxplots
 
 **Übungen und Selbstkontrollfragen**
 \vfill
+
 
 # Übungen und Selbstkontrollfragen
 
