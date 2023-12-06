@@ -645,13 +645,13 @@ b   <- seq(b_0, b_k, by = h)        # Klassen [b_{j-1}, b_j[
 # Excelstandard
 n   <- length(x)                    # Anzahl Datenwerte
 k   <- ceiling(sqrt(n))             # Anzahl der Klassen
-b   <- seq(b_0, b_k, len = k + 1)       # Klassen [b_{j-1}, b_j[
+b   <- seq(b_0, b_k, len = k + 1)   # Klassen [b_{j-1}, b_j[
 h   <- b[2] - b[1]                  # Klassenbreite
 
 # Sturges
 n   <- length(x)                    # Anzahl Datenwerte
 k   <- ceiling(log2(n)+1)           # Anzahl der Klassen
-b   <- seq(b_0, b_k, len = k + 1)       # Klassen [b_{j-1}, b_j[
+b   <- seq(b_0, b_k, len = k + 1)   # Klassen [b_{j-1}, b_j[
 h   <- b[2] - b[1]                  # Klassenbreite
 
 # Scott
@@ -659,7 +659,7 @@ n   <- length(x)                    # Anzahl Datenwerte
 S   <- sd(x)                        # Stichprobenstandardabweichung
 h   <- ceiling(3.49*S/(n^(1/3)))    # Klassenbreite
 k   <- ceiling((b_k - b_0)/h)       # Anzahl der Klassen
-b   <- seq(b_0, b_k, len = k + 1)       # Klassen [b_{j-1}, b_j[
+b   <- seq(b_0, b_k, len = k + 1)   # Klassen [b_{j-1}, b_j[
 ```
 
 
