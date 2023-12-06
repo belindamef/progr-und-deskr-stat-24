@@ -294,10 +294,10 @@ b_excel_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL + 1) # Klassen [b_{j-1}, b_j[
 
 # c) Sturges Klassenzahl
 # ---------------------------------
-k_f2f         <- ceiling(log2(n_f2f) + 1)              # Anzahl der Klassen
-k_ONL         <- ceiling(log2(n_ONL) + 1)              # Anzahl der Klassen
-b_sturges_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f + 1)# Klassen [b_{j-1}, b_j[
-b_sturges_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL)    # Klassen [b_{j-1}, b_j[
+k_f2f         <- ceiling(log2(n_f2f) + 1)               # Anzahl der Klassen
+k_ONL         <- ceiling(log2(n_ONL) + 1)               # Anzahl der Klassen
+b_sturges_f2f <- seq(b_0_f2f, b_k_f2f, len = k_f2f + 1) # Klassen [b_{j-1}, b_j[
+b_sturges_ONL <- seq(b_0_ONL, b_k_ONL, len = k_ONL + 1) # Klassen [b_{j-1}, b_j[
 
 # d) Scott Klassenzahl (geg.: h)
 # ---------------------------------
