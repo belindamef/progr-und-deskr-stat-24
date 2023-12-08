@@ -4,7 +4,6 @@
     "quarto.render.renderOnSave": true,
     "theme-by-language.themes": {
         "python": "Darcula Pycharm with Dark GUI",
-        "*": "GitHub Dark Dimmed",
         "quarto": "Visual Studio Light",
         "r": "Visual Studio Light",
         "jsonc": "Visual Studio Light",
