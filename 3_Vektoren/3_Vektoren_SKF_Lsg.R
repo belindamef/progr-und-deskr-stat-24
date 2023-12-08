@@ -220,14 +220,14 @@ noch_ein_neuer_vektor <- ein_vektor[-gerade_indizes]
 
 # ========== SKF 9 ==========================================================
 # Kreiere einen Vektor, der die letzten 10 Indizes enthält
-letzte_10_indizes <- seq(laenge_vektor - 10, laenge_vektor)
+letzte_10_indizes <- seq(laenge_vektor - 9, laenge_vektor)
 
 # Kreiere einen neuen Vektor, der nur die letzten 10 Elem. des Vektors enthält
 letzter_neuer_vektor <- ein_vektor[letzte_10_indizes]
 
 # Anmerkungen:
 # ------------
-# ie hier gewählten Variablennamen sind natürlich viel zu lang.
+# Die hier gewählten Variablennamen sind natürlich viel zu lang.
 # Sie wurden hier aus didaktischen Gründen gewählt.
 #
 # Bei Fehlermeldung (Error in ...) würde die execution unterbrochen
