@@ -18,8 +18,8 @@ eine_liste[4](-5)   # Indiziert das 4. Listenelement als "Listeneintrag"
 eine_liste[[4]](-5) # Indiziert den Inhalt des 4. Listenelements,
                     # i.e. die Funktion `abs()`
 
-typeof(eine_liste[4](-5))
-typeof(eine_liste[[4]](-5))
+typeof(eine_liste[4])
+class(eine_liste[[4]])
 
 # ------SKF 5------
 fragen <- list("Ist blau eine Farbe?",
