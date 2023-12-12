@@ -415,6 +415,8 @@ x_tilde <- median(x)                         # Berechnung des Medians
 print(x_tilde)                               # Ausgabe
 ```
 
+\vfill
+
 
 # Median vs. Mittelwert 
 
@@ -565,16 +567,17 @@ legend(
 c("Histogramm", "Mittelwert", "Median", "Modalwert"),
 pch  = 16,
 col  = c("gray90", "Blue", "Red", "Green"),
-bty  = "n")
+bty  = "n",
+)
 dev.copy2pdf(
-file   = file.path(abb_dir, "pds_9_normalverteilung.pdf"),
+file   = file.path(abb_path, "pds_9_normalverteilung.pdf"),
 width  = 7,
-height = 5)
+height = 8)
 ```
 
 \vspace{2mm}
 
-![](../Abbildungen/pdf_9_normalverteilung.pdf){width="80%" fig-align="center"}
+![](../Abbildungen/pds_9_normalverteilung.pdf){width="80%" fig-align="center"}
 
 
 # Visuelle Intuition zu Maßen zentraler Tendenz bei **Gleichverteilung**
@@ -628,7 +631,7 @@ pch  = 16,
 col  = c("gray90", "Blue", "Red", "Green"),
 bty  = "n")
 dev.copy2pdf(
-file   = file.path(abb_dir, "pds_9_gleichverteilung.pdf"),
+file   = file.path(abb_path, "pds_9_gleichverteilung.pdf"),
 width  = 7,
 height = 5)
 ```
