@@ -2,7 +2,7 @@
 # und Quantile" des Kurses "Programmierung und Deskriptive Statistik"
 # im WS 23/24
 #
-# author: Belinda Fleischmann
+# Author: Belinda Fleischmann
 
 # Pakete laden
 library(latex2exp)                                   # Für LaTeX Formatierung
@@ -91,9 +91,9 @@ dev.new()                           # Abbildungsinitialisierung
 plot(                               # plot() weiß mit ecdf object umzugehen
   evf,                     # ecdf (empiric., cum. distribution function) Objekt
   xlab = TeX("$\\xi$"),    # x Achsenbeschriftung
-  #xlab = "xi",            # x Achsenbeschriftung ohne LaTeX Formatierung
+  # xlab = "xi",            # x Achsenbeschriftung ohne LaTeX Formatierung
   ylab = TeX("$F(\\xi)$"), # y Achsenbeschriftung ohne LaTeX Formatierung
-  #ylab = "F(xi)",
+  # ylab = "F(xi)",
   main = "Pre.BDI Empirische Verteilungsfunktion"  # Titel
 )
 
