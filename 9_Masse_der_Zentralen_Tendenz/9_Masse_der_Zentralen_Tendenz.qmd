@@ -138,9 +138,9 @@ fpath <- file.path(data_path, "psychotherapie_datensatz.csv")
 D     <- read.table(fpath, sep = ",", header = T)
 
 # Mittelwertberechnung
-x     <-D$Pre.BDI                  # double Vektor der Pre-BDI Werte
-n     <-length(x)                  # Anzahl der Werte
-x_bar <-(1/n)*sum(x)               # Mittelwertsberechnung
+x     <- D$Pre.BDI                  # double Vektor der Pre-BDI Werte
+n     <- length(x)                  # Anzahl der Werte
+x_bar <- (1 / n) * sum(x)               # Mittelwertsberechnung
 print(x_bar)                       # Ausgabe
 ```
 
@@ -175,7 +175,7 @@ Dann gelten
 \sum_{i=1}^n (x_i - \bar{x}) = 0.
 \end{equation}
 \item[(2)] Die absoluten Summen negativer und positiver Abweichungen vom Mittelwert sind gleich, d.h. wenn $j = 1,...,n_j$ die
-Datenpunktindizes mit $(x_j - \bar{x}) < 0$ und $k = 1,...,n_k$ die Datenpunktindizes mit $(x_k - \bar{x}) \ge$ bezeichnen, dann gilt
+Datenpunktindizes mit $(x_j - \bar{x}) < 0$ und $k = 1,...,n_k$ die Datenpunktindizes mit $(x_k - \bar{x}) \ge 0$ bezeichnen, dann gilt
 mit $n_j + n_k$
 \begin{equation}
 \vert\sum_{j = 1}^{n_j} (x_j - \bar{x})\vert = \vert\sum_{k = 1}^{n_k} (x_k - \bar{x})\vert.
