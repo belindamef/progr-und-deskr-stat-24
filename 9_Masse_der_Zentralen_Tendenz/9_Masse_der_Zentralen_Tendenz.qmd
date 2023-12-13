@@ -276,8 +276,8 @@ Beträge der positiven und negativen Abweichungen
 x   <- D$Pre.BDI                       # double Vektor der  Werte
 s_1 <- sum(x[x <= mean(x)] - mean(x))  # Summe aller negativer Abweichungen
 s_2 <- sum(x[x > mean(x)]  - mean(x))  # Summe aller positiver Abweichungen
-print(s_1)                             # Ausgabe
-print(s_2)                             # Ausgabe
+print(abs(s_1))                        # Ausgabe des Betrags
+print(abs(s_2))                        # Ausgabe des Betrags
 ```
 
 \vfill
@@ -562,17 +562,25 @@ col = "White",
 bg = c("Blue", "Red", "Green"),
 cex = 2,
 xpd = TRUE)
-legend(
-"topleft",
-c("Histogramm", "Mittelwert", "Median", "Modalwert"),
-pch  = 16,
-col  = c("gray90", "Blue", "Red", "Green"),
-bty  = "n",
-)
+# legend(
+# "topleft",
+# c("Histogramm", "Mittelwert", "Median", "Modalwert"),
+# pch  = 16,
+# col  = c("gray90", "Blue", "Red", "Green"),
+# bty  = "n",
+# )
+
+legend("topleft", legend = "Histogramm", pch = 16, col = "gray90", bty = "n", inset = c(0, 0))
+
+legend("topleft", legend = "Mittelwert", pch = 16, col = "Blue", bty = "n", inset = c(0, 0.1))
+
+legend("topleft", legend = "Median", pch = 16, col = "Red", bty = "n", inset = c(0, 0.2))
+
+legend("topleft", legend = "Modalwert", pch = 16, col = "Green", bty = "n", inset = c(0, 0.3))
 dev.copy2pdf(
 file   = file.path(abb_path, "pds_9_normalverteilung.pdf"),
 width  = 7,
-height = 8)
+height = 5)
 ```
 
 \vspace{2mm}
