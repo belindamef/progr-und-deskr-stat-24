@@ -47,7 +47,7 @@ Datum          & Einheit               & Thema		                            \\\h
 06.12.23       & Deskriptive Statistik & (8) Verteilungsfunktionen und Quantile \\
 13.12.23       & Deskriptive Statistik & (9) Maße der zentralen Tendenz \\
 20.12.23       & \textit{Leistungsnachweis Teil 1}        \\
-\textbf{20.12.23}       & \textbf{Deskriptive Statistik} & (10)  \textbf{Maße der Datenvariabilität}        \\
+\textbf{20.12.23}       & \textbf{Deskriptive Statistik} & \textbf{(10) Maße der Datenvariabilität}        \\
                & \textcolor{gray}{Weihnachtspause}                              \\
 10.01.24       & Deskriptive Statistik & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
 17.01.24       & Inferenzstatistik     & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
@@ -130,7 +130,7 @@ x_min   <- min(x)                           # Mininum der Pre-BDI Werte
 sb      <- x_max - x_min                    # Spannbreite
 print(sb)
 
-# automatische Spannbreitenberechnung
+# Automatische Spannbreitenberechnung
 MinMax  <- range(x)                         # "Automatische" Berechnung von min(x), max(x)
 sb      <- MinMax[2] - MinMax[1]            # Spannbreite
 print(sb)
@@ -190,15 +190,16 @@ Die Sitchprobenvarianz kann mit `var()` berechnet werden
 
 ```{r, eval = T}
 #| label: var()
-x        <- D$Pre.BDI                       # double Vektor der Pre-BDI Werte Werte
-n        <- length(x)                       # Anzahl der Werte
-s2       <- (1/(n-1))*sum((x - mean(x))^2)  # Stichprobenvarianz
+
+x        <- D$Pre.BDI                             # double Vektor der Pre-BDI Werte Werte
+n        <- length(x)                             # Anzahl der Werte
+s2       <- (1 / (n - 1)) * sum((x - mean(x))^2)  # Stichprobenvarianz
 print(s2)
-s2       <- var(x)                          # "automatische" Stichprobenvarianz
+s2       <- var(x)                                # "automatische" Stichprobenvarianz
 print(s2)
-s2_tilde <- (1/n)*sum((x - mean(x))^2)      # Empirische Stichprobenvarianz
+s2_tilde <- (1 / n) * sum((x - mean(x))^2)        # Empirische Stichprobenvarianz
 print(s2_tilde)
-s2_tilde <- ((n-1)/n)*var(x)                # "automatische" empirische Stichprobenvarianz
+s2_tilde <- ((n - 1) / n) * var(x)                # "automatische" empirische Stichprobenvarianz
 print(s2_tilde)
 ```
 
@@ -224,9 +225,9 @@ s^2_y
 &  = \frac{1}{n-1}\sum_{i=1}^n (ax_i + b - (a\bar{x} + b))^2 \\
 &  = \frac{1}{n-1}\sum_{i=1}^n (ax_i + b - a\bar{x} - b)^2 \\
 &  = \frac{1}{n-1}\sum_{i=1}^n (a(x_i - \bar{x}))^2 \\
-&  = \frac{1}{n-1}\sum_{i=1}^n a^2(x_i - \bar{x})^2 
-   = a^2\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 
-   = a^2s_x^2 \\
+&  = \frac{1}{n-1}\sum_{i=1}^n a^2(x_i - \bar{x})^2 \\
+&  = a^2\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 \\
+&  = a^2s_x^2 \\
 \end{split}
 \end{align}
 
@@ -243,12 +244,12 @@ x   <- D$Pre.BDI                        # double Vektor der Pre-BDI Werte
 s2x <- var(x)                           # Stichprobenvarianz von x_1,...,x_n
 a   <- 2                                # Multiplikationskonstante
 b   <- 5                                # Additionskonstante
-y   <- a*x + b                          # y_i <-  ax_i + b
+y   <- a * x + b                        # y_i <-  ax_i + b
 s2y <- var(y)                           # Stichprobenvarianz y_1,...,y_n
 print(s2y)
 
 # Stichprobenvarianz nach Theorem
-s2y <- a^2*s2x                          # Stichprobenvarianz y_1,...,y_n
+s2y <- a^2 * s2x                        # Stichprobenvarianz y_1,...,y_n
 print(s2y)
 ```
 
@@ -300,7 +301,7 @@ Mittelwerte. Dann gilt
 x        <- D$Pre.BDI                             # double Vektor der Pre-BDI Werte Werte
 n        <- length(x)                             # Anzahl Datenpunkte
 x_bar    <- mean(x)                               # Stichprobenmittel
-s2_tilde <- ((n-1)/n)*var(x)                      # empirische Stichprobenvarianz
+s2_tilde <- ((n - 1) / n) * var(x)                # empirische Stichprobenvarianz
 print(s2_tilde)
 
 # Berechnung der empirischen Stichprobenvarianz mit Theorem
@@ -369,19 +370,19 @@ Die Stichprobenstandardabweichung kann mit `sd()` berechnet werden.
 #| label: Stichprobenstandardabweichung
 #| 
 # Manuelle Berechnung der Stichprobenstandardabweichung
-x       <- D$Pre.BDI                             # double Vektor der Pre-BDI Werte Werte	
-n       <- length(x)                             # Anzahl der Werte
-s       <- sqrt((1/(n-1))*sum((x - mean(x))^2))  # Standardabweichung
+x <- D$Pre.BDI                                   # double Vektor der Pre-BDI Werte Werte	
+n <- length(x)                                   # Anzahl der Werte
+s <- sqrt((1 / (n - 1)) * sum((x - mean(x))^2))  # Standardabweichung
 print(s)
 
 # Automatische Berechnung der Stichprobenstandardabweichung
-s       <- sd(x)                                 # "automatische" Berechnung
+s <- sd(x)                                        # "automatische" Berechnung
 print(s)
 
 # Empirische Standardabweichung
-s_tilde <- sqrt((1/(n))*sum((x - mean(x))^2))    # empirische Standardabweichung
+s_tilde <- sqrt((1 / (n)) * sum((x - mean(x))^2)) # empirische Standardabweichung
 print(s_tilde)
-s_tilde <- sqrt((n-1)/n)*sd(x)                   # empirische Standardabweichung
+s_tilde <- sqrt((n - 1) / n) * sd(x)              # empirische Standardabweichung
 print(s_tilde)
 ```
 
