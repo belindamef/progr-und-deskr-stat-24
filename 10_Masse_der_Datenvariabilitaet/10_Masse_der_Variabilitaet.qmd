@@ -387,10 +387,10 @@ print(s_tilde)
 ```
 
 
-# Stichprobenvarianz bei linear-affinen Transformationen
+# Stichprobenstandardabweichung bei linear-affinen Transformationen
 \setstretch{1}
 \footnotesize
-\begin{theorem}[Stichprobenvarianz bei linear-affinen Transformationen]
+\begin{theorem}[Stichprobenstandardabweichung bei linear-affinen Transformationen]
 \justifying
 \normalfont
 $x = (x_1,...,x_n)$ sei ein Datensatz mit Stichprobenstandardabweichung $s_x$ und
@@ -415,7 +415,7 @@ s_y
 Also gilt $s_y = as_x$, wenn $a \ge 0$ und $s_y = -as_x$, wenn $a < 0$. Dies aber entspricht $s_y = |a|s_x$.
 
 
-# Stichprobenvarianz bei linear-affinen Transformationen
+# Stichprobenstandardabweichung bei linear-affinen Transformationen
 
 \textcolor{darkcyan}{Beispiel: Stichprobenstandardabweichung bei linear-affinen Transformationen}
 \vspace{1mm}
@@ -426,24 +426,24 @@ Also gilt $s_y = as_x$, wenn $a \ge 0$ und $s_y = -as_x$, wenn $a < 0$. Dies abe
 #| label: lin.-affine Transformation Stichprobenstandardabweichung
 # a >= 0
 x   <- D$Pre.BDI                        # double Vektor der Pre-BDI Werte Werte
-s_x <- sd(x)                            # Stichprobenvarianz von x
+s_x <- sd(x)                            # Stichprobenstandardabweichung von x
 a   <- 2                                # Multiplikationskonstante
 b   <- 5                                # Additionskonstante
 y   <- a*x + b                          # y_i =  ax_i + b
-s_y <- sd(y)                            # Stichprobenvarianz von y
+s_y <- sd(y)                            # Stichprobenstandardabweichung von y
 print(s_y)
-s_y <- a*s_x                            # Stichprobenvarianz von y
+s_y <- a*s_x                            # Stichprobenstandardabweichung von y
 print(s_y)
 
 # a < 0
 x   <- D$Pre.BDI                        # double Vektor der Pre-BDI Werte Werte
-s_x <- sd(x)                            # Stichprobenvarianz von x
+s_x <- sd(x)                            # Stichprobenstandardabweichung von x
 a   <- -3                               # Multiplikationskonstante
 b   <- 10                               # Additionskonstante
 y   <- a*x + b                          # y_i =  ax_i + b
-s_y <- sd(y)                            # Stichprobenvarianz von y
+s_y <- sd(y)                            # Stichprobenstandardabweichung von y
 print(s_y)
-s_y <- (-a)*s_x                         # Stichprobenvarianz von y
+s_y <- (-a)*s_x                         # Stichprobenstandardabweichung von y
 print(s_y)
 ```
 
