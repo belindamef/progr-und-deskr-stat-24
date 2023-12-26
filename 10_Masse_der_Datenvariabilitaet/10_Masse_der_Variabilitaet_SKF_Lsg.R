@@ -22,39 +22,37 @@ if (!file.exists(fig_dir)) {
 
 # Daten importieren und vorbereiten
 data_df <- read.table(rawdata_fpath, sep = ",", header = TRUE)
-
-x <- data_df$Post.BDI                # Double Vektor der Post-BDI Werte
+x <- data_df$Post.BDI                        # Double Vektor der Post-BDI Werte
 
 # ------SKF 2) Spannbreite der Post.BDI Daten----------------------------------
 # "Manuelle" Berechnung
-x_max <- max(x)                      # Maximum
-x_min <- min(x)                      # Mininum
-sb <- x_max - x_min                  # Spannbreite
-cat("Spannbreite (manuell): ", sb)   # Ausgabe
+x_max <- max(x)                              # Maximum
+x_min <- min(x)                              # Mininum
+sb <- x_max - x_min                          # Spannbreite
+cat("Spannbreite (manuell): ", sb)           # Ausgabe
 
 # Berechnung mit range()
-MinMax <- range(x)                   # Berechnung min(x), max(x)
-sb <- MinMax[2] - MinMax[1]          # Spannbreite
-cat("\nSpannbreite (automatisch): ", # Ausgabe
-    sb)
+MinMax <- range(x)                           # Berechnung min(x), max(x)
+sb <- MinMax[2] - MinMax[1]                  # Spannbreite
+cat("\nSpannbreite (automatisch): ", sb)     # Ausgabe
 
 # ------SKF 4) (empirische) Stichprobenvarianz der Post.BDI Daten--------------
 
 # ------Stichprobenvarianz---------------------------------
 # "Manuelle" Berechnung
-n <- length(x)                              # Anzahl der Werte
-s2 <- (1 / (n - 1)) * sum((x - mean(x))^2)  # Stichprobenvarianz
-cat("\nStichprobenvarianz (manuell): ", s2) # Ausgabe
+n <- length(x)                               # Anzahl der Werte
+s2 <- (1 / (n - 1)) * sum((x - mean(x))^2)   # Stichprobenvarianz
+cat("\nStichprobenvarianz (manuell): ", s2)  # Ausgabe
 
 # Berechnung mit var()
-s2 <- var(x)                                # Stichprobenvarianz
-cat("\nStichprobenvarianz (automatisch): ", # Ausgabe
+s2 <- var(x)                                 # Stichprobenvarianz
+cat("\nStichprobenvarianz (automatisch): ",  # Ausgabe
     s2)
 
 # ------ Empirische Stichprobenvarianz---------------------
 # "Manuelle" Berechnung
-s2_tilde <- (1 / n) * sum((x - mean(x))^2)  # Empirische Stichprobenvarianz
-cat("\nEmpirische Stichprobenvarianz ",     # Ausgabe
+s2_tilde <- (1 / n) * sum((x - mean(x))^2)   # Empirische Stichprobenvarianz
+cat("\nEmpirische Stichprobenvarianz ",      # Ausgabe
     "(manuell): ", s2_tilde)
 
 # Berechnung mit var()
@@ -66,28 +64,28 @@ cat("\nEmpirische Stichprobenvarianz ",      # Ausgabe
 
 # ------Stichprobenstandardabweichung----------------------------------
 # "Manuelle" Berechnung
-n <- length(x)                                  # Anzahl der Werte
-s <- (                                          # Standardabweichung
+n <- length(x)                               # Anzahl der Werte
+s <- (                                       # Standardabweichung
   sqrt((1 / (n - 1)) * sum((x - mean(x))^2))
 )
-cat("\nStichprobenstandardabweichung ",         # Ausgabe
+cat("\nStichprobenstandardabweichung ",      # Ausgabe
     "(manuell): ", s)
 
 # Berechnung mit sd()
-s <- sd(x)                                      # Standardabweichung
-cat("\nStichprobenstandardabweichung ",         # Ausgabe
+s <- sd(x)                                   # Standardabweichung
+cat("\nStichprobenstandardabweichung ",      # Ausgabe
     "(automatisch): ", s)
 
 # ------ Empirische Stichprobenstandardabweichung---------------------
 # "Manuelle" Berechnung
-s_tilde	<- (                                    # Empirische Standardabweichung
+s_tilde	<- (                                 # Empirische Standardabweichung
   sqrt((1 / (n)) * sum((x - mean(x))^2))
 )
-cat("\nEmpirische ",                            # Ausgabe
+cat("\nEmpirische ",                         # Ausgabe
     "Stichprobenstandardabweichung ",
     "(manuell): ", s_tilde)
 # Berechnung mit sd()
-s_tilde	<- sqrt((n - 1) / n) * sd(x)            # Empirische Standardabweichung
-cat("\nEmpirische ",                            # Ausgabe
+s_tilde	<- sqrt((n - 1) / n) * sd(x)         # Empirische Standardabweichung
+cat("\nEmpirische ",                         # Ausgabe
     "Stichprobenstandardabweichung ",
     "(automatisch): ", s_tilde)
