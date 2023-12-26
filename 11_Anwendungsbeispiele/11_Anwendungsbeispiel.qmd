@@ -1,0 +1,1274 @@
+```{r eval = T, echo = F}
+# | label: define directories
+abb_path <- file.path(dirname(getwd()), "Abbildungen")
+data_path <- file.path(dirname(getwd()), "Daten")
+```
+
+
+# Titelfolie {.plain}
+\center
+![](../Abbildungen/otto.png){width="20%"}
+
+\vspace{2mm}
+
+\Large
+Programmierung und Deskriptive Statistik
+\vspace{4mm}
+
+\normalsize
+BSc Psychologie WiSe 2023/24
+
+\vspace{15mm}
+\normalsize
+Belinda Fleischmann
+
+\vspace{3mm}
+\scriptsize
+Inhalte basieren auf [Programmierung und Deskriptive Statistik](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Wintersemester+2122/Programmierung+und+Deskriptive+Statistik/Vorlesungsfolien.pdf) von [Dirk Ostwald](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I+_+Experimentelle+und+Neurowissenschaftliche+Psychologie/Team/Dirk+Ostwald.html), lizenziert unter [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+
+
+# Termine {.plain}
+\setstretch{1.3}
+\vfill
+\center
+\footnotesize
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum            & Einheit                  & Thema		                              \\\hline
+11.10.23         & Einführung               & (1) Einführung                         \\
+18.10.23         & R Grundlagen             & (2) R und Visual Studio Code           \\
+25.10.23         & R Grundlagen             & (2) R und Visual Studio Code           \\
+01.11.23         & R Grundlagen             & (3) Vektoren                           \\
+08.11.23         & R Grundlagen             & (4) Matrizen                           \\
+15.11.23         & R Grundlagen             & (5) Listen und Dataframes              \\
+22.11.23         & R Grundlagen             & (6) Datenmanagement                    \\
+29.11.23         & Deskriptive Statistik    & (7) Häufigkeitsverteilungen            \\
+06.12.23         & Deskriptive Statistik    & (8) Verteilungsfunktionen und Quantile \\
+13.12.23         & Deskriptive Statistik    & (9) Maße der zentralen Tendenz         \\
+20.12.23         & \textit{Leistungsnachweis Teil 1}                                 \\
+20.12.23         & Deskriptive Statistik    & (10) Maße der Datenvariabilität        \\
+                 & \textcolor{gray}{Weihnachtspause}                                 \\
+\textbf{10.01.24} & \textbf{Deskriptive Statistik}    & \textbf{(11) Anwendungsbeispiel (Deskriptive Statistik)}                   \\
+17.01.24         & Inferenzstatistik        & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+24.01.24         & Inferenzstatistik        & (13) Anwendungsbeispiel (Hypothesentest)                          \\
+25.01.24         & \textit{Leistungsnachweis Teil 2}                          \\\hline
+\end{tabular}
+
+
+# Maße der Variabilität - Titelfolie {.plain}
+
+\vfill
+\huge
+\begin{center}
+(11) Anwendungsbeispiel
+\end{center}
+\vfill
+
+
+# AGENDA {.plain}
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+
+\AtBeginSection{}
+\section{Beispieldatensatz}
+# Beispieldatensatz ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+**Beispieldatensatz**
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Forschungsfrage
+\textcolor{darkblue}{Evidenzbasierte Evaluation von Psychotherapieformen bei Depression}
+
+\vspace{2mm}
+\normalsize
+Welche Therapieform ist bei Depression wirksamer?
+
+\vfill
+
+![](../Abbildungen/pds_11_klinische_forschung.pdf){width="100%"}
+
+
+# Studiendesign
+\textcolor{darkblue}{Beispiel: Evaluation von Psychotherapieformen bei Depression}
+
+\vspace{2mm}
+
+![](../Abbildungen/pds_7_messplan.pdf){width="90%"}
+
+
+# Mittel der Datenerhebung
+
+\vspace{2mm}
+
+\normalsize
+Becks Depressions-Inventar (BDI) zur Depressionsdiagnostik
+
+![](../Abbildungen/pds_11_bdi.pdf){width="100%"}
+
+
+# Beispieldatensatz
+Einlesen des Datensatzes mit `read.table()`
+\vspace{1mm}
+
+\footnotesize
+```{r, eval = T}
+#| label: Daten einlesen
+fname <- file.path(data_path, "psychotherapie_datensatz.csv")
+D <- read.table(fname, sep = ",", header = TRUE)
+```
+
+\small
+Daten der ersten acht Proband:innen jeder Gruppe
+
+\tiny
+\setstretch{1}
+```{r, eval = T, echo = F}
+#| label: Daten als Tabelle zeigen
+# table visualization
+knitr::kable(D[c(1:8, 51:58),],
+             align = "ccc",
+             "pipe")
+```
+
+
+# Beispieldatensatz
+Datensatzübersicht mit `View()`
+\vspace{2mm}
+
+![](../Abbildungen/pds_7_view.png){width="50%" fig-align="center"}
+
+
+# Exkurs: Datensimulation
+
+\vfill
+
+\footnotesize
+\setstretch{1.15}
+```{r, echo = T, eval = F}
+#| label: Datensimulation
+
+# Seed setzen
+set.seed(5)
+
+# Simulationsparameter
+n      <- 50                                      # Proband:innnen pro Gruppe
+mu     <- c(                                      # Erwartungswertparameter
+  18, 12,                                         # Pre und Post der Gruppe Klassisch
+  19, 14)                                         # Pre und Post der Gruppe Online
+sigsqr <- 3                                       # Varianzparameter (gleich für alle Bedingunen)
+
+# Datensimulation
+D  <- data.frame(
+        "Bedingung" = c(
+          rep("Klassisch",n), rep("Online", n)),  # n-mal "Klassisch", n-mal "Online"
+        "Pre BDI" = c(
+          round(rnorm(n, mu[1], sqrt(sigsqr))),   # n Zufallswerte aus Normalveritung mit mu[1]
+          round(rnorm(n, mu[3], sqrt(sigsqr)))),  # n Zufallswerte aus Normalveritung mit mu[3]
+        "Post BDI" = c(
+          round(rnorm(n, mu[2], sqrt(sigsqr))),   # n Zufallswerte aus Normalveritung mit mu[2]
+          round(rnorm(n, mu[4], sqrt(sigsqr))))   # n Zufallswerte aus Normalveritung mit mu[4]
+        )
+
+# Datenspeicherung
+fname  <- file.path(data_path, "psychotherapie_datensatz.csv")
+write.csv(D, file = fname)
+```
+
+
+\AtBeginSection{}
+\section{Datenvorverarbeitung}
+# Datenvorverarbeitung ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+**Datenvorverarbeitung**
+
+Deskriptive Statistiken
+
+Visualisierung
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Datenvorverarbeitung
+
+\textcolor{darkblue}{Überlegungen für die Datenvorverarbeitung}
+
+\small
+* Studienfokus ist die **Veränderung** der Depressionsymptomatik durch Therapieformen.
+
+* Für jede Proband:in der ergibt sich diese Veränderung als **Differenz** von Post.BDI - Pre.BDI.
+
+* Eine Reduktion der Depressionssymptomatik ergibt dabei eine **negative Zahl**.
+
+* Es ist sinnvoller, Verbesserungen mit **positiven Zahlen** zu repräsentieren.
+
+* Als Maß des Therapieeffekts bei Proband:in $i$ bietet sich also an
+
+\begin{equation}
+\Delta \mbox{BDI[i]} := - (\mbox{Post.BDI[i]} - \mbox{Pre.BDI[i]})
+\end{equation}
+
+* Wir betrachten in der Folge also das $\Delta \mbox{BDI}$ Maß mit folgender Interpretation
+
+\center
+\begin{tabular}{lll}
+$\Delta \mbox{BDI} > 0$ & Verminderung der Depressionsymptomatik       & Wirksame Therapie      \\
+$\Delta \mbox{BDI} = 0$ & Keine Veränderung der Depressionsymptomatik  & Wirkungslose Therapie  \\
+$\Delta \mbox{BDI} < 0$ & Verstärkung der Depressionsymptomatik        & Schädigende Therapie   \\
+\end{tabular}
+
+
+# Datenvorverarbeitung
+\vspace{1mm}
+
+\small
+Hinzufügen einer $\Delta\mbox{BDI}$ Spalte zum Dataframe
+\vspace{1mm}
+
+\footnotesize
+```{r, eval = T}
+#| label: Das Delta BDI Maß
+fname       <- file.path(data_path, "psychotherapie_datensatz.csv")       # Einlesen
+D           <- read.table(fname, sep = ",", header = TRUE)                # Rohdaten
+D$Delta.BDI <- -(D$Post.BDI - D$Pre.BDI)                                  # \Delta BDI Maß
+```
+
+\small
+Daten der ersten acht Proband:innen jeder Gruppe
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r, echo = F, eval = T}
+# table visualization
+knitr::kable(D[c(1:8, 51:58),],
+             align      = "cccc",
+             "pipe")
+```
+
+
+\AtBeginSection{}
+\section{Deskriptive Statistiken}
+# Deskriptive Statistiken* ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+**Deskriptive Statistiken**
+
+Visualisierung
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Exkurs: for-loops - Control flow
+
+\footnotesize
+\color{red}
+
+* \footnotesize mit for loops können wir einen oder mehrere Befehle *für* eine bestimmte Sequenz wiederholen.
+* Vorteile:
+  * \footnotesize copy-pasten Fehler vermeiden
+  * weniger Text
+  * Variablen nur einmal und nicht für jede Wiederholung ändern müssen
+* TODO: nützliches Beispiel überlegen
+
+\tiny
+\setstretch{1.1}
+```{r, eval = T}
+#| label: for-loop - beispiele Teil 1
+
+# Einen Befehl n mal ausführen
+n_prints <- 2
+for(i in 1:n_prints){
+  print("Hello World!")
+}
+
+# Operation mit jedem Element einer Sequenz durchführen
+for(i in 1:3){
+  x = i * 2
+  print(x)
+}
+```
+
+
+# Exkurs: for-loops
+
+\tiny
+\setstretch{1.1}
+```{r, eval = T}
+#| label: for-loop - beispiele Teil 2
+
+
+# Obst im Einkaufskorb benennen
+obst         <- c("Birne", "Orange", "Mango", "Kiwi", "Banane")
+einkaufskorb <- c("Mango", "Kiwi", "Brokoli")
+
+for(item in einkaufskorb){
+  if(item %in% obst)
+    print(item)
+}
+
+# In Funktion packen
+finde_obst <- function(korb=list()) {
+  obst_im_korb <- list()  # Liste initialisieren
+
+  for(item in korb){
+    if(item %in% obst)
+      obst_im_korb <- c(obst_im_korb, item)
+  }
+  if(length(obst_im_korb) == 0)
+    return("Kein Obst im Korb")
+  else
+    return(obst_im_korb)
+}
+
+finde_obst(einkaufskorb)
+```
+
+
+# Deskriptive Statistiken
+
+\textcolor{darkblue}{Bedingungsabhängige Auswertung deskriptiver Statistiken}
+
+\vspace{3mm}
+
+\tiny
+\setstretch{1}
+```{r, eval = T}
+#| label: Berechnung Deskriptiver Statistiken
+# Initialisierung eines Dataframes
+th_bed        <- c("Klassisch", "Online")                       # Therapiebedingungen
+n_th_bed      <- length(th_bed)                                 # Anzahl Therapiebedingungen
+deskr_stat    <- data.frame(                                    # Dataframeerzeugung
+                   n         = rep(NaN,n_th_bed),               # Stichprobengrößen
+                   Max       = rep(NaN,n_th_bed),               # Maxima
+                   Min       = rep(NaN,n_th_bed),               # Minima
+                   Median    = rep(NaN,n_th_bed),               # Mediane
+                   Mean      = rep(NaN,n_th_bed),               # Mittelwerte
+                   Var       = rep(NaN,n_th_bed),               # Varianzen
+                   Std       = rep(NaN,n_th_bed),               # Standardabweichungen
+                   row.names = th_bed)                          # Therapiebedingungen
+
+# Iterationen über Therapiebedingungen
+for(i in 1:n_th_bed){
+  data                 = D$Delta.BDI[D$Bedingung == th_bed[i]]  # Daten
+  deskr_stat$n[i]      = length(data)                           # Stichprobengröße
+  deskr_stat$Max[i]    = max(data)                              # Maxima
+  deskr_stat$Min[i]    = min(data)                              # Minima
+  deskr_stat$Median[i] = median(data)                           # Mediane
+  deskr_stat$Mean[i]   = mean(data)                             # Mittelwerte
+  deskr_stat$Var[i]    = var(data)                              # Varianzen
+  deskr_stat$Std[i]    = sd(data)                               # Standardabweichungen
+}
+```
+
+
+# Deskriptive Statistiken
+
+\textcolor{darkblue}{Bedingungsabhängige Auswertung deskriptiver Statistiken}
+
+\vspace{3mm}
+
+\tiny
+
+```{r, eval = T}
+#| label: Ausgabe der Deskriptiven Statistiken
+# Ausgabe
+print.AsIs(deskr_stat)
+```
+
+\small
+\setstretch{1.8}
+
+* Die Anzahl der Proband:innen in beiden Therapiegruppen ist gleich.
+* Die Spannbreite der $\Delta\mbox{BDI}$ Daten ist in der klassischen Therapieform leicht erhöht.
+* Median und Mittelwert nehmen für die klassische Therapieform leicht höhere Werte an.
+* Ein $\Delta \mbox{BDI}$ Mittelwertsunterschied von 1 ist klinisch wohl eher vernachlässigbar.
+* Median und Mittelwert sind in beiden Therapieformen ähnlich (unimodale Verteilung).
+* Die Variabilitätsmaße zeigen eine etwas erhöhte Varabilität in der klassischen Therapieform.
+
+
+# Deskriptive Statistiken
+\textcolor{darkblue}{Bedingungsabhängige Visualisierung deskriptiver Statistiken}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r, eval = F}
+#| label: Visualiserung Abbildungsparameter
+# Abbildungsparameter
+par(                                            # für Details siehe ?par
+  mfcol       = c(1,2),                         # 1 x 2 Panelstruktur
+  family      = "sans",                         # Serif-freier Fonttyp
+  pty         = "m",                            # Maximale Abbildungsregion
+  bty         = "l",                            # L förmige Box
+  las         = 1,                              # Horizontale Achsenbeschriftung
+  xaxs        = "i",                            # x-Achse bei y = 0
+  yaxs        = "i",                            # y-Achse bei x = 0
+  font.main   = 1,                              # Non-Bold Titel
+  cex         = 1,                              # Textvergrößerungsfaktor
+  cex.main    = 1.5                             # Titeltextvergrößerungsfaktor
+)                    
+```
+
+
+# Deskriptive Statistiken
+\textcolor{darkblue}{Bedingungsabhängige Visualisierung deskriptiver Statistiken}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r, eval = F}
+#| label: Linkes Panel - Balkendiagramm
+
+# Linkes Panel: Balkendiagramm mit Fehlerbalken
+# ---------------------------------------------
+
+# Stichprobenmittelwert und Standardabweichung extrahieren
+mw        <- deskr_stat$Mean                        # Gruppenmittelwert
+sd        <- deskr_stat$Std                         # Gruppenstandardabweichung
+names(mw) <- th_bed                                 # barplot braucht x-Werte als names
+
+# Mit der Funktion barplot() ein Balkendiagramm plotten
+x <- barplot(                                       # Ausgabe der x-Ordinaten (?barplot für Details)
+  height = mw,                                      # Mittelwerte als Balkenhöhe
+  col    = "gray90",                                # Balkenfarbe
+  ylim   = c(0,12),                                 # y-Achsenbegrenzung
+  xlim   = c(0,3),                                  # x-Achsenbegrenzung
+  xlab   = "Bedingung",                             # x-Achsenbeschriftung
+  main   = TeX("$\\Delta BDI$")                     # Titel
+)
+
+# Mit arrows() Fehlerbalken zeichnen
+arrows(
+  x0     = x,                                       # arrow start x-ordinate
+  y0     = mw - sd,                                 # arrow start y-ordinate
+  x1     = x,                                       # arrow end   x-ordinate
+  y1     = mw + sd,                                 # arrow end   y-ordinate
+  code   = 3,                                       # Pfeilspitzen beiderseits
+  angle  = 90,                                      # Pfeilspitzenwinkel -> Linie
+  length = 0.05                                     # Linielänge
+)
+
+
+```
+\vfill
+
+
+# Deskriptive Statistiken
+
+\textcolor{darkblue}{Bedingungsabhängige Visualisierung deskriptiver Statistiken}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r, eval = F}
+#| label: Rechtes Panel - Boxplots
+
+# Rechtes Panel: Boxplot
+# ---------------------------------------------
+boxplot(
+  D$Delta.BDI ~ D$Bedingung,                        # Gruppierung der Delta.BDI Daten nach D$Bedingung
+  ylim = c(0,12),                                   # y-Achsenbegrenzung
+  col  = "gray90",                                  # Boxfarbe
+  ylab = "",                                        # y-Achsenbeschriftung
+  xlab = "Bedingung",                               # x-Achsenbeschriftung    
+  main = TeX("$\\Delta BDI$")                       # Titel
+)
+```
+
+```{r, echo = F, eval = F}
+# PDF Speicherung
+dev.copy2pdf(
+  file        = file.path(abb_dir, "pds_11_deskriptiv.pdf"),
+  width       = 8,
+  height      = 5)
+```
+
+\vfill
+
+
+# Deskriptive Statistiken
+\textcolor{darkblue}{Bedingungsabhängige Visualisierung deskriptiver Statistiken}
+\vspace{1mm}
+
+![](../Abbildungen/pds_11_deskriptiv.pdf){width="90%"}
+
+
+\AtBeginSection{}
+\section{Visualisierung}
+# Visualisierung ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+**Visualisierung**
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Visualisierung
+\vspace{1cm}
+
+![](../Abbildungen/pds_11_graphics_1.pdf){width="35%"}
+
+\vfill
+
+
+# Visualisierung
+\setstretch{1.8}
+\textcolor{darkblue}{R Funktionalitäten für Abbildungen}
+
+Base Graphics
+
+* Erstellung und bedarfsgerechte Anpassung von Abbildungen
+* Eher low-level, fine tuning orientiert
+
+Lattice und ggplot2 
+
+* Erstellung und bedarfsgerechte Anpassung von Abbildungen
+* Eher high level, an der eigenen Philosophie orientiert
+
+Base Graphics, lattice und ggplot2 können ähnliche Abbildungen generieren
+
+LaTeX Typesetting ist in allen Paketen unterentwickelt
+
+# Visualisierung
+\setstretch{1.8}
+\textcolor{darkblue}{R Funktionalitäten für Abbildungen}
+
+**Base Graphics**
+
+* **Erstellung und bedarfsgerechte Anpassung von Abbildungen**
+* **Eher low-level, fine tuning orientiert**
+
+Lattice und ggplot2 
+
+* Erstellung und bedarfsgerechte Anpassung von Abbildungen
+* Eher high level, an der eigenen Philosophie orientiert
+
+Base Graphics, lattice und ggplot2 können ähnliche Abbildungen generieren
+
+LaTeX Typesetting ist in allen Paketen unterentwickelt
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_2.pdf){width="55%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_3.pdf){width="45%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_4.pdf){width="55%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_5.pdf){width="60%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_6.pdf){width="55%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{5mm}
+![](../Abbildungen/pds_11_graphics_7.pdf){width="60%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+
+\textcolor{darkblue}{Code Outline}
+\footnotesize
+\vspace{1mm}
+\setstretch{1.2}
+```{r, echo = T}
+#| label: Code Outline für Abbildungen
+
+# Initialisierung einer neuen Abbildung
+dev.new()
+
+# Abbildungsparameter
+par( 
+z.B. Arrangement von Panels, Begrenzungsstile, Schriftfonts, etc
+)  
+
+# Higher-level Abbildungsfunktion wie plot(), hist(), barplot(), ...
+plot(
+z.B. x- und y-Daten, Achsenlimits, Achsenbeschriftungen, Titel, Farben, etc.
+Jeder Aufruf einer higher-level Graphikfunktion belegt ein neues Subpanel!
+)
+
+# Hinzufügen weiterer Daten mit lower-level Abbildungsfunktionen zum aktuellen Panel
+z.B. points(), lines(), abline()
+
+# Weitere Graphikannotation zu aktuellem Panel
+z.B. legend(), text()
+
+# Speichern der Abbildung (Größenverhältnisse erst hier final festgelegt)
+z.B. dev.copy2pdf() 
+```
+
+
+# Visualisierung
+\vspace{2mm}
+Histogramme
+\vspace{1mm}
+\tiny
+\setstretch{.8}
+
+```{r, eval = F}
+# Histogrammparameter
+h           = 1                               # gewünschte Klassenbreite
+b_0         = min(D$Delta.BDI)                # b_0
+b_k         = max(D$Delta.BDI)                # b_0
+k           = ceiling((b_k - b_0)/h)          # Anzahl der Klassen
+b           = seq(b_0, b_k, by = h)           # Klassen [b_{j-1}, b_j[
+ylimits     = c(0,.25)                        # y-Achsenlimits
+xlimits     = c(-2,14)                        # x-Achsenlimits
+therapie    = c("Klassisch" , "Online")       # Therapiebedingungen
+labs        = c("Klassische Therapie",        # Abbildungslabel
+                "Online Therapie")
+# Abbildungsparameter
+par(                                          # für Details siehe ?par
+mfcol       = c(1,2),                         # 1 x 2 Panelstruktur
+family      = "sans",                         # Serif-freier Fonttyp
+pty         = "m",                            # Maximale Abbildungsregion
+bty         = "l",                            # L förmige Box
+las         = 1,                              # Horizontale Achsenbeschriftung
+xaxs        = "i",                            # x-Achse bei y = 0
+yaxs        = "i",                            # y-Achse bei x = 0
+font.main   = 1,                              # Non-Bold Titel
+cex         = 1,                              # Textvergrößerungsfaktor
+cex.main    = 1)                              # Titeltextvergrößerungsfaktor
+
+# Iteration über Therapiebedingungen
+for(i in 1:2){
+  hist(
+  D$Delta.BDI[D$Bedingung == therapie[i]],    # Delta.BDI Werte von Therapiebedingung i
+  breaks    = b,                              # Histogrammklassen
+  freq      = F,                              # normierte relative Häufigkeit
+  xlim      = xlimits,                        # x-Achsenlimits
+  ylim      = ylimits,                        # y-Achsenlimits
+  xlab      = TeX("$\\Delta$ BDI"),           # x-Achsenbeschriftung
+  ylab      = "",                             # y-Achsenbeschriftung
+  main      = labs[i])                        # Titelbeschriftung
+}
+
+# PDF Speicherung
+dev.copy2pdf(
+file        = file.path(abb_dir, "pds_11_histogramm.pdf"),
+width       = 8,
+height      = 4)
+```
+
+# Visualisierung
+Histogramme
+\vspace{.5cm}
+
+![](../Abbildungen/pds_11_histogramm.pdf){width="100%"}
+
+\vfill
+
+
+\AtBeginSection{}
+\section{Parameterschätzung}
+# Parameterschätzung ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+**Parameterschätzung**
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Parameterschätzung
+\textcolor{darkblue}{Modellannahmen für Parameterschätzung und Konfidenzintervalle}
+
+\small
+Motiviert durch die therapieabhängige Visualisierung der $\Delta\mbox{BDI}$ Daten
+und unseren wissenschaftssoziologischen Kontext legen wir nun das Normalverteilungsmodell
+zugrunde.
+\vspace{2mm}
+
+Wir nehmen also an, dass die $\Delta$ BDI Werte Realisierungen von unabhängig
+verteilten Zufallsvariablen
+\begin{equation}
+\ups_{ij} \sim N\left(\mu_{i},\sigma^2_i\right), i = 1,2, j = 1,...,50
+\end{equation}
+sind, wobei $i$ die Therapiebedingung (1 = Klassisch, 2 = Online) und $j$
+den Proband:innen Index in der $i$ten experimentellen Bedingung bezeichnen.
+Innerhalb einer Bedingung sind diese Zufallsvariablen also unabhängig und identisch
+verteilt.
+\vspace{2mm}
+
+Dies entspricht der Annahme, dass sich der $\Delta \mbox{BDI}$ Wert einer Proband:in
+durch Addition einer normalverteilten Fehlervariable mit Erwartungswertparameter
+$0$ und Varianzparameter $\sigma^2_i$ zu den innerhalb einer Therapiebedingung
+identischen Wert $\mu_{i}$ ergibt.
+
+# Parameterschätzung
+\small
+\setstretch{1.2}
+Zur Parameterschätzung im vorliegenden Modell nutzen wir
+\vspace{-1mm}
+
+* den Maximum Likelihood Schätzer für $\mu_i$
+* den Varianzschätzer für $\sigma^2_i$
+
+\vspace{2mm}
+\tiny
+\setstretch{1}
+```{r}
+# Initialisierung eines Dataframes
+tp                = c("Klassisch", "Online")                  # Therapiebedingungen
+ntp               = length(tp)                                # Anzahl Therapiebedingungen
+theta_hats        = data.frame(                               # Dataframeerzeugung
+                    mu_ML      = rep(NaN,ntp),                # ML Schätzer für \mu_i
+                    sigsqr_VAR = rep(NaN,ntp))                # Varianzschätzer für \sigma^2_i
+
+# Iterationen über Therapiebedingungen
+for(i in 1:ntp){
+  data                     = D$Delta.BDI[D$Bedingung == tp[i]]    # Daten
+  theta_hats$mu_ML[i]      = mean(data)                           # ML Schätzer für \mu_i
+  theta_hats$sigsqr_VAR[i] = var(data)                            # Varianzschätzer für \sigma_2^_i
+}
+
+# Ausgabe
+print(theta_hats)
+```
+
+\small
+Tipps für $\mu_i$ und $\sigma^2_i$ auf Grundlage dieser unverzerrten Schätzer sind also
+\begin{equation}
+\hat{\mu}_1 = 6.16, \quad \hat{\mu}_2 = 4.92, \quad \hat{\sigma}^2_1 = 7.08, \quad \hat{\sigma}^2_2 = 3.91.
+\end{equation}
+Die mit diesen Tipps assoziierte Unsicherheit ist hier nicht angegeben.
+
+
+\AtBeginSection{}
+\section{Konfidenzintervalle}
+# Konfidenzintervalle ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+Parameterschätzung
+
+**Konfidenzintervalle**
+
+Hypothesentests
+
+\vfill
+
+
+# Konfidenzintervalle
+
+\textcolor{darkblue}{Konfidenzintervalle für die Erwartungswertparameterschätzer}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r}
+# Analyseparameter
+t       = c("Klassisch", "Online")                 # Therapiebedingungen
+ntp     = length(tp)                               # Anzahl an Therapiebedingungen
+n       = 50                                       # Anzahl von Beobachtungen pro Therapiebedingung
+C       = data.frame(                              # Dataframeerzeugung
+          G_u       = rep(NaN,ntp),                # untere KI Grenze
+          mu_hat    = rep(NaN,ntp),                # Erwartungswertparameterschätzer
+          G_o       = rep(NaN,ntp),                # obere KI Grenze
+          row.names = tp)                          # Therapiebedingungen
+
+
+# Konfidenzintervallparameter
+delta   = 0.95                                     # Konfidenzlevel
+psi_inv = qt((1+delta)/2,n-1)                      # \psi^-1((\delta + 1)/2, n-1)
+
+# Konfidenzintervallevaluation
+for(i in 1:ntp){
+   data        = D$Delta.BDI[D$Bedingung == t[i]]  # Stichprobenrealisierung
+   X_bar       = mean(data)                        # Stichprobenmittel
+   S           = sd(data)                          # Stichprobenstandardabweichung
+   C$G_u[i]    = X_bar - (S/sqrt(n))*psi_inv       # untere KI Grenze
+   C$mu_hat[i] = X_bar                             # Erwartungswertparameterschätzer
+   C$G_o[i]    = X_bar + (S/sqrt(n))*psi_inv       # obere KI Grenze
+}
+
+# Ausgabe
+print.AsIs(C)
+```
+
+# Konfidenzintervalle
+
+\textcolor{darkblue}{Konfidenzintervalle für die Varianzparameterschätzer}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r}
+# Analyseparameter
+t       = c("Klassisch", "Online")                    # Therapiebedingungen
+ntp     = length(tp)                                  # Anzahl an Therapiebedingungen
+n       = 50                                          # Anzahl von Beobachtungen pro Therapiebedingung
+C       = data.frame(                                 # Dataframeerzeugung
+          G_u        = rep(NaN,ntp),                  # untere KI Grenze
+          sigsqr_hat = rep(NaN,ntp),                  # Varianzparameterschätzer
+          G_o        = rep(NaN,ntp),                  # obere KI Grenze
+          row.names  = tp)                            # Therapiebedingungen
+
+
+# Konfidenzintervallparameter
+delta   = 0.95                                        # Konfidenzlevel
+xi_1    = qchisq((1-delta)/2, n - 1)                  # \Xi^2((1-\delta)/2; n - 1)
+xi_2    = qchisq((1+delta)/2, n - 1)                  # \Xi^2((1+\delta)/2; n - 1)
+
+# Konfidenzintervallevaluation
+for(i in 1:ntp){
+   data            = D$Delta.BDI[D$Bedingung == t[i]] # Stichprobenrealisierung
+   S2              = var(data)                        # Stichprobenvarianz
+   C$G_u[i]        = (n-1)*S2/xi_2                    # untere KI Grenze
+   C$sigsqr_hat[i] = S2                               # Varianzparameterschätzer
+   C$G_o[i]        = (n-1)*S2/xi_1                    # obere KI Grenze
+}
+
+# Ausgabe
+print.AsIs(C)
+```
+
+
+
+\AtBeginSection{}
+\section{Hypothesentests}
+# Hypothesentests ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+**Hypothesentests**
+
+\vfill
+
+
+
+# Hypothesentest
+
+\small
+\textcolor{darkblue}{Anwendungsszenario und  statistisches Modell}
+
+\vspace{2mm}
+\footnotesize
+\setstretch{1.5}
+
+Wir nehmen an, dass die $\Delta$ BDI Werte, also der uns vorliegende Datensatz Realisierungen von unabhängig
+verteilten Zufallsvariablen
+\begin{equation}
+\ups_{ij} \sim N\left(\mu_{i},\sigma^2\right), i = 1,2, j = 1,...,50
+\end{equation}
+sind, wobei $i$ die Therapiebedingung (1 = Klassisch, 2 = Online) und $j$
+den Proband:innen Index in der $i$ten experimentellen Bedingung bezeichnen.
+Innerhalb einer Bedingung sind diese Zufallsvariablen also unabhängig und identisch
+verteilt.
+\vspace{2mm}
+
+Die Parameter $\mu_1,\mu_2,\sigma^2$ sind
+unbekannt sind. Wir beabsichtigen das Quantifizieren der Unsicherheit beim
+inferentiellen Vergleich von $\mu_1$ mit $\mu_2$.
+\vspace{2mm}
+
+Dafür können wir einen Zweistichproben-T-Test bei unabhängigen Stichproben unter
+Annahme identischer Varianz durchführen. 
+
+
+Wir wollen die Hypothesen $H_0:\mu_1 = \mu_2$
+und $H_1:\mu_1 \neq \mu_2$ mit einem Signifikanzniveau von $\alpha_0 = 0.05$ testen und verwenden dafür einen 
+**zweiseitigen Zweistichproben-Test**. 
+
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{(1) Modell und Testhypothesen}
+\vspace{2mm}
+
+\footnotesize
+Wir betrachten die einfache Nullhpothese und die zusammengesetzte Alternativhypothese
+\begin{align}
+&H_0:\mu_1 - \mu_2 = 0 \Leftrightarrow \mu_1 = \mu_2 \text{ und } \\
+&H_1:\mu_1 - \mu_2 \neq 0 \Leftrightarrow \mu_1 \neq \mu_2
+\end{align}
+
+
+\vspace{2mm}
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{(2) Definition und Analyse der Teststatistik}
+\vspace{2mm}
+
+\footnotesize
+
+Die T-Teststatistik für den Zweistichproben-T-Test ist gegeben durch 
+
+\begin{equation}
+T = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\bar{y}_1-\bar{y}_2 - \mu_0}{s_{12}}\right)
+\end{equation}
+und dessen Verteilung durch
+\begin{equation}
+T \sim t(\d, n_1 + n_2 - 2) \mbox{ mit } \d = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\mu_1-\mu_2-\mu_0}{\sigma}\right).
+\end{equation}
+wobei $\bar{y}_1$ und $\bar{y}_2$ die Stichprobenmittel der Gruppen Klassische und Online-Therapie, respektive sind, $n_1$ und $n_2$ die jeweiligen Stichprobengrößen und $s_{12} = \sqrt{s^2_{12}}$ die *gepoolte Stichprobenstandardabweichung*. Die *gepoolte Stichprobenvarianz* ist gegeben durch 
+\begin{equation}
+s^2_{12} := \frac{\sum_{j=1}^{n_1} (y_{1j} - \bar{y}_1)^2 + \sum_{j=1}^{n_2} (y_{2j} - \bar{y}_2)^2}{n_1+n_2-2}
+\end{equation}
+
+
+# Hypothesentest
+
+
+\textcolor{darkblue}{(3) Definition des Tests }
+
+\vspace{2mm}
+
+\begin{equation}
+\phi(\ups) := 1_{\{|T| \ge k\}} =
+{\begin{cases}
+1 & |T| \ge k \\
+0 & |T|  <  k
+\end{cases}}.
+\end{equation}
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{(4) Analyse der Testgütefunktion}
+\vspace{2mm}
+
+\footnotesize
+\begin{theorem}[Testgütefunktion]
+\justifying
+\normalfont
+Es sei $\phi$ der im obigen Modell formulierte Zweistichproben-T-Test. Dann ist
+die Testgütefunktion von $\phi$ gegeben durch
+\begin{multline}
+q_{\phi} : \mathbb{R}^2 \to [0,1],
+(\mu_1, \mu_2) \mapsto q_{\phi}(\mu_1, \mu_2)
+\\ := 1 - \psi(k;\delta,n_1+n_2-2) + \psi(-k;\delta,n_1+n_2-2)
+\end{multline}
+wobei $\psi(\cdot; \delta, n_1+n_2-2)$  die KVF der nichtzentralen
+$t$-Verteilung mit Nichtzentralitätsparameter
+\begin{equation}
+\delta := \sqrt{\frac{n_1n_2}{n_1+n_2}}\frac{\mu_1-\mu_2}{\sigma}
+\end{equation}
+und Freiheitsgradparameter $n_1+n_2-2$ bezeichnet.
+\end{theorem}
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{(5) Testumfangkontrolle}
+\vspace{2mm}
+
+
+\footnotesize
+
+\begin{theorem}[Testumfangkontrolle]
+\justifying
+\normalfont
+$\phi$ sei der im obigen Testszenario definierte Test. Dann ist $\phi$ ein
+Level-$\alpha_0$-Test mit Testumfang $\alpha_0$, wenn der kritische Wert
+definiert ist durch
+\begin{equation}
+k_{\alpha_0} := \psi^{-1}\left(1 - \frac{\alpha_0}{2}; n_1 + n_2 - 2 \right),
+\end{equation}
+wobei $\psi^{-1}(\cdot; n_1+n_2-2)$ die inverse KVF der $t$-Verteilung mit
+$n_1+n_2-2$ Freiheitsgraden ist.
+\end{theorem}
+
+
+
+# Hypothesentest
+\textcolor{darkblue}{Manueller Zweistichproben-T-Test}
+\vspace{2mm}
+
+\setstretch{1.2}
+\tiny
+```{r}
+# Datenauswahl
+x_1       = D$Delta.BDI[D$Bedingung == "Klassisch"]             # \Delta.BDI Daten Klassische Therapie
+x_2       = D$Delta.BDI[D$Bedingung == "Online"]                # \Delta.BDI Daten Klassische Therapie
+n_1       = length(x_1)                                         # Stichprobengröße n_1
+n_2       = length(x_2)                                         # Stichprobengröße n_2
+alpha_0   = 0.05                                                # Signifikanzniveau
+k_alpha_0 = qt(1 - (alpha_0/2), n_1+n_2-2)                      # kritischer Wert
+x_bar_1   = mean(x_1)                                           # x_bar_1
+x_bar_2   = mean(x_2)                                           # x_bar_2
+s_12      = sqrt((sum((x_1-x_bar_1)^2)+sum((x_2-x_bar_2)^2))/   # gepoolte Standardabweichung s_12
+                 (n_1+n_2-2))
+t       = sqrt((n_1*n_2)/(n_1+n_2))*((x_bar_1-x_bar_2)/s_12)    # Zweistichproben-T-Teststatistik
+if(abs(t) >= k_alpha_0){                                        # Test 1_{|T(X) >= k_alpha_0|}
+    phi = 1                                                     # Ablehnen von H_0
+} else {
+    phi = 0                                                     # Nicht Ablehnen von H_0
+}
+pval      = 2*(1 - pt(abs(t), n_1+n_2-2))                       # p-Wert
+```
+
+
+
+# Hypothesentest
+\textcolor{darkblue}{Manueller Zweistichproben-T-Test}
+\vspace{2mm}
+
+\setstretch{1}
+\tiny
+
+
+```{r}
+# Ausgabe
+cat("\nx_bar_1           = ", x_bar_1,
+    "\nx_bar_2           = ", x_bar_2,
+    "\nFreiheitsgrade    = ", n_1 + n_2 - 2,
+    "\nSignifikanzlevel  = ", alpha_0,
+    "\nKritischer Wert   = ", k_alpha_0,
+    "\nTeststatistik     = ", t,
+    "\nTestwert          = ", phi,
+    "\np-Wert            = ", pval)
+```
+
+\footnotesize
+
+Folgendes können wir aus dieser Zusammenfassung ablesen:
+
+* \footnotesize Die Stichprobenmittel der zwei Datensätze sind $6.16$ und $4.92$
+* Die Anzahl der Freiheitsgrade ist $98$
+* Das Signifikanzniveau dieses Tests $\alpha_0$ ist $0.05$
+* Der kritische Wert $k_{\alpha_0}$ ist $1.98$
+* Der Wert der T-Teststatistik $T$ ist $2.65$
+* Das Ergebnis des Tests $\phi$ ist $1$ (Wie zu erwarten, da hier $T > k_{\alpha_0})$
+* $\Rightarrow$ Wir lehnen die Nullhypothese $H_0: \mu_1 = \mu_2$ ab.
+* Der p-Wert beträgt 0.00951
+
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{R Implementation des Zweistichproben-T-Tests}
+
+\vspace{2mm}
+\setstretch{0.8}
+\tiny
+```{r}
+# Automatischer Zweistichproben-T-Test
+varphi    = t.test(                           # ?t.test für Details
+            x_1,                              # Datensatz x_1
+            x_2,                              # Datensatz x_2
+            var.equal   = TRUE,               # \sigma_1^2 = \sigma_2^2
+            alternative = c("two.sided"),     # H_1: \mu_1 \neq \mu_2
+            conf.level  = 1-alpha_0)          # \delta = 1 - \alpha_0 (sic!)
+
+# Ausgabe
+print(varphi)
+```
+
+\setstretch{1.2}
+
+Folgendes können wir aus dieser Zusammenfassung ablesen:
+
+* Es wurden die Daten verwendet, die in den Variablen `x_1` und `x_2` gespeichert sind. 
+* Der Wert der T-Teststatistik $T$ ist $2.65$
+* Die Anzahl der Freiheitsgrade, engl.: degrees of freedom (df) ist $98$
+* Die Alternativhypothese ist, dass die "wahre" Differenz zwischen $\mu_1$ und $\mu_2$ gleich $0$ ist. 
+* Das $95\%$-Konfidenzintervall der geschätzten Erwartungswertdifferenz ist $[0.31, 2.17]$.
+* Die Stichprobenmittel der zwei Datensätze sind $6.16$ und $4.92$
+* Der p-Wert beträgt (gerundet) 0.01. 
+* $\Rightarrow$ Da dieser Wert kleiner als das festgelegte Signifikanzniveau $0.05$ ist, kann die  die Nullhypothese $H_0: \mu_1 = \mu_2$ abgelehnt werden.
+
+
+
+
+# Hypothesentest
+
+\textcolor{darkblue}{R Implementation des Zweistichproben-T-Tests}
+
+\vspace{2mm}
+
+\footnotesize
+
+Die Werte, die in der automatischen Ausgabe angezeigt werden sind gerundet. Die exakten Werte sind jedoch im Objekt `varphi` gespeichert und wir können diese aufrufen. 
+
+\vspace{2mm}
+\setstretch{1}
+\tiny
+
+```{r}
+# Genauere Ausgabe t
+paste(varphi[1])
+
+# Genauere Ausgabe p
+paste(varphi[3])
+```
+
+
+
+
+# Selbstkontrollfragen
+
+\footnotesize
+\setstretch{1.6}
+
+\begin{enumerate}
+\justifying
+\item Simulieren Sie einen Beispieldatensatz mit Daten einer Evaluation von 3 verschiedenen Psychotherapieformen bei Depression mit 100 Versuchspersonen pro Gruppe und
+zwei Messzeitpunkten (vor Intervention und nach Intervention).
+\item Variieren Sie die Parameter der Simulationen für zwei Szenarien, in denen jeweils nur in einer Gruppe im Mittel ein Unterschied zwischen vor und nach Intervention gefunden wird.
+\end{enumerate}
+
+
+# References
+\footnotesize
