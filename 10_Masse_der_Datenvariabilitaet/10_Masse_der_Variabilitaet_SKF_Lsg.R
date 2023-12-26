@@ -19,9 +19,12 @@ if (!file.exists(fig_dir)) {
   dir.create(fig_dir)
 }
 
-
 # Daten importieren und vorbereiten
-data_df <- read.table(rawdata_fpath, sep = ",", header = TRUE)
+data_df <- read.table(                      # Daten einlesen
+  rawdata_fpath,
+  sep = ",",
+  header = TRUE
+)
 x <- data_df$Post.BDI                        # Double Vektor der Post-BDI Werte
 
 # ------SKF 2) Spannbreite der Post.BDI Daten----------------------------------
