@@ -31,14 +31,14 @@ daten$Delta.BDI <- -(daten$Post.BDI - daten$Pre.BDI)          # \Delta BDI Maß
 th_bed <- c("Klassisch", "Online")                # Therapiebedingungen
 n_th_bed <- length(th_bed)                        # Anzahl Therapiebedingungen
 deskr_stat <- data.frame(                         # Dataframeerzeugung
-  n         <- rep(NaN,n_th_bed),                 # Stichprobengrößen
-  Max       <- rep(NaN,n_th_bed),                 # Maxima
-  Min       <- rep(NaN,n_th_bed),                 # Minima
-  Median    <- rep(NaN,n_th_bed),                 # Mediane
-  Mean      <- rep(NaN,n_th_bed),                 # Mittelwerte
-  Var       <- rep(NaN,n_th_bed),                 # Varianzen
-  Std       <- rep(NaN,n_th_bed),                 # Standardabweichungen
-  row.names <- th_bed                             # Therapiebedingungen
+  n         = rep(NaN, n_th_bed),                 # Stichprobengrößen
+  Max       = rep(NaN, n_th_bed),                 # Maxima
+  Min       = rep(NaN, n_th_bed),                 # Minima
+  Median    = rep(NaN, n_th_bed),                 # Mediane
+  Mean      = rep(NaN, n_th_bed),                 # Mittelwerte
+  Var       = rep(NaN, n_th_bed),                 # Varianzen
+  Std       = rep(NaN, n_th_bed),                 # Standardabweichungen
+  row.names = th_bed                              # Therapiebedingungen
 )
 
 # Iterationen über Therapiebedingungen
@@ -172,4 +172,4 @@ dev.copy2pdf(
   height = 4
 )
 
-graphics.off()
+graphics.off()          # Schließt alle eventuell noch offenen graphics devices

@@ -48,37 +48,37 @@ daten <- data.frame(
     # Für die ersten n Zeilen der Spalte "Pre BDI"
     round(                  # Runde die gegebenen Werte
       rnorm(                # Erzeuge "zufällige" Werte aus einer Normalverteil.
-        n = n,              # ... und zwar n Werte,
+        n    = n,           # ... und zwar n Werte,
         mean = mu[1],       # ... mit Erwartungswertparameter mu[1]
-        sd = sqrt(sigsqr)   # ... und Standardabweichungsparameter sigsqr
+        sd   = sqrt(sigsqr) # ... und Standardabweichungsparameter sigsqr
       )
     ),
     # Für die letzten n Zeilen der Spalte "Pre BDI"
     round(                  # Runde die gegebenen Werte
       rnorm(                # Erzeuge "zufällige" Werte aus einer Normalverteil.
-        n = n,              # ... und zwar n Werte,
+        n    = n,           # ... und zwar n Werte,
         mean = mu[3],       # ... mit Erwartungswertparameter mu[3]
-        sd = sqrt(sigsqr)   # ... und Standardabweichungsparameter sigsqr
+        sd   = sqrt(sigsqr) # ... und Standardabweichungsparameter sigsqr
       )
-    ),
+    )
   ),
   "Post BDI" = c(
     # Für die ersten n Zeilen der Spalte "Post BDI"
     round(                  # Runde die gegebenen Werte
       rnorm(                # Erzeuge "zufällige" Werte aus einer Normalverteil.
-        n = n,              # ... und zwar n Werte,
+        n    = n,           # ... und zwar n Werte,
         mean = mu[2],       # ... mit Erwartungswertparameter mu[2]
-        sd = sqrt(sigsqr)   # ... und Standardabweichungsparameter sigsqr
+        sd   = sqrt(sigsqr) # ... und Standardabweichungsparameter sigsqr
       )
     ),
     # Für die letzten n Zeilen der Spalte "Post BDI"
     round(                  # Runde die gegebenen Werte
       rnorm(                # Erzeuge "zufällige" Werte aus einer Normalverteil.
-        n = n,              # ... und zwar n Werte,
+        n    = n,           # ... und zwar n Werte,
         mean = mu[4],       # ... mit Erwartungswertparameter mu[4]
-        sd = sqrt(sigsqr)   # ... und Standardabweichungsparameter sigsqr
+        sd   = sqrt(sigsqr) # ... und Standardabweichungsparameter sigsqr
       )
-    ),
+    )
   )
 )
 
