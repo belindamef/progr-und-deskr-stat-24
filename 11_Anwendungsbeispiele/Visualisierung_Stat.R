@@ -1,4 +1,4 @@
-# Dieses Skript wertet die Bedingunsabhängigen Deskriptiven Statistiken zum 
+# Dieses Skript wertet die Bedingunsabhängigen Deskriptiven Statistiken zum
 # Beispieldatensatz aus. 
 # Kurs:  "Programmierung und Deskriptive Statistik" im WS 22/23
 
@@ -84,7 +84,7 @@ boxplot(
   ylim        = c(0,12),                        # y-Achsenbegrenzung
   col         = "gray90",                       # Boxfarbe
   ylab        = "",                             # y-Achsenbeschriftung
-  xlab        = "Bedingung",                    # x-Achsenbeschriftung    
+  xlab        = "Bedingung",                    # x-Achsenbeschriftung
   main        = TeX("$\\Delta BDI$"))           # Titel
 
 # PDF Speicherung
