@@ -4,9 +4,6 @@
 # Kurs:  "Programmierung und Deskriptive Statistik" im WS 23/24
 
 # Pakete laden
-library(latex2exp)                        # Paket für LaTeX-Schriftformatierung
-
-# Pakete laden
 library(latex2exp)                                   # Für LaTeX Formatierung
 
 # Directory management
