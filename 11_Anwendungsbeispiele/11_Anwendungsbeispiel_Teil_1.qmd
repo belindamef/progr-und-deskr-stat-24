@@ -186,14 +186,14 @@ Datensatzübersicht mit `View()`
 #| label: Datensimulation
 
 # Seed setzen
-set.seed(5)
+set.seed(5)                                       # Startwert für den Zufallsgenerator setzen
 
 # Simulationsparameter
-n      <- 50                                     # Proband:innnen pro Gruppe
-mu     <- c(                                     # Erwartungswertparameter
-  18, 12,                                        # Pre und Post der Gruppe Klassisch
-  19, 14)                                        # Pre und Post der Gruppe Online
-sigsqr <- 3                                      # Varianzparameter (gleich für alle Bedingungen)
+n      <- 50                                      # Proband:innnen pro Gruppe
+mu     <- c(                                      # Erwartungswertparameter
+  18, 12,                                         # Pre und Post der Gruppe Klassisch
+  19, 14)                                         # Pre und Post der Gruppe Online
+sigsqr <- 3                                       # Varianzparameter (gleich für alle Gruppen)
 
 # Datensimulation
 D  <- data.frame(
@@ -289,7 +289,7 @@ Daten der ersten acht Proband:innen jeder Gruppe
 \tiny
 \setstretch{1}
 ```{r, echo = F, eval = T}
-# table visualization
+#| label: table visualization
 knitr::kable(D[c(1:8, 51:58),],
              align      = "cccc",
              "pipe")
@@ -333,15 +333,16 @@ Hypothesentests
 #| label: Berechnung bedingungsunabhg. deskr. Stat.
 
 # Initialisierung eines Dataframes
-data          <- D$Delta.BDI                                     # Therapiebedingungen
+data          <- D$Delta.BDI                                     # Datenvektor aus Dataframe kopieren
 deskr_stat    <- data.frame(                                     # Dataframeerzeugung
-                   n         = length(data),                     # Stichprobengrößen
-                   Max       = max(data),                        # Maxima
-                   Min       = min(data),                        # Minima
+                   n         = length(data),                     # Stichprobengröße
+                   Max       = max(data),                        # Maximum
+                   Min       = min(data),                        # Minimum
                    Median    = median(data),                     # Mediane
-                   Mean      = mean(data),                       # Mittelwerte
-                   Var       = var(data),                        # Varianzen
-                   Std       = sd(data))                         # Standardabweichungen
+                   Mean      = mean(data),                       # Mittelwert
+                   Var       = var(data),                        # Varianz
+                   Std       = sd(data)                          # Standardabweichung
+                   )
 
 print(deskr_stat)                                                # Ausgabe
 ```
@@ -582,6 +583,7 @@ boxplot(
 ```
 
 ```{r, echo = F, eval = F}
+#| label: PDF-Speicherung
 # PDF Speicherung
 dev.copy2pdf(
   file        = file.path(abb_dir, "pds_11_deskriptiv.pdf"),
