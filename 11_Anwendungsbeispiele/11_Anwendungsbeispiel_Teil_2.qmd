@@ -49,8 +49,8 @@ Datum            & Einheit                  & Thema		                           
 20.12.23         & \textit{Leistungsnachweis Teil 1}                                 \\
 20.12.23         & Deskriptive Statistik    & (10) Maße der Datenvariabilität        \\
                  & \textcolor{gray}{Weihnachtspause}                                 \\
-\textbf{10.01.24} & \textbf{Deskriptive Statistik}    & \textbf{(11) Anwendungsbeispiel (Deskriptive Statistik)}                   \\
-17.01.24         & Inferenzstatistik        & (12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle) \\
+10.01.24         & Deskriptive Statistik   & (11) Anwendungsbeispiel (Deskriptive Statistik)                   \\
+\textbf{17.01.24}         & \textbf{Inferenzstatistik}        & \textbf{(12) Anwendungsbeispiel (Parameterschätzung, Konfidenzintervalle)} \\
 24.01.24         & Inferenzstatistik        & (13) Anwendungsbeispiel (Hypothesentest)                          \\
 25.01.24         & \textit{Leistungsnachweis Teil 2}                          \\\hline
 \end{tabular}
@@ -601,6 +601,439 @@ dev.copy2pdf(
 ![](../Abbildungen/pds_11_deskriptiv.pdf){width="90%"}
 
 
+
+
+\AtBeginSection{}
+\section{Visualisierung}
+# Visualisierung ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+**Visualisierung**
+
+Parameterschätzung
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Literaturempfehlungen
+\vspace{1cm}
+
+![](../Abbildungen/pds_11_graphics_1.pdf){width="35%"}
+\hfill
+![](../Abbildungen/pds_11_graphics_cookbook.jpg){width="43%"}
+
+@murrell_2019 \hfill \textcolor{linkblue}{\href{https://r-graphics.org/}{Online-Buch}}, 
+@chang_graphics_2013
+
+\vfill
+
+
+# Visualisierung
+\setstretch{1.8}
+\textcolor{darkblue}{R Funktionalitäten für Abbildungen}
+
+Base Graphics
+
+* Erstellung und bedarfsgerechte Anpassung von Abbildungen
+* Eher low-level, fine tuning orientiert
+
+Lattice und ggplot2 
+
+* Erstellung und bedarfsgerechte Anpassung von Abbildungen
+* Eher high level, an der eigenen Philosophie orientiert
+
+Base Graphics, lattice und ggplot2 können ähnliche Abbildungen generieren
+
+LaTeX Typesetting ist in allen Paketen unterentwickelt
+
+# Visualisierung
+\setstretch{1.8}
+\textcolor{darkblue}{R Funktionalitäten für Abbildungen}
+
+**Base Graphics**
+
+* **Erstellung und bedarfsgerechte Anpassung von Abbildungen**
+* **Eher low-level, fine tuning orientiert**
+
+Lattice und ggplot2 
+
+* Erstellung und bedarfsgerechte Anpassung von Abbildungen
+* Eher high level, an der eigenen Philosophie orientiert
+
+Base Graphics, lattice und ggplot2 können ähnliche Abbildungen generieren
+
+LaTeX Typesetting ist in allen Paketen unterentwickelt
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_2.pdf){width="55%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_3.pdf){width="45%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_4.pdf){width="55%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_5.pdf){width="60%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{2mm}
+
+![](../Abbildungen/pds_11_graphics_6.pdf){width="55%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+\vspace{5mm}
+![](../Abbildungen/pds_11_graphics_7.pdf){width="60%"}
+
+\flushright
+\footnotesize
+@murrell_2019
+
+
+# Visualisierung
+
+\textcolor{darkblue}{Code Outline}
+\footnotesize
+\vspace{1mm}
+\setstretch{1.2}
+```{r, echo = T}
+#| label: Code Outline für Abbildungen
+
+# Initialisierung einer neuen Abbildung
+dev.new()
+
+# Abbildungsparameter
+par( 
+  z.B. Arrangement von Panels, Begrenzungsstile, Schriftfonts, etc
+)  
+
+# Higher-level Abbildungsfunktion wie plot(), hist(), barplot(), ...
+plot(
+  z.B. x- und y-Daten, Achsenlimits, Achsenbeschriftungen, Titel, Farben, etc.
+  Jeder Aufruf einer higher-level Graphikfunktion belegt ein neues Subpanel!
+)
+
+# Hinzufügen weiterer Daten mit lower-level Abbildungsfunktionen zum aktuellen Panel
+z.B. points(), lines(), abline()
+
+# Weitere Graphikannotation zu aktuellem Panel
+z.B. legend(), text()
+
+# Speichern der Abbildung (Größenverhältnisse erst hier final festgelegt)
+z.B. dev.copy2pdf() 
+```
+
+
+# Visualisierung
+\vspace{2mm}
+Histogramme
+\vspace{1mm}
+\tiny
+\setstretch{.8}
+
+```{r, eval = F}
+#| label: Histogramme
+#| 
+# Histogrammparameter
+h        <- 1                                                   # gewünschte Klassenbreite
+b_0      <- min(D$Delta.BDI)                                    # b_0
+b_k      <- max(D$Delta.BDI)                                    # b_0
+k        <- ceiling((b_k - b_0) / h)                            # Anzahl der Klassen
+b        <- seq(b_0, b_k, by = h)                               # Klassen [b_{j-1}, b_j[
+ylimits  <- c(0, .25)                                           # y-Achsenlimits
+xlimits  <- c(-2, 14)                                           # x-Achsenlimits
+therapie <- c("Klassisch" , "Online")                           # Therapiebedingungen
+labs     <- c("Klassische Therapie", "Online Therapie")         # Abbildungslabel
+
+# Abbildungsparameter
+par(                                                            # für Details siehe ?par
+  mfcol     = c(1, 2),                                          # 1 x 2 Panelstruktur
+  family    = "sans",                                           # Serif-freier Fonttyp
+  pty       = "m",                                              # Maximale Abbildungsregion
+  bty       = "l",                                              # L förmige Box
+  las       = 1,                                                # Horizontale Achsenbeschriftung
+  xaxs      = "i",                                              # x-Achse bei y = 0
+  yaxs      = "i",                                              # y-Achse bei x = 0
+  font.main = 1,                                                # Non-Bold Titel
+  cex       = 1,                                                # Textvergrößerungsfaktor
+  cex.main  = 1                                                 # Titeltextvergrößerungsfaktor
+)
+
+# Iteration über Therapiebedingungen
+for(i in 1:2){
+  hist(
+    D$Delta.BDI[D$Bedingung == therapie[i]],                    # Delta.BDI Werte von Therapiebedingung i
+    breaks = b,                                                 # Histogrammklassen
+    freq   = F,                                                 # normierte relative Häufigkeit
+    xlim   = xlimits,                                           # x-Achsenlimits
+    ylim   = ylimits,                                           # y-Achsenlimits
+    xlab   = TeX("$\\Delta$ BDI"),                              # x-Achsenbeschriftung
+    ylab   = "",                                                # y-Achsenbeschriftung
+    main   = labs[i])                                           # Titelbeschriftung
+  )
+}
+
+# PDF Speicherung
+dev.copy2pdf(
+  file        = file.path(abb_dir, "pds_11_histogramm.pdf"),
+  width       = 8,
+  height      = 4
+)
+```
+
+# Visualisierung
+Histogramme
+\vspace{.5cm}
+
+![](../Abbildungen/pds_11_histogramm.pdf){width="100%"}
+
+\vfill
+
+
+\AtBeginSection{}
+\section{Parameterschätzung}
+# Parameterschätzung ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+**Parameterschätzung**
+
+Konfidenzintervalle
+
+Hypothesentests
+
+\vfill
+
+
+# Parameterschätzung
+\textcolor{darkblue}{Modellannahmen für Parameterschätzung und Konfidenzintervalle}
+
+\small
+Motiviert durch die therapieabhängige Visualisierung der $\Delta\mbox{BDI}$ Daten
+und unseren wissenschaftssoziologischen Kontext legen wir nun das Normalverteilungsmodell
+zugrunde.
+\vspace{2mm}
+
+Wir nehmen also an, dass die $\Delta$ BDI Werte Realisierungen von unabhängig
+verteilten Zufallsvariablen
+\begin{equation}
+\ups_{ij} \sim N\left(\mu_{i},\sigma^2_i\right), i = 1,2, j = 1,...,50
+\end{equation}
+sind, wobei $i$ die Therapiebedingung (1 = Klassisch, 2 = Online) und $j$
+den Proband:innen Index in der $i$ten experimentellen Bedingung bezeichnen.
+Innerhalb einer Bedingung sind diese Zufallsvariablen also unabhängig und identisch
+verteilt.
+\vspace{2mm}
+
+Dies entspricht der Annahme, dass sich der $\Delta \mbox{BDI}$ Wert einer Proband:in
+durch Addition einer normalverteilten Fehlervariable mit Erwartungswertparameter
+$0$ und Varianzparameter $\sigma^2_i$ zu den innerhalb einer Therapiebedingung
+identischen Wert $\mu_{i}$ ergibt.
+
+# Parameterschätzung
+\small
+\setstretch{1.2}
+Zur Parameterschätzung im vorliegenden Modell nutzen wir
+\vspace{-1mm}
+
+* den Maximum Likelihood Schätzer für $\mu_i$
+* den Varianzschätzer für $\sigma^2_i$
+
+\vspace{2mm}
+\tiny
+\setstretch{1}
+```{r, eval = T}
+#| label: Parameterschätzung
+# Initialisierung eines Dataframes
+th_bed     <- c("Klassisch", "Online")                               # Therapiebedingungen
+n_th_bed   <- length(th_bed)                                         # Anzahl Therapiebedingungen
+theta_hats <- data.frame(                                            # Dataframeerzeugung
+  mu_ML      = rep(NaN, n_th_bed),                                   # ML Schätzer für \mu_i
+  sigsqr_VAR = rep(NaN, n_th_bed)                                    # Varianzschätzer für \sigma^2_i
+  )
+# Iterationen über Therapiebedingungen
+for(i in 1:n_th_bed){
+  data                     <- D$Delta.BDI[D$Bedingung == th_bed[i]]  # Daten
+  theta_hats$mu_ML[i]      <- mean(data)                             # ML Schätzer für \mu_i
+  theta_hats$sigsqr_VAR[i] <- var(data)                              # Varianzschätzer für \sigma_2^_i
+}
+
+# Ausgabe
+print(theta_hats)
+```
+
+\vspace{3mm}
+\footnotesize
+Tipps für $\mu_i$ und $\sigma^2_i$ auf Grundlage dieser unverzerrten Schätzer sind also
+\begin{equation}
+\hat{\mu}_1 = 6.16, \quad \hat{\mu}_2 = 4.92, \quad \hat{\sigma}^2_1 = 7.08, \quad \hat{\sigma}^2_2 = 3.91.
+\end{equation}
+Die mit diesen Tipps assoziierte Unsicherheit ist hier nicht angegeben.
+
+
+\AtBeginSection{}
+\section{Konfidenzintervalle}
+# Konfidenzintervalle ====================================== {.plain}
+
+\large
+\setstretch{2.5}
+\vfill
+
+Beispieldatensatz
+
+Datenvorverarbeitung
+
+Deskriptive Statistiken
+
+Visualisierung
+
+Parameterschätzung
+
+**Konfidenzintervalle**
+
+Hypothesentests
+
+\vfill
+
+
+# Konfidenzintervalle
+
+\textcolor{darkblue}{Konfidenzintervalle für die Erwartungswertparameterschätzer}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r, eval = T}
+#| label: Konfidenzintervalle für mu_hat
+
+# Analyseparameter
+th_bed   <- c("Klassisch", "Online")                     # Therapiebedingungen
+n_th_bed <- length(th_bed)                               # Anzahl an Therapiebedingungen
+n        <- 50                                           # Anzahl von Beobachtungen pro Therapiebedingung
+
+C <- data.frame(                                         # Dataframeerzeugung
+  G_u       = rep(NaN, n_th_bed),                        # untere KI Grenze
+  mu_hat    = rep(NaN, n_th_bed),                        # Erwartungswertparameterschätzer
+  G_o       = rep(NaN, n_th_bed),                        # obere KI Grenze
+  row.names = th_bed                                     # Therapiebedingungen
+)
+
+# Konfidenzintervallparameter
+delta   <- 0.95                                          # Konfidenzlevel
+psi_inv <- qt((1 + delta) / 2, n - 1)                    # \psi^-1((\delta + 1)/2, n-1)
+
+# Konfidenzintervallevaluation
+for(i in 1:n_th_bed){
+  data        <- D$Delta.BDI[D$Bedingung == th_bed[i]]  # Stichprobenrealisierung
+  X_bar       <- mean(data)                             # Stichprobenmittel
+  S           <- sd(data)                               # Stichprobenstandardabweichung
+  C$G_u[i]    <- X_bar - (S / sqrt(n)) * psi_inv        # untere KI Grenze
+  C$mu_hat[i] <- X_bar                                  # Erwartungswertparameterschätzer
+  C$G_o[i]    <- X_bar + (S / sqrt(n)) * psi_inv        # obere KI Grenze
+}
+
+# Ausgabe
+print(C)
+```
+
+# Konfidenzintervalle
+
+\textcolor{darkblue}{Konfidenzintervalle für die Varianzparameterschätzer}
+\vspace{1mm}
+
+\tiny
+\setstretch{1}
+```{r, eval = T}
+#| label: Konfidenzintervalle für sigsqu_hat
+
+# Analyseparameter
+th_bed   <- c("Klassisch", "Online")                        # Therapiebedingungen
+n_th_bed <- length(th_bed)                                  # Anzahl an Therapiebedingungen
+n        <- 50                                              # Anzahl von Beobachtungen pro Therapiebedingung
+
+C <- data.frame(                                            # Dataframeerzeugung
+  G_u        = rep(NaN, n_th_bed),                          # untere KI Grenze
+  sigsqr_hat = rep(NaN, n_th_bed),                          # Varianzparameterschätzer
+  G_o        = rep(NaN, n_th_bed),                          # obere KI Grenze
+  row.names  = th_bed                                       # Therapiebedingungen
+)
+
+# Konfidenzintervallparameter
+delta <- 0.95                                               # Konfidenzlevel
+xi_1  <- qchisq((1 - delta) / 2, n - 1)                     # \Xi^2((1-\delta)/2; n - 1)
+xi_2  <- qchisq((1 + delta) / 2, n - 1)                     # \Xi^2((1+\delta)/2; n - 1)
+
+# Konfidenzintervallevaluation
+for(i in 1:n_th_bed){
+  data            <- D$Delta.BDI[D$Bedingung == th_bed[i]]  # Stichprobenrealisierung
+  S2              = var(data)                               # Stichprobenvarianz
+  C$G_u[i]        = (n - 1) * S2 / xi_2                     # untere KI Grenze
+  C$sigsqr_hat[i] = S2                                      # Var.ianzparameterschätzer
+  C$G_o[i]        = (n-1) * S2 / xi_1                       # obere KI Grenze
+}
+
+# Ausgabe
+print(C)
+```
+
+
+
 # Selbstkontrollfragen
 
 \footnotesize
@@ -610,7 +1043,12 @@ dev.copy2pdf(
 \justifying
 \item Simulieren Sie einen Beispieldatensatz mit Daten einer Evaluation von 3 verschiedenen Psychotherapieformen bei Depression mit 100 Versuchspersonen pro Gruppe und
 zwei Messzeitpunkten (vor Intervention und nach Intervention).
-\item Variieren Sie die Parameter der Simulationen für zwei Szenarien, in denen jeweils in *nur einer* Gruppe im Mittel ein Unterschied zwischen Pre- und Post-BDI-Werten besteht.
+\item Variieren Sie die Parameter der Simulationen für zwei Szenarien, in denen jeweils in \textit{nur einer} Gruppe im Mittel ein Unterschied zwischen Pre- und Post-BDI-Werten besteht.
 \item Berechnen Sie die bedingungsabhängigen deskriptive Statistiken und visualisieren Sie diese.
+\item Berechnen Sie die ML-Parameterschätzer und bestimmen Sie die deren Konfidenzintervalle.
 \end{enumerate}
 
+
+# Literatur
+
+\footnotesize

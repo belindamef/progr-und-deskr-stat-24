@@ -104,7 +104,7 @@ arrows(
 boxplot(
   daten$Delta.BDI ~ daten$Bedingung,     # Gruppierung derDaten nach D$Bedingung
   ylim = c(0, 12),                       # y-Achsenbegrenzung
-  col  = "gray90",                     # Boxfarbe
+  col  = "gray90",                      # Boxfarbe
   ylab = "",                             # y-Achsenbeschriftung
   xlab = "Bedingung",                    # x-Achsenbeschriftung
   main = TeX("$\\Delta BDI$")            # Titel
