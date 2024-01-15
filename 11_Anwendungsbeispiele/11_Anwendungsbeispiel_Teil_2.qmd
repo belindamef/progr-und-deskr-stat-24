@@ -56,6 +56,16 @@ Datum            & Einheit                  & Thema		                           
 \end{tabular}
 
 
+# Orga - Leistungsnachweis Teil 2
+
+Terminvorschläge:
+
+* Donnerstag, 25.01.24, 11 Uhr
+* Mittwoch, 31.01.24, 10 Uhr
+
+\vfill
+
+
 # Maße der Variabilität - Titelfolie {.plain}
 
 \vfill
@@ -1045,7 +1055,7 @@ print(C)
 zwei Messzeitpunkten (vor Intervention und nach Intervention).
 \item Variieren Sie die Parameter der Simulationen für zwei Szenarien, in denen jeweils in \textit{nur einer} Gruppe im Mittel ein Unterschied zwischen Pre- und Post-BDI-Werten besteht.
 \item Berechnen Sie die bedingungsabhängigen deskriptive Statistiken und visualisieren Sie diese.
-\item Berechnen Sie die ML-Parameterschätzer und bestimmen Sie die deren Konfidenzintervalle.
+\item Berechnen Sie die Parameterschätzer für Erwartungswert und Varianz und bestimmen Sie die deren Konfidenzintervalle.
 \end{enumerate}
 
 
