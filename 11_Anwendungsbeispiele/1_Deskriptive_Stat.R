@@ -40,7 +40,7 @@ deskr_stat <- data.frame(                         # Dataframeerzeugung
 
 # Iterationen über Therapiebedingungen
 for (i in 1:n_th_bed){
-  data                 <- D$Delta.BDI[D$Bedingung == th_bed[i]]  # Daten
+  data                 <- daten$Delta.BDI[daten$Bedingung == th_bed[i]]  # Daten
   deskr_stat$n[i]      <- length(data)                           # Stichpr.-Gr.
   deskr_stat$Max[i]    <- max(data)                              # Maxima
   deskr_stat$Min[i]    <- min(data)                              # Minima
