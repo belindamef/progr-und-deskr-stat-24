@@ -126,7 +126,7 @@ dev.new()
 h        <- 1                                 # gewünschte Klassenbreite
 b_0      <- min(daten$Delta.BDI)              # b_0
 b_k      <- max(daten$Delta.BDI)              # b_0
-k        <- ceiling((b_k - b_0)/h)            # Anzahl der Klassen
+k        <- ceiling((b_k - b_0) / h)          # Anzahl der Klassen
 b        <- seq(b_0, b_k, by = h)             # Klassen [b_{j-1}, b_j[
 ylimits  <- c(0, .25)                         # y-Achsenlimits
 xlimits  <- c(-2, 14)                         # x-Achsenlimits

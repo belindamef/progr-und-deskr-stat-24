@@ -40,7 +40,7 @@ theta_hats <- data.frame(
 # Iterationen über Therapiebedingungen
 for (i in 1:n_th_bed){
   data <- daten$Delta.BDI[daten$Bedingung == th_bed[i]]        # Daten
-  theta_hats$mu_ML[i] <- mean(data)                    # MLS  für \mu_i
+  theta_hats$mu_hat[i] <- mean(data)                    # MLS  für \mu_i
   theta_hats$sigsqr_hat[i] <- var(data)                # Schätzer für \sig^2_i
 }
 
@@ -72,7 +72,7 @@ psi_inv <- qt((1 + delta) / 2, n - 1)         # \psi^-1((\delta + 1)/2, n-1)
 
 # Konfidenzintervallevaluation
 for (i in 1:n_th_bed){
-  data <- daten$Delta.BDI[daten$Bedingung == th_bed[i]]  # Stichprobenrealisierung
+  data <- daten$Delta.BDI[daten$Bedingung == th_bed[i]]
   x_bar <- mean(data)                            # Stichprobenmittel
   std <- sd(data)                                # Stichprobenstandardabweichung
   ki_mu$untere_Grenze[i] <- x_bar - (std / sqrt(n)) * psi_inv # untere KI Grenze
@@ -108,7 +108,7 @@ xi_2  <- qchisq((1 + delta) / 2, n - 1)             # \Xi^2((1+\delta)/2; n - 1)
 
 # Konfidenzintervallevaluation
 for (i in 1:n_th_bed){
-  data <- daten$Delta.BDI[daten$Bedingung == th_bed[i]]     # Stichprobenrealisierung
+  data <- daten$Delta.BDI[daten$Bedingung == th_bed[i]]
   s2 <- var(data)                                   # Stichprobenvarianz
   ki_sigsqr$untere_Grenze[i] <- (n - 1) * s2 / xi_2 # untere KI Grenze
   ki_sigsqr$sigsqr_hat[i] <- s2                     # Varianzparameterschätzer
