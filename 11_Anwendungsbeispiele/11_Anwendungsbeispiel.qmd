@@ -1075,7 +1075,7 @@ Konfidenzintervalle
 # Hypothesentest
 
 \small
-\textcolor{darkblue}{Anwendungsszenario und  statistisches Modell}
+\textcolor{darkblue}{(1) Anwendungsszenario und (2) Statistisches Inferenzmodell}
 
 \vspace{2mm}
 \footnotesize
@@ -1092,8 +1092,8 @@ Innerhalb einer Bedingung sind diese Zufallsvariablen also unabhängig und ident
 verteilt.
 \vspace{2mm}
 
-Die Parameter $\mu_1,\mu_2,\sigma^2$ sind
-unbekannt sind. Wir beabsichtigen das Quantifizieren der Unsicherheit beim
+Die Parameter $\mu_1,\mu_2,und \sigma^2$ sind
+unbekannt. Wir beabsichtigen das Quantifizieren der Unsicherheit beim
 inferentiellen Vergleich von $\mu_1$ mit $\mu_2$.
 \vspace{2mm}
 
@@ -1103,13 +1103,13 @@ Annahme identischer Varianz durchführen.
 
 Wir wollen die Hypothesen $H_0:\mu_1 = \mu_2$
 und $H_1:\mu_1 \neq \mu_2$ mit einem Signifikanzniveau von $\alpha_0 = 0.05$ testen und verwenden dafür einen 
-**zweiseitigen Zweistichproben-Test**. 
+**zweiseitigen Zweistichproben-T-Test**. 
 
 
 
 # Hypothesentest
 
-\textcolor{darkblue}{(1) Modell und Testhypothesen}
+\textcolor{darkblue}{(3) Testhypothesen}
 \vspace{2mm}
 
 \footnotesize
@@ -1125,7 +1125,7 @@ Wir betrachten die einfache Nullhpothese und die zusammengesetzte Alternativhypo
 
 # Hypothesentest
 
-\textcolor{darkblue}{(2) Definition und Analyse der Teststatistik}
+\textcolor{darkblue}{(4) Definition und (5) Verteilung der Teststatistik}
 \vspace{2mm}
 
 \footnotesize
@@ -1137,7 +1137,7 @@ T = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\bar{y}_1-\bar{y}_2 - \mu_0}{s_{12}
 \end{equation}
 und dessen Verteilung durch
 \begin{equation}
-T \sim t(\d, n_1 + n_2 - 2) \mbox{ mit } \d = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\mu_1-\mu_2-\mu_0}{\sigma}\right).
+T \sim t(d, n_1 + n_2 - 2) \mbox{ mit } d = \sqrt{\frac{n_1n_2}{n_1+n_2}}\left(\frac{\mu_1-\mu_2-\mu_0}{\sigma}\right).
 \end{equation}
 wobei $\bar{y}_1$ und $\bar{y}_2$ die Stichprobenmittel der Gruppen Klassische und Online-Therapie, respektive sind, $n_1$ und $n_2$ die jeweiligen Stichprobengrößen und $s_{12} = \sqrt{s^2_{12}}$ die *gepoolte Stichprobenstandardabweichung*. Die *gepoolte Stichprobenvarianz* ist gegeben durch 
 \begin{equation}
@@ -1148,7 +1148,7 @@ s^2_{12} := \frac{\sum_{j=1}^{n_1} (y_{1j} - \bar{y}_1)^2 + \sum_{j=1}^{n_2} (y_
 # Hypothesentest
 
 
-\textcolor{darkblue}{(3) Definition des Tests }
+\textcolor{darkblue}{(6) Testdefinition }
 
 \vspace{2mm}
 
@@ -1163,11 +1163,11 @@ s^2_{12} := \frac{\sum_{j=1}^{n_1} (y_{1j} - \bar{y}_1)^2 + \sum_{j=1}^{n_2} (y_
 
 # Hypothesentest
 
-\textcolor{darkblue}{(4) Analyse der Testgütefunktion}
+\textcolor{darkblue}{(7) Testgütefunktion}
 \vspace{2mm}
 
 \footnotesize
-\begin{theorem}[Testgütefunktion]
+\begin{theorem}[Testgütefunktion des Zweistichproben-T-Tests]
 \justifying
 \normalfont
 Es sei $\phi$ der im obigen Modell formulierte Zweistichproben-T-Test. Dann ist
@@ -1188,7 +1188,7 @@ und Freiheitsgradparameter $n_1+n_2-2$ bezeichnet.
 
 # Hypothesentest
 
-\textcolor{darkblue}{(5) Testumfangkontrolle}
+\textcolor{darkblue}{(8) Testumfangkontrolle}
 \vspace{2mm}
 
 
@@ -1236,7 +1236,7 @@ if (abs(t) >= k_alpha_0) {                                                   # T
 } else {
   phi <- 0                                                                   # Nicht-Ablehnen von H_0
 }
-pval  <- 2*(1 - pt(abs(t), n_1 + n_2 - 2))                                   # p-Wert
+pval  <- 2 * (1 - pt(abs(t), n_1 + n_2 - 2))                                 # p-Wert (pt() hat default ncp=0)
 ```
 
 
@@ -1357,7 +1357,8 @@ zwei Messzeitpunkten (vor Intervention und nach Intervention).
 \item Variieren Sie die Parameter der Simulationen für zwei Szenarien, in denen jeweils in \textit{nur einer} Gruppe im Mittel ein Unterschied zwischen Pre- und Post-BDI-Werten besteht.
 \item Berechnen Sie die bedingungsabhängigen deskriptive Statistiken und visualisieren Sie diese.
 \item Berechnen Sie die Parameterschätzer für Erwartungswert und Varianz und bestimmen Sie die deren Konfidenzintervalle.
-\item Führen Sie einen Zweistichproben-T-Test durch, um die Hypothese, dass ein Unterschied in der BDI-Veänderung zwischen zwei Gruppen Ihrer Wahl besteht. Wählen Sie dafür sinnvolle Null- und Alternativhypothesen. Welche Annahmen müssen Sie vor Durchführung des Tests treffen?
+\item Was sind die zugrundeliegenden Modellannahmen im Rahmen der Frequentistischen Inferenz?
+\item Wählen Sie zwei Gruppen, und führen Sie einen Zweistichproben-T-Test durch, um die Hypothese testen, dass ein Unterschied in der BDI-Veänderung zwischen diesen Gruppen besteht. Wählen Sie dafür sinnvolle Null- und Alternativhypothesen. Welche Annahmen müssen Sie vor Durchführung des Tests treffen?
 
 \end{enumerate}
 
