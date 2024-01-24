@@ -86,7 +86,8 @@ options(digits = 2)
 cat(
   "\n\n\nManueller Einstichproben T-Test (Klassische Th): ",
   "\n\n\nParameterschätzwert    =", ki_mu[1, "mu_hat"],
-  "\n95%-Konfidenzintervall =", ki_mu[1, "G_u"], ki_mu[1, "G_o"],
+  "\n95%-Konfidenzintervall =", ki_mu[1, "untere_Grenze"],
+                                ki_mu[1, "obere_Grenze"],
   "\nSignifikanzlevel       =", alpha_0,
   "\nKritischer Wert        =", k_alpha_0,
   "\nTeststatistik          =", t_klassisch,
@@ -113,7 +114,7 @@ p_online <- 2 * (1 - pt(t_online, n_1 - 1))         # p-Wert
 options(digits = 2)
 cat("\n\nManueller Einstichproben T-Test (Online-Th): ",
   "\n\nParameterschätzwert    =", ki_mu[1, "mu_hat"],
-  "\n95%-Konfidenzintervall =", ki_mu[1, "G_u"], ki_mu[1, "G_o"],
+  "\n95%-Konfidenzintervall =", ki_mu[1, "untere_Grenze"], ki_mu[1, "obere_Grenze"],
   "\nSignifikanzlevel       =", alpha_0,
   "\nKritischer Wert        =", k_alpha_0,
   "\nTeststatistik          =", t_online,
