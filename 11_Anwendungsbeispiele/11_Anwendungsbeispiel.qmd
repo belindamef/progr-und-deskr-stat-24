@@ -1234,7 +1234,7 @@ $n_1+n_2-2$ Freiheitsgraden ist.
 #| label: Manueller Zweistichproben-T-Test
 # Datenauswahl
 y_1       <- D$Delta.BDI[D$Bedingung == "Klassisch"]                         # \Delta.BDI Daten Klassische Therapie
-y_2       <- D$Delta.BDI[D$Bedingung == "Online"]                            # \Delta.BDI Daten Klassische Therapie
+y_2       <- D$Delta.BDI[D$Bedingung == "Online"]                            # \Delta.BDI Daten Online Therapie
 n_1       <- length(y_1)                                                     # Stichprobengröße n_1
 n_2       <- length(y_2)                                                     # Stichprobengröße n_2
 alpha_0   <- 0.05                                                            # Signifikanzniveau
@@ -1245,7 +1245,10 @@ s_12      <- sqrt(
                (sum((y_1 -y_bar_1)^2) + sum((y_2 - y_bar_2)^2))/             # gepoolte Standardabweichung s_12
                 (n_1 + n_2 - 2)
              )
-t         <- sqrt((n_1 * n_2) / (n_1 + n_2)) * ((y_bar_1 - y_bar_2) / s_12)  # Zweistichproben-T-Teststatistik
+t         <- (sqrt(                                                          # Zweistichproben-T-Teststatistik
+              (n_1 * n_2) / (n_1 + n_2)) 
+              * ((y_bar_1 - y_bar_2 - 0) / s_12)
+  )
 if (abs(t) >= k_alpha_0) {                                                   # Test 1_{|T >= k_alpha_0|}
   phi <- 1                                                                   # Ablehnen von H_0
 } else {
