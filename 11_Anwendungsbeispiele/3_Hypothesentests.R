@@ -60,7 +60,7 @@ n_2 <- length(y_2)                                    # Stichprobengröße n_2
 # ----------
 
 # Test-Parameter definieren
-mu_0 <- 0            # H_0 Hypothesenparameter, hier \mu = \mu_0
+mu_0 <- 0            # H_0 Hypothesenparameter, hier \mu_0 = 0
 alpha_0 <- 0.05      # Signifikanzniveau
 k_alpha_0 <- qt(     # kritischer Wert (gleich für beide Gruppen, da n_1 = n_2)
   1 - (alpha_0 / 2), n_1 - 1
@@ -127,6 +127,7 @@ varphi_onl <- t.test(y_2)
 print(varphi_onl)
 
 # Zweistichproben T-Test
+mu_0 <- 0                           # H_0 Hypothesenparameter, hier \mu_0 = 0
 alpha_0   <- 0.05                   # Signifikanzniveau
 k_alpha_0 <- qt(                    # kritischer Wert
   1 - (alpha_0 / 2), n_1 + n_2 - 2
@@ -138,7 +139,7 @@ s_12      <- sqrt(                  # gepoolte Standardabweichung s_12
 )
 t         <- (                      # Zweistichproben-T-Teststatistik
   sqrt((n_1 * n_2) / (n_1 + n_2))
-) * ((y_bar_1 - y_bar_2) / s_12)
+) * ((y_bar_1 - y_bar_2 - mu_0) / s_12)
 if (abs(t) >= k_alpha_0) {          # Test 1_{|t| >= k_alpha_0|}
   phi <- 1                          # Ablehnen von H_0
 } else {
